@@ -5,20 +5,27 @@ namespace UnityStandardAssets._2D
 {
     public class PlatformerCharacter2D : MonoBehaviour
     {
-        [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
+        [SerializeField] private float m_MaxSpeed = 40f;                    // The fastest the player can travel in the x axis.
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
+        [SerializeField] private float m_AirJumpForce = 200f;
         [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
+        [SerializeField] private float terminalVelocity = -9.81f;            // Maximum regular falling rate
+        [SerializeField] private float fastFallVelocity = -12f;              // Maximum fast falling rate
+        [Range(.001f, 1)] [SerializeField] private float floatiness = .5f;      // Amount of time from 0 vertical velocity to terminal velocity. 0.001 = instant, 1 = 1 second
 
         private Transform m_GroundCheck;    // A position marking where to check if the player is grounded.
-        const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+        const float k_GroundedRadius = .5f; // Radius of the overlap circle to determine if grounded
         private bool m_Grounded;            // Whether or not the player is grounded.
         private Transform m_CeilingCheck;   // A position marking where to check for ceilings
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator m_Anim;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+        private bool _canAirJump = true;
+        private float gravity;              // Rate per second of decreasing vertical speed
+        private float fastFallGravity;
 
         private void Awake()
         {
@@ -27,6 +34,8 @@ namespace UnityStandardAssets._2D
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+            gravity = terminalVelocity/floatiness;
+            fastFallGravity = fastFallGravity/floatiness;
         }
 
 
@@ -40,7 +49,10 @@ namespace UnityStandardAssets._2D
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
+                {
                     m_Grounded = true;
+                    _canAirJump = true;
+                }
             }
             m_Anim.SetBool("Ground", m_Grounded);
 
@@ -96,6 +108,27 @@ namespace UnityStandardAssets._2D
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            }
+            else if (jump && _canAirJump)
+            {
+                m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0f);
+                m_Rigidbody2D.AddForce(new Vector2(0f, m_AirJumpForce));
+                _canAirJump = false;
+            }
+
+            // Con
+            if (!m_Grounded) // && !fastFall
+            {
+                // Handles acceleration due to gravity
+                if (m_Rigidbody2D.velocity.y > terminalVelocity)
+                {
+                    m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y + gravity*Time.fixedDeltaTime);
+                }
+                // Caps terminal velocity
+                if (m_Rigidbody2D.velocity.y < terminalVelocity)
+                {
+                    m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, terminalVelocity);
+                }
             }
         }
 
