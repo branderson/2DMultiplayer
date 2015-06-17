@@ -1,0 +1,4 @@
+﻿Character Controller
+	Characters should have several distinct states
+		Idle, walking, jumping, several attacking states/substates, etc
+		Can be implemented with state machine behaviors?
