@@ -57,6 +57,28 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &11429042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43dac58540e39994db5725c4ce3e55a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11460154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a9014b05ddc344e87335658f156c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!206 &20637644
 BlendTree:
   m_ObjectHideFlags: 1
@@ -355,7 +377,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110146174}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 11429042}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -365,7 +388,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: f775e05aa3f4def428d6a43e5fd34b4a, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: vSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110232008
@@ -389,7 +412,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: cb27a2443b3f14c46958e584271fe740, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: vSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110245466
@@ -404,7 +427,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 110100190}
   - {fileID: 110167822}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 11460154}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -414,7 +438,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 52636c7bbac119a4496e6b645ab9c675, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: vSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110263162

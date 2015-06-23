@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Player
 {
-    [RequireComponent(typeof (PlayerController))]
+    [RequireComponent(typeof (PlayerController2))]
     public class PlayerControllerInput : MonoBehaviour
     {
         private PlayerController character;
