@@ -9,20 +9,15 @@ namespace Assets.Scripts.Player.States
     {
         private bool jump = false;
 
-        // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
-        {
-        }
-
         // onstateupdate is called on each update frame between onstateenter and onstateexit callbacks
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (jump)
+            if (jump && playerController.onGround)
             {
-                
-                animator.SetBool("Ground", false);
-                animator.SetFloat("vSpeed", -10);
+                animator.SetTrigger("Jump");
+                MonoBehaviour.print("Setting animator values");
             }
+            jump = false;
         }
 
         // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -33,36 +28,37 @@ namespace Assets.Scripts.Player.States
         public override void Jump()
         {
             this.jump = true;
-        }
-
-        public void Move(float h, float v)
-        {
-        }
-
-        public void Action1(float h, float v)
-        {
-        }
-
-        public void Action2(float h, float v)
-        {
-        }
-
-        public void Block()
-        {
-        }
-
-        public void Throw()
-        {
-        }
-
-        public override PlayerController2 playerController
-        {
-            set { throw new System.NotImplementedException(); }
+            MonoBehaviour.print("Idle jump");
         }
 
         public override string GetName()
         {
             return "Idle";
+        }
+
+        public override void Move(float h, float v)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Action1(float h, float v)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Action2(float h, float v)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Block()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Throw()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

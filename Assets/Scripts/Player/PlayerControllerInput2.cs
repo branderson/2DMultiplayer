@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts.Player;
 using Assets.Scripts.Player.States;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
@@ -9,20 +10,16 @@ namespace Assets.Scripts
     public class PlayerControllerInput2 : MonoBehaviour
     {
         private PlayerController2 character;
-        private Animator animator;
-        private PlayerState currentPlayerState;
-        private bool jump;
+        private bool jump = false;
 
 
         private void Awake()
         {
             character = GetComponent<PlayerController2>();
-            animator = GetComponent<Animator>();
         }
 
         private void Start()
         {
-            currentPlayerState = animator.GetBehaviour<PlayerState>();
         }
 
         private void Update()
@@ -44,7 +41,9 @@ namespace Assets.Scripts
 
 //            currentPlayerState.Move(h, v);
             if (jump)
-                currentPlayerState.Jump();
+            {
+                character.currentPlayerState.Jump();
+            }
             jump = false;
         }
     }

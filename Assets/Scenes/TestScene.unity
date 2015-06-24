@@ -612,9 +612,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e65cd66bc290d44bc5518f0b59bfb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeedX: 8
+  crouchSpeed: .360000014
+  airControl: 1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  jumpHeight: 4
+  airJumpHeight: 4
+  neutralAirTime: .680000007
+  terminalVelocity: -20
+  fastFallFactor: 1.39999998
+  groundCheck: {fileID: 196007694}
+  ceilingCheck: {fileID: 949365287}
 --- !u!1 &598221692
 GameObject:
   m_ObjectHideFlags: 0
