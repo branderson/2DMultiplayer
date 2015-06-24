@@ -1,24 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Player.States;
 
 namespace Assets.Scripts.Player.States
 {
     public class JumpState : PlayerState
     {
-        public virtual new void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
+        private bool jump = false;
+        private Vector2 move;
+
+        // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            base.OnStateEnter(animator, stateinfo, layerindex);
-            animator.SetBool("Ground", false);
-            playerController.onGround = false;
-            playerController.rigidBody.velocity = new Vector2(playerController.rigidBody.velocity.x, playerController.jumpSpeed);
-            MonoBehaviour.print(playerController.rigidBody.velocity.y);
-            MonoBehaviour.print("In jump state");
+            base.OnStateEnter(animator, stateInfo, layerIndex);
+            jump = false;
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-        //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        //
-        //}
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            if (playerController.canAirJump && jump)
+            {
+                animator.SetTrigger("Jump");
+                playerController.canAirJump = false;
+            }
+            jump = false;
+
+            if (move.y < 0)
+            {
+                playerController.fastFall = true;
+            }
+
+            playerController.CheckForGround();
+        }
 
         // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
         //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -35,27 +49,39 @@ namespace Assets.Scripts.Player.States
         //
         //}
 
-        public override void Jump()
-        {
-            
-        }
-
         public override string GetName()
         {
-            return "Jump";
+            return ("Jump");
         }
 
-        public override void Move(float h, float v)
+        public override void Jump()
+        {
+            jump = true;
+        }
+
+        public override void Move(float x, float y)
+        {
+            this.move = new Vector2(x, y);
+
+            // Check controller's vertical state for attack and movement modifiers
+            //        jump = false;
+            //        if (move.y > 0)
+            //        {
+            //            Jump();
+            //        }
+            //
+            //        else if (move.y < 0)
+            //        {
+            //            
+            //        }
+        }
+
+        public override void Action1(float x, float y)
         {
             throw new System.NotImplementedException();
         }
 
-        public override void Action1(float h, float v)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Action2(float h, float v)
+        public override void Action2(float x, float y)
         {
             throw new System.NotImplementedException();
         }

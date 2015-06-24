@@ -5,22 +5,47 @@ using Assets.Scripts;
 
 namespace Assets.Scripts.Player.States
 {
+    // This is the set of states the player will be in while on the ground and not in a special action. Includes idle, walking, and running
     public class IdleState : PlayerState
     {
+        private Vector2 move;
         private bool jump = false;
 
-        // onstateupdate is called on each update frame between onstateenter and onstateexit callbacks
-        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (jump && playerController.onGround)
-            {
-                animator.SetTrigger("Jump");
-                MonoBehaviour.print("Setting animator values");
-            }
+            base.OnStateEnter(animator, stateInfo, layerIndex);
             jump = false;
         }
 
-        // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            // Jump code
+            if (jump)
+            {
+                if (playerController.CheckForGround())
+                {
+                    animator.SetTrigger("Jump");
+                }
+            }
+            jump = false;
+
+            // Movement
+            playerController.SetVelocityX(move.x * playerController.maxSpeedX);
+
+            // Flip code
+            if (move.x > 0 && !playerController.facingRight)
+            {
+                playerController.Flip();
+            }
+            else if (move.x < 0 && playerController.facingRight)
+            {
+                playerController.Flip();
+            }
+
+            // Should the player be falling?
+            playerController.CheckForGround(); // -> FallState
+        }
+
         //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         //
         //}
@@ -28,7 +53,6 @@ namespace Assets.Scripts.Player.States
         public override void Jump()
         {
             this.jump = true;
-            MonoBehaviour.print("Idle jump");
         }
 
         public override string GetName()
@@ -36,17 +60,17 @@ namespace Assets.Scripts.Player.States
             return "Idle";
         }
 
-        public override void Move(float h, float v)
+        public override void Move(float x, float y)
+        {
+            this.move = new Vector2(x, y);
+        }
+
+        public override void Action1(float x, float y)
         {
             throw new System.NotImplementedException();
         }
 
-        public override void Action1(float h, float v)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Action2(float h, float v)
+        public override void Action2(float x, float y)
         {
             throw new System.NotImplementedException();
         }

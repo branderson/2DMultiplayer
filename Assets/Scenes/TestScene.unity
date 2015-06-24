@@ -469,8 +469,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 472209052}
   - 50: {fileID: 472209050}
-  - 114: {fileID: 472209054}
-  - 114: {fileID: 472209053}
   - 95: {fileID: 472209055}
   - 61: {fileID: 472209049}
   - 58: {fileID: 472209051}
@@ -540,39 +538,6 @@ Transform:
   - {fileID: 1303081716}
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!114 &472209053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 472209048}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d7b34a3bb2d4e4b926e7e729d3d410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &472209054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 472209048}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeedX: 8
-  crouchSpeed: .360000014
-  airControl: 1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  jumpHeight: 4
-  airJumpHeight: 4
-  neutralAirTime: .680000007
-  terminalVelocity: -20
-  fastFallFactor: 1.39999998
 --- !u!95 &472209055
 Animator:
   serializedVersion: 3
@@ -618,13 +583,14 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  groundCheck: {fileID: 196007694}
+  ceilingCheck: {fileID: 949365287}
   jumpHeight: 4
   airJumpHeight: 4
   neutralAirTime: .680000007
   terminalVelocity: -20
-  fastFallFactor: 1.39999998
-  groundCheck: {fileID: 196007694}
-  ceilingCheck: {fileID: 949365287}
+  terminalVelocityFast: -40
+  fastFallFactor: 2
 --- !u!1 &598221692
 GameObject:
   m_ObjectHideFlags: 0

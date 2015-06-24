@@ -10,11 +10,11 @@ namespace Assets.Scripts.Player.States
 
         public abstract void Jump();
         
-        public abstract void Move(float h, float v);
+        public abstract void Move(float x, float y);
 
-        public abstract void Action1(float h, float v);
+        public abstract void Action1(float x, float y);
 
-        public abstract void Action2(float h, float v);
+        public abstract void Action2(float x, float y);
 
         public abstract void Block();
 
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Player.States
         public virtual new void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
             playerController = animator.GetComponent<PlayerController2>();
-            playerController.currentPlayerState = this;
+            playerController.SetState(this);
         }
 
     }

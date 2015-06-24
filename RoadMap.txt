@@ -1,4 +1,10 @@
 ﻿Character Controller
 	Characters should have several distinct states
-		Idle, walking, jumping, several attacking states/substates, etc
-		Can be implemented with state machine behaviors?
+		States do not hold any state themselves except for information needed for a single frame
+		States communicate with player controller telling it what to do, but do not operate on player controller themselves
+		Many states may share the same state behaviour, often transitioning into states with the same script attached.
+Design Patterns
+	Maintain a functional programming approach
+		Code should not be handled in large constructs
+		Repeatable code should be handled in separate functions and called when needed
+		Use Linq whenever possible

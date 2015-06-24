@@ -5,9 +5,9 @@ namespace Assets.Scripts.Player.States
     public interface IPlayerState
     {
         void Jump();
-        void Move(float h, float v);
-        void Action1(float h, float v);
-        void Action2(float h, float v);
+        void Move(float x, float y);
+        void Action1(float x, float y);
+        void Action2(float x, float y);
         void Block();
         void Throw();
     }

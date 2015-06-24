@@ -4,7 +4,7 @@ using Assets.Scripts.Player.States;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Player
 {
     [RequireComponent(typeof (PlayerController2))]
     public class PlayerControllerInput2 : MonoBehaviour
@@ -12,6 +12,11 @@ namespace Assets.Scripts
         private PlayerController2 character;
         private bool jump = false;
 
+        private const float thresholdX = 0f;
+        private const float thresholdY = 1f;
+
+        private float x = 0f;
+        private float y = 0f;
 
         private void Awake()
         {
@@ -24,6 +29,17 @@ namespace Assets.Scripts
 
         private void Update()
         {
+            // Read the inputs.
+            bool crouch = Input.GetKey(KeyCode.LeftControl);
+            x = CrossPlatformInputManager.GetAxis("Horizontal");
+            y = CrossPlatformInputManager.GetAxis("Vertical");
+            
+            // Remove noise
+            if (Mathf.Abs(x) < thresholdX)
+                x = 0;
+            if (Mathf.Abs(y) < thresholdY)
+                y = 0;
+            
             if (!jump)
             {
                 // Read the jump input in Update so button presses aren't missed.
@@ -34,15 +50,12 @@ namespace Assets.Scripts
 
         private void FixedUpdate()
         {
-            // Read the inputs.
-            bool crouch = Input.GetKey(KeyCode.LeftControl);
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
-
-//            currentPlayerState.Move(h, v);
+            if (character.GetState() != null)
+                character.GetState().Move(x, y);
             if (jump)
             {
-                character.currentPlayerState.Jump();
+                print("Pressing jump");
+                character.GetState().Jump();
             }
             jump = false;
         }
