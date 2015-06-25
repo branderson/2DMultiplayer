@@ -10,16 +10,22 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
         [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
-        [SerializeField] private bool airControl = true; // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask groundLayer; // A mask determining what is ground to the character
         [SerializeField] private Transform groundCheck; // A position marking where to check if the player is on the ground
         [SerializeField] private Transform ceilingCheck; // A position marking where to check for ceilings
         [SerializeField] private float jumpHeight = 4f; // Height of single jump from flat ground
         [SerializeField] private float airJumpHeight = 4f; // Height of air jump
+        [SerializeField] private float sideJumpHeight = 3f; // Height of side jump
+        [SerializeField] private float sideJumpDistance = 5f; // Horizontal distance of side jump
+        [SerializeField] private float airSideJumpHeight = 5f;
+        [SerializeField] private float airSideJumpDistance = 5f;
         [SerializeField] private float neutralAirTime = .68f; // Time in air jumping once from flat ground, will be incorrect if terminal velocity set too low
+        [SerializeField] private float sideNeutralAirTime = .68f;
         [SerializeField] private float terminalVelocity = -20f; // Maximum regular falling rate
-        [SerializeField] private float terminalVelocityFast = -30f;
+        [SerializeField] private float terminalVelocityFast = -30f; // Fast fall terminal velocity
         [SerializeField] private float fastFallFactor = 1.4f; // Velocity multiplier for fast fall
+        [SerializeField] public float airControlSpeed = 2f; // Fraction of horizontal control while in air
+        [SerializeField] public float shortHopFactor = .5f; // Fraction of neutral jump height/distance for short hop
 
         private PlayerState currentPlayerState;
         internal Animator animator; // Reference to the player's animator component.
@@ -30,8 +36,8 @@ namespace Assets.Scripts.Player
         
         // Inspector debug values that are never used. Turns off warnings
 //        #pragma warning disable 0168
-        private float speedX;
-        private float speedY;
+        public float speedX;
+        public float speedY;
 //        #pragma warning restore 0168
 
         private bool onGround;
@@ -42,6 +48,12 @@ namespace Assets.Scripts.Player
         internal bool facingRight; // For determining which way the player is currently facing
         internal float jumpSpeed { get; set; }
         internal float airJumpSpeed { get; set; }
+        internal float sideJumpSpeedX;
+        internal float sideJumpSpeedY;
+        internal float airSideJumpSpeedX;
+        internal float airSideJumpSpeedY;
+        internal float maxAirSpeedX;
+
         internal bool canAirJump;
         private float gravity; // Rate per second of decreasing vertical speed
 
@@ -61,9 +73,7 @@ namespace Assets.Scripts.Player
             ceilingCheck = transform.Find("CeilingCheck");
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
-            jumpSpeed = 4*jumpHeight/neutralAirTime;
-            gravity = -2*jumpSpeed/neutralAirTime;
-            airJumpSpeed = (float) Math.Sqrt(-2*gravity*airJumpHeight);
+            CalculatePhysics();
         }
 
         // Update is called once per frame
@@ -88,6 +98,17 @@ namespace Assets.Scripts.Player
             animator.SetFloat("ySpeed", Mathf.Abs(speedY));
         }
 
+        private void CalculatePhysics()
+        {
+            jumpSpeed = 4*jumpHeight/neutralAirTime;
+            gravity = -2*jumpSpeed/neutralAirTime;
+            airJumpSpeed = (float) Math.Sqrt(-2*gravity*airJumpHeight);
+            sideJumpSpeedY = 4*sideJumpHeight/sideNeutralAirTime;
+            sideJumpSpeedX = sideJumpDistance/(sideNeutralAirTime); // TODO: Fix math here
+            airSideJumpSpeedY = (float) Math.Sqrt(-2*gravity*airSideJumpHeight);
+            airSideJumpSpeedX = airSideJumpDistance/sideNeutralAirTime; // TODO: Possibly wrong time, check later
+            maxAirSpeedX = airSideJumpSpeedX;
+        }
         private void FallRegular()
         {
             // Handles acceleration due to gravity
@@ -140,6 +161,27 @@ namespace Assets.Scripts.Player
         public PlayerState GetState()
         {
             return currentPlayerState;
+        }
+
+        // Don't increment velocity per frame unintentionally!!!
+        public void IncrementVelocity(Vector2 velocity)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x + velocity.x, rigidBody.velocity.y + velocity.y);
+        }
+
+        public void IncrementVelocity(float x, float y)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x + x, rigidBody.velocity.y + y);
+        }
+
+        public void IncrementVelocityX(float x)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x + x, rigidBody.velocity.y);
+        }
+
+        public void IncrementVelocityY(float y)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y);
         }
 
         public void SetVelocity(Vector2 velocity)

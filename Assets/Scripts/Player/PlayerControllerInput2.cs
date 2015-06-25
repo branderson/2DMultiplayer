@@ -12,7 +12,7 @@ namespace Assets.Scripts.Player
         private PlayerController2 character;
         private bool jump = false;
 
-        private const float thresholdX = 0f;
+        private const float thresholdX = 0.1f;
         private const float thresholdY = 1f;
 
         private float x = 0f;
@@ -54,7 +54,6 @@ namespace Assets.Scripts.Player
                 character.GetState().Move(x, y);
             if (jump)
             {
-                print("Pressing jump");
                 character.GetState().Jump();
             }
             jump = false;

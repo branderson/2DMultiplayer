@@ -26,7 +26,19 @@ namespace Assets.Scripts.Player.States
             }
             jump = false;
 
-            if (move.y < 0)
+            // Movement
+            playerController.IncrementVelocityX(move.x * playerController.airControlSpeed);
+
+            if (playerController.speedX > playerController.maxAirSpeedX)
+            {
+                playerController.SetVelocityX(playerController.maxAirSpeedX);
+            }
+            else if (playerController.speedX < -playerController.maxAirSpeedX)
+            {
+                playerController.SetVelocityX(-playerController.maxAirSpeedX);
+            }
+
+            if (move.y < 0 && playerController.speedY < 0f)
             {
                 playerController.fastFall = true;
             }
@@ -62,18 +74,6 @@ namespace Assets.Scripts.Player.States
         public override void Move(float x, float y)
         {
             this.move = new Vector2(x, y);
-
-            // Check controller's vertical state for attack and movement modifiers
-            //        jump = false;
-            //        if (move.y > 0)
-            //        {
-            //            Jump();
-            //        }
-            //
-            //        else if (move.y < 0)
-            //        {
-            //            
-            //        }
         }
 
         public override void Action1(float x, float y)

@@ -579,18 +579,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeedX: 8
   crouchSpeed: .360000014
-  airControl: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 196007694}
   ceilingCheck: {fileID: 949365287}
-  jumpHeight: 4
-  airJumpHeight: 4
+  jumpHeight: 6
+  airJumpHeight: 6
+  sideJumpHeight: 5
+  sideJumpDistance: 4
+  airSideJumpHeight: 6
+  airSideJumpDistance: 6
   neutralAirTime: .680000007
+  sideNeutralAirTime: .680000007
   terminalVelocity: -20
   terminalVelocityFast: -40
-  fastFallFactor: 2
+  fastFallFactor: 3
+  airControlSpeed: 1
+  shortHopFactor: .5
+  speedX: 0
+  speedY: 0
 --- !u!1 &598221692
 GameObject:
   m_ObjectHideFlags: 0
