@@ -585,15 +585,15 @@ MonoBehaviour:
   groundCheck: {fileID: 196007694}
   ceilingCheck: {fileID: 949365287}
   jumpHeight: 6
-  airJumpHeight: 6
-  sideJumpHeight: 5
-  sideJumpDistance: 4
-  airSideJumpHeight: 6
-  airSideJumpDistance: 6
+  airJumpHeight: 4
+  sideJumpHeight: 6
+  sideJumpDistance: 5
+  airSideJumpHeight: 4
+  airSideJumpDistance: 3
   neutralAirTime: .680000007
   sideNeutralAirTime: .680000007
-  terminalVelocity: -20
-  terminalVelocityFast: -40
+  terminalVelocity: -15
+  terminalVelocityFast: -30
   fastFallFactor: 3
   airControlSpeed: 1
   shortHopFactor: .5
@@ -1380,8 +1380,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2141856707}
-  m_LocalRotation: {x: 0, y: 0, z: -.310676515, w: .950515747}
-  m_LocalPosition: {x: -.479999989, y: -.289999992, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -.352814198, w: .935693502}
+  m_LocalPosition: {x: -.479999781, y: -.289999843, z: 0}
   m_LocalScale: {x: 1.00000012, y: 1.00000012, z: 1}
   m_Children:
   - {fileID: 1494184880}

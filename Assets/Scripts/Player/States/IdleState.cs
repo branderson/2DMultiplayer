@@ -10,11 +10,13 @@ namespace Assets.Scripts.Player.States
     {
         private Vector2 move;
         private bool jump = false;
+        private bool action1 = false;
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
             jump = false;
+            action1 = false;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -28,6 +30,13 @@ namespace Assets.Scripts.Player.States
                 }
             }
             jump = false;
+
+            // Attack code
+            if (action1)
+            {
+                animator.SetTrigger("Action1");
+            }
+            action1 = false;
 
             // Movement
             playerController.SetVelocityX(move.x * playerController.maxSpeedX);
@@ -67,12 +76,11 @@ namespace Assets.Scripts.Player.States
 
         public override void Action1(float x, float y)
         {
-            throw new System.NotImplementedException();
+            this.action1 = true;
         }
 
         public override void Action2(float x, float y)
         {
-            throw new System.NotImplementedException();
         }
 
         public override void Block()
@@ -81,6 +89,25 @@ namespace Assets.Scripts.Player.States
         }
 
         public override void Throw()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Up()
+        {
+            jump = true;
+        }
+
+        public override void Down()
+        {
+        }
+
+        public override void Left()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Right()
         {
             throw new System.NotImplementedException();
         }

@@ -28,7 +28,7 @@ namespace Assets.Scripts.Player.States
             waitCounter -= 1;
             if (waitCounter == 0)
             {
-                if (!CrossPlatformInputManager.GetButton("Jump"))
+                if (!playerControllerInput.ButtonActive("Jump") && !playerControllerInput.AxisPositive("Vertical"))
                 {
                     shortHop = true;
                 }
@@ -131,7 +131,6 @@ namespace Assets.Scripts.Player.States
 
         public override void Action1(float x, float y)
         {
-            throw new System.NotImplementedException();
         }
 
         public override void Action2(float x, float y)
@@ -145,6 +144,24 @@ namespace Assets.Scripts.Player.States
         }
 
         public override void Throw()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Up()
+        {
+        }
+
+        public override void Down()
+        {
+        }
+
+        public override void Left()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Right()
         {
             throw new System.NotImplementedException();
         }

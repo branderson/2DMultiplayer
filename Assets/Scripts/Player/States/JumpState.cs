@@ -26,7 +26,7 @@ namespace Assets.Scripts.Player.States
             }
             jump = false;
 
-            // Movement
+            // Air movement control
             playerController.IncrementVelocityX(move.x * playerController.airControlSpeed);
 
             if (playerController.speedX > playerController.maxAirSpeedX)
@@ -36,11 +36,6 @@ namespace Assets.Scripts.Player.States
             else if (playerController.speedX < -playerController.maxAirSpeedX)
             {
                 playerController.SetVelocityX(-playerController.maxAirSpeedX);
-            }
-
-            if (move.y < 0 && playerController.speedY < 0f)
-            {
-                playerController.fastFall = true;
             }
 
             playerController.CheckForGround();
@@ -78,7 +73,6 @@ namespace Assets.Scripts.Player.States
 
         public override void Action1(float x, float y)
         {
-            throw new System.NotImplementedException();
         }
 
         public override void Action2(float x, float y)
@@ -92,6 +86,30 @@ namespace Assets.Scripts.Player.States
         }
 
         public override void Throw()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Up()
+        {
+            jump = true;
+        }
+
+        public override void Down()
+        {
+            // Fast fall
+            if (playerController.speedY < 0)
+            {
+                playerController.fastFall = true;
+            }
+        }
+
+        public override void Left()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Right()
         {
             throw new System.NotImplementedException();
         }
