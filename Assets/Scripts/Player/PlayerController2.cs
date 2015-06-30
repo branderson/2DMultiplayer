@@ -9,21 +9,22 @@ namespace Assets.Scripts.Player
     public class PlayerController2 : MonoBehaviour
     {
         [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
+        [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
         [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private LayerMask groundLayer; // A mask determining what is ground to the character
         [SerializeField] private Transform groundCheck; // A position marking where to check if the player is on the ground
         [SerializeField] private Transform ceilingCheck; // A position marking where to check for ceilings
-        [SerializeField] private float jumpHeight = 4f; // Height of single jump from flat ground
+        [SerializeField] private float jumpHeight = 6f; // Height of single jump from flat ground
         [SerializeField] private float airJumpHeight = 4f; // Height of air jump
-        [SerializeField] private float sideJumpHeight = 3f; // Height of side jump
+        [SerializeField] private float sideJumpHeight = 6f; // Height of side jump
         [SerializeField] private float sideJumpDistance = 5f; // Horizontal distance of side jump
-        [SerializeField] private float airSideJumpHeight = 5f;
-        [SerializeField] private float airSideJumpDistance = 5f;
+        [SerializeField] private float airSideJumpHeight = 4f;
+        [SerializeField] private float airSideJumpDistance = 4f;
+        [SerializeField] private float recoveryHeight = 8f;
         [SerializeField] private float neutralAirTime = .68f; // Time in air jumping once from flat ground, will be incorrect if terminal velocity set too low
-        [SerializeField] private float sideNeutralAirTime = .68f;
-        [SerializeField] private float terminalVelocity = -20f; // Maximum regular falling rate
+        [SerializeField] private float terminalVelocity = -15f; // Maximum regular falling rate
         [SerializeField] private float terminalVelocityFast = -30f; // Fast fall terminal velocity
-        [SerializeField] private float fastFallFactor = 1.4f; // Velocity multiplier for fast fall
+        [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
         [SerializeField] public float airControlSpeed = 2f; // Fraction of horizontal control while in air
         [SerializeField] public float shortHopFactor = .5f; // Fraction of neutral jump height/distance for short hop
 
@@ -34,13 +35,11 @@ namespace Assets.Scripts.Player
         private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if onGround
         private const float CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         
-        // Inspector debug values that are never used. Turns off warnings
-//        #pragma warning disable 0168
-        public float speedX;
-        public float speedY;
-//        #pragma warning restore 0168
+        internal float speedX;
+        internal float speedY;
 
         private bool onGround;
+        internal bool run;
 
         // TODO: Set up a set of flags that are internal, which determine behaviour, everything else is private
         internal bool canFall;
@@ -52,9 +51,11 @@ namespace Assets.Scripts.Player
         internal float sideJumpSpeedY;
         internal float airSideJumpSpeedX;
         internal float airSideJumpSpeedY;
+        internal float recoverySpeed;
         internal float maxAirSpeedX;
 
         internal bool canAirJump;
+        internal bool canRecover;
         private float gravity; // Rate per second of decreasing vertical speed
 
         // TODO: Do I need to initialize in a constructor or can I initialize in the class itself?
@@ -63,6 +64,7 @@ namespace Assets.Scripts.Player
             this.canFall = true;
             this.facingRight = true;
             this.canAirJump = true;
+            this.canRecover = true;
         }
 
         // Use this for initialization
@@ -96,6 +98,9 @@ namespace Assets.Scripts.Player
             animator.SetFloat("yVelocity", speedY);
             animator.SetFloat("xSpeed", Mathf.Abs(speedX));
             animator.SetFloat("ySpeed", Mathf.Abs(speedY));
+            animator.SetBool("Run", run);
+            animator.SetBool("CanAirJump", canAirJump);
+            animator.SetBool("CanRecover", canRecover);
         }
 
         private void CalculatePhysics()
@@ -103,12 +108,14 @@ namespace Assets.Scripts.Player
             jumpSpeed = 4*jumpHeight/neutralAirTime;
             gravity = -2*jumpSpeed/neutralAirTime;
             airJumpSpeed = (float) Math.Sqrt(-2*gravity*airJumpHeight);
-            sideJumpSpeedY = 4*sideJumpHeight/sideNeutralAirTime;
-            sideJumpSpeedX = sideJumpDistance/(sideNeutralAirTime); // TODO: Fix math here
+            sideJumpSpeedY = (float) Math.Sqrt(-2*gravity*sideJumpHeight);
+            sideJumpSpeedX = sideJumpDistance/(neutralAirTime); // TODO: Should be sideJumpDistance/calculated time of vertical side jump in air
             airSideJumpSpeedY = (float) Math.Sqrt(-2*gravity*airSideJumpHeight);
-            airSideJumpSpeedX = airSideJumpDistance/sideNeutralAirTime; // TODO: Possibly wrong time, check later
-            maxAirSpeedX = airSideJumpSpeedX;
+            airSideJumpSpeedX = airSideJumpDistance/neutralAirTime; // TODO: Same as above
+            recoverySpeed = (float) Math.Sqrt(-2*gravity*recoveryHeight);
+            maxAirSpeedX = airSideJumpSpeedX*2;
         }
+
         private void FallRegular()
         {
             // Handles acceleration due to gravity
@@ -146,6 +153,7 @@ namespace Assets.Scripts.Player
                 {
                     onGround = true;
                     canAirJump = true;
+                    canRecover = true;
                     fastFall = false;
                     animator.SetBool("Ground", true);
                 }

@@ -6,35 +6,85 @@ namespace Assets.Scripts.Player.States
     {
         protected PlayerController2 playerController;
         protected PlayerControllerInput2 playerControllerInput;
+        protected Animator playerAnimator;
 
         public abstract string GetName();
 
-        public abstract void Jump();
-        
-        public abstract void Move(float x, float y);
-
-        public abstract void Up();
-
-        public abstract void Down();
-
-        public abstract void Left();
-
-        public abstract void Right();
-
-        public abstract void Action1(float x, float y);
-
-        public abstract void Action2(float x, float y);
-
-        public abstract void Block();
-
-        public abstract void Throw();
-        
         public virtual new void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
             playerController = animator.GetComponent<PlayerController2>();
             playerControllerInput = animator.GetComponent<PlayerControllerInput2>();
             playerController.SetState(this);
+            playerAnimator = animator;
         }
 
+        public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            // Reset unused triggers before next state update
+            animator.ResetTrigger("Jump");
+            animator.ResetTrigger("Upward");
+            animator.ResetTrigger("Downward");
+            animator.ResetTrigger("Forward");
+            animator.ResetTrigger("Backward");
+            animator.ResetTrigger("Primary");
+            animator.ResetTrigger("Secondary");
+        }
+
+        public virtual void Jump()
+        {
+            playerAnimator.SetTrigger("Jump");
+        }
+
+        public virtual void Move(float x, float y)
+        {
+            playerAnimator.SetFloat("xInput", x);
+            playerAnimator.SetFloat("yInput", y);
+        }
+
+        public virtual void Run()
+        {
+            playerAnimator.SetBool("Run", true);
+        }
+
+        public virtual void Up()
+        {
+            playerAnimator.SetTrigger("Upward");
+        }
+
+        public virtual void Down()
+        {
+            playerAnimator.SetTrigger("Downward");
+        }
+
+        public virtual void Left()
+        {
+            playerAnimator.SetTrigger("Forward");
+        }
+
+        public virtual void Right()
+        {
+            playerAnimator.SetTrigger("Backward");
+        }
+        
+        // TODO: Can remove x and y from Primary and Secondary
+        public virtual void Primary(float x, float y)
+        {
+            playerAnimator.SetTrigger("Primary");
+        }
+
+        public virtual void Secondary(float x, float y)
+        {
+            playerAnimator.SetTrigger("Secondary");
+        }
+
+        public virtual void Block()
+        {
+            playerAnimator.SetTrigger("Block");
+        }
+
+        public virtual void Throw()
+        {
+            playerAnimator.SetTrigger("Throw");
+        }
     }
 }

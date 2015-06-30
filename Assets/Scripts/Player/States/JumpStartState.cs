@@ -23,8 +23,9 @@ namespace Assets.Scripts.Player.States
             shortHop = false;
         }
 
-        public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
+        public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            base.OnStateUpdate(animator, stateInfo, layerIndex);
             waitCounter -= 1;
             if (waitCounter == 0)
             {
@@ -65,12 +66,18 @@ namespace Assets.Scripts.Player.States
                 {
                     if (shortHop)
                     {
-                        playerController.IncrementVelocityX(playerController.sideJumpSpeedX*playerController.shortHopFactor*directionModifier);
+                        if (animator.GetFloat("xSpeed") < playerController.maxAirSpeedX) 
+                        {
+                            playerController.IncrementVelocityX(playerController.sideJumpSpeedX*playerController.shortHopFactor*directionModifier);
+                        }
                         playerController.SetVelocityY(playerController.sideJumpSpeedY*playerController.shortHopFactor);
                     }
                     else
                     {
-                        playerController.IncrementVelocityX(playerController.sideJumpSpeedX*directionModifier);
+                        if (animator.GetFloat("xSpeed") < playerController.maxAirSpeedX) 
+                        {
+                            playerController.IncrementVelocityX(playerController.sideJumpSpeedX*directionModifier);
+                        }
                         playerController.SetVelocityY(playerController.sideJumpSpeedY);
                     }
                 }
@@ -78,16 +85,23 @@ namespace Assets.Scripts.Player.States
                 {
                     if (shortHop)
                     {
-                        playerController.IncrementVelocityX(-playerController.sideJumpSpeedX*playerController.shortHopFactor*directionModifier);
+                        if (animator.GetFloat("xSpeed") < playerController.maxAirSpeedX) 
+                        {
+                            playerController.IncrementVelocityX(-playerController.sideJumpSpeedX*playerController.shortHopFactor*directionModifier);
+                        }
                         playerController.SetVelocityY(playerController.sideJumpSpeedY*playerController.shortHopFactor);
                     }
                     else
                     {
-                        playerController.IncrementVelocityX(-playerController.sideJumpSpeedX*directionModifier);
+                        if (animator.GetFloat("xSpeed") < playerController.maxAirSpeedX) 
+                        {
+                            playerController.IncrementVelocityX(-playerController.sideJumpSpeedX*directionModifier);
+                        }
                         playerController.SetVelocityY(playerController.sideJumpSpeedY);
                     }
                 }
             }
+            // Air jump
             else
             {
                 if (!directionalControl || jumpDirection == 0)
@@ -103,8 +117,10 @@ namespace Assets.Scripts.Player.States
                 {
                     playerController.SetVelocityX(-playerController.airSideJumpSpeedX*directionModifier);
                     playerController.SetVelocityY(playerController.airSideJumpSpeedY);
-                    playerController.Flip();
+                    // Do I want to be able to flip on air jump?
+//                    playerController.Flip();
                 }
+                playerController.canAirJump = false;
             }
         }
 
@@ -113,12 +129,9 @@ namespace Assets.Scripts.Player.States
             throw new System.NotImplementedException();
         }
 
-        public override void Jump()
-        {
-        }
-
         public override void Move(float x, float y)
         {
+            base.Move(x, y);
             move = new Vector2(x, y);
             if (jumpDirection == 0)
             {
@@ -129,41 +142,12 @@ namespace Assets.Scripts.Player.States
             }
         }
 
-        public override void Action1(float x, float y)
-        {
-        }
-
-        public override void Action2(float x, float y)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Block()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Throw()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Up()
-        {
-        }
-
-        public override void Down()
-        {
-        }
-
         public override void Left()
         {
-            throw new System.NotImplementedException();
         }
 
         public override void Right()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

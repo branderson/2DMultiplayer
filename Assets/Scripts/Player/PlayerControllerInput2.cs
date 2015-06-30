@@ -23,6 +23,7 @@ namespace Assets.Scripts.Player
         private bool leftPressed = false;
         private bool rightPressed = false;
         private bool jump = false;
+        private bool run = false;
         private bool action1 = false;
         private bool action2 = false;
 
@@ -93,14 +94,16 @@ namespace Assets.Scripts.Player
                 jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
 
+            run = CrossPlatformInputManager.GetButton("Run");
+
             if (!action1)
             {
-                action1 = CrossPlatformInputManager.GetButtonDown("Action1");
+                action1 = CrossPlatformInputManager.GetButtonDown("Primary");
             }
 
             if (!action2)
             {
-                action2 = CrossPlatformInputManager.GetButtonDown("Action2");
+                action2 = CrossPlatformInputManager.GetButtonDown("Secondary");
             }
 
         }
@@ -122,30 +125,31 @@ namespace Assets.Scripts.Player
                     character.GetState().Down();
                     downPressed = false;
                 }
-//                if (leftPressed)
-//                {
-//                    character.GetState().Left();
-//                    leftPressed = false;
-//                }
-//                if (rightPressed)
-//                {
-//                    character.GetState().Right();
-//                    rightPressed = false;
-//                }
+                if (leftPressed)
+                {
+                    character.GetState().Left();
+                    leftPressed = false;
+                }
+                if (rightPressed)
+                {
+                    character.GetState().Right();
+                    rightPressed = false;
+                }
                 if (jump)
                 {
                     character.GetState().Jump();
                     jump = false;
                 }
+                character.run = run;
                 if (action1)
                 {
-                    character.GetState().Action1(x, y);
+                    character.GetState().Primary(x, y);
                     action1 = false;
                 }
                 if (action2)
                 {
-                    character.GetState().Action2(x, y);
-                    action1 = false;
+                    character.GetState().Secondary(x, y);
+                    action2 = false;
                 }
             }
         }

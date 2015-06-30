@@ -9,37 +9,48 @@ namespace Assets.Scripts.Player.States
     public class IdleState : PlayerState
     {
         private Vector2 move;
-        private bool jump = false;
-        private bool action1 = false;
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
-            jump = false;
-            action1 = false;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            // Jump code
-            if (jump)
-            {
-                if (playerController.CheckForGround())
-                {
-                    animator.SetTrigger("Jump");
-                }
-            }
-            jump = false;
-
-            // Attack code
-            if (action1)
-            {
-                animator.SetTrigger("Action1");
-            }
-            action1 = false;
+            base.OnStateUpdate(animator, stateInfo, layerIndex);
 
             // Movement
-            playerController.SetVelocityX(move.x * playerController.maxSpeedX);
+            // TODO: Set speed absolutely rather than relative to move
+            if (playerController.run)
+            {
+                if (move.x > 0)
+                {
+                    playerController.SetVelocityX(playerController.runSpeedX);
+                }
+                else if (move.x < 0)
+                {
+                    playerController.SetVelocityX(-playerController.runSpeedX);
+                }
+                else
+                {
+                    playerController.SetVelocityX(0f);
+                }
+            }
+            else 
+            {
+                if (move.x > 0)
+                {
+                    playerController.SetVelocityX(playerController.maxSpeedX);
+                }
+                else if (move.x < 0)
+                {
+                    playerController.SetVelocityX(-playerController.maxSpeedX);
+                }
+                else
+                {
+                    playerController.SetVelocityX(0f);
+                }
+            }
 
             // Flip code
             if (move.x > 0 && !playerController.facingRight)
@@ -59,11 +70,6 @@ namespace Assets.Scripts.Player.States
         //
         //}
 
-        public override void Jump()
-        {
-            this.jump = true;
-        }
-
         public override string GetName()
         {
             return "Idle";
@@ -71,45 +77,21 @@ namespace Assets.Scripts.Player.States
 
         public override void Move(float x, float y)
         {
-            this.move = new Vector2(x, y);
+            base.Move(x, y);
+            move = new Vector2(x, y);
         }
-
-        public override void Action1(float x, float y)
-        {
-            this.action1 = true;
-        }
-
-        public override void Action2(float x, float y)
-        {
-        }
-
-        public override void Block()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Throw()
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         public override void Up()
         {
-            jump = true;
-        }
-
-        public override void Down()
-        {
+            playerAnimator.SetTrigger("Jump");
         }
 
         public override void Left()
         {
-            throw new System.NotImplementedException();
         }
 
         public override void Right()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

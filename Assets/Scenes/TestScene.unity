@@ -578,6 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeedX: 8
+  runSpeedX: 14
   crouchSpeed: .360000014
   groundLayer:
     serializedVersion: 2
@@ -589,16 +590,14 @@ MonoBehaviour:
   sideJumpHeight: 6
   sideJumpDistance: 5
   airSideJumpHeight: 4
-  airSideJumpDistance: 3
+  airSideJumpDistance: 4
+  recoveryHeight: 8
   neutralAirTime: .680000007
-  sideNeutralAirTime: .680000007
   terminalVelocity: -15
   terminalVelocityFast: -30
   fastFallFactor: 3
-  airControlSpeed: 1
+  airControlSpeed: .5
   shortHopFactor: .5
-  speedX: 0
-  speedY: 0
 --- !u!1 &598221692
 GameObject:
   m_ObjectHideFlags: 0
