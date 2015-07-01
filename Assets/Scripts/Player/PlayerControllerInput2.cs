@@ -9,6 +9,7 @@ namespace Assets.Scripts.Player
     [RequireComponent(typeof (PlayerController2))]
     public class PlayerControllerInput2 : MonoBehaviour
     {
+        [SerializeField] public int playerNumber = 0;
         private PlayerController2 character;
         private bool xActive = false;
         private bool yActive = false;
@@ -27,6 +28,8 @@ namespace Assets.Scripts.Player
         private bool action1 = false;
         private bool action2 = false;
 
+        private readonly string[] player = {"P1", "P2", "P3", "P4"};
+
         private void Awake()
         {
             character = GetComponent<PlayerController2>();
@@ -38,15 +41,15 @@ namespace Assets.Scripts.Player
 
         private void Update()
         {
-            x = CrossPlatformInputManager.GetAxis("Horizontal");
-            y = CrossPlatformInputManager.GetAxis("Vertical");
+            x = CrossPlatformInputManager.GetAxis("Horizontal" + player[playerNumber]);
+            y = CrossPlatformInputManager.GetAxis("Vertical" + player[playerNumber]);
 
             // Check if axes have just been pressed
-            if (Input.GetAxisRaw("Horizontal") != 0)
+            if (Input.GetAxisRaw("Horizontal" + player[playerNumber]) != 0)
             {
                 if (!xActive)
                 {
-                    if (Input.GetAxisRaw("Horizontal") < 0)
+                    if (Input.GetAxisRaw("Horizontal" + player[playerNumber]) < 0)
                     {
                         leftPressed = true;
                     }
@@ -62,11 +65,11 @@ namespace Assets.Scripts.Player
                 xActive = false;
             }
 
-            if (Input.GetAxisRaw("Vertical") != 0)
+            if (Input.GetAxisRaw("Vertical" + player[playerNumber]) != 0)
             {
                 if (!yActive)
                 {
-                    if (Input.GetAxisRaw("Vertical") < 0)
+                    if (Input.GetAxisRaw("Vertical" + player[playerNumber]) < 0)
                     {
                         downPressed = true;
                     }
@@ -83,27 +86,27 @@ namespace Assets.Scripts.Player
             }
             
             // Remove noise
-            if (Mathf.Abs(x) < thresholdX)
-                x = 0;
-            if (Mathf.Abs(y) < thresholdY)
-                y = 0;
+//            if (Mathf.Abs(x) < thresholdX)
+//                x = 0;
+//            if (Mathf.Abs(y) < thresholdY)
+//                y = 0;
             
             // Check button presses
             if (!jump)
             {
-                jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                jump = CrossPlatformInputManager.GetButtonDown("Jump" + player[playerNumber]);
             }
 
-            run = CrossPlatformInputManager.GetButton("Run");
+            run = CrossPlatformInputManager.GetButton("Run" + player[playerNumber]);
 
             if (!action1)
             {
-                action1 = CrossPlatformInputManager.GetButtonDown("Primary");
+                action1 = CrossPlatformInputManager.GetButtonDown("Primary" + player[playerNumber]);
             }
 
             if (!action2)
             {
-                action2 = CrossPlatformInputManager.GetButtonDown("Secondary");
+                action2 = CrossPlatformInputManager.GetButtonDown("Secondary" + player[playerNumber]);
             }
 
         }
@@ -156,12 +159,12 @@ namespace Assets.Scripts.Player
 
         public bool ButtonActive(string name)
         {
-            return Input.GetButton(name);
+            return Input.GetButton(name + player[playerNumber]);
         }
 
         public bool AxisActive(string name)
         {
-            if (Input.GetAxisRaw(name) != 0)
+            if (Input.GetAxisRaw(name + player[playerNumber]) != 0)
             {
                 return true;
             }
@@ -170,7 +173,7 @@ namespace Assets.Scripts.Player
 
         public bool AxisPositive(string name)
         {
-            if (Input.GetAxisRaw(name) > 0)
+            if (Input.GetAxisRaw(name + player[playerNumber]) > 0)
             {
                 return true;
             }
@@ -179,7 +182,7 @@ namespace Assets.Scripts.Player
 
         public bool AxisNegative(string name)
         {
-            if (Input.GetAxisRaw(name) < 0)
+            if (Input.GetAxisRaw(name + player[playerNumber]) < 0)
             {
                 return true;
             }
