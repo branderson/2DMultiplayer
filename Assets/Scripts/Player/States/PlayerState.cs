@@ -4,16 +4,16 @@ namespace Assets.Scripts.Player.States
 {
     public abstract class PlayerState : StateMachineBehaviour, IPlayerState
     {
-        protected PlayerController2 playerController;
-        protected PlayerControllerInput2 playerControllerInput;
+        protected PlayerController playerController;
+        protected PlayerControllerInput playerControllerInput;
         protected Animator playerAnimator;
 
         public abstract string GetName();
 
         public virtual new void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
-            playerController = animator.GetComponent<PlayerController2>();
-            playerControllerInput = animator.GetComponent<PlayerControllerInput2>();
+            playerController = animator.GetComponent<PlayerController>();
+            playerControllerInput = animator.GetComponent<PlayerControllerInput>();
             playerController.SetState(this);
             playerAnimator = animator;
         }

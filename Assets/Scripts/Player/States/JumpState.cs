@@ -27,7 +27,7 @@ namespace Assets.Scripts.Player.States
                 {
                     playerController.IncrementVelocityX(playerController.airControlSpeed);
                 }
-                else if (animator.GetFloat("xVelocity") + playerController.airControlSpeed > playerController.maxAirSpeedX)
+                else if (animator.GetFloat("xVelocity") + playerController.airControlSpeed > playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
                 {
                     playerController.SetVelocityX(playerController.maxAirSpeedX);
                 }
@@ -38,7 +38,7 @@ namespace Assets.Scripts.Player.States
                 {
                     playerController.IncrementVelocityX(-playerController.airControlSpeed);
                 }
-                else if (animator.GetFloat("xVelocity") - playerController.airControlSpeed < -playerController.maxAirSpeedX)
+                else if (animator.GetFloat("xVelocity") - playerController.airControlSpeed < -playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
                 {
                     playerController.SetVelocityX(-playerController.maxAirSpeedX);
                 }
@@ -70,7 +70,10 @@ namespace Assets.Scripts.Player.States
         public override void Up()
         {
             base.Up();
-            playerAnimator.SetTrigger("Jump");
+            if (playerControllerInput.tapJump)
+            {
+                playerAnimator.SetTrigger("Jump");
+            }
         }
 
         public override void Down()

@@ -66,10 +66,6 @@ namespace Assets.Scripts.Player.States
             playerController.CheckForGround(); // -> FallState
         }
 
-        //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        //
-        //}
-
         public override string GetName()
         {
             return "Idle";
@@ -83,7 +79,11 @@ namespace Assets.Scripts.Player.States
         
         public override void Up()
         {
-            playerAnimator.SetTrigger("Jump");
+            base.Up();
+            if (playerControllerInput.tapJump)
+            {
+                playerAnimator.SetTrigger("Jump");
+            }
         }
 
         public override void Left()

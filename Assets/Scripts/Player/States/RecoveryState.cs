@@ -17,6 +17,8 @@ namespace Assets.Scripts.Player.States
         {
             base.OnStateEnter(animator, stateinfo, layerindex);
             playerController.canRecover = false;
+            // Stop the player from fast falling
+            playerController.fastFall = false;
             waitCounter = waitFrames;
             jumpDirection = 0;
             directionModifier = 1;

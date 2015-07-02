@@ -1,163 +1,218 @@
-using System;
-using System.Diagnostics;
+﻿using System;
 using UnityEngine;
+using System.Collections;
+using Assets.Scripts.Player.States;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float maxSpeedX = 40f; // The fastest the player can travel in the x axis.
+        [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
+        [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
         [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
-        [SerializeField] private bool airControl = false; // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask groundLayer; // A mask determining what is ground to the character
-        [SerializeField] private float jumpHeight = 8f; // Height of single jump from flat ground
-        [SerializeField] private float airJumpHeight = 8f; // Height of air jump
+        [SerializeField] private Transform groundCheck; // A position marking where to check if the player is on the ground
+        [SerializeField] private Transform ceilingCheck; // A position marking where to check for ceilings
+        [SerializeField] private float jumpHeight = 6f; // Height of single jump from flat ground
+        [SerializeField] private float airJumpHeight = 4f; // Height of air jump
+        [SerializeField] private float sideJumpHeight = 6f; // Height of side jump
+        [SerializeField] private float sideJumpDistance = 5f; // Horizontal distance of side jump
+        [SerializeField] private float airSideJumpHeight = 4f;
+        [SerializeField] private float airSideJumpDistance = 4f;
+        [SerializeField] private float recoveryHeight = 8f;
         [SerializeField] private float neutralAirTime = .68f; // Time in air jumping once from flat ground, will be incorrect if terminal velocity set too low
-        [SerializeField] private float terminalVelocity = -9.81f; // Maximum regular falling rate
-        [SerializeField] private float fastFallFactor = 1.4f; // Velocity multiplier for fast fall
+        [SerializeField] private float terminalVelocity = -15f; // Maximum regular falling rate
+        [SerializeField] private float terminalVelocityFast = -30f; // Fast fall terminal velocity
+        [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
+        [SerializeField] public float airControlSpeed = 2f; // Fraction of horizontal control while in air
+        [SerializeField] public float shortHopFactor = .5f; // Fraction of neutral jump height/distance for short hop
 
-        private float speedX;
-        private float speedY;
-        private Transform groundCheck; // A position marking where to check if the player is grounded.
-        private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if grounded
-        private bool grounded; // Whether or not the player is grounded.
-        private Transform ceilingCheck; // A position marking where to check for ceilings
+        private PlayerState currentPlayerState;
+        internal Animator animator; // Reference to the player's animator component.
+        private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
+
+        private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if onGround
         private const float CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
-        private Animator anim; // Reference to the player's animator component.
-        private Rigidbody2D rigidbody; // Reference to the player's Rigidbody2D component
-        private bool facingRight = true; // For determining which way the player is currently facing.
-        private float jumpSpeed;
-        private float airJumpSpeed;
-        private bool canAirJump = true;
-        private float gravity; // Rate per second of decreasing vertical speed
-        // TODO: Make interface for jump height, max fall speed, time in air from single jump
+        
+        internal float speedX;
+        internal float speedY;
 
+        private bool onGround;
+        internal bool run;
+
+        // TODO: Set up a set of flags that are internal, which determine behaviour, everything else is private
+        internal bool canFall;
+        internal bool fastFall;
+        internal bool facingRight; // For determining which way the player is currently facing
+        internal float jumpSpeed { get; set; }
+        internal float airJumpSpeed { get; set; }
+        internal float sideJumpSpeedX;
+        internal float sideJumpSpeedY;
+        internal float airSideJumpSpeedX;
+        internal float airSideJumpSpeedY;
+        internal float recoverySpeed;
+        internal float maxAirSpeedX;
+
+        internal bool canAirJump;
+        internal bool canRecover;
+        private float gravity; // Rate per second of decreasing vertical speed
+
+        // TODO: Do I need to initialize in a constructor or can I initialize in the class itself?
+        public PlayerController()
+        {
+            this.canFall = true;
+            this.facingRight = true;
+            this.canAirJump = true;
+            this.canRecover = true;
+        }
+
+        // Use this for initialization
         private void Awake()
         {
             // Setting up references.
             groundCheck = transform.Find("GroundCheck");
             ceilingCheck = transform.Find("CeilingCheck");
-            anim = GetComponent<Animator>();
-            rigidbody = GetComponent<Rigidbody2D>();
-            jumpSpeed = 4*jumpHeight/neutralAirTime;
-            gravity = -2*jumpSpeed/neutralAirTime;
-            airJumpSpeed = (float) Math.Sqrt(-2*gravity*airJumpHeight);
+            animator = GetComponent<Animator>();
+            rigidBody = GetComponent<Rigidbody2D>();
+            CalculatePhysics();
         }
 
+        // Update is called once per frame
+        private void Update()
+        {
+            speedX = rigidBody.velocity.x;
+            speedY = rigidBody.velocity.y;
+//            print(currentPlayerState.GetName());
+        }
 
         private void FixedUpdate()
         {
-            grounded = false;
+//            CheckForGround();
+            if (canFall)
+                if (fastFall)
+                    FallFast();
+                else
+                    FallRegular();
+            animator.SetFloat("xVelocity", speedX);
+            animator.SetFloat("yVelocity", speedY);
+            animator.SetFloat("xSpeed", Mathf.Abs(speedX));
+            animator.SetFloat("ySpeed", Mathf.Abs(speedY));
+            animator.SetBool("Run", run);
+            animator.SetBool("CanAirJump", canAirJump);
+            animator.SetBool("CanRecover", canRecover);
+        }
 
-            // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-            // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+        private void CalculatePhysics()
+        {
+            jumpSpeed = 4*jumpHeight/neutralAirTime;
+            gravity = -2*jumpSpeed/neutralAirTime;
+            airJumpSpeed = (float) Math.Sqrt(-2*gravity*airJumpHeight);
+            sideJumpSpeedY = (float) Math.Sqrt(-2*gravity*sideJumpHeight);
+            sideJumpSpeedX = sideJumpDistance/(neutralAirTime); // TODO: Should be sideJumpDistance/calculated time of vertical side jump in air
+            airSideJumpSpeedY = (float) Math.Sqrt(-2*gravity*airSideJumpHeight);
+            airSideJumpSpeedX = airSideJumpDistance/neutralAirTime; // TODO: Same as above
+            recoverySpeed = (float) Math.Sqrt(-2*gravity*recoveryHeight);
+            maxAirSpeedX = airSideJumpSpeedX*2;
+        }
+
+        private void FallRegular()
+        {
+            // Handles acceleration due to gravity
+            if (rigidBody.velocity.y > terminalVelocity)
+            {
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y + gravity*Time.fixedDeltaTime);
+            }
+            // Caps terminal velocity
+            if (rigidBody.velocity.y < terminalVelocity)
+            {
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, terminalVelocity);
+            }
+        }
+
+        private void FallFast()
+        {
+            if (rigidBody.velocity.y > terminalVelocityFast)
+            {
+                SetVelocityY(rigidBody.velocity.y + gravity*fastFallFactor*Time.fixedDeltaTime);
+            }
+            if (rigidBody.velocity.y < terminalVelocityFast)
+            {
+                SetVelocityY(terminalVelocityFast);
+            }
+        }
+
+        public bool CheckForGround()
+        {
+            onGround = false;
+            animator.SetBool("Ground", false);
             Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, GroundedRadius, groundLayer);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
                 {
-                    grounded = true;
+                    onGround = true;
                     canAirJump = true;
+                    canRecover = true;
+                    fastFall = false;
+                    animator.SetBool("Ground", true);
                 }
             }
-            anim.SetBool("Ground", grounded);
-
-            // Set the vertical animation
-            anim.SetFloat("vSpeed", rigidbody.velocity.y);
+            return onGround;
         }
 
-        public void Move(float move, bool crouch, bool jump)
+        public void SetState(PlayerState state)
         {
-            // If crouching, check to see if the character can stand up
-            if (!crouch && anim.GetBool("Crouch"))
-            {
-                // If the character has a ceiling preventing them from standing up, keep them crouching
-                if (Physics2D.OverlapCircle(ceilingCheck.position, CeilingRadius, groundLayer))
-                {
-                    crouch = true;
-                }
-            }
-
-            // Set whether or not the character is crouching in the animator
-            anim.SetBool("Crouch", crouch);
-
-            //only control the player if grounded or airControl is turned on
-            if (grounded || airControl)
-            {
-                // Reduce the speed if crouching by the crouchSpeed multiplier
-                move = (crouch ? move*crouchSpeed : move);
-
-                // The Speed animator parameter is set to the absolute value of the horizontal input.
-                anim.SetFloat("Speed", Mathf.Abs(move));
-                if (Math.Abs(move) > 0)
-                {
-                    anim.SetBool("Run", true);
-                }
-                else
-                {
-                    anim.SetBool("Run", false);
-                }
-
-                // Move the character
-                rigidbody.velocity = new Vector2(move*maxSpeedX, rigidbody.velocity.y);
-
-                // If the input is moving the player right and the player is facing left...
-                if (move > 0 && !facingRight)
-                {
-                    // ... flip the player.
-                    Flip();
-                }
-                // Otherwise if the input is moving the player left and the player is facing right...
-                else if (move < 0 && facingRight)
-                {
-                    // ... flip the player.
-                    Flip();
-                }
-            }
-            // If the player should jump...
-            if (grounded && jump && anim.GetBool("Ground"))
-            {
-                // Add a vertical force to the player.
-                grounded = false;
-                anim.SetBool("Ground", false);
-                //                rigidbody.AddForce(new Vector2(0f, jumpForce));
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpSpeed);
-                anim.SetTrigger("Jump");
-            }
-            else if (jump && canAirJump)
-            {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0f);
-                //                rigidbody.AddForce(new Vector2(0f, airJumpForce));
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, airJumpSpeed);
-                canAirJump = false;
-            }
-
-            if (!grounded) // && !fastFall
-            {
-                // Handles acceleration due to gravity
-                if (rigidbody.velocity.y > terminalVelocity)
-                {
-                    rigidbody.velocity = new Vector2(rigidbody.velocity.x,
-                        rigidbody.velocity.y + gravity*Time.fixedDeltaTime);
-                }
-                // Caps terminal velocity
-                if (rigidbody.velocity.y < terminalVelocity)
-                {
-                    rigidbody.velocity = new Vector2(rigidbody.velocity.x, terminalVelocity);
-                }
-            }
-            //
-            //            else
-            //            {
-            //                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
-            //            }
-
-            speedX = rigidbody.velocity.x; // For debug purposes
-            speedY = rigidbody.velocity.y;
+            currentPlayerState = state;
         }
 
+        public PlayerState GetState()
+        {
+            return currentPlayerState;
+        }
 
-        private void Flip()
+        // Don't increment velocity per frame unintentionally!!!
+        public void IncrementVelocity(Vector2 velocity)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x + velocity.x, rigidBody.velocity.y + velocity.y);
+        }
+
+        public void IncrementVelocity(float x, float y)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x + x, rigidBody.velocity.y + y);
+        }
+
+        public void IncrementVelocityX(float x)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x + x, rigidBody.velocity.y);
+        }
+
+        public void IncrementVelocityY(float y)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y);
+        }
+
+        public void SetVelocity(Vector2 velocity)
+        {
+            rigidBody.velocity = velocity;
+        }
+
+        public void SetVelocity(float x, float y)
+        {
+            rigidBody.velocity = new Vector2(x, y);
+        }
+
+        public void SetVelocityX(float x)
+        {
+            rigidBody.velocity = new Vector2(x, rigidBody.velocity.y);
+        }
+
+        public void SetVelocityY(float y)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, y);
+        }
+
+        public void Flip()
         {
             // Switch the way the player is labelled as facing.
             facingRight = !facingRight;
