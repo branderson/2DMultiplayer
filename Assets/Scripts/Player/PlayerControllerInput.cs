@@ -3,6 +3,7 @@ using Assets.Scripts.Player;
 using Assets.Scripts.Player.States;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using XInputDotNetPure;
 
 namespace Assets.Scripts.Player
 {
@@ -11,6 +12,8 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] public int playerNumber = 0;
         [SerializeField] public bool tapJump = true;
+        [SerializeField] public bool vibration = true;
+        internal int XIndex;
         private PlayerController character;
         private bool xActive = false;
         private bool yActive = false;
@@ -38,6 +41,9 @@ namespace Assets.Scripts.Player
 
         private void Start()
         {
+            print(playerNumber);
+            print(XIndex);
+            print("");
         }
 
         private void Update()
@@ -188,6 +194,23 @@ namespace Assets.Scripts.Player
                 return true;
             }
             return false;
+        }
+
+        public void VibrateController(float leftMotor, float rightMotor)
+        {
+//            print("Trying to vibrate " + (PlayerIndex)(playerNumber));
+            if (XIndex != -1 && vibration)
+            {
+                GamePad.SetVibration((PlayerIndex) XIndex, leftMotor, rightMotor);
+            }
+        }
+
+        public void StopVibration()
+        {
+            if (XIndex != -1 && vibration)
+            {
+                GamePad.SetVibration((PlayerIndex) XIndex, 0f, 0f);
+            }
         }
     }
 }

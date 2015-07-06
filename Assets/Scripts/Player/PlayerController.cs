@@ -25,12 +25,13 @@ namespace Assets.Scripts.Player
         [SerializeField] private float terminalVelocity = -15f; // Maximum regular falling rate
         [SerializeField] private float terminalVelocityFast = -30f; // Fast fall terminal velocity
         [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
-        [SerializeField] public float airControlSpeed = 2f; // Fraction of horizontal control while in air
+        [SerializeField] public float airControlSpeed = .5f; // Fraction of horizontal control while in air
         [SerializeField] public float shortHopFactor = .5f; // Fraction of neutral jump height/distance for short hop
 
         private PlayerState currentPlayerState;
         internal Animator animator; // Reference to the player's animator component.
         private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
+        private PlayerControllerInput input;
 
         private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if onGround
         private const float CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
@@ -57,6 +58,9 @@ namespace Assets.Scripts.Player
         internal bool canAirJump;
         internal bool canRecover;
         private float gravity; // Rate per second of decreasing vertical speed
+        internal int vibrate;
+        internal float leftIntensity;
+        internal float rightIntensity;
 
         // TODO: Do I need to initialize in a constructor or can I initialize in the class itself?
         public PlayerController()
@@ -65,6 +69,9 @@ namespace Assets.Scripts.Player
             this.facingRight = true;
             this.canAirJump = true;
             this.canRecover = true;
+            this.vibrate = 0;
+            this.leftIntensity = 0f;
+            this.rightIntensity = 0f;
         }
 
         // Use this for initialization
@@ -75,6 +82,7 @@ namespace Assets.Scripts.Player
             ceilingCheck = transform.Find("CeilingCheck");
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
+            input = GetComponent<PlayerControllerInput>();
             CalculatePhysics();
         }
 
@@ -89,11 +97,15 @@ namespace Assets.Scripts.Player
         private void FixedUpdate()
         {
 //            CheckForGround();
-            if (canFall)
+            if (canFall && !onGround)
                 if (fastFall)
                     FallFast();
                 else
                     FallRegular();
+//            else if (onGround)
+//            {
+//                SetVelocityY(0f);
+//            }
             animator.SetFloat("xVelocity", speedX);
             animator.SetFloat("yVelocity", speedY);
             animator.SetFloat("xSpeed", Mathf.Abs(speedX));
@@ -101,6 +113,7 @@ namespace Assets.Scripts.Player
             animator.SetBool("Run", run);
             animator.SetBool("CanAirJump", canAirJump);
             animator.SetBool("CanRecover", canRecover);
+            Vibrate();
         }
 
         private void CalculatePhysics()
@@ -144,21 +157,55 @@ namespace Assets.Scripts.Player
 
         public bool CheckForGround()
         {
-            onGround = false;
+            bool grounded = false;
             animator.SetBool("Ground", false);
             Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, GroundedRadius, groundLayer);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
                 {
+                    if (!onGround)
+                    {
+                        if (rigidBody.velocity.y > 15)
+                        {
+                            vibrate = 12;
+                            leftIntensity = .8f;
+                            rightIntensity = .0f;
+                        }
+                        else
+                        {
+                            vibrate = 12;
+                            leftIntensity = .8f;
+                            rightIntensity = .0f;
+                        }
+                    }
                     onGround = true;
+                    grounded = true;
                     canAirJump = true;
                     canRecover = true;
                     fastFall = false;
                     animator.SetBool("Ground", true);
                 }
             }
+            if (!grounded)
+            {
+                onGround = false;
+            }
             return onGround;
+        }
+
+        private void Vibrate()
+        {
+            if (vibrate == 0)
+            {
+                input.StopVibration();
+            }
+            else
+            {
+                // TODO: Set tuple to control vibration intensity
+                input.VibrateController(leftIntensity, rightIntensity);
+                vibrate -= 1;
+            }
         }
 
         public void SetState(PlayerState state)
@@ -221,6 +268,14 @@ namespace Assets.Scripts.Player
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+        }
+
+        public void SetLayerOrder(int height)
+        {
+            foreach (SpriteRenderer renderer in this.GetComponentsInChildren<SpriteRenderer>())
+            {
+                renderer.sortingOrder += 8*height;
+            }
         }
     }
 }
