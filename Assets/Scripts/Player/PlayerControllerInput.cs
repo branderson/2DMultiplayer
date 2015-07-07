@@ -10,9 +10,9 @@ namespace Assets.Scripts.Player
     [RequireComponent(typeof (PlayerController))]
     public class PlayerControllerInput : MonoBehaviour
     {
-        [SerializeField] public int playerNumber = 0;
-        [SerializeField] public bool tapJump = true;
-        [SerializeField] public bool vibration = true;
+        [SerializeField] public int PlayerNumber = 0;
+        [SerializeField] public bool TapJump = true;
+        [SerializeField] public bool Vibration = true;
         internal int XIndex;
         private PlayerController character;
         private bool xActive = false;
@@ -29,8 +29,8 @@ namespace Assets.Scripts.Player
         private bool rightPressed = false;
         private bool jump = false;
         private bool run = false;
-        private bool action1 = false;
-        private bool action2 = false;
+        private bool primary = false;
+        private bool secondary = false;
 
         private readonly string[] player = {"K", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
 
@@ -41,22 +41,22 @@ namespace Assets.Scripts.Player
 
         private void Start()
         {
-            print(playerNumber);
+            print(PlayerNumber);
             print(XIndex);
             print("");
         }
 
         private void Update()
         {
-            x = CrossPlatformInputManager.GetAxis("Horizontal" + player[playerNumber]);
-            y = CrossPlatformInputManager.GetAxis("Vertical" + player[playerNumber]);
+            x = CrossPlatformInputManager.GetAxis("Horizontal" + player[PlayerNumber]);
+            y = CrossPlatformInputManager.GetAxis("Vertical" + player[PlayerNumber]);
 
             // Check if axes have just been pressed
-            if (Input.GetAxisRaw("Horizontal" + player[playerNumber]) != 0)
+            if (Input.GetAxisRaw("Horizontal" + player[PlayerNumber]) != 0)
             {
                 if (!xActive)
                 {
-                    if (Input.GetAxisRaw("Horizontal" + player[playerNumber]) < 0)
+                    if (Input.GetAxisRaw("Horizontal" + player[PlayerNumber]) < 0)
                     {
                         leftPressed = true;
                     }
@@ -72,11 +72,11 @@ namespace Assets.Scripts.Player
                 xActive = false;
             }
 
-            if (Input.GetAxisRaw("Vertical" + player[playerNumber]) != 0)
+            if (Input.GetAxisRaw("Vertical" + player[PlayerNumber]) != 0)
             {
                 if (!yActive)
                 {
-                    if (Input.GetAxisRaw("Vertical" + player[playerNumber]) < 0)
+                    if (Input.GetAxisRaw("Vertical" + player[PlayerNumber]) < 0)
                     {
                         downPressed = true;
                     }
@@ -92,28 +92,22 @@ namespace Assets.Scripts.Player
                 yActive = false;
             }
             
-            // Remove noise
-//            if (Mathf.Abs(x) < thresholdX)
-//                x = 0;
-//            if (Mathf.Abs(y) < thresholdY)
-//                y = 0;
-            
             // Check button presses
             if (!jump)
             {
-                jump = CrossPlatformInputManager.GetButtonDown("Jump" + player[playerNumber]);
+                jump = CrossPlatformInputManager.GetButtonDown("Jump" + player[PlayerNumber]);
             }
 
-            run = CrossPlatformInputManager.GetButton("Run" + player[playerNumber]);
+            run = CrossPlatformInputManager.GetButton("Run" + player[PlayerNumber]);
 
-            if (!action1)
+            if (!primary)
             {
-                action1 = CrossPlatformInputManager.GetButtonDown("Primary" + player[playerNumber]);
+                primary = CrossPlatformInputManager.GetButtonDown("Primary" + player[PlayerNumber]);
             }
 
-            if (!action2)
+            if (!secondary)
             {
-                action2 = CrossPlatformInputManager.GetButtonDown("Secondary" + player[playerNumber]);
+                secondary = CrossPlatformInputManager.GetButtonDown("Secondary" + player[PlayerNumber]);
             }
 
         }
@@ -151,27 +145,27 @@ namespace Assets.Scripts.Player
                     jump = false;
                 }
                 character.run = run;
-                if (action1)
+                if (primary)
                 {
                     character.GetState().Primary(x, y);
-                    action1 = false;
+                    primary = false;
                 }
-                if (action2)
+                if (secondary)
                 {
                     character.GetState().Secondary(x, y);
-                    action2 = false;
+                    secondary = false;
                 }
             }
         }
 
         public bool ButtonActive(string name)
         {
-            return Input.GetButton(name + player[playerNumber]);
+            return Input.GetButton(name + player[PlayerNumber]);
         }
 
         public bool AxisActive(string name)
         {
-            if (Input.GetAxisRaw(name + player[playerNumber]) != 0)
+            if (Input.GetAxisRaw(name + player[PlayerNumber]) != 0)
             {
                 return true;
             }
@@ -180,7 +174,7 @@ namespace Assets.Scripts.Player
 
         public bool AxisPositive(string name)
         {
-            if (Input.GetAxisRaw(name + player[playerNumber]) > 0)
+            if (Input.GetAxisRaw(name + player[PlayerNumber]) > 0)
             {
                 return true;
             }
@@ -189,7 +183,7 @@ namespace Assets.Scripts.Player
 
         public bool AxisNegative(string name)
         {
-            if (Input.GetAxisRaw(name + player[playerNumber]) < 0)
+            if (Input.GetAxisRaw(name + player[PlayerNumber]) < 0)
             {
                 return true;
             }
@@ -198,8 +192,8 @@ namespace Assets.Scripts.Player
 
         public void VibrateController(float leftMotor, float rightMotor)
         {
-//            print("Trying to vibrate " + (PlayerIndex)(playerNumber));
-            if (XIndex != -1 && vibration)
+//            print("Trying to vibrate " + (PlayerIndex)(PlayerNumber));
+            if (XIndex != -1 && Vibration)
             {
                 GamePad.SetVibration((PlayerIndex) XIndex, leftMotor, rightMotor);
             }
@@ -207,7 +201,7 @@ namespace Assets.Scripts.Player
 
         public void StopVibration()
         {
-            if (XIndex != -1 && vibration)
+            if (XIndex != -1 && Vibration)
             {
                 GamePad.SetVibration((PlayerIndex) XIndex, 0f, 0f);
             }

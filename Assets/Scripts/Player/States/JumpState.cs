@@ -70,7 +70,7 @@ namespace Assets.Scripts.Player.States
         public override void Up()
         {
             base.Up();
-            if (playerControllerInput.tapJump)
+            if (playerControllerInput.TapJump)
             {
                 playerAnimator.SetTrigger("Jump");
             }

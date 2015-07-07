@@ -58,6 +58,7 @@ namespace Assets.Scripts.Player
         internal bool canAirJump;
         internal bool canRecover;
         private float gravity; // Rate per second of decreasing vertical speed
+        internal bool timedVibrate = false;
         internal int vibrate;
         internal float leftIntensity;
         internal float rightIntensity;
@@ -69,6 +70,7 @@ namespace Assets.Scripts.Player
             this.facingRight = true;
             this.canAirJump = true;
             this.canRecover = true;
+            this.timedVibrate = false;
             this.vibrate = 0;
             this.leftIntensity = 0f;
             this.rightIntensity = 0f;
@@ -113,7 +115,10 @@ namespace Assets.Scripts.Player
             animator.SetBool("Run", run);
             animator.SetBool("CanAirJump", canAirJump);
             animator.SetBool("CanRecover", canRecover);
-            Vibrate();
+            if (timedVibrate)
+            {
+                Vibrate();
+            }
         }
 
         private void CalculatePhysics()
@@ -168,15 +173,11 @@ namespace Assets.Scripts.Player
                     {
                         if (rigidBody.velocity.y > 15)
                         {
-                            vibrate = 12;
-                            leftIntensity = .8f;
-                            rightIntensity = .0f;
+                            SetTimedVibrate(12, .8f, .0f);
                         }
                         else
                         {
-                            vibrate = 12;
-                            leftIntensity = .8f;
-                            rightIntensity = .0f;
+                            SetTimedVibrate(12, .8f, .0f);
                         }
                     }
                     onGround = true;
@@ -198,14 +199,23 @@ namespace Assets.Scripts.Player
         {
             if (vibrate == 0)
             {
+                timedVibrate = false;
                 input.StopVibration();
             }
             else
             {
-                // TODO: Set tuple to control vibration intensity
+                // TODO: Set tuple to control Vibration intensity
                 input.VibrateController(leftIntensity, rightIntensity);
                 vibrate -= 1;
             }
+        }
+
+        public void SetTimedVibrate(int frames, float leftIntensity, float rightIntensity)
+        {
+            timedVibrate = true;
+            this.vibrate = frames;
+            this.leftIntensity = leftIntensity;
+            this.rightIntensity = rightIntensity;
         }
 
         public void SetState(PlayerState state)

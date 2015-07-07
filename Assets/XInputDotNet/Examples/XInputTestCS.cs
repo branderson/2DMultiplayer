@@ -48,7 +48,7 @@ public class XInputTestCS : MonoBehaviour
             GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         }
 
-        // Set vibration according to triggers
+        // Set Vibration according to triggers
         GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
 
         // Make the current object turn

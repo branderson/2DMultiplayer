@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Menu;
 using Assets.Scripts.Player;
 using XInputDotNetPure;
 
@@ -30,8 +31,8 @@ namespace Assets.Scripts.Managers
                 // Assign controllers to players and instantiate players at spawn locations
                 for (int controller = 0; controller < menuManager.Controllers.Count; controller++)
                 {
-                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.Controllers[controller]].transform.position, Quaternion.identity);
-                    player.GetComponent<PlayerControllerInput>().playerNumber = menuManager.Controllers[controller];
+                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.Controllers[controller].playerNumber].transform.position, Quaternion.identity);
+                    player.GetComponent<PlayerControllerInput>().PlayerNumber = menuManager.Controllers[controller].playerNumber;
                     player.GetComponent<PlayerControllerInput>().XIndex = menuManager.XIndices[controller];
                     player.GetComponent<PlayerController>().SetLayerOrder((int)spawnPoints[controller].transform.position.z);
                 }

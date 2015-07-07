@@ -22,6 +22,7 @@ namespace Assets.Scripts.Player.States
             waitCounter = waitFrames;
             jumpDirection = 0;
             directionModifier = 1;
+            playerController.SetTimedVibrate(15, 1f, 1f);
         }
 
         public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

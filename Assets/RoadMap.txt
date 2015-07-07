@@ -8,3 +8,15 @@ Design Patterns
 		Code should not be handled in large constructs
 		Repeatable code should be handled in separate functions and called when needed
 		Use Linq whenever possible
+
+Ideas
+	Shield based gameplay,
+		Once shield hits 0, characters easy to defeat
+		Status effects at shield 0
+		Special moves unlocked at 0
+		Certain characters best played at 0?
+	IDARB-like sport game mode ("BlubberBall")
+	Nidhogg-like/Assault/Front-line game mode
+	Pass the virus mode
+	Mr. Whaleblubber mode
+		Pass Mr. Whaleblubber between defending team players, do no let him die

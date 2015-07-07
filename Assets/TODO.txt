@@ -1,0 +1,5 @@
+UI
+	Add checkboxes for player settings in UI
+
+Player Controller	
+	Be able to jump through the floor and fall through it

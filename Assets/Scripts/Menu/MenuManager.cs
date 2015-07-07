@@ -5,41 +5,52 @@ using System.Linq;
 using UnityEngine.UI;
 using XInputDotNetPure;
 
-namespace Assets.Scripts.Managers
+namespace Assets.Scripts.Menu
 {
     public class MenuManager : MonoBehaviour
     {
         public class PlayerCard
         {
+            private GameObject panel;
+            private GameObject title;
+            private GameObject instruction;
             private Image panelImage;
-            private Text instruction;
+            private Text titleText;
+            private Text instructionText;
+            private int number;
             private bool active;
             private bool ready;
 
-            public PlayerCard(GameObject panel, GameObject instruction)
+            public PlayerCard(GameObject panel, int playerNumber)
             {
+                this.number = playerNumber;
+                this.panel = panel;
+                this.title = panel.transform.Find("TitleText").gameObject;
+                this.instruction = panel.transform.Find("Instruction").gameObject;
                 this.panelImage = panel.GetComponent<Image>();
-                this.instruction = instruction.GetComponent<Text>();
-                this.instruction.text = "Press A";
+                this.titleText = title.GetComponent<Text>();
+                this.instructionText = instruction.GetComponent<Text>();
+                this.titleText.text = "Player " + playerNumber;
+                this.instructionText.text = "Press A";
             }
 
             public void SetText(string text)
             {
-                instruction.text = text;
+                instructionText.text = text;
             }
 
             public void Activate()
             {
                 active = true;
                 panelImage.color = Color.yellow;
-                instruction.text = "Press Start\nWhenReady";
+                instructionText.text = "Press Start\nWhen Ready";
             }
 
             public void Ready()
             {
                 ready = true;
                 panelImage.color = Color.green;
-                instruction.text = "Ready!";
+                instructionText.text = "Ready!";
             }
 
             public bool IsReady()
@@ -48,12 +59,10 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        internal List<int> Controllers = new List<int>();
+        internal List<MenuInput> Controllers = new List<MenuInput>();
         internal List<int> XIndices = new List<int>();
 
         private PlayerCard[] playerCards = new PlayerCard[4];
-//        private Text[] playerInstructions = new Text[4];
-//        private bool[] ready = new bool[4];
 
         private void Awake()
         {
@@ -63,11 +72,9 @@ namespace Assets.Scripts.Managers
         private void Start()
         {
             Object.DontDestroyOnLoad(this);
-//            canvas = GameObject.Find("Canvas");
             for (int i = 0; i <= 3; i++)
             {
-                playerCards[i] = new PlayerCard(GameObject.Find("Panel" + (i + 1)), GameObject.Find("Instruction" + (i + 1)));
-//                playerInstructions[i].text = "Press A";
+                playerCards[i] = new PlayerCard(GameObject.Find("Panel" + (i + 1)), i + 1);
             }
         }
 
@@ -78,9 +85,11 @@ namespace Assets.Scripts.Managers
             if (Controllers.Count() < 4)
             {
                 // Allow setting keyboard as a controller
-                if (Input.GetButtonDown("PrimaryK") && !Controllers.Contains(0))
+                if (Input.GetButtonDown("PrimaryK") && !Controllers.Any(input => input.playerNumber == 0)) // Linq expression checks if any object in Controllers has a playerNumber == 0
                 {
-                    Controllers.Add(0);
+                    MenuInput input = gameObject.AddComponent<MenuInput>();
+                    input.Init(0);
+                    Controllers.Add(input);
                     XIndices.Add(-1);
                     playerCards[Controllers.Count() - 1].Activate();
                     print("Adding keyboard");
@@ -89,9 +98,11 @@ namespace Assets.Scripts.Managers
                 // Allow setting any joystick as a controller
                 for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
                 {
-                    if (Input.GetButtonDown("PrimaryJ" + i) && !Controllers.Contains(i))
+                    if (Input.GetButtonDown("PrimaryJ" + i) && !Controllers.Any(input => input.playerNumber == i))
                     {
-                        Controllers.Add(i);
+                        MenuInput input = gameObject.AddComponent<MenuInput>();
+                        input.Init(i);
+                        Controllers.Add(input);
                         playerCards[Controllers.Count() - 1].Activate();
                         bool xIndexAdded = false;
                         for (int controller = 0; controller < 4; controller++)
@@ -99,11 +110,9 @@ namespace Assets.Scripts.Managers
                             if (GamePad.GetState((PlayerIndex) controller).IsConnected)
                             {
                                 // TODO: Vibrations can be mapped to the wrong controller if selected on the exact same frame
-//                                print("Controller " + (PlayerIndex) controller + " is connected!");
                                 if (GamePad.GetState((PlayerIndex) controller).Buttons.A == ButtonState.Pressed &&
                                     !XIndices.Contains(controller))
                                 {
-//                                    GamePad.SetVibration((PlayerIndex)controller, 0.8f, 0.8f);
                                     XIndices.Add(controller);
                                     xIndexAdded = true;
                                 }
@@ -121,7 +130,7 @@ namespace Assets.Scripts.Managers
             // Wait for start input on all added controllers
             for (int controller = 0; controller < Controllers.Count(); controller++)
             {
-                if (Controllers[controller] == 0)
+                if (Controllers[controller].playerNumber == 0)
                 {
                     if (Input.GetButtonDown("StartK"))
                     {
@@ -131,7 +140,7 @@ namespace Assets.Scripts.Managers
 
                 else
                 {
-                    if (Input.GetButtonDown("StartJ" + Controllers[controller]))
+                    if (Input.GetButtonDown("StartJ" + Controllers[controller].playerNumber))
                     {
                         playerCards[controller].Ready();
                     }
@@ -155,16 +164,5 @@ namespace Assets.Scripts.Managers
                 Application.LoadLevel("TestScene");
             }
         }
-
-//        private void LateUpdate()
-//        {
-//            for (int i = 0; i < 4; i++)
-//            {
-//                if (GamePad.GetState((PlayerIndex) i).IsConnected)
-//                {
-//                    GamePad.SetVibration((PlayerIndex) i, 0f, 0f);
-//                }
-//            }
-//        }
     }
 }
