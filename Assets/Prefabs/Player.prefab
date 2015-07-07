@@ -638,8 +638,8 @@ MonoBehaviour:
   airSideJumpDistance: 4
   recoveryHeight: 8
   neutralAirTime: .680000007
-  terminalVelocity: -15
-  terminalVelocityFast: -30
+  terminalVelocity: -25
+  terminalVelocityFast: -40
   fastFallFactor: 3
   airControlSpeed: 1
   shortHopFactor: .5
@@ -1051,6 +1051,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: airControlSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: neutralAirTime
+      value: .680000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: terminalVelocity
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: terminalVelocityFast
+      value: -40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
