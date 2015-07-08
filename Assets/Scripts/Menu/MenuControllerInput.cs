@@ -51,11 +51,11 @@ namespace Assets.Scripts.Menu
                 y = CrossPlatformInputManager.GetAxis("Vertical" + player[playerNumber]);
 
                 // Check if axes have just been pressed
-                if (Input.GetAxisRaw("Horizontal" + player[playerNumber]) != 0)
+                if (Input.GetAxisRaw("Horizontal" + player[playerNumber]) != 0 || Input.GetAxisRaw("HorizontalDPad" + player[playerNumber]) != 0)
                 {
                     if (!xActive)
                     {
-                        if (Input.GetAxisRaw("Horizontal" + player[playerNumber]) < 0)
+                        if (Input.GetAxisRaw("Horizontal" + player[playerNumber]) < 0 || Input.GetAxisRaw("HorizontalDPad" + player[playerNumber]) < 0)
                         {
                             leftPressed = true;
                         }
@@ -71,11 +71,11 @@ namespace Assets.Scripts.Menu
                     xActive = false;
                 }
 
-                if (Input.GetAxisRaw("Vertical" + player[playerNumber]) != 0)
+                if (Input.GetAxisRaw("Vertical" + player[playerNumber]) != 0 || Input.GetAxisRaw("VerticalDPad" + player[playerNumber]) != 0)
                 {
                     if (!yActive)
                     {
-                        if (Input.GetAxisRaw("Vertical" + player[playerNumber]) < 0)
+                        if (Input.GetAxisRaw("Vertical" + player[playerNumber]) < 0 || Input.GetAxisRaw("VerticalDPad" + player[playerNumber]) < 0)
                         {
                             downPressed = true;
                         }
@@ -92,6 +92,26 @@ namespace Assets.Scripts.Menu
                 }
 
                 // Check button presses
+                if (upPressed)
+                {
+                    playerController.PressUp();
+                    upPressed = false;
+                }
+                if (downPressed)
+                {
+                    playerController.PressDown();
+                    downPressed = false;
+                }
+                if (leftPressed)
+                {
+                    playerController.PressLeft();
+                    leftPressed = false;
+                }
+                if (rightPressed)
+                {
+                    playerController.PressRight();
+                    rightPressed = false;
+                }
                 if (CrossPlatformInputManager.GetButtonDown("Jump" + player[playerNumber]))
                 {
                 }
@@ -131,6 +151,16 @@ namespace Assets.Scripts.Menu
                 //                secondary = CrossPlatformInputManager.GetButtonDown("Secondary" + player[playerNumber]);
                 //            }
             }
+        }
+
+        public void SetTapJump(bool value)
+        {
+            TapJump = value;
+        }
+
+        public void SetVibration(bool value)
+        {
+            Vibration = value;
         }
 
         public bool ButtonActive(string name)

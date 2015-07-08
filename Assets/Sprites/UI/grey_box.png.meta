@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 6cbfb0715ad61054b92b00ad7a4a1a65
-timeCreated: 1436329050
+timeCreated: 1436375817
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: grey_box_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +31,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -48,7 +49,17 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: grey_box_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 10, y: 8, z: 11, w: 7}
   spritePackingTag: 
   userData: 
   assetBundleName: 

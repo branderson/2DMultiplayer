@@ -41,9 +41,9 @@ namespace Assets.Scripts.Player
 
         private void Start()
         {
-            print(PlayerNumber);
-            print(XIndex);
-            print("");
+//            print(PlayerNumber);
+//            print(XIndex);
+//            print("");
         }
 
         private void Update()

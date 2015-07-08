@@ -6,8 +6,9 @@ namespace Assets.Scripts.Menu
 {
     public class MenuPlayerController : MonoBehaviour
     {
-        public GameObject Selected;
+        private MenuSelectable selected;
         private PlayerCard playerCard;
+        internal int playerNumber;
         internal bool timedVibrate = false;
         internal int vibrate = 0;
         internal float leftIntensity = 0f;
@@ -30,7 +31,6 @@ namespace Assets.Scripts.Menu
         // Update is called once per frame
         void Update()
         {
-
         }
 
         private void FixedUpdate()
@@ -41,16 +41,87 @@ namespace Assets.Scripts.Menu
             }
         }
 
+        public void Deactivate()
+        {
+            if (selected != null)
+            {
+                selected.Unselect(playerNumber);
+            }
+        }
+
+        public void SetSelected(MenuSelectable selection)
+        {
+            if (selected != null)
+            {
+                selected.Unselect(playerNumber);
+            }
+            selected = selection;
+            selection.Select(playerNumber);
+        }
+
+        public void PressUp()
+        {
+            selected.Up(playerNumber);
+            if (selected.up != null)
+            {
+                if (selected.up.AllowSelection(playerNumber))
+                {
+                    SetSelected(selected.up);
+                }
+            }
+        }
+
+        public void PressDown()
+        {
+            selected.Down(playerNumber);
+            if (selected.down != null)
+            {
+                if (selected.down.AllowSelection(playerNumber))
+                {
+                    SetSelected(selected.down);
+                }
+            }
+        }
+
+        public void PressLeft()
+        {
+            selected.Left(playerNumber);
+            if (selected.left != null)
+            {
+                if (selected.left.AllowSelection(playerNumber))
+                {
+                    SetSelected(selected.left);
+                }
+            }
+        }
+
+        public void PressRight()
+        {
+            selected.Right(playerNumber);
+            if (selected.right != null)
+            {
+                if (selected.right.AllowSelection(playerNumber))
+                {
+                    SetSelected(selected.right);
+                }
+            }
+        }
+
         public void PressPrimary()
         {
-            
+            selected.Primary(playerNumber);
         }
 
         public void PressSecondary()
         {
+            selected.Secondary(playerNumber);
             if (playerCard.IsReady())
             {
                 playerCard.UnReady();
+            }
+            else if (playerCard.IsActive())
+            {
+                playerCard.Deactivate();
             }
         }
 
