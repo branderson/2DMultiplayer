@@ -110,6 +110,7 @@ namespace Assets.Scripts.Player
                 secondary = CrossPlatformInputManager.GetButtonDown("Secondary" + player[PlayerNumber]);
             }
 
+            // TODO: Implement start menu
         }
 
 

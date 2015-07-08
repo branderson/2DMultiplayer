@@ -169,17 +169,17 @@ namespace Assets.Scripts.Player
             {
                 if (colliders[i].gameObject != gameObject)
                 {
-                    if (!onGround)
-                    {
-                        if (rigidBody.velocity.y > 15)
-                        {
-                            SetTimedVibrate(12, .8f, .0f);
-                        }
-                        else
-                        {
-                            SetTimedVibrate(12, .8f, .0f);
-                        }
-                    }
+//                    if (!onGround)
+//                    {
+//                        if (rigidBody.velocity.y > 15)
+//                        {
+//                            SetTimedVibrate(12, .8f, .0f);
+//                        }
+//                        else
+//                        {
+//                            SetTimedVibrate(12, .8f, .0f);
+//                        }
+//                    }
                     onGround = true;
                     grounded = true;
                     canAirJump = true;

@@ -9,57 +9,7 @@ namespace Assets.Scripts.Menu
 {
     public class MenuManager : MonoBehaviour
     {
-        public class PlayerCard
-        {
-            private GameObject panel;
-            private GameObject title;
-            private GameObject instruction;
-            private Image panelImage;
-            private Text titleText;
-            private Text instructionText;
-            private int number;
-            private bool active;
-            private bool ready;
-
-            public PlayerCard(GameObject panel, int playerNumber)
-            {
-                this.number = playerNumber;
-                this.panel = panel;
-                this.title = panel.transform.Find("TitleText").gameObject;
-                this.instruction = panel.transform.Find("Instruction").gameObject;
-                this.panelImage = panel.GetComponent<Image>();
-                this.titleText = title.GetComponent<Text>();
-                this.instructionText = instruction.GetComponent<Text>();
-                this.titleText.text = "Player " + playerNumber;
-                this.instructionText.text = "Press A";
-            }
-
-            public void SetText(string text)
-            {
-                instructionText.text = text;
-            }
-
-            public void Activate()
-            {
-                active = true;
-                panelImage.color = Color.yellow;
-                instructionText.text = "Press Start\nWhen Ready";
-            }
-
-            public void Ready()
-            {
-                ready = true;
-                panelImage.color = Color.green;
-                instructionText.text = "Ready!";
-            }
-
-            public bool IsReady()
-            {
-                return ready;
-            }
-        }
-
-        internal List<MenuInput> Controllers = new List<MenuInput>();
+        internal List<MenuControllerInput> Controllers = new List<MenuControllerInput>();
         internal List<int> XIndices = new List<int>();
 
         private PlayerCard[] playerCards = new PlayerCard[4];
@@ -74,7 +24,8 @@ namespace Assets.Scripts.Menu
             Object.DontDestroyOnLoad(this);
             for (int i = 0; i <= 3; i++)
             {
-                playerCards[i] = new PlayerCard(GameObject.Find("Panel" + (i + 1)), i + 1);
+                playerCards[i] = GameObject.Find("Panel" + (i + 1)).GetComponent<PlayerCard>();
+                playerCards[i].Init(i + 1);
             }
         }
 
@@ -87,23 +38,22 @@ namespace Assets.Scripts.Menu
                 // Allow setting keyboard as a controller
                 if (Input.GetButtonDown("PrimaryK") && !Controllers.Any(input => input.playerNumber == 0)) // Linq expression checks if any object in Controllers has a playerNumber == 0
                 {
-                    MenuInput input = gameObject.AddComponent<MenuInput>();
-                    input.Init(0);
-                    Controllers.Add(input);
+                    MenuControllerInput controllerInput = playerCards[Controllers.Count()].GetComponent<MenuControllerInput>();
+                    Controllers.Add(controllerInput);
                     XIndices.Add(-1);
-                    playerCards[Controllers.Count() - 1].Activate();
+                    playerCards[Controllers.Count() - 1].Activate(0);
                     print("Adding keyboard");
                 }
 
                 // Allow setting any joystick as a controller
+                // TODO: Separate input controller for XBox controllers
                 for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
                 {
                     if (Input.GetButtonDown("PrimaryJ" + i) && !Controllers.Any(input => input.playerNumber == i))
                     {
-                        MenuInput input = gameObject.AddComponent<MenuInput>();
-                        input.Init(i);
-                        Controllers.Add(input);
-                        playerCards[Controllers.Count() - 1].Activate();
+                        MenuControllerInput controllerInput = playerCards[Controllers.Count()].GetComponent<MenuControllerInput>();
+                        Controllers.Add(controllerInput);
+                        playerCards[Controllers.Count() - 1].Activate(i);
                         bool xIndexAdded = false;
                         for (int controller = 0; controller < 4; controller++)
                         {
@@ -113,6 +63,7 @@ namespace Assets.Scripts.Menu
                                 if (GamePad.GetState((PlayerIndex) controller).Buttons.A == ButtonState.Pressed &&
                                     !XIndices.Contains(controller))
                                 {
+                                    controllerInput.XIndex = controller;
                                     XIndices.Add(controller);
                                     xIndexAdded = true;
                                 }
@@ -123,26 +74,6 @@ namespace Assets.Scripts.Menu
                             XIndices.Add(-1);
                         }
                         print("Adding joystick " + i);
-                    }
-                }
-            }
-
-            // Wait for start input on all added controllers
-            for (int controller = 0; controller < Controllers.Count(); controller++)
-            {
-                if (Controllers[controller].playerNumber == 0)
-                {
-                    if (Input.GetButtonDown("StartK"))
-                    {
-                        playerCards[controller].Ready();
-                    }
-                }
-
-                else
-                {
-                    if (Input.GetButtonDown("StartJ" + Controllers[controller].playerNumber))
-                    {
-                        playerCards[controller].Ready();
                     }
                 }
             }
