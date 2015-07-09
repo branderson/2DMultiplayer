@@ -118,16 +118,19 @@ namespace Assets.Scripts.Menu
 
         public void Unselect(int playerNumber)
         {
-            titleText.color = Color.black;
+            if (!menuSelectable.IsSelected())
+            {
+                titleText.color = Color.black;
+            }
         }
 
 
-        public void Primary(int playerNumber)
+        public void Primary(MenuPlayerController player)
         {
             // TODO: Perhaps allow players to turn themselves to a computer? Should probably deactivate that player without moving queue down the line
             // TODO: Maybe a cycle of Player, Computer, None
             // TODO: Allow selection via mouse hover
-            if (playerNumber != number)
+            if (player.playerNumber != number)
             {
                 if (computer == false)
                 {
@@ -146,7 +149,7 @@ namespace Assets.Scripts.Menu
         }
 
 
-        public void Secondary(int playerNumber)
+        public void Secondary(MenuPlayerController player)
         {
 //            if (IsReady())
 //            {
@@ -154,11 +157,11 @@ namespace Assets.Scripts.Menu
 //            }
         }
 
-        public void Left(int playerNumber)
+        public void Left(MenuPlayerController player)
         {
         }
 
-        public void Right(int playerNumber)
+        public void Right(MenuPlayerController player)
         {
         }
 

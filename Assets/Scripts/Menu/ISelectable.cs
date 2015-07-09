@@ -8,9 +8,9 @@ namespace Assets.Scripts.Menu
         bool AllowSelection(int playerNumber);
         void Select(int playerNumber);
         void Unselect(int playerNumber);
-        void Primary(int playerNumber);
-        void Secondary(int playerNumber);
-        void Left(int playerNumber);
-        void Right(int playerNumber);
+        void Primary(MenuPlayerController player);
+        void Secondary(MenuPlayerController player);
+        void Left(MenuPlayerController player);
+        void Right(MenuPlayerController player);
     }
 }

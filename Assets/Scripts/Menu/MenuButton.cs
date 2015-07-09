@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Menu
 {
-    [RequireComponent(typeof (Toggle))]
+    [RequireComponent(typeof (Button))]
     [RequireComponent(typeof (AllowedSelections))]
-    public class ToggleBox : MonoBehaviour, ISelectable
+    public class MenuButton : MonoBehaviour, ISelectable
     {
-        private Toggle toggle;
+        private Button button;
         private MenuSelectable menuSelectable;
         private AllowedSelections allowedSelections;
 
         private void Awake()
         {
-            toggle = GetComponent<Toggle>();
+            button = GetComponent<Button>();
             menuSelectable = GetComponent<MenuSelectable>();
             allowedSelections = GetComponent<AllowedSelections>();
         }
@@ -34,12 +34,12 @@ namespace Assets.Scripts.Menu
 
         public void Select(int playerNumber)
         {
-//            toggle.targetGraphic.color = Color.blue;
+//            button.targetGraphic.color = Color.blue;
         }
 
         public void Unselect(int playerNumber)
         {
-//            toggle.targetGraphic.color = Color.white;
+            button.targetGraphic.color = Color.white;
         }
 
         public bool AllowSelection(int playerNumber)
@@ -50,7 +50,6 @@ namespace Assets.Scripts.Menu
 
         public void Primary(MenuPlayerController player)
         {
-//            toggle.isOn = !toggle.isOn;
         }
 
         public void Secondary(MenuPlayerController player)

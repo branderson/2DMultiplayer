@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine.UI;
 using XInputDotNetPure;
 
@@ -10,9 +11,8 @@ namespace Assets.Scripts.Menu
     public class MenuManager : MonoBehaviour
     {
         internal List<MenuControllerInput> Controllers = new List<MenuControllerInput>();
-        internal List<int> XIndices = new List<int>();
-
         private PlayerCard[] playerCards = new PlayerCard[4];
+        private string sceneName = "Level1";
 
         private void Awake()
         {
@@ -40,7 +40,6 @@ namespace Assets.Scripts.Menu
                 {
                     MenuControllerInput controllerInput = playerCards[Controllers.Count()].GetComponent<MenuControllerInput>();
                     Controllers.Add(controllerInput);
-                    XIndices.Add(-1);
                     playerCards[Controllers.Count() - 1].Activate(0);
                     print("Adding keyboard");
                 }
@@ -54,24 +53,17 @@ namespace Assets.Scripts.Menu
                         MenuControllerInput controllerInput = playerCards[Controllers.Count()].GetComponent<MenuControllerInput>();
                         Controllers.Add(controllerInput);
                         playerCards[Controllers.Count() - 1].Activate(i);
-                        bool xIndexAdded = false;
                         for (int controller = 0; controller < 4; controller++)
                         {
                             if (GamePad.GetState((PlayerIndex) controller).IsConnected)
                             {
                                 // TODO: Vibrations can be mapped to the wrong controller if selected on the exact same frame
                                 if (GamePad.GetState((PlayerIndex) controller).Buttons.A == ButtonState.Pressed &&
-                                    !XIndices.Contains(controller))
+                                    !Controllers.Any(input => input.XIndex == controller))
                                 {
                                     controllerInput.XIndex = controller;
-                                    XIndices.Add(controller);
-                                    xIndexAdded = true;
                                 }
                             }
-                        }
-                        if (!xIndexAdded)
-                        {
-                            XIndices.Add(-1);
                         }
                         print("Adding joystick " + i);
                     }
@@ -92,8 +84,13 @@ namespace Assets.Scripts.Menu
             // If all players ready, load level
             if (allReady && Controllers.Any())
             {
-                Application.LoadLevel("TestScene");
+                Application.LoadLevel(sceneName);
             }
+        }
+
+        public void SetScene(string scene)
+        {
+            sceneName = scene;
         }
     }
 }

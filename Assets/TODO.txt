@@ -1,6 +1,4 @@
 UI
-	Add checkboxes for player settings in UI
-	When selections overlap, do not run deselect
 	Add player cards to levels
 
 Menu Controllers

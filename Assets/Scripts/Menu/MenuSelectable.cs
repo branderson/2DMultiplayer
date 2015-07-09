@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Assets.Scripts.Menu
 {
@@ -10,55 +12,69 @@ namespace Assets.Scripts.Menu
         [SerializeField] public MenuSelectable left;
         [SerializeField] public MenuSelectable right;
         private ISelectable uiElement;
+        private List<MenuPlayerController> selectors;
 
         public void Awake()
         {
             uiElement = GetComponent<ISelectable>();
+            selectors = new List<MenuPlayerController>();
         }
 
-        public void Up(int playerNumber)
+        public void Up(MenuPlayerController player)
         {
             
         }
 
-        public void Down(int playerNumber)
+        public void Down(MenuPlayerController player)
         {
             
         }
 
-        public void Left(int playerNumber)
+        public void Left(MenuPlayerController player)
         {
-            uiElement.Left(playerNumber);
+            uiElement.Left(player);
         }
 
-        public void Right(int playerNumber)
+        public void Right(MenuPlayerController player)
         {
-            uiElement.Right(playerNumber);
+            uiElement.Right(player);
         }
 
-        public void Primary(int playerNumber)
+        public void Primary(MenuPlayerController player)
         {
-            uiElement.Primary(playerNumber);
+            uiElement.Primary(player);
         }
 
-        public void Secondary(int playerNumber)
+        public void Secondary(MenuPlayerController player)
         {
-            uiElement.Secondary(playerNumber);
+            uiElement.Secondary(player);
         }
 
-        public bool AllowSelection(int playerNumber)
+        public bool AllowSelection(MenuPlayerController player)
         {
-            return uiElement.AllowSelection(playerNumber);
+            return uiElement.AllowSelection(player.playerNumber);
         }
 
-        public void Select(int playerNumber)
+        public void Select(MenuPlayerController player)
         {
-            uiElement.Select(playerNumber);
+            selectors.Add(player);
+            uiElement.Select(player.playerNumber);
         }
 
-        public void Unselect(int playerNumber)
+        public void Unselect(MenuPlayerController player)
         {
-            uiElement.Unselect(playerNumber);
+            selectors.Remove(player);
+            uiElement.Unselect(player.playerNumber);
+        }
+
+        public bool SelectedBy(int playerNumber)
+        {
+            return selectors.Any(selector => selector.playerNumber == playerNumber);
+        }
+
+        public bool IsSelected()
+        {
+            return selectors.Any();
         }
     }
 }

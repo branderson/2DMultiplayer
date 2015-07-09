@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 using UnityEngine.Networking.NetworkSystem;
 
 namespace Assets.Scripts.Menu
@@ -8,6 +9,7 @@ namespace Assets.Scripts.Menu
     {
         private MenuSelectable selected;
         private PlayerCard playerCard;
+        private PointerEventData pointer = new PointerEventData(EventSystem.current);
         internal int playerNumber;
         internal bool timedVibrate = false;
         internal int vibrate = 0;
@@ -45,7 +47,7 @@ namespace Assets.Scripts.Menu
         {
             if (selected != null)
             {
-                selected.Unselect(playerNumber);
+                selected.Unselect(this);
             }
         }
 
@@ -53,18 +55,20 @@ namespace Assets.Scripts.Menu
         {
             if (selected != null)
             {
-                selected.Unselect(playerNumber);
+                selected.Unselect(this);
+                ExecuteEvents.Execute(selected.gameObject, pointer, ExecuteEvents.pointerExitHandler);
             }
             selected = selection;
-            selection.Select(playerNumber);
+            selection.Select(this);
+            ExecuteEvents.Execute(selected.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
         }
 
         public void PressUp()
         {
-            selected.Up(playerNumber);
+            selected.Up(this);
             if (selected.up != null)
             {
-                if (selected.up.AllowSelection(playerNumber))
+                if (selected.up.AllowSelection(this))
                 {
                     SetSelected(selected.up);
                 }
@@ -73,10 +77,10 @@ namespace Assets.Scripts.Menu
 
         public void PressDown()
         {
-            selected.Down(playerNumber);
+            selected.Down(this);
             if (selected.down != null)
             {
-                if (selected.down.AllowSelection(playerNumber))
+                if (selected.down.AllowSelection(this))
                 {
                     SetSelected(selected.down);
                 }
@@ -85,10 +89,10 @@ namespace Assets.Scripts.Menu
 
         public void PressLeft()
         {
-            selected.Left(playerNumber);
+            selected.Left(this);
             if (selected.left != null)
             {
-                if (selected.left.AllowSelection(playerNumber))
+                if (selected.left.AllowSelection(this))
                 {
                     SetSelected(selected.left);
                 }
@@ -97,10 +101,10 @@ namespace Assets.Scripts.Menu
 
         public void PressRight()
         {
-            selected.Right(playerNumber);
+            selected.Right(this);
             if (selected.right != null)
             {
-                if (selected.right.AllowSelection(playerNumber))
+                if (selected.right.AllowSelection(this))
                 {
                     SetSelected(selected.right);
                 }
@@ -109,12 +113,13 @@ namespace Assets.Scripts.Menu
 
         public void PressPrimary()
         {
-            selected.Primary(playerNumber);
+            selected.Primary(this);
+            ExecuteEvents.Execute(selected.gameObject, pointer, ExecuteEvents.pointerClickHandler);
         }
 
         public void PressSecondary()
         {
-            selected.Secondary(playerNumber);
+            selected.Secondary(this);
             if (playerCard.IsReady())
             {
                 playerCard.UnReady();
