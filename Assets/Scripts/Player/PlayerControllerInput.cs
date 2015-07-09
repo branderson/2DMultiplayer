@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts.Menu;
 using Assets.Scripts.Player;
 using Assets.Scripts.Player.States;
 using UnityEngine;
@@ -33,6 +34,14 @@ namespace Assets.Scripts.Player
         private bool secondary = false;
 
         private readonly string[] player = {"K", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
+
+        public void Init(MenuControllerInput menuControllerInput)
+        {
+            PlayerNumber = menuControllerInput.playerNumber;
+            XIndex = menuControllerInput.XIndex; // TODO: Integrate XIndices into menuControllerInput
+            TapJump = menuControllerInput.TapJump;
+            Vibration = menuControllerInput.Vibration;
+        }
 
         private void Awake()
         {

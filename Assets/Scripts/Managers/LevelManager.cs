@@ -32,9 +32,9 @@ namespace Assets.Scripts.Managers
                 for (int controller = 0; controller < menuManager.Controllers.Count; controller++)
                 {
                     GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.Controllers[controller].playerNumber].transform.position, Quaternion.identity);
-                    player.GetComponent<PlayerControllerInput>().PlayerNumber = menuManager.Controllers[controller].playerNumber;
-                    player.GetComponent<PlayerControllerInput>().XIndex = menuManager.XIndices[controller];
-                    player.GetComponent<PlayerController>().SetLayerOrder((int)spawnPoints[controller].transform.position.z);
+                    // TODO: Put all of this stuff into Init() for PlayerControllerInput
+                    player.GetComponent<PlayerControllerInput>().Init(menuManager.Controllers[controller]);
+                    player.GetComponent<PlayerController>().Init((int)spawnPoints[controller].transform.position.z); // TODO: Eventually pass menuPlayerController in
                 }
             }
             

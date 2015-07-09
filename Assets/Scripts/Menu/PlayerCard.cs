@@ -24,7 +24,7 @@ namespace Assets.Scripts.Menu
         {
             playerController.playerNumber = playerNumber;
             this.number = playerNumber;
-            this.titleText.text = "Player " + number;
+            this.titleText.text = "None";
             this.instructionText.text = "Press A";
         }
 
@@ -63,6 +63,7 @@ namespace Assets.Scripts.Menu
         {
             active = true;
             panelImage.color = Color.yellow;
+            titleText.text = "Player " + number;
             instructionText.text = "Press Start\nWhen Ready";
             playerController.SetTimedVibrate(12, 0f, .8f);
         }
@@ -79,6 +80,7 @@ namespace Assets.Scripts.Menu
             // TODO: Conflicts with MenuManager's controller list
             active = false;
             panelImage.color = Color.white;
+            titleText.text = "None";
             instructionText.text = "Press A";
             playerController.Deactivate();
             // TODO: Deactivate controllerInput
@@ -122,6 +124,9 @@ namespace Assets.Scripts.Menu
 
         public void Primary(int playerNumber)
         {
+            // TODO: Perhaps allow players to turn themselves to a computer? Should probably deactivate that player without moving queue down the line
+            // TODO: Maybe a cycle of Player, Computer, None
+            // TODO: Allow selection via mouse hover
             if (playerNumber != number)
             {
                 if (computer == false)

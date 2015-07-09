@@ -63,17 +63,17 @@ namespace Assets.Scripts.Player
         internal float leftIntensity;
         internal float rightIntensity;
 
-        // TODO: Do I need to initialize in a constructor or can I initialize in the class itself?
-        public PlayerController()
+        public void Init(int zPosition)
         {
-            this.canFall = true;
-            this.facingRight = true;
-            this.canAirJump = true;
-            this.canRecover = true;
-            this.timedVibrate = false;
-            this.vibrate = 0;
-            this.leftIntensity = 0f;
-            this.rightIntensity = 0f;
+            canFall = true;
+            facingRight = true;
+            canAirJump = true;
+            canRecover = true;
+            timedVibrate = false;
+            vibrate = 0;
+            leftIntensity = 0f;
+            rightIntensity = 0f;
+            SetLayerOrder(zPosition);
         }
 
         // Use this for initialization
@@ -280,11 +280,12 @@ namespace Assets.Scripts.Player
             transform.localScale = theScale;
         }
 
+        // Move each player up by more than the number of layers in the biggest character
         public void SetLayerOrder(int height)
         {
-            foreach (SpriteRenderer renderer in this.GetComponentsInChildren<SpriteRenderer>())
+            foreach (SpriteRenderer spritePiece in this.GetComponentsInChildren<SpriteRenderer>())
             {
-                renderer.sortingOrder += 8*height;
+                spritePiece.sortingOrder += 20*height;
             }
         }
     }
