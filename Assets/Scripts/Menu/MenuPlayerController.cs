@@ -7,7 +7,8 @@ namespace Assets.Scripts.Menu
 {
     public class MenuPlayerController : MonoBehaviour
     {
-        private MenuSelectable selected;
+        [SerializeField] public MenuSelectable InitialSelection;
+        internal MenuSelectable selected;
         private PlayerCard playerCard;
         private PointerEventData pointer = new PointerEventData(EventSystem.current);
         internal int playerNumber;
@@ -47,7 +48,7 @@ namespace Assets.Scripts.Menu
         {
             if (selected != null)
             {
-                selected.Unselect(this);
+                selected.Unselect(this, pointer);
             }
         }
 
@@ -55,19 +56,17 @@ namespace Assets.Scripts.Menu
         {
             if (selected != null)
             {
-                selected.Unselect(this);
-                ExecuteEvents.Execute(selected.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+                selected.Unselect(this, pointer);
             }
             selected = selection;
-            selection.Select(this);
-            ExecuteEvents.Execute(selected.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+            selection.Select(this, pointer);
         }
 
         public void PressUp()
         {
-            selected.Up(this);
             if (selected.up != null)
             {
+                selected.Up(this);
                 if (selected.up.AllowSelection(this))
                 {
                     SetSelected(selected.up);
@@ -77,9 +76,9 @@ namespace Assets.Scripts.Menu
 
         public void PressDown()
         {
-            selected.Down(this);
             if (selected.down != null)
             {
+                selected.Down(this);
                 if (selected.down.AllowSelection(this))
                 {
                     SetSelected(selected.down);
@@ -89,9 +88,10 @@ namespace Assets.Scripts.Menu
 
         public void PressLeft()
         {
-            selected.Left(this);
+            // TODO: Selections are becoming null or something when deactivating
             if (selected.left != null)
             {
+                selected.Left(this);
                 if (selected.left.AllowSelection(this))
                 {
                     SetSelected(selected.left);
@@ -101,9 +101,9 @@ namespace Assets.Scripts.Menu
 
         public void PressRight()
         {
-            selected.Right(this);
             if (selected.right != null)
             {
+                selected.Right(this);
                 if (selected.right.AllowSelection(this))
                 {
                     SetSelected(selected.right);
@@ -113,20 +113,26 @@ namespace Assets.Scripts.Menu
 
         public void PressPrimary()
         {
-            selected.Primary(this);
-            ExecuteEvents.Execute(selected.gameObject, pointer, ExecuteEvents.pointerClickHandler);
+            if (selected != null)
+            {
+                selected.Primary(this, pointer);
+            }
         }
 
         public void PressSecondary()
         {
-            selected.Secondary(this);
-            if (playerCard.IsReady())
+            if (selected != null)
             {
-                playerCard.UnReady();
-            }
-            else if (playerCard.IsActive())
-            {
-                playerCard.Deactivate();
+                selected.Secondary(this);
+                if (playerCard.IsReady())
+                {
+                    playerCard.UnReady();
+                }
+                    // TODO: Not a good place to put this. Prevents backing up through menus
+                else if (playerCard.IsActive())
+                {
+                    playerCard.Deactivate();
+                }
             }
         }
 

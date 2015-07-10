@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Menu
 {
     public class PlayerCard : MonoBehaviour, ISelectable
     {
+        private MenuManager manager;
         private Transform transform;
         private MenuSelectable menuSelectable;
         private GameObject title;
@@ -13,10 +15,10 @@ namespace Assets.Scripts.Menu
         private Image panelImage;
         private Text titleText;
         private Text instructionText;
-        private MenuControllerInput controllerInput;
-        private MenuPlayerController playerController;
+        internal MenuControllerInput controllerInput;
+        internal MenuPlayerController playerController;
         private int number;
-        private bool computer = false;
+        internal bool computer = false;
         private bool active;
         private bool ready;
 
@@ -32,6 +34,7 @@ namespace Assets.Scripts.Menu
         {
             active = false;
             ready = false;
+            manager = FindObjectOfType<MenuManager>();
             transform = GetComponent<Transform>();
             menuSelectable = GetComponent<MenuSelectable>();
             playerController = GetComponent<MenuPlayerController>();
@@ -70,14 +73,22 @@ namespace Assets.Scripts.Menu
 
         public void Activate(int controllerNumber)
         {
-            controllerInput.Init(controllerNumber);
-            Activate();
-            playerController.SetSelected(menuSelectable);
+            if (controllerNumber >= 0)
+            {
+                controllerInput.Init(controllerNumber);
+                Activate();
+                playerController.SetSelected(playerController.InitialSelection);
+            }
+            else
+            {
+                Activate();
+            }
         }
 
         public void Deactivate()
         {
             // TODO: Conflicts with MenuManager's controller list
+            manager.Deactivate(number);
             active = false;
             panelImage.color = Color.white;
             titleText.text = "None";
@@ -111,12 +122,12 @@ namespace Assets.Scripts.Menu
         }
 
 
-        public void Select(int playerNumber)
+        public void Select(int playerNumber, PointerEventData pointer)
         {
             titleText.color = Color.blue;
         }
 
-        public void Unselect(int playerNumber)
+        public void Unselect(int playerNumber, PointerEventData pointer)
         {
             if (!menuSelectable.IsSelected())
             {
@@ -125,7 +136,7 @@ namespace Assets.Scripts.Menu
         }
 
 
-        public void Primary(MenuPlayerController player)
+        public void Primary(MenuPlayerController player, PointerEventData pointer)
         {
             // TODO: Perhaps allow players to turn themselves to a computer? Should probably deactivate that player without moving queue down the line
             // TODO: Maybe a cycle of Player, Computer, None
@@ -135,13 +146,14 @@ namespace Assets.Scripts.Menu
                 if (computer == false)
                 {
                     computer = true;
+                    Deactivate();
+                    manager.ActivateComputer(number);
                     titleText.text = "Computer";
                     Ready();
                 }
                 else
                 {
                     computer = false;
-                    titleText.text = "Player" + number;
                     UnReady();
                     Deactivate();
                 }

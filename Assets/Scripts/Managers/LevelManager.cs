@@ -29,12 +29,20 @@ namespace Assets.Scripts.Managers
 
             if (useMenu) {
                 // Assign controllers to players and instantiate players at spawn locations
-                for (int controller = 0; controller < menuManager.Controllers.Count; controller++)
+                for (int card = 0; card < 4; card++)
                 {
-                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.Controllers[controller].playerNumber].transform.position, Quaternion.identity);
-                    // TODO: Put all of this stuff into Init() for PlayerControllerInput
-                    player.GetComponent<PlayerControllerInput>().Init(menuManager.Controllers[controller]);
-                    player.GetComponent<PlayerController>().Init((int)spawnPoints[controller].transform.position.z); // TODO: Eventually pass menuPlayerController in
+                    if (!menuManager.playerCards[card].computer && menuManager.Controllers[card])
+                    {
+                        print(menuManager.playerCards[card].playerController.playerNumber);
+                        GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].playerController.playerNumber - 1].transform.position, Quaternion.identity);
+                        // TODO: Put all of this stuff into Init() for PlayerControllerInput
+                        player.GetComponent<PlayerControllerInput>().Init(menuManager.playerCards[card].controllerInput);
+                        player.GetComponent<PlayerController>().Init((int)spawnPoints[card].transform.position.z); // TODO: Eventually pass menuPlayerController in
+                    }
+                    if (menuManager.playerCards[card].computer && menuManager.Controllers[card])
+                    {
+                        // TODO: Computer player instantiation here
+                    }
                 }
             }
             

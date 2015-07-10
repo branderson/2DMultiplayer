@@ -1,14 +1,15 @@
 ﻿using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Menu
 {
     public interface ISelectable
     {
         bool AllowSelection(int playerNumber);
-        void Select(int playerNumber);
-        void Unselect(int playerNumber);
-        void Primary(MenuPlayerController player);
+        void Select(int playerNumber, PointerEventData pointer);
+        void Unselect(int playerNumber, PointerEventData pointer);
+        void Primary(MenuPlayerController player, PointerEventData pointer);
         void Secondary(MenuPlayerController player);
         void Left(MenuPlayerController player);
         void Right(MenuPlayerController player);

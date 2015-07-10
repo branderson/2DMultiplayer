@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.Scripts.Menu;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Menu
 {
     [RequireComponent(typeof (Toggle))]
     [RequireComponent(typeof (AllowedSelections))]
+    [RequireComponent(typeof (MenuSelectable))]
     public class ToggleBox : MonoBehaviour, ISelectable
     {
         private Toggle toggle;
@@ -32,13 +34,18 @@ namespace Assets.Scripts.Menu
 
         }
 
-        public void Select(int playerNumber)
+        public void Select(int playerNumber, PointerEventData pointer)
         {
+            ExecuteEvents.Execute(gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 //            toggle.targetGraphic.color = Color.blue;
         }
 
-        public void Unselect(int playerNumber)
+        public void Unselect(int playerNumber, PointerEventData pointer)
         {
+            if (!menuSelectable.IsSelected())
+            {
+                ExecuteEvents.Execute(gameObject, pointer, ExecuteEvents.pointerExitHandler);
+            }
 //            toggle.targetGraphic.color = Color.white;
         }
 
@@ -48,8 +55,9 @@ namespace Assets.Scripts.Menu
         }
 
 
-        public void Primary(MenuPlayerController player)
+        public void Primary(MenuPlayerController player, PointerEventData pointer)
         {
+            ExecuteEvents.Execute(gameObject, pointer, ExecuteEvents.pointerClickHandler);
 //            toggle.isOn = !toggle.isOn;
         }
 

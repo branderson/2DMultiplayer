@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.Scripts.Menu;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Menu
 {
     [RequireComponent(typeof (Button))]
     [RequireComponent(typeof (AllowedSelections))]
+    [RequireComponent(typeof (MenuSelectable))]
     public class MenuButton : MonoBehaviour, ISelectable
     {
         private Button button;
@@ -32,14 +34,19 @@ namespace Assets.Scripts.Menu
 
         }
 
-        public void Select(int playerNumber)
+        public void Select(int playerNumber, PointerEventData pointer)
         {
+            ExecuteEvents.Execute(gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 //            button.targetGraphic.color = Color.blue;
         }
 
-        public void Unselect(int playerNumber)
+        public void Unselect(int playerNumber, PointerEventData pointer)
         {
-            button.targetGraphic.color = Color.white;
+            if (!menuSelectable.IsSelected())
+            {
+                ExecuteEvents.Execute(gameObject, pointer, ExecuteEvents.pointerExitHandler);
+            }
+//            button.targetGraphic.color = Color.white;
         }
 
         public bool AllowSelection(int playerNumber)
@@ -48,8 +55,9 @@ namespace Assets.Scripts.Menu
         }
 
 
-        public void Primary(MenuPlayerController player)
+        public void Primary(MenuPlayerController player, PointerEventData pointer)
         {
+            ExecuteEvents.Execute(gameObject, pointer, ExecuteEvents.pointerClickHandler);
         }
 
         public void Secondary(MenuPlayerController player)

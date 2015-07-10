@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Menu
 {
@@ -40,9 +41,9 @@ namespace Assets.Scripts.Menu
             uiElement.Right(player);
         }
 
-        public void Primary(MenuPlayerController player)
+        public void Primary(MenuPlayerController player, PointerEventData pointer)
         {
-            uiElement.Primary(player);
+            uiElement.Primary(player, pointer);
         }
 
         public void Secondary(MenuPlayerController player)
@@ -55,16 +56,16 @@ namespace Assets.Scripts.Menu
             return uiElement.AllowSelection(player.playerNumber);
         }
 
-        public void Select(MenuPlayerController player)
+        public void Select(MenuPlayerController player, PointerEventData pointer)
         {
             selectors.Add(player);
-            uiElement.Select(player.playerNumber);
+            uiElement.Select(player.playerNumber, pointer);
         }
 
-        public void Unselect(MenuPlayerController player)
+        public void Unselect(MenuPlayerController player, PointerEventData pointer)
         {
             selectors.Remove(player);
-            uiElement.Unselect(player.playerNumber);
+            uiElement.Unselect(player.playerNumber, pointer);
         }
 
         public bool SelectedBy(int playerNumber)
