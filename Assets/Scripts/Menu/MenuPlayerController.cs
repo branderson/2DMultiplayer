@@ -17,11 +17,11 @@ namespace Assets.Scripts.Menu
         internal float leftIntensity = 0f;
         internal float rightIntensity = 0f;
 
-        private MenuControllerInput input;
+        private MenuInputController input;
 
         void Awake()
         {
-            input = GetComponent<MenuControllerInput>();
+            input = GetComponent<MenuInputController>();
             playerCard = GetComponent<PlayerCard>();
         }
 
@@ -124,12 +124,12 @@ namespace Assets.Scripts.Menu
             if (selected != null)
             {
                 selected.Secondary(this);
-                if (playerCard.IsReady())
+                if (playerCard.IsReady() && !playerCard.computer)
                 {
                     playerCard.UnReady();
                 }
                     // TODO: Not a good place to put this. Prevents backing up through menus
-                else if (playerCard.IsActive())
+                else if (playerCard.IsActive() && !playerCard.computer)
                 {
                     playerCard.Deactivate();
                 }

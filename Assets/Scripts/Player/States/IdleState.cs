@@ -80,7 +80,7 @@ namespace Assets.Scripts.Player.States
         public override void Up()
         {
             base.Up();
-            if (playerControllerInput.TapJump)
+            if (PlayerInputController.TapJump)
             {
                 playerAnimator.SetTrigger("Jump");
             }

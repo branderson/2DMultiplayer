@@ -31,9 +31,9 @@ namespace Assets.Scripts.Player
         private PlayerState currentPlayerState;
         internal Animator animator; // Reference to the player's animator component.
         private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
-        private PlayerControllerInput input;
+        private IInputController input;
 
-        private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if onGround
+        private const float GroundedRadius = .2f; // Radius of the overlap circle to determine if onGround
         private const float CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         
         internal float speedX;
@@ -65,6 +65,7 @@ namespace Assets.Scripts.Player
 
         public void Init(int zPosition)
         {
+            input = GetComponent<IInputController>();
             canFall = true;
             facingRight = true;
             canAirJump = true;
@@ -84,7 +85,6 @@ namespace Assets.Scripts.Player
             ceilingCheck = transform.Find("CeilingCheck");
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
-            input = GetComponent<PlayerControllerInput>();
             CalculatePhysics();
         }
 

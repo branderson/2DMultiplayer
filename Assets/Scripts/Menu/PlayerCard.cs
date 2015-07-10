@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Player;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -15,19 +16,26 @@ namespace Assets.Scripts.Menu
         private Image panelImage;
         private Text titleText;
         private Text instructionText;
-        internal MenuControllerInput controllerInput;
+        internal MenuInputController InputController;
         internal MenuPlayerController playerController;
-        private int number;
+        internal int number;
         internal bool computer = false;
         private bool active;
         private bool ready;
 
-        public void Init(int playerNumber)
+        public void Init(PlayerConfig config)
         {
-            playerController.playerNumber = playerNumber;
-            this.number = playerNumber;
+            playerController.playerNumber = config.Slot;
+            computer = config.Computer;
+            InputController.ControllerNumber = config.ControllerIndex;
+            InputController.TapJump = config.TapJump;
+            InputController.Vibration = config.Vibration;
+            InputController.XIndex = config.XIndex;
+            this.active = config.Active;
+            this.number = config.Slot;
             this.titleText.text = "None";
             this.instructionText.text = "Press A";
+            print("Initializing");
         }
 
         private void Awake()
@@ -38,7 +46,7 @@ namespace Assets.Scripts.Menu
             transform = GetComponent<Transform>();
             menuSelectable = GetComponent<MenuSelectable>();
             playerController = GetComponent<MenuPlayerController>();
-            controllerInput = GetComponent<MenuControllerInput>();
+            InputController = GetComponent<MenuInputController>();
 
             title = transform.Find("TitleText").gameObject;
             instruction = transform.Find("Instruction").gameObject;
@@ -71,18 +79,19 @@ namespace Assets.Scripts.Menu
             playerController.SetTimedVibrate(12, 0f, .8f);
         }
 
+        public void ActivateComputer()
+        {
+            active = true;
+            computer = true;
+            titleText.text = "Computer";
+            Ready();
+        }
+
         public void Activate(int controllerNumber)
         {
-            if (controllerNumber >= 0)
-            {
-                controllerInput.Init(controllerNumber);
-                Activate();
-                playerController.SetSelected(playerController.InitialSelection);
-            }
-            else
-            {
-                Activate();
-            }
+            InputController.Init(controllerNumber);
+            Activate();
+            playerController.SetSelected(playerController.InitialSelection);
         }
 
         public void Deactivate()
@@ -94,7 +103,8 @@ namespace Assets.Scripts.Menu
             titleText.text = "None";
             instructionText.text = "Press A";
             playerController.Deactivate();
-            // TODO: Deactivate controllerInput
+            InputController.Deactivate();
+            // TODO: Deactivate InputController
         }
 
         public void Ready()
@@ -141,15 +151,13 @@ namespace Assets.Scripts.Menu
             // TODO: Perhaps allow players to turn themselves to a computer? Should probably deactivate that player without moving queue down the line
             // TODO: Maybe a cycle of Player, Computer, None
             // TODO: Allow selection via mouse hover
-            if (player.playerNumber != number)
+            // TODO: Sometimes cycles Computer, None on player 1
+            if (true) //player.ControllerNumber != number)
             {
-                if (computer == false)
+                if (!computer)
                 {
-                    computer = true;
                     Deactivate();
                     manager.ActivateComputer(number);
-                    titleText.text = "Computer";
-                    Ready();
                 }
                 else
                 {

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
+using Assets.Scripts.Managers;
 using UnityEngine.UI;
 using XInputDotNetPure;
 
@@ -10,35 +10,60 @@ namespace Assets.Scripts.Menu
 {
     public class MenuManager : MonoBehaviour
     {
-//        internal List<MenuControllerInput> Controllers = new List<MenuControllerInput>();
+//        internal List<MenuInputController> Controllers = new List<MenuInputController>();
+        internal GameManager gameManager;
         internal bool[] Controllers = new bool[4];
         internal PlayerCard[] playerCards = new PlayerCard[4];
         private string sceneName = "Level1";
 
         private void Awake()
         {
+            gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         }
 
         // Use this for initialization
         private void Start()
         {
-            Object.DontDestroyOnLoad(this);
             for (int i = 0; i <= 3; i++)
             {
                 playerCards[i] = GameObject.Find("Panel" + (i + 1)).GetComponent<PlayerCard>();
-                playerCards[i].Init(i + 1);
+                playerCards[i].Init(gameManager.PlayerConfig[i]);
+            }
+            for (int i = 0; i <= 3; i++)
+            {
+                if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer)
+                {
+                    Activate(gameManager.PlayerConfig[i].ControllerIndex);
+                }
+                else if (gameManager.PlayerConfig[i].Active && gameManager.PlayerConfig[i].Computer)
+                {
+                    ActivateComputer(gameManager.PlayerConfig[i].Slot);
+                }
+            }
+        }
+
+        private void Update()
+        {
+            // If no controllers active, next back goes to title
+            if (!Controllers.Any(controller => controller))
+            {
+                if (Input.GetButtonDown("GlobalBack"))
+                {
+                    Application.LoadLevel("TitleMenu");
+                }
             }
         }
 
         // Update is called once per frame
-        private void Update()
+        private void LateUpdate()
         {
+            // TODO: Back out when someone presses back when no non-computer players left
             // Allow no more than 4 controllers
             if (Controllers.Any(controller => !controller))
             {
                 // Allow setting keyboard as a controller
-                if (Input.GetButtonDown("PrimaryK") && !playerCards.Any(card => (card.controllerInput.playerNumber == 0 && card.IsActive()))) 
-                    // Linq expression checks if any object in Controllers has a playerNumber == 0
+                if (Input.GetButtonDown("PrimaryK") && !playerCards.Any(card => (card.InputController.ControllerNumber == 0 && card.IsActive())))
+                    // Linq expression checks if any object in Controllers has a ControllerNumber == 0
                 {
                     Activate(0);
                 }
@@ -47,7 +72,7 @@ namespace Assets.Scripts.Menu
                 // TODO: Separate input controller for XBox controllers
                 for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
                 {
-                    if (Input.GetButtonDown("PrimaryJ" + i) && !playerCards.Any(card => (card.controllerInput.playerNumber == i && card.IsActive())))
+                    if (Input.GetButtonDown("PrimaryJ" + i) && !playerCards.Any(card => (card.InputController.ControllerNumber == i && card.IsActive())))
                     {
                         Activate(i);
                     }
@@ -66,8 +91,10 @@ namespace Assets.Scripts.Menu
             }
 
             // If all players ready, load level
+            // TODO: Load level select scene here instead
             if (allReady && playerCards.Any(card => (card.IsActive() && !card.computer)))
             {
+                Object.DontDestroyOnLoad(this);
                 Application.LoadLevel(sceneName);
             }
         }
@@ -75,19 +102,26 @@ namespace Assets.Scripts.Menu
         public void ActivateComputer(int slot)
         {
             Controllers[slot-1] = true;
-            playerCards[slot-1].Activate(-1);
+            playerCards[slot-1].ActivateComputer();
         }
 
         private void Activate(int inputIndex)
         {
             int slot = 3;
 
-            // TODO: Can't add player below computer (possibly other players as well)
             for (int i = 3; i >= 0; i--)
             {
                 if (!Controllers[i])
                 {
                     slot = i;
+                }
+            }
+
+            foreach (PlayerCard card in playerCards)
+            {
+                if (card.InputController.ControllerNumber == inputIndex)
+                {
+                    slot = card.number - 1;
                 }
             }
 
@@ -107,9 +141,9 @@ namespace Assets.Scripts.Menu
                     {
                         // TODO: Vibrations can be mapped to the wrong controller if selected on the exact same frame
                         if (GamePad.GetState((PlayerIndex) controller).Buttons.A == ButtonState.Pressed &&
-                            !playerCards.Any(card => card.controllerInput.XIndex == controller))
+                            !playerCards.Any(card => card.InputController.XIndex == controller))
                         {
-                            playerCards[slot].controllerInput.XIndex = controller;
+                            playerCards[slot].InputController.XIndex = controller;
                         }
                     }
                 }

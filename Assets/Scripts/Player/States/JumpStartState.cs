@@ -29,7 +29,7 @@ namespace Assets.Scripts.Player.States
             waitCounter -= 1;
             if (waitCounter == 0)
             {
-                if (!playerControllerInput.ButtonActive("Jump") && (!playerControllerInput.TapJump || !playerControllerInput.AxisPositive("Vertical")))
+                if (!PlayerInputController.ButtonActive("Jump") && (!PlayerInputController.TapJump || !PlayerInputController.AxisPositive("Vertical")))
                 {
                     shortHop = true;
                 }

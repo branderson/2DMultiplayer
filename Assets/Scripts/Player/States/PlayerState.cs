@@ -5,7 +5,7 @@ namespace Assets.Scripts.Player.States
     public abstract class PlayerState : StateMachineBehaviour, IPlayerState
     {
         protected PlayerController playerController;
-        protected PlayerControllerInput playerControllerInput;
+        protected PlayerInputController PlayerInputController;
         protected Animator playerAnimator;
 
         public abstract string GetName();
@@ -13,7 +13,7 @@ namespace Assets.Scripts.Player.States
         public virtual new void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
             playerController = animator.GetComponent<PlayerController>();
-            playerControllerInput = animator.GetComponent<PlayerControllerInput>();
+            PlayerInputController = animator.GetComponent<PlayerInputController>();
             playerController.SetState(this);
             playerAnimator = animator;
         }

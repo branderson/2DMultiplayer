@@ -1,0 +1,171 @@
+Initialize engine version: 5.1.1f1 (2046fc06d4d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 775M (ID=0x119d)
+    Vendor:   NVIDIA
+    VRAM:     1990 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\XInputDotNetPure.dll (this message is harmless)
+Loading C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\XInputDotNetPure.dll into Unity Child Domain
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\XInputDotNetPure.dll (this message is harmless)
+Loading C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\XInputDotNetPure.dll into Unity Child Domain
+- Completed reload, in  0.036 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 2560x1440 59Hz; virtual: 4480x1440 at 0,0
+<RI> Initialized touch support.
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\bsndrsn2\Workspace\2DMultiplayer\BuildForTodd_Data\Managed\System.dll (this message is harmless)
+Adding joystick 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Setting scene to Level2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 12.855885 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 339.
+Total: 0.744100 ms (FindLiveObjects: 0.047091 ms CreateObjectMapping: 0.041053 ms MarkObjects: 0.636636 ms  DeleteObjects: 0.009961 ms)
+
+Instantiating player 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.096378 ms
+
+Unloading 132 unused Assets to reduce memory usage. Loaded Objects now: 440.
+Total: 1.199616 ms (FindLiveObjects: 0.085730 ms CreateObjectMapping: 0.083315 ms MarkObjects: 0.864243 ms  DeleteObjects: 0.164215 ms)
+
+Adding joystick 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Adding keyboard
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.697092 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 347.
+Total: 0.942124 ms (FindLiveObjects: 0.051619 ms CreateObjectMapping: 0.031997 ms MarkObjects: 0.846433 ms  DeleteObjects: 0.010263 ms)
+
+Instantiating player 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Instantiating player 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.093963 ms
+
+Unloading 132 unused Assets to reduce memory usage. Loaded Objects now: 440.
+Total: 1.164600 ms (FindLiveObjects: 0.090559 ms CreateObjectMapping: 0.044374 ms MarkObjects: 0.854281 ms  DeleteObjects: 0.173573 ms)
+
+Adding keyboard
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Adding joystick 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.689546 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 347.
+Total: 0.751345 ms (FindLiveObjects: 0.052524 ms CreateObjectMapping: 0.031997 ms MarkObjects: 0.656257 ms  DeleteObjects: 0.009055 ms)
+
+Instantiating player 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Instantiating player 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.031779 ms
+
+Unloading 132 unused Assets to reduce memory usage. Loaded Objects now: 440.
+Total: 1.374397 ms (FindLiveObjects: 0.093578 ms CreateObjectMapping: 0.163611 ms MarkObjects: 0.931257 ms  DeleteObjects: 0.183836 ms)
+
+Adding keyboard
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Adding joystick 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.838282 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 347.
+Total: 0.409028 ms (FindLiveObjects: 0.027469 ms CreateObjectMapping: 0.015395 ms MarkObjects: 0.360730 ms  DeleteObjects: 0.004829 ms)
+
+Instantiating computer 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Instantiating player 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.959029 ms
+
+Unloading 132 unused Assets to reduce memory usage. Loaded Objects now: 440.
+Total: 1.254254 ms (FindLiveObjects: 0.090258 ms CreateObjectMapping: 0.043770 ms MarkObjects: 0.938804 ms  DeleteObjects: 0.179912 ms)
+
+Adding joystick 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Adding keyboard
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.844403 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 347.
+Total: 0.903184 ms (FindLiveObjects: 0.052826 ms CreateObjectMapping: 0.032299 ms MarkObjects: 0.806888 ms  DeleteObjects: 0.009357 ms)
+
+Instantiating player 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Instantiating player 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Instantiating computer 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.239161 ms
+
+Unloading 132 unused Assets to reduce memory usage. Loaded Objects now: 440.
+Total: 1.214408 ms (FindLiveObjects: 0.093880 ms CreateObjectMapping: 0.048298 ms MarkObjects: 0.876318 ms  DeleteObjects: 0.193496 ms)
+

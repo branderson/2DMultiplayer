@@ -3,3 +3,10 @@ Added checkboxes for player settings in UI
 UI maintains list of selectors
 	PlayerCards don't deselect when still selected by a player
 UI now uses simulated input events for interaction as well as custom functions
+
+Fixed problem adding players after computer players added
+Added game manager
+Player select works now
+Added title screen
+Adding computer players works!!!
+	Can configure AI with AIInputController
