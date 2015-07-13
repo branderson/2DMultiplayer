@@ -28,6 +28,7 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("Backward");
             animator.ResetTrigger("Primary");
             animator.ResetTrigger("Secondary");
+            animator.ResetTrigger("FallThroughFloor");
         }
 
         public virtual void Jump()

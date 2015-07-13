@@ -175,7 +175,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6158744, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
       propertyPath: m_Size.y
-      value: 1
+      value: .100000001
       objectReference: {fileID: 0}
     - target: {fileID: 6158744, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
       propertyPath: m_IsTrigger
@@ -397,7 +397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f641b875fba854cb331bdb21000911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useMenu: 1
   Player: {fileID: 197230, guid: 63fb62eb30fd6e64ebb3ad5e72c2f617, type: 2}
 --- !u!1 &1375589650
 GameObject:
@@ -473,26 +472,18 @@ Prefab:
       propertyPath: m_Name
       value: BlackSquare 3
       objectReference: {fileID: 0}
-    - target: {fileID: 432770, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6158744, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
-      propertyPath: m_Size.x
-      value: 1
+    - target: {fileID: 120302, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
+      propertyPath: m_TagString
+      value: Impermeable
       objectReference: {fileID: 0}
     - target: {fileID: 6158744, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
       propertyPath: m_Size.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6158744, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
-      propertyPath: m_IsTrigger
+      propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6158744, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: d3666ced0e58aac4784325b037c7c466, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
   m_IsPrefabParent: 0
@@ -580,7 +571,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6158744, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
       propertyPath: m_Size.y
-      value: 1
+      value: .100000001
       objectReference: {fileID: 0}
     - target: {fileID: 6158744, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
       propertyPath: m_IsTrigger

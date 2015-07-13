@@ -8,6 +8,7 @@ namespace Assets.Scripts.Menu
     [RequireComponent(typeof (MenuPlayerController))]
     public class MenuInputController : MonoBehaviour {
         internal int ControllerNumber = -1;
+        internal bool UseXIndex = false;
         [SerializeField] public int XIndex = -1;
         [SerializeField] public bool TapJump = true;
         [SerializeField] public bool Vibration = true;

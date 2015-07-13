@@ -118,7 +118,7 @@ namespace Assets.Scripts.Player.States
                     playerController.SetVelocityX(-playerController.airSideJumpSpeedX*directionModifier);
                     playerController.SetVelocityY(playerController.airSideJumpSpeedY);
                     // Do I want to be able to flip on air jump?
-//                    playerController.Flip();
+//                    PlayerController.Flip();
                 }
                 playerController.canAirJump = false;
             }

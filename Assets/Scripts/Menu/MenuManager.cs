@@ -38,9 +38,14 @@ namespace Assets.Scripts.Menu
             for (int i = 0; i <= 3; i++)
             {
                 // TODO: What about case where player has been added, then removed (no longer active), and later player added in place (should skip slot) (or should it?)
-                if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer)
+                if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer && !gameManager.PlayerConfig[i].UseXIndex)
                 {
                     Activate(gameManager.PlayerConfig[i].ControllerIndex);
+                }
+                else if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer && gameManager.PlayerConfig[i].UseXIndex)
+                {
+                    Activate(gameManager.PlayerConfig[i].ControllerIndex);
+//                    ActivateXInput(gameManager.PlayerConfig[i].XIndex);
                 }
                 else if (gameManager.PlayerConfig[i].Active && gameManager.PlayerConfig[i].Computer)
                 {
@@ -112,6 +117,11 @@ namespace Assets.Scripts.Menu
             playerCards[slot-1].ActivateComputer();
         }
 
+        private void ActivateXInput(int XIndex)
+        {
+            
+        }
+
         private void Activate(int inputIndex)
         {
             int slot = 3;
@@ -150,6 +160,7 @@ namespace Assets.Scripts.Menu
                         if (GamePad.GetState((PlayerIndex) controller).Buttons.A == ButtonState.Pressed &&
                             !playerCards.Any(card => card.InputController.XIndex == controller))
                         {
+                            playerCards[slot].InputController.UseXIndex = true;
                             playerCards[slot].InputController.XIndex = controller;
                         }
                     }

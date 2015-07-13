@@ -46,19 +46,19 @@ namespace Assets.Scripts.Player
 
         public void FixedUpdate()
         {
-            frame++;
-            if (frame < 60)
-            {
-                x = -1f;
-            }
-            else if (frame < 118)
-            {
-                x = 1f;
-            }
-            else
-            {
-                frame = 0;
-            }
+//            frame++;
+//            if (frame < 60)
+//            {
+//                x = -1f;
+//            }
+//            else if (frame < 118)
+//            {
+//                x = 1f;
+//            }
+//            else
+//            {
+//                frame = 0;
+//            }
 
             // Execute character moves
             if (character.GetState() != null)

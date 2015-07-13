@@ -13,6 +13,8 @@ namespace Assets.Scripts.Player.States
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
+            playerController.canAirJump = true;
+            playerController.canRecover = true;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -62,6 +64,7 @@ namespace Assets.Scripts.Player.States
                 playerController.Flip();
             }
 
+
             // Should the player be falling?
             playerController.CheckForGround(); // -> FallState
         }
@@ -92,6 +95,16 @@ namespace Assets.Scripts.Player.States
 
         public override void Right()
         {
+        }
+
+        public override void Down()
+        {
+            base.Down();
+            playerController.CheckForGround();
+            if (playerAnimator.GetBool("CanFallThroughFloor"))
+            {
+                playerAnimator.SetTrigger("FallThroughFloor");
+            }
         }
     }
 }

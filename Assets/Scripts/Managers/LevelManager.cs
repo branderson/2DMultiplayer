@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Assets.Scripts.Menu;
 using Assets.Scripts.Player;
 using XInputDotNetPure;
@@ -14,6 +15,7 @@ namespace Assets.Scripts.Managers
         private MenuManager menuManager; // Reference to menu manager
         // TODO: Can add field for order of spawn points
         private GameObject[] spawnPoints; // Array of spawn points for players
+        private List<GameObject> players = new List<GameObject>(); 
 
         void Awake()
         {
@@ -31,21 +33,23 @@ namespace Assets.Scripts.Managers
                 // Instantiate human players
                 if (!menuManager.playerCards[card].computer && menuManager.Controllers[card])
                 {
-                    print("Instantiating player " + menuManager.playerCards[card].playerController.playerNumber);
-                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].playerController.playerNumber - 1].transform.position, Quaternion.identity);
+                    print("Instantiating player " + menuManager.playerCards[card].PlayerController.playerNumber);
+                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].PlayerController.playerNumber - 1].transform.position, Quaternion.identity);
                     player.AddComponent<PlayerInputController>();
                     player.GetComponent<PlayerInputController>().Init(menuManager.playerCards[card].InputController);
                     player.GetComponent<PlayerController>().Init((int)spawnPoints[card].transform.position.z); // TODO: Eventually pass menuPlayerController in
+                    players.Add(player);
                 }
                 // Instantiate AI players
                 if (menuManager.playerCards[card].computer && menuManager.Controllers[card])
                 {
                     // TODO: Computer player instantiation here
-                    print("Instantiating computer " + menuManager.playerCards[card].playerController.playerNumber);
-                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].playerController.playerNumber - 1].transform.position, Quaternion.identity);
+                    print("Instantiating computer " + menuManager.playerCards[card].PlayerController.playerNumber);
+                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].PlayerController.playerNumber - 1].transform.position, Quaternion.identity);
                     player.AddComponent<AIInputController>();
                     player.GetComponent<AIInputController>().Init(menuManager.playerCards[card].InputController);
                     player.GetComponent<PlayerController>().Init((int)spawnPoints[card].transform.position.z); // TODO: Eventually pass menuPlayerController in
+                    players.Add(player);
                 }
                 // Save playerCard states to GameManager
                 // TODO: I broke toggle boxes and also playerCards aren't being loaded in the menu from settings properly
@@ -56,6 +60,11 @@ namespace Assets.Scripts.Managers
                 gameManager.PlayerConfig[card].Slot = card + 1;
                 gameManager.PlayerConfig[card].ControllerIndex = menuManager.playerCards[card].InputController.ControllerNumber;
                 gameManager.PlayerConfig[card].XIndex = menuManager.playerCards[card].InputController.XIndex;
+                gameManager.PlayerConfig[card].UseXIndex = menuManager.playerCards[card].InputController.UseXIndex;
+            }
+            foreach (GameObject player in players)
+            {
+                player.GetComponent<PlayerController>().FindPlayers(players);
             }
             
             // Get rid of menu manager so it's not still waiting for inputs

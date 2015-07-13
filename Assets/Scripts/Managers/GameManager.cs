@@ -11,15 +11,22 @@ namespace Assets.Scripts.Managers
     public class GameManager : MonoBehaviour
     {
         public PlayerConfig[] PlayerConfig = new PlayerConfig[4];
+        public GameConfig GameConfig = new GameConfig();
+        public GameSaveData SaveData;
 
         void Awake()
         {
+            // Delete self if GameManager already exists
             if (GameObject.FindGameObjectsWithTag("GameManager").Any(manager => manager != gameObject))
             {
                 Destroy(gameObject);
             }
+            // Otherwise keep this alive
             Object.DontDestroyOnLoad(this);
 
+            // Load in game save data here
+
+            // Create temporary controller slot settings
             for (int i = 0; i < 4; i++)
             {
                 PlayerConfig[i] = new PlayerConfig();

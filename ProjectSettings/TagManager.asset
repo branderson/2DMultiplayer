@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlayerCardInstruction
   - GameManager
+  - PlayerTrigger
+  - Impermeable
   layers:
   - Default
   - TransparentFX

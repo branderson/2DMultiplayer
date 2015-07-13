@@ -2,11 +2,7 @@ UI
 	Add player cards to levels
 
 Menu Controllers
-	Fix deactivation
-		When controllers are deactivated, remove from controller array and move following controllers up in the list
-		Move selections to new positions
-	Implement level select (maybe character select w/ recolored character?)
-	Maintain player settings across matches
+	Implement maybe character select w/ recolored character
 
 Input Controllers (Do this one soonish)
 	Separate XBox controllers into separate input manager that uses xInput only
@@ -14,8 +10,5 @@ Input Controllers (Do this one soonish)
 
 Player Controller	
 	Be able to jump through the floor and fall through it
-	If bored, perhaps implement *VERY* basic AI
-		Turned on for players marked COMPUTER
-		Probably should just walk back and forth, maybe turn around when reaches a ledge?
 
 Animations, animations, animations!

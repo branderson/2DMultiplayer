@@ -9,7 +9,6 @@ namespace Assets.Scripts.Menu
     public class PlayerCard : MonoBehaviour, ISelectable
     {
         private MenuManager manager;
-        private Transform transform;
         private MenuSelectable menuSelectable;
         private GameObject title;
         private GameObject instruction;
@@ -19,7 +18,7 @@ namespace Assets.Scripts.Menu
         private Text titleText;
         private Text instructionText;
         internal MenuInputController InputController;
-        internal MenuPlayerController playerController;
+        internal MenuPlayerController PlayerController;
         internal int number;
         internal bool computer = false;
         private bool active;
@@ -27,19 +26,19 @@ namespace Assets.Scripts.Menu
 
         public void Init(PlayerConfig config)
         {
-            playerController.playerNumber = config.Slot;
+            PlayerController.playerNumber = config.Slot;
             computer = config.Computer;
             InputController.ControllerNumber = config.ControllerIndex;
 //            InputController.TapJump = config.TapJump;
 //            InputController.Vibration = config.Vibration;
             InputController.XIndex = config.XIndex;
+            InputController.UseXIndex = config.UseXIndex;
             tapJumpBox.SetToggle(config.TapJump);
             vibrationBox.SetToggle(config.Vibration);
             this.active = config.Active;
             this.number = config.Slot;
             this.titleText.text = "None";
             this.instructionText.text = "Press A";
-            print("Initializing");
         }
 
         private void Awake()
@@ -47,9 +46,8 @@ namespace Assets.Scripts.Menu
             active = false;
             ready = false;
             manager = FindObjectOfType<MenuManager>();
-            transform = GetComponent<Transform>();
             menuSelectable = GetComponent<MenuSelectable>();
-            playerController = GetComponent<MenuPlayerController>();
+            PlayerController = GetComponent<MenuPlayerController>();
             InputController = GetComponent<MenuInputController>();
 
             title = transform.Find("TitleText").gameObject;
@@ -76,15 +74,6 @@ namespace Assets.Scripts.Menu
             instructionText.text = text;
         }
 
-        public void Activate()
-        {
-            active = true;
-            panelImage.color = Color.yellow;
-            titleText.text = "Player " + number;
-            instructionText.text = "Press Start\nWhen Ready";
-            playerController.SetTimedVibrate(12, 0f, .8f);
-        }
-
         public void ActivateComputer()
         {
             active = true;
@@ -96,8 +85,12 @@ namespace Assets.Scripts.Menu
         public void Activate(int controllerNumber)
         {
             InputController.Init(controllerNumber);
-            Activate();
-            playerController.SetSelected(playerController.InitialSelection);
+            active = true;
+            panelImage.color = Color.yellow;
+            titleText.text = "Player " + number;
+            instructionText.text = "Press Start\nWhen Ready";
+            PlayerController.SetTimedVibrate(12, 0f, .8f);
+            PlayerController.SetSelected(PlayerController.InitialSelection);
         }
 
         public void Deactivate()
@@ -108,7 +101,7 @@ namespace Assets.Scripts.Menu
             panelImage.color = Color.white;
             titleText.text = "None";
             instructionText.text = "Press A";
-            playerController.Deactivate();
+            PlayerController.Deactivate();
             InputController.Deactivate();
             // TODO: Deactivate InputController
         }
@@ -118,13 +111,13 @@ namespace Assets.Scripts.Menu
             ready = true;
             panelImage.color = Color.green;
             instructionText.text = "Ready!";
-//            playerController.SetTimedVibrate(12, 0f, .8f);
+//            PlayerController.SetTimedVibrate(12, 0f, .8f);
         }
 
         public void UnReady()
         {
             ready = false;
-            Activate();
+            Activate(InputController.ControllerNumber);
         }
 
         public bool IsActive()

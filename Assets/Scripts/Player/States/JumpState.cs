@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.Scripts.Player.States;
+using UnityEngine.Networking;
 
 namespace Assets.Scripts.Player.States
 {
@@ -44,15 +45,32 @@ namespace Assets.Scripts.Player.States
                 }
             }
 
-//            if (playerController.speedX > playerController.maxAirSpeedX)
+//            if (PlayerController.speedX > PlayerController.maxAirSpeedX)
 //            {
-//                playerController.SetVelocityX(playerController.maxAirSpeedX);
+//                PlayerController.SetVelocityX(PlayerController.maxAirSpeedX);
 //            }
-//            else if (playerController.speedX < -playerController.maxAirSpeedX)
+//            else if (PlayerController.speedX < -PlayerController.maxAirSpeedX)
 //            {
-//                playerController.SetVelocityX(-playerController.maxAirSpeedX);
+//                PlayerController.SetVelocityX(-PlayerController.maxAirSpeedX);
 //            }
 
+            // Check if holding down for falling through platforms
+            if (move.y < 0)
+            {
+                playerController.passThroughFloor = true;
+                if (playerAnimator.GetBool("Collisions"))
+                {
+                    playerController.SetTriggers(true);
+                }
+            }
+            if (animator.GetFloat("yVelocity") <= 0)
+            {
+                playerController.CheckForGround();
+            }
+            else
+            {
+                playerController.CheckForCeiling();
+            }
             playerController.CheckForGround();
         }
 
