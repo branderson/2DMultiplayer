@@ -432,6 +432,22 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleTapJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426428, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleVibration
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426428, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
   m_IsPrefabParent: 0
@@ -573,6 +589,22 @@ Prefab:
       propertyPath: InitialSelection
       value: 
       objectReference: {fileID: 943145261}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleTapJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426428, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleVibration
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426428, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
   m_IsPrefabParent: 0
@@ -746,6 +778,22 @@ Prefab:
       propertyPath: InitialSelection
       value: 
       objectReference: {fileID: 999597264}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleTapJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426428, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleVibration
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426428, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
   m_IsPrefabParent: 0
@@ -756,6 +804,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2141642877}
     m_Modifications:
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 22446334, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -848,6 +900,38 @@ Prefab:
       propertyPath: InitialSelection
       value: 
       objectReference: {fileID: 86595069}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleTapJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426428, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_IsOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426428, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleVibration
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426428, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
   m_IsPrefabParent: 0

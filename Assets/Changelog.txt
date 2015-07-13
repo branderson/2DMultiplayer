@@ -10,3 +10,6 @@ Player select works now
 Added title screen
 Adding computer players works!!!
 	Can configure AI with AIInputController
+
+Fixed toggle boxes not setting to the correct values on reload
+Ported all animations over to spriter

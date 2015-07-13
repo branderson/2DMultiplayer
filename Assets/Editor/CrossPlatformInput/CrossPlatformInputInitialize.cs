@@ -44,7 +44,7 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
 
                 default:
                     EditorUtility.DisplayDialog("Mobile Input",
-                                                "You have enabled Mobile Input, but you have a non-mobile build target selected in your build config. The mobile control rigs won't be active or visible on-screen until you switch the build target to a mobile platform.",
+                                                "You have enabled Mobile Input, but you have a non-mobile build target selected in your build settings. The mobile control rigs won't be active or visible on-screen until you switch the build target to a mobile platform.",
                                                 "OK");
                     break;
             }

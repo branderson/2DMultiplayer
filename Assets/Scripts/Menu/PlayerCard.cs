@@ -13,6 +13,8 @@ namespace Assets.Scripts.Menu
         private MenuSelectable menuSelectable;
         private GameObject title;
         private GameObject instruction;
+        private ToggleBox tapJumpBox;
+        private ToggleBox vibrationBox;
         private Image panelImage;
         private Text titleText;
         private Text instructionText;
@@ -28,9 +30,11 @@ namespace Assets.Scripts.Menu
             playerController.playerNumber = config.Slot;
             computer = config.Computer;
             InputController.ControllerNumber = config.ControllerIndex;
-            InputController.TapJump = config.TapJump;
-            InputController.Vibration = config.Vibration;
+//            InputController.TapJump = config.TapJump;
+//            InputController.Vibration = config.Vibration;
             InputController.XIndex = config.XIndex;
+            tapJumpBox.SetToggle(config.TapJump);
+            vibrationBox.SetToggle(config.Vibration);
             this.active = config.Active;
             this.number = config.Slot;
             this.titleText.text = "None";
@@ -50,6 +54,8 @@ namespace Assets.Scripts.Menu
 
             title = transform.Find("TitleText").gameObject;
             instruction = transform.Find("Instruction").gameObject;
+            tapJumpBox = transform.Find("TapJump").gameObject.GetComponent<ToggleBox>();
+            vibrationBox = transform.Find("Vibrate").gameObject.GetComponent<ToggleBox>();
             panelImage = GetComponent<Image>();
             titleText = title.GetComponent<Text>();
             instructionText = instruction.GetComponent<Text>();

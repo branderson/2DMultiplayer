@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Managers;
+using Assets.Scripts.Player;
+using UnityEditor;
 using UnityEngine.UI;
 using XInputDotNetPure;
+using Object = UnityEngine.Object;
 
 namespace Assets.Scripts.Menu
 {
@@ -29,8 +33,11 @@ namespace Assets.Scripts.Menu
                 playerCards[i] = GameObject.Find("Panel" + (i + 1)).GetComponent<PlayerCard>();
                 playerCards[i].Init(gameManager.PlayerConfig[i]);
             }
+
+            // Load player settings from gameManager
             for (int i = 0; i <= 3; i++)
             {
+                // TODO: What about case where player has been added, then removed (no longer active), and later player added in place (should skip slot) (or should it?)
                 if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer)
                 {
                     Activate(gameManager.PlayerConfig[i].ControllerIndex);

@@ -135,37 +135,18 @@ namespace Assets.Scripts.Menu
                 {
                     playerController.PressStart();
                 }
-                //            if (CrossPlatformInputManager.GetButtonDown("Restart" + player[ControllerNumber]))
-                //            {
-                //                playerController.PressRestart();
-                //            }
-                //            if (!jump)
-                //            {
-                //                jump = CrossPlatformInputManager.GetButtonDown("Jump" + player[ControllerNumber]);
-                //            }
-                //
-                //            run = CrossPlatformInputManager.GetButton("Run" + player[ControllerNumber]);
-                //
-                //            if (!primary)
-                //            {
-                //                primary = CrossPlatformInputManager.GetButtonDown("Primary" + player[ControllerNumber]);
-                //            }
-                //
-                //            if (!secondary)
-                //            {
-                //                secondary = CrossPlatformInputManager.GetButtonDown("Secondary" + player[ControllerNumber]);
-                //            }
             }
         }
 
-        public void SetTapJump(bool value)
+        public void ToggleTapJump()
         {
-            TapJump = value;
+            print("Running ToggleTapJump " + !TapJump);
+            TapJump = !TapJump;
         }
 
-        public void SetVibration(bool value)
+        public void ToggleVibration()
         {
-            Vibration = value;
+            Vibration = !Vibration;
         }
 
         public bool ButtonActive(string name)

@@ -1,0 +1,2827 @@
+fileFormatVersion: 2
+guid: d67372ce6c45b2f4587b5b0cde02dcb4
+timeCreated: 1436744520
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: IdleNoWeapons_0
+    21300002: IdleNoWeapons_1
+    21300004: IdleNoWeapons_2
+    21300006: IdleNoWeapons_3
+    21300008: IdleNoWeapons_4
+    21300010: IdleNoWeapons_5
+    21300012: IdleNoWeapons_6
+    21300014: IdleNoWeapons_7
+    21300016: IdleNoWeapons_8
+    21300018: IdleNoWeapons_9
+    21300020: IdleNoWeapons_10
+    21300022: IdleNoWeapons_11
+    21300024: IdleNoWeapons_12
+    21300026: IdleNoWeapons_13
+    21300028: IdleNoWeapons_14
+    21300030: IdleNoWeapons_15
+    21300032: IdleNoWeapons_16
+    21300034: IdleNoWeapons_17
+    21300036: IdleNoWeapons_18
+    21300038: IdleNoWeapons_19
+    21300040: IdleNoWeapons_20
+    21300042: IdleNoWeapons_21
+    21300044: IdleNoWeapons_22
+    21300046: IdleNoWeapons_23
+    21300048: IdleNoWeapons_24
+    21300050: IdleNoWeapons_25
+    21300052: IdleNoWeapons_26
+    21300054: IdleNoWeapons_27
+    21300056: IdleNoWeapons_28
+    21300058: IdleNoWeapons_29
+    21300060: IdleNoWeapons_30
+    21300062: IdleNoWeapons_31
+    21300064: IdleNoWeapons_32
+    21300066: IdleNoWeapons_33
+    21300068: IdleNoWeapons_34
+    21300070: IdleNoWeapons_35
+    21300072: IdleNoWeapons_36
+    21300074: IdleNoWeapons_37
+    21300076: IdleNoWeapons_38
+    21300078: IdleNoWeapons_39
+    21300080: IdleNoWeapons_40
+    21300082: IdleNoWeapons_41
+    21300084: IdleNoWeapons_42
+    21300086: IdleNoWeapons_43
+    21300088: IdleNoWeapons_44
+    21300090: IdleNoWeapons_45
+    21300092: IdleNoWeapons_46
+    21300094: IdleNoWeapons_47
+    21300096: IdleNoWeapons_48
+    21300098: IdleNoWeapons_49
+    21300100: IdleNoWeapons_50
+    21300102: IdleNoWeapons_51
+    21300104: IdleNoWeapons_52
+    21300106: IdleNoWeapons_53
+    21300108: IdleNoWeapons_54
+    21300110: IdleNoWeapons_55
+    21300112: IdleNoWeapons_56
+    21300114: IdleNoWeapons_57
+    21300116: IdleNoWeapons_58
+    21300118: IdleNoWeapons_59
+    21300120: IdleNoWeapons_60
+    21300122: IdleNoWeapons_61
+    21300124: IdleNoWeapons_62
+    21300126: IdleNoWeapons_63
+    21300128: IdleNoWeapons_64
+    21300130: IdleNoWeapons_65
+    21300132: IdleNoWeapons_66
+    21300134: IdleNoWeapons_67
+    21300136: IdleNoWeapons_68
+    21300138: IdleNoWeapons_69
+    21300140: IdleNoWeapons_70
+    21300142: IdleNoWeapons_71
+    21300144: IdleNoWeapons_72
+    21300146: IdleNoWeapons_73
+    21300148: IdleNoWeapons_74
+    21300150: IdleNoWeapons_75
+    21300152: IdleNoWeapons_76
+    21300154: IdleNoWeapons_77
+    21300156: IdleNoWeapons_78
+    21300158: IdleNoWeapons_79
+    21300160: IdleNoWeapons_80
+    21300162: IdleNoWeapons_81
+    21300164: IdleNoWeapons_82
+    21300166: IdleNoWeapons_83
+    21300168: IdleNoWeapons_84
+    21300170: IdleNoWeapons_85
+    21300172: IdleNoWeapons_86
+    21300174: IdleNoWeapons_87
+    21300176: IdleNoWeapons_88
+    21300178: IdleNoWeapons_89
+    21300180: IdleNoWeapons_90
+    21300182: IdleNoWeapons_91
+    21300184: IdleNoWeapons_92
+    21300186: IdleNoWeapons_93
+    21300188: IdleNoWeapons_94
+    21300190: IdleNoWeapons_95
+    21300192: IdleNoWeapons_96
+    21300194: IdleNoWeapons_97
+    21300196: IdleNoWeapons_98
+    21300198: IdleNoWeapons_99
+    21300200: IdleNoWeapons_100
+    21300202: IdleNoWeapons_101
+    21300204: IdleNoWeapons_102
+    21300206: IdleNoWeapons_103
+    21300208: IdleNoWeapons_104
+    21300210: IdleNoWeapons_105
+    21300212: IdleNoWeapons_106
+    21300214: IdleNoWeapons_107
+    21300216: IdleNoWeapons_108
+    21300218: IdleNoWeapons_109
+    21300220: IdleNoWeapons_110
+    21300222: IdleNoWeapons_111
+    21300224: IdleNoWeapons_112
+    21300226: IdleNoWeapons_113
+    21300228: IdleNoWeapons_114
+    21300230: IdleNoWeapons_115
+    21300232: IdleNoWeapons_116
+    21300234: IdleNoWeapons_117
+    21300236: IdleNoWeapons_118
+    21300238: IdleNoWeapons_119
+    21300240: IdleNoWeapons_120
+    21300242: IdleNoWeapons_121
+    21300244: IdleNoWeapons_122
+    21300246: IdleNoWeapons_123
+    21300248: IdleNoWeapons_124
+    21300250: IdleNoWeapons_125
+    21300252: IdleNoWeapons_126
+    21300254: IdleNoWeapons_127
+    21300256: IdleNoWeapons_128
+    21300258: IdleNoWeapons_129
+    21300260: IdleNoWeapons_130
+    21300262: IdleNoWeapons_131
+    21300264: IdleNoWeapons_132
+    21300266: IdleNoWeapons_133
+    21300268: IdleNoWeapons_134
+    21300270: IdleNoWeapons_135
+    21300272: IdleNoWeapons_136
+    21300274: IdleNoWeapons_137
+    21300276: IdleNoWeapons_138
+    21300278: IdleNoWeapons_139
+    21300280: IdleNoWeapons_140
+    21300282: IdleNoWeapons_141
+    21300284: IdleNoWeapons_142
+    21300286: IdleNoWeapons_143
+    21300288: IdleNoWeapons_144
+    21300290: IdleNoWeapons_145
+    21300292: IdleNoWeapons_146
+    21300294: IdleNoWeapons_147
+    21300296: IdleNoWeapons_148
+    21300298: IdleNoWeapons_149
+    21300300: IdleNoWeapons_150
+    21300302: IdleNoWeapons_151
+    21300304: IdleNoWeapons_152
+    21300306: IdleNoWeapons_153
+    21300308: IdleNoWeapons_154
+    21300310: IdleNoWeapons_155
+    21300312: IdleNoWeapons_156
+    21300314: IdleNoWeapons_157
+    21300316: IdleNoWeapons_158
+    21300318: IdleNoWeapons_159
+    21300320: IdleNoWeapons_160
+    21300322: IdleNoWeapons_161
+    21300324: IdleNoWeapons_162
+    21300326: IdleNoWeapons_163
+    21300328: IdleNoWeapons_164
+    21300330: IdleNoWeapons_165
+    21300332: IdleNoWeapons_166
+    21300334: IdleNoWeapons_167
+    21300336: IdleNoWeapons_168
+    21300338: IdleNoWeapons_169
+    21300340: IdleNoWeapons_170
+    21300342: IdleNoWeapons_171
+    21300344: IdleNoWeapons_172
+    21300346: IdleNoWeapons_173
+    21300348: IdleNoWeapons_174
+    21300350: IdleNoWeapons_175
+    21300352: IdleNoWeapons_176
+    21300354: IdleNoWeapons_177
+    21300356: IdleNoWeapons_178
+    21300358: IdleNoWeapons_179
+    21300360: IdleNoWeapons_180
+    21300362: IdleNoWeapons_181
+    21300364: IdleNoWeapons_182
+    21300366: IdleNoWeapons_183
+    21300368: IdleNoWeapons_184
+    21300370: IdleNoWeapons_185
+    21300372: IdleNoWeapons_186
+    21300374: IdleNoWeapons_187
+    21300376: IdleNoWeapons_188
+    21300378: IdleNoWeapons_189
+    21300380: IdleNoWeapons_190
+    21300382: IdleNoWeapons_191
+    21300384: IdleNoWeapons_192
+    21300386: IdleNoWeapons_193
+    21300388: IdleNoWeapons_194
+    21300390: IdleNoWeapons_195
+    21300392: IdleNoWeapons_196
+    21300394: IdleNoWeapons_197
+    21300396: IdleNoWeapons_198
+    21300398: IdleNoWeapons_199
+    21300400: IdleNoWeapons_200
+    21300402: IdleNoWeapons_201
+    21300404: IdleNoWeapons_202
+    21300406: IdleNoWeapons_203
+    21300408: IdleNoWeapons_204
+    21300410: IdleNoWeapons_205
+    21300412: IdleNoWeapons_206
+    21300414: IdleNoWeapons_207
+    21300416: IdleNoWeapons_208
+    21300418: IdleNoWeapons_209
+    21300420: IdleNoWeapons_210
+    21300422: IdleNoWeapons_211
+    21300424: IdleNoWeapons_212
+    21300426: IdleNoWeapons_213
+    21300428: IdleNoWeapons_214
+    21300430: IdleNoWeapons_215
+    21300432: IdleNoWeapons_216
+    21300434: IdleNoWeapons_217
+    21300436: IdleNoWeapons_218
+    21300438: IdleNoWeapons_219
+    21300440: IdleNoWeapons_220
+    21300442: IdleNoWeapons_221
+    21300444: IdleNoWeapons_222
+    21300446: IdleNoWeapons_223
+    21300448: IdleNoWeapons_224
+    21300450: IdleNoWeapons_225
+    21300452: IdleNoWeapons_226
+    21300454: IdleNoWeapons_227
+    21300456: IdleNoWeapons_228
+    21300458: IdleNoWeapons_229
+    21300460: IdleNoWeapons_230
+    21300462: IdleNoWeapons_231
+    21300464: IdleNoWeapons_232
+    21300466: IdleNoWeapons_233
+    21300468: IdleNoWeapons_234
+    21300470: IdleNoWeapons_235
+    21300472: IdleNoWeapons_236
+    21300474: IdleNoWeapons_237
+    21300476: IdleNoWeapons_238
+    21300478: IdleNoWeapons_239
+    21300480: IdleNoWeapons_240
+    21300482: IdleNoWeapons_241
+    21300484: IdleNoWeapons_242
+    21300486: IdleNoWeapons_243
+    21300488: IdleNoWeapons_244
+    21300490: IdleNoWeapons_245
+    21300492: IdleNoWeapons_246
+    21300494: IdleNoWeapons_247
+    21300496: IdleNoWeapons_248
+    21300498: IdleNoWeapons_249
+    21300500: IdleNoWeapons_250
+    21300502: IdleNoWeapons_251
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: IdleNoWeapons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_1
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_3
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_4
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_5
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_6
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_7
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_8
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_9
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_10
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_11
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_12
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_13
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_14
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_15
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_16
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_17
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 3068
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_19
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_20
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_21
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_22
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_23
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_24
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_25
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_26
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_27
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_28
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_29
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_30
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_31
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_32
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_33
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_34
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_35
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 2832
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_37
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_38
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_39
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_40
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_41
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_42
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_43
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_44
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_45
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_46
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_47
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_48
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_49
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_50
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_51
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_52
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_53
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 2596
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_55
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_56
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_57
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_58
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_59
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_60
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_61
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_62
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_63
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_64
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_65
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_66
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_67
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_68
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_69
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_70
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_71
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 2360
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_73
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_74
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_75
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_76
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_77
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_78
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_79
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_80
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_81
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_82
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_83
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_84
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_85
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_86
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_87
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_88
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_89
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 2124
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_91
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_92
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_93
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_94
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_95
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_96
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_97
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_98
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_99
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_100
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_101
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_102
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_103
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_104
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_105
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_106
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_107
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 1888
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_108
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_109
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_110
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_111
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_112
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_113
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_114
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_115
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_116
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_117
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_118
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_119
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_120
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_121
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_122
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_123
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_124
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_125
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 1652
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_126
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_127
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_128
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_129
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_130
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_131
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_132
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_133
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_134
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_135
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_136
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_137
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_138
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_139
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_140
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_141
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_142
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_143
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 1416
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_144
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_145
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_146
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_147
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_148
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_149
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_150
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_151
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_152
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_153
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_154
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_155
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_156
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_157
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_158
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_159
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_160
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_161
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 1180
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_162
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_163
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_164
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_165
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_166
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_167
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_168
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_169
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_170
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_171
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_172
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_173
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_174
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_175
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_176
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_177
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_178
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_179
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 944
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_180
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_181
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_182
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_183
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_184
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_185
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_186
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_187
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_188
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_189
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_190
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_191
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_192
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_193
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_194
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_195
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_196
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_197
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 708
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_198
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_199
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_200
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_201
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_202
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_203
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_204
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_205
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_206
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_207
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_208
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_209
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_210
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_211
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_212
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_213
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_214
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_215
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 472
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_216
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_217
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_218
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_219
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_220
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_221
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_222
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_223
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_224
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_225
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_226
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_227
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_228
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_229
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_230
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_231
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_232
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_233
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 236
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_234
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_235
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_236
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_237
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_238
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_239
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_240
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_241
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_242
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_243
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_244
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_245
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_246
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_247
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_248
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_249
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_250
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: IdleNoWeapons_251
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 0
+        width: 138
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

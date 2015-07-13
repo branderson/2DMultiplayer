@@ -34,6 +34,11 @@ namespace Assets.Scripts.Menu
 
         }
 
+        public void SetToggle(bool value)
+        {
+            toggle.isOn = value;
+        }
+
         public void Select(int playerNumber, PointerEventData pointer)
         {
             ExecuteEvents.Execute(gameObject, pointer, ExecuteEvents.pointerEnterHandler);
