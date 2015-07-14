@@ -37,7 +37,7 @@ namespace Assets.Scripts.Managers
                     GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].PlayerController.playerNumber - 1].transform.position, Quaternion.identity);
                     player.AddComponent<PlayerInputController>();
                     player.GetComponent<PlayerInputController>().Init(menuManager.playerCards[card].InputController);
-                    player.GetComponent<PlayerController>().Init((int)spawnPoints[card].transform.position.z); // TODO: Eventually pass menuPlayerController in
+                    player.GetComponent<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
                     players.Add(player);
                 }
                 // Instantiate AI players
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Managers
                     GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].PlayerController.playerNumber - 1].transform.position, Quaternion.identity);
                     player.AddComponent<AIInputController>();
                     player.GetComponent<AIInputController>().Init(menuManager.playerCards[card].InputController);
-                    player.GetComponent<PlayerController>().Init((int)spawnPoints[card].transform.position.z); // TODO: Eventually pass menuPlayerController in
+                    player.GetComponent<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
                     players.Add(player);
                 }
                 // Save playerCard states to GameManager

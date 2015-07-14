@@ -45,33 +45,24 @@ namespace Assets.Scripts.Player.States
                 }
             }
 
-//            if (PlayerController.speedX > PlayerController.maxAirSpeedX)
-//            {
-//                PlayerController.SetVelocityX(PlayerController.maxAirSpeedX);
-//            }
-//            else if (PlayerController.speedX < -PlayerController.maxAirSpeedX)
-//            {
-//                PlayerController.SetVelocityX(-PlayerController.maxAirSpeedX);
-//            }
-
             // Check if holding down for falling through platforms
-            if (move.y < 0)
+            if (move.y < 0 && playerController.fastFall) // FastFall trick because fall through floor shouldn't cause it forcing another button press
             {
+                // TODO: This is causing problems right off of falling through floor
                 playerController.passThroughFloor = true;
-                if (playerAnimator.GetBool("Collisions"))
+                if (playerAnimator.GetBool("HandleGroundCollisions"))
                 {
-                    playerController.SetTriggers(true);
+                    playerController.SetGroundCollisions(false);
                 }
             }
-            if (animator.GetFloat("yVelocity") <= 0)
-            {
-                playerController.CheckForGround();
-            }
-            else
+            if (playerAnimator.GetFloat("yVelocity") > 0f)
             {
                 playerController.CheckForCeiling();
             }
-            playerController.CheckForGround();
+            else
+            {
+                playerController.CheckForGround();
+            }
         }
 
         public override string GetName()

@@ -103,6 +103,8 @@ namespace Assets.Scripts.Player.States
             playerController.CheckForGround();
             if (playerAnimator.GetBool("CanFallThroughFloor"))
             {
+                // TODO: I need to be handling passing through the floor only while actually passing through the floor
+                playerController.passThroughFloor = true;
                 playerAnimator.SetTrigger("FallThroughFloor");
             }
         }

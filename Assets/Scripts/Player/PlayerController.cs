@@ -7,74 +7,80 @@ namespace Assets.Scripts.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        private const float GroundedRadius = .5f; // Radius of the overlap circle to determine if onGround
-        private const float CeilingRadius = 1f; // Radius of the overlap circle to determine should jump through the ceiling 
+        [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
+        [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
+        [SerializeField] private float jumpHeight = 6f; // Height of single jump from flat ground
         [SerializeField] private float airJumpHeight = 4f; // Height of air jump
         [SerializeField] private float airSideJumpDistance = 4f;
         [SerializeField] private float airSideJumpHeight = 4f;
-        [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
-        [SerializeField] private float jumpHeight = 6f; // Height of single jump from flat ground
-        [SerializeField] private float neutralAirTime = .68f; // Time in air jumping once from flat ground, will be incorrect if terminal velocity set too low
-        private readonly List<PlayerController> opponents = new List<PlayerController>();
         [SerializeField] private float recoveryHeight = 8f;
+        [SerializeField] private float neutralAirTime = .68f; // Time in air jumping once from flat ground, will be incorrect if terminal velocity set too low
+        [SerializeField] private List<Transform> groundCheck; // A position marking where to check if the player is on the ground
+        [SerializeField] private List<Transform> ceilingCheck; // A position marking where to check for ceilings
+        [SerializeField] private LayerMask groundLayer; // A mask determining what is ground to the character
+        [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private float sideJumpDistance = 5f; // Horizontal distance of side jump
         [SerializeField] private float sideJumpHeight = 6f; // Height of side jump
         [SerializeField] private float terminalVelocity = -15f; // Maximum regular falling rate
         [SerializeField] private float terminalVelocityFast = -30f; // Fast fall terminal velocity
+        [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
+        [SerializeField] public float shortHopFactor = .5f; // Fraction of neutral jump height/distance for short hop
         [SerializeField] public float airControlSpeed = .5f; // Fraction of horizontal control while in air
+        private const float GroundedRadius = .5f; // Radius of the overlap circle to determine if onGround
+        private const float CeilingRadius = 1f; // Radius of the overlap circle to determine should jump through the ceiling 
+
         internal float airSideJumpSpeedX;
         internal float airSideJumpSpeedY;
-        internal Animator animator; // Reference to the player's animator component.
         internal bool canAirJump;
-        // TODO: Set up a set of flags that are internal, which determine behaviour, everything else is private
         internal bool canFall;
         internal bool canRecover;
-        [SerializeField] private Transform[] ceilingCheck; // A position marking where to check for ceilings
-        [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
-        private PlayerState currentPlayerState;
         internal bool facingRight; // For determining which way the player is currently facing
         internal bool fastFall;
         private float gravity; // Rate per second of decreasing vertical speed
-        [SerializeField] private Transform[] groundCheck; // A position marking where to check if the player is on the ground
-        [SerializeField] private LayerMask groundLayer; // A mask determining what is ground to the character
-        private IInputController input;
+        internal float rightIntensity;
         internal float leftIntensity;
         internal float maxAirSpeedX;
-        [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
         private bool onGround;
-        internal bool passThroughFloor;
+        internal bool passThroughFloor; // TODO: Try to get rid of this
         internal float recoverySpeed;
-        internal float rightIntensity;
-        private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
-        internal bool run;
-        [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
-        [SerializeField] public float shortHopFactor = .5f; // Fraction of neutral jump height/distance for short hop
-        internal float sideJumpSpeedX;
-        internal float sideJumpSpeedY;
         internal float speedX;
         internal float speedY;
-        internal bool timedVibrate;
-        internal int vibrate;
+        internal float sideJumpSpeedX;
+        internal float sideJumpSpeedY;
         internal float jumpSpeed { get; set; }
         internal float airJumpSpeed { get; set; }
-        private bool collisions = true;
+        internal int layer;
 
-        public void Init(int zPosition)
+        private PlayerState currentPlayerState;
+        private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
+        internal Animator animator; // Reference to the player's animator component.
+        private IInputController input;
+        private readonly List<PlayerController> opponents = new List<PlayerController>();
+        
+        // TODO: Switch this to coroutines
+        internal bool timedVibrate;
+        internal int vibrate;
+        internal bool run;
+        private bool GroundCollisions = true;
+
+        public void Init(int zPosition, int slot)
         {
             input = GetComponent<IInputController>();
             canFall = true;
             facingRight = true;
             canAirJump = true;
             canRecover = true;
-            collisions = true;
+            GroundCollisions = true;
             timedVibrate = false;
             vibrate = 0;
             leftIntensity = 0f;
             rightIntensity = 0f;
             // Set Layer Order should be fixed
             SetLayerOrder(zPosition);
+            layer = gameObject.layer = 9 + slot; // Set the collision layer of the player. This is important for handling collisions manually
         }
 
+        // TODO: Non AI players may not need this info
         public void FindPlayers(List<GameObject> players)
         {
             foreach (GameObject player in players)
@@ -90,14 +96,7 @@ namespace Assets.Scripts.Player
         // Use this for initialization
         private void Awake()
         {
-            groundCheck = new Transform[3];
-            ceilingCheck = new Transform[3];
             // Setting up references.
-            for (int i = 0; i < 3; i++)
-            {
-                groundCheck[i] = transform.Find("GroundCheck" + (i + 1));
-                ceilingCheck[i] = transform.Find("CeilingCheck" + (i + 1));
-            }
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
             CalculatePhysics();
@@ -114,16 +113,18 @@ namespace Assets.Scripts.Player
         private void FixedUpdate()
         {
             //            CheckForGround();
-            if (canFall && !onGround)
+            if (canFall) // && !onGround) // TODO: This line could interfere with falling through floor
+            {
                 if (fastFall)
                     FallFast();
                 else
                     FallRegular();
+            }
             //            else if (onGround)
             //            {
             //                SetVelocityY(0f);
             //            }
-            passThroughFloor = false;
+//            passThroughFloor = false;
             animator.SetFloat("xVelocity", speedX);
             animator.SetFloat("yVelocity", speedY);
             animator.SetFloat("xSpeed", Mathf.Abs(speedX));
@@ -131,7 +132,7 @@ namespace Assets.Scripts.Player
             animator.SetBool("Run", run);
             animator.SetBool("CanAirJump", canAirJump);
             animator.SetBool("CanRecover", canRecover);
-            animator.SetBool("Collisions", collisions);
+            animator.SetBool("HandleGroundCollisions", GroundCollisions);
             // Use coroutine for vibration throughout
             if (timedVibrate)
             {
@@ -140,6 +141,10 @@ namespace Assets.Scripts.Player
 
             // Push other players
             PushOthers();
+        }
+
+        private void OnTriggerExit2D(Collision2D other)
+        {
         }
 
         private void CalculatePhysics()
@@ -183,39 +188,40 @@ namespace Assets.Scripts.Player
 
         public bool CheckForCeiling()
         {
-            bool encounteredImpermeable = false;
-            bool approachingCeiling = false;
-
-            List<Collider2D> colliders = new List<Collider2D>();
-            foreach (Transform checkPosition in ceilingCheck)
-            {
-                foreach (Collider2D overlapCollider in Physics2D.OverlapCircleAll(checkPosition.position, CeilingRadius, groundLayer))
-                {
-                    colliders.Add(overlapCollider);
-                }
-            }
-            for (int i = 0; i < colliders.Count; i++)
-            {
-                if (colliders[i].gameObject != gameObject && colliders[i].gameObject.tag != "Impermeable")
-                {
-                    foreach (Collider2D playerCollider in GetComponents<Collider2D>())
-                    {
-                        if (!encounteredImpermeable)
-                        {
-                            SetTriggers(true);
-                            approachingCeiling = true;
-                        }
-                    }
-                }
-                else if (colliders[i].gameObject.tag == "Impermeable")
-                {
-                    encounteredImpermeable = true;
-                    SetTriggers(false);
-                    approachingCeiling = false;
-                }
-            }
-
-            return approachingCeiling;
+//            bool encounteredImpermeable = false;
+//            bool approachingCeiling = false;
+//
+//            List<Collider2D> colliders = new List<Collider2D>();
+//            foreach (Transform checkPosition in ceilingCheck)
+//            {
+//                foreach (Collider2D overlapCollider in Physics2D.OverlapCircleAll(checkPosition.position, CeilingRadius, groundLayer))
+//                {
+//                    colliders.Add(overlapCollider);
+//                }
+//            }
+//            for (int i = 0; i < colliders.Count; i++)
+//            {
+//                if (colliders[i].gameObject != gameObject && colliders[i].gameObject.tag != "Impermeable")
+//                {
+//                    foreach (Collider2D playerCollider in GetComponents<Collider2D>())
+//                    {
+//                        if (!encounteredImpermeable)
+//                        {
+////                            SetGroundCollisions(false);
+//                            approachingCeiling = true;
+//                        }
+//                    }
+//                }
+//                else if (colliders[i].gameObject.tag == "Impermeable")
+//                {
+//                    encounteredImpermeable = true;
+////                    SetGroundCollisions(true);
+//                    approachingCeiling = false;
+//                }
+//            }
+//
+//            return approachingCeiling;
+            return true;
         }
 
         public bool CheckForGround()
@@ -234,17 +240,17 @@ namespace Assets.Scripts.Player
             animator.SetBool("CanFallThroughFloor", true);
             for (int i = 0; i < colliders.Count; i++)
             {
-                if (colliders[i].gameObject.tag == "Impermeable")
-                {
-                    animator.SetBool("CanFallThroughFloor", false);
-                    passThroughFloor = false;
-                }
+//                if (colliders[i].gameObject.tag == "Impermeable")
+//                {
+//                    animator.SetBool("CanFallThroughFloor", false);
+//                    passThroughFloor = false;
+//                }
                 if (colliders[i].gameObject != gameObject && !passThroughFloor)
                 {
-                    if (rigidBody.velocity.y < 0)
-                    {
-                        SetTriggers(false);
-                    }
+//                    if (rigidBody.velocity.y < 0)
+//                    {
+//                        SetGroundCollisions(true);
+//                    }
                     //                    if (!onGround)
                     //                    {
                     //                        if (rigidBody.velocity.y > 15)
@@ -274,13 +280,15 @@ namespace Assets.Scripts.Player
             //            return grounded;
         }
 
-        public void SetTriggers(bool value)
+        public void SetGroundCollisions(bool value)
         {
-            foreach (Collider2D playerCollider in GetComponents<Collider2D>())
-            {
-                playerCollider.isTrigger = value;
-            }
-            collisions = !value;
+//            foreach (Collider2D playerCollider in GetComponents<Collider2D>())
+//            {
+//                playerCollider.isTrigger = value;
+//            }
+//            collisions = !value;
+            Physics2D.IgnoreLayerCollision(layer, 8, !value); // TODO: not converting groundLayer properly   // groundLayer, value);
+            GroundCollisions = value;
         }
 
         private void PushOthers()

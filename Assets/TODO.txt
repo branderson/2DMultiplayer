@@ -10,5 +10,7 @@ Input Controllers (Do this one soonish)
 
 Player Controller	
 	Be able to jump through the floor and fall through it
-
+		OnTriggerEnter2D with box below platform, if player velocity upward, disable collisions, otherwise enable them
+		For downward check if colliding on button press, disable collisions, on collision enter for lower platform top box, reenable collisions
+	
 Animations, animations, animations!
