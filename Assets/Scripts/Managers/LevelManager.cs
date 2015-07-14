@@ -35,9 +35,9 @@ namespace Assets.Scripts.Managers
                 {
                     print("Instantiating player " + menuManager.playerCards[card].PlayerController.playerNumber);
                     GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].PlayerController.playerNumber - 1].transform.position, Quaternion.identity);
-                    player.AddComponent<PlayerInputController>();
-                    player.GetComponent<PlayerInputController>().Init(menuManager.playerCards[card].InputController);
-                    player.GetComponent<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
+                    player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerInputController>();
+                    player.GetComponentInChildren<PlayerInputController>().Init(menuManager.playerCards[card].InputController);
+                    player.GetComponentInChildren<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
                     players.Add(player);
                 }
                 // Instantiate AI players
@@ -46,9 +46,9 @@ namespace Assets.Scripts.Managers
                     // TODO: Computer player instantiation here
                     print("Instantiating computer " + menuManager.playerCards[card].PlayerController.playerNumber);
                     GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].PlayerController.playerNumber - 1].transform.position, Quaternion.identity);
-                    player.AddComponent<AIInputController>();
-                    player.GetComponent<AIInputController>().Init(menuManager.playerCards[card].InputController);
-                    player.GetComponent<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
+                    player.transform.FindChild("Rigidbody").gameObject.AddComponent<AIInputController>();
+                    player.GetComponentInChildren<AIInputController>().Init(menuManager.playerCards[card].InputController);
+                    player.GetComponentInChildren<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
                     players.Add(player);
                 }
                 // Save playerCard states to GameManager
@@ -64,7 +64,7 @@ namespace Assets.Scripts.Managers
             }
             foreach (GameObject player in players)
             {
-                player.GetComponent<PlayerController>().FindPlayers(players);
+                player.GetComponentInChildren<PlayerController>().FindPlayers(players);
             }
             
             // Get rid of menu manager so it's not still waiting for inputs

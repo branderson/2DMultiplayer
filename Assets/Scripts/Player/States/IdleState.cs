@@ -13,8 +13,13 @@ namespace Assets.Scripts.Player.States
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
-            playerController.canAirJump = true;
-            playerController.canRecover = true;
+            // TODO: Sometimes jumping through platforms resets canAirJump
+            // To avoid resetting jumps while jumping up through platforms
+            if (animator.GetComponent<Rigidbody2D>().velocity.y <= 0)
+            {
+                playerController.canAirJump = true;
+                playerController.canRecover = true;
+            }
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -23,6 +28,7 @@ namespace Assets.Scripts.Player.States
 
             // Movement
             // TODO: Set speed absolutely rather than relative to move
+            // TODO: Set up a system for managing internal and external velocities separately
             if (playerController.run)
             {
                 if (move.x > 0)
@@ -74,6 +80,14 @@ namespace Assets.Scripts.Player.States
             return "Idle";
         }
 
+        public override void Jump()
+        {
+            if (playerController.speedY <= 0)
+            {
+                playerAnimator.SetTrigger("Jump");
+            }
+        }
+
         public override void Move(float x, float y)
         {
             base.Move(x, y);
@@ -85,7 +99,10 @@ namespace Assets.Scripts.Player.States
             base.Up();
             if (PlayerInputController.TapJump)
             {
-                playerAnimator.SetTrigger("Jump");
+                if (playerController.speedY <= 0)
+                {
+                    playerAnimator.SetTrigger("Jump");
+                }
             }
         }
 
@@ -100,13 +117,14 @@ namespace Assets.Scripts.Player.States
         public override void Down()
         {
             base.Down();
-            playerController.CheckForGround();
-            if (playerAnimator.GetBool("CanFallThroughFloor"))
-            {
-                // TODO: I need to be handling passing through the floor only while actually passing through the floor
-                playerController.passThroughFloor = true;
-                playerAnimator.SetTrigger("FallThroughFloor");
-            }
+            playerController.passThroughFloor = true;
+            //            playerController.CheckForGround();
+            //            if (playerAnimator.GetBool("CanFallThroughFloor"))
+            //            {
+            //                // TODO: I need to be handling passing through the floor only while actually passing through the floor
+            //                playerController.passThroughFloor = true;
+            //                playerAnimator.SetTrigger("FallThroughFloor");
+            //            }
         }
     }
 }

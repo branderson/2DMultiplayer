@@ -13,3 +13,7 @@ Adding computer players works!!!
 
 Fixed toggle boxes not setting to the correct values on reload
 Ported all animations over to spriter
+
+Implemented jumping through and falling through platforms
+Moved players into child objects so that players could interact with each other while collision layer is disabled
+Set up player pushing interaction although SetVelocity in IdleState overrides this

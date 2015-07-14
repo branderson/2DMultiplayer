@@ -6,25 +6,37 @@ namespace Assets.Scripts.Stage
 {
     public class PlatformBottomTrigger : MonoBehaviour
     {
+        private Collider2D platformCollider;
+
+        private void Awake()
+        {
+            platformCollider = transform.parent.Find("Rigidbody").GetComponent<Collider2D>();
+        }
+
         public void OnTriggerEnter2D(Collider2D other)
         {
             if (other.tag == "Player")
             {
-                print("Player entered");
                 PlayerController controller = other.GetComponent<PlayerController>();
                 Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
                 // If enterring from the bottom, pass through, otherwise turn on collisions
-                if (rigidbody.velocity.y > 0 && transform.parent.tag != "Impermeable")
+                if (rigidbody.velocity.y > 0 && !transform.parent.CompareTag("Impermeable"))
                 {
-                    controller.SetGroundCollisions(false);
-                    print("Should be passing up through");
+                    controller.IgnoreCollision(platformCollider);
                 }
-                else
+                else if (transform.parent.CompareTag("Impermeable"))
                 {
-                    print("Not allowing player through " + rigidbody.velocity.y + " " + transform.parent.tag);
-                    controller.SetGroundCollisions(true);
+                    controller.IgnoreCollision(platformCollider, false);
                     controller.passThroughFloor = false;
                 }
+            }
+        }
+
+        public void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                
             }
         }
     }

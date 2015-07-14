@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Player.States;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ namespace Assets.Scripts.Player
         private const float GroundedRadius = .5f; // Radius of the overlap circle to determine if onGround
         private const float CeilingRadius = 1f; // Radius of the overlap circle to determine should jump through the ceiling 
 
+//        private Vector2 setterVelocity;
         internal float airSideJumpSpeedX;
         internal float airSideJumpSpeedY;
         internal bool canAirJump;
@@ -49,7 +51,7 @@ namespace Assets.Scripts.Player
         internal float sideJumpSpeedY;
         internal float jumpSpeed { get; set; }
         internal float airJumpSpeed { get; set; }
-        internal int layer;
+//        internal int layer;
 
         private PlayerState currentPlayerState;
         private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
@@ -62,6 +64,8 @@ namespace Assets.Scripts.Player
         internal int vibrate;
         internal bool run;
         private bool GroundCollisions = true;
+
+        internal bool CanFallThroughFloor = false;
 
         public void Init(int zPosition, int slot)
         {
@@ -77,7 +81,7 @@ namespace Assets.Scripts.Player
             rightIntensity = 0f;
             // Set Layer Order should be fixed
             SetLayerOrder(zPosition);
-            layer = gameObject.layer = 9 + slot; // Set the collision layer of the player. This is important for handling collisions manually
+//            layer = gameObject.layer = 9 + slot; // Set the collision layer of the player. This is important for handling collisions manually
         }
 
         // TODO: Non AI players may not need this info
@@ -120,6 +124,7 @@ namespace Assets.Scripts.Player
                 else
                     FallRegular();
             }
+//            CheckCollisions();
             //            else if (onGround)
             //            {
             //                SetVelocityY(0f);
@@ -132,7 +137,6 @@ namespace Assets.Scripts.Player
             animator.SetBool("Run", run);
             animator.SetBool("CanAirJump", canAirJump);
             animator.SetBool("CanRecover", canRecover);
-            animator.SetBool("HandleGroundCollisions", GroundCollisions);
             // Use coroutine for vibration throughout
             if (timedVibrate)
             {
@@ -141,11 +145,14 @@ namespace Assets.Scripts.Player
 
             // Push other players
             PushOthers();
+
+            transform.parent.position = transform.position;
+            transform.localPosition = Vector3.zero;
         }
 
-        private void OnTriggerExit2D(Collision2D other)
-        {
-        }
+//        private void OnTriggerExit2D(Collision2D other)
+//        {
+//        }
 
         private void CalculatePhysics()
         {
@@ -186,44 +193,6 @@ namespace Assets.Scripts.Player
             }
         }
 
-        public bool CheckForCeiling()
-        {
-//            bool encounteredImpermeable = false;
-//            bool approachingCeiling = false;
-//
-//            List<Collider2D> colliders = new List<Collider2D>();
-//            foreach (Transform checkPosition in ceilingCheck)
-//            {
-//                foreach (Collider2D overlapCollider in Physics2D.OverlapCircleAll(checkPosition.position, CeilingRadius, groundLayer))
-//                {
-//                    colliders.Add(overlapCollider);
-//                }
-//            }
-//            for (int i = 0; i < colliders.Count; i++)
-//            {
-//                if (colliders[i].gameObject != gameObject && colliders[i].gameObject.tag != "Impermeable")
-//                {
-//                    foreach (Collider2D playerCollider in GetComponents<Collider2D>())
-//                    {
-//                        if (!encounteredImpermeable)
-//                        {
-////                            SetGroundCollisions(false);
-//                            approachingCeiling = true;
-//                        }
-//                    }
-//                }
-//                else if (colliders[i].gameObject.tag == "Impermeable")
-//                {
-//                    encounteredImpermeable = true;
-////                    SetGroundCollisions(true);
-//                    approachingCeiling = false;
-//                }
-//            }
-//
-//            return approachingCeiling;
-            return true;
-        }
-
         public bool CheckForGround()
         {
             bool grounded = false;
@@ -237,20 +206,11 @@ namespace Assets.Scripts.Player
                     colliders.Add(overlapCollider);
                 }
             }
-            animator.SetBool("CanFallThroughFloor", true);
+//            animator.SetBool("CanFallThroughFloor", true);
             for (int i = 0; i < colliders.Count; i++)
             {
-//                if (colliders[i].gameObject.tag == "Impermeable")
-//                {
-//                    animator.SetBool("CanFallThroughFloor", false);
-//                    passThroughFloor = false;
-//                }
-                if (colliders[i].gameObject != gameObject && !passThroughFloor)
+                if (colliders[i].gameObject != gameObject && (!passThroughFloor || colliders[i].transform.parent.CompareTag("Impermeable")))
                 {
-//                    if (rigidBody.velocity.y < 0)
-//                    {
-//                        SetGroundCollisions(true);
-//                    }
                     //                    if (!onGround)
                     //                    {
                     //                        if (rigidBody.velocity.y > 15)
@@ -280,28 +240,46 @@ namespace Assets.Scripts.Player
             //            return grounded;
         }
 
-        public void SetGroundCollisions(bool value)
+//        public void SetGroundCollisions(bool value)
+//        {
+////            foreach (Collider2D playerCollider in GetComponents<Collider2D>())
+////            {
+////                playerCollider.isTrigger = value;
+////            }
+////            collisions = !value;
+////            Physics2D.IgnoreLayerCollision(layer, 8, !value); // TODO: not converting groundLayer properly   // groundLayer, value);
+//            GroundCollisions = value;
+//        }
+
+        public void IgnoreCollision(Collider2D other)
         {
-//            foreach (Collider2D playerCollider in GetComponents<Collider2D>())
-//            {
-//                playerCollider.isTrigger = value;
-//            }
-//            collisions = !value;
-            Physics2D.IgnoreLayerCollision(layer, 8, !value); // TODO: not converting groundLayer properly   // groundLayer, value);
-            GroundCollisions = value;
+            Collider2D[] colliders = GetComponents<Collider2D>();
+            foreach (Collider2D collider in colliders)
+            {
+                Physics2D.IgnoreCollision(collider, other);
+            }
+        }
+
+        public void IgnoreCollision(Collider2D other, bool ignore)
+        {
+            Collider2D[] colliders = GetComponents<Collider2D>();
+            foreach (Collider2D collider in colliders)
+            {
+                Physics2D.IgnoreCollision(collider, other, ignore);
+            }
         }
 
         private void PushOthers()
         {
-            //            foreach (PlayerController opponent in opponents)
-            //            {
-            //                print("Checking opponents");
-            //                if (GetComponents<CircleCollider2D>().Any(collider => opponent.rigidBody.IsTouching(collider)))
-            //                {
-            //                    opponent.IncrementVelocityX(rigidBody.velocity.x*.05f);
-            //                    print("Moving");
-            //                }
-            //            }
+//            foreach (PlayerController opponent in opponents)
+//            {
+//                print("Checking opponents");
+//                if (transform.parent.GetComponentsInChildren<Collider2D>().Any(collider => opponent.rigidBody.IsTouching(collider)))
+//                {
+//                    opponent.IncrementVelocityX(rigidBody.velocity.x*.05f);
+//                    print("Moving");
+//                }
+//            }
         }
 
         private void Vibrate()
@@ -350,7 +328,10 @@ namespace Assets.Scripts.Player
 
         public void IncrementVelocityX(float x)
         {
+//            setterVelocity.x = rigidBody.velocity.x + x;
+//            setterVelocity.y = rigidBody.velocity.y;
             rigidBody.velocity = new Vector2(rigidBody.velocity.x + x, rigidBody.velocity.y);
+//            rigidBody.velocity = setterVelocity;
         }
 
         public void IncrementVelocityY(float y)

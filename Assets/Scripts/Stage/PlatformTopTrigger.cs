@@ -6,6 +6,13 @@ namespace Assets.Scripts.Stage
 {
     public class PlatformTopTrigger : MonoBehaviour
     {
+        private Collider2D platformCollider;
+
+        private void Awake()
+        {
+            platformCollider = transform.parent.Find("Rigidbody").GetComponent<Collider2D>();
+        }
+
         public void OnTriggerEnter2D(Collider2D other)
         {
             if (other.tag == "Player")
@@ -16,12 +23,17 @@ namespace Assets.Scripts.Stage
                 {
                     if (controller.passThroughFloor && transform.parent.tag != "Impermeable")
                     {
-                        controller.SetGroundCollisions(false);
+                        controller.IgnoreCollision(platformCollider);
+                    }
+                    else if (transform.parent.tag == "Impermeable")
+                    {
+                        controller.passThroughFloor = false;
+                        controller.CheckForGround();
+                        // TODO: Put into idle state
                     }
                     else
                     {
-                        controller.SetGroundCollisions(true);
-                        print("Top collider is trying to stop him");
+                        controller.IgnoreCollision(platformCollider, false);
                     }
                 }
                 else
@@ -39,11 +51,11 @@ namespace Assets.Scripts.Stage
 
                 if (controller.passThroughFloor && transform.parent.tag != "Impermeable")
                 {
-                    controller.SetGroundCollisions(false);
+                    controller.IgnoreCollision(platformCollider);
+                    controller.animator.SetTrigger("FallThroughFloor");
                 }
                 else
                 {
-                    controller.SetGroundCollisions(true);
                 }
             }
         }

@@ -50,19 +50,12 @@ namespace Assets.Scripts.Player.States
             {
                 // TODO: This is causing problems right off of falling through floor
                 playerController.passThroughFloor = true;
-                if (playerAnimator.GetBool("HandleGroundCollisions"))
-                {
-                    playerController.SetGroundCollisions(false);
-                }
-            }
-            if (playerAnimator.GetFloat("yVelocity") > 0f)
-            {
-                playerController.CheckForCeiling();
             }
             else
             {
-                playerController.CheckForGround();
+                playerController.passThroughFloor = false;
             }
+            playerController.CheckForGround();
         }
 
         public override string GetName()

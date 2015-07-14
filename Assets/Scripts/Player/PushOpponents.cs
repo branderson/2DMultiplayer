@@ -1,24 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Assets.Scripts.Player;
 
 namespace Assets.Scripts.Player
 {
-    public class PushOpponents : MonoBehaviour {
+    public class PushOpponents : MonoBehaviour
+    {
+        private PlayerController playerController;
+        private Rigidbody2D rigidBody;
+        private List<PlayerController> touchingPlayers; 
 
         private void Awake()
         {
+            playerController = transform.parent.GetComponentInChildren<PlayerController>();
+            rigidBody = transform.parent.GetComponentInChildren<Rigidbody2D>();
+            touchingPlayers = new List<PlayerController>();
+        }
 
+        private void FixedUpdate()
+        {
+            foreach (PlayerController player in touchingPlayers)
+            {
+                // TODO: Doesn't work because input controller canceling out
+                player.IncrementVelocityX(rigidBody.velocity.x * .5f);
+                print("Moving " + (rigidBody.velocity.x * .5f));
+            }
         }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            print("OnTriggerEnter");
-            print(other.gameObject.tag);
-            if (other.gameObject.tag == "PlayerTrigger")
+            if (other.gameObject.tag == "Player")
             {
-                other.GetComponentInParent<PlayerController>().IncrementVelocityX(transform.parent.GetComponent<Rigidbody2D>().velocity.x * .05f);
-                print("Moving");
+                PlayerController otherController = other.GetComponent<PlayerController>();
+                if (!touchingPlayers.Contains(otherController) && otherController != playerController)
+                {
+                    touchingPlayers.Add(otherController);
+                    print("Adding");
+                }
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                PlayerController otherController = other.GetComponent<PlayerController>();
+                touchingPlayers.Remove(otherController);
             }
         }
     }
