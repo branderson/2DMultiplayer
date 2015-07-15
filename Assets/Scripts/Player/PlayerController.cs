@@ -27,10 +27,14 @@ namespace Assets.Scripts.Player
         [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
         [SerializeField] public float shortHopFactor = .5f; // Fraction of neutral jump height/distance for short hop
         [SerializeField] public float airControlSpeed = .5f; // Fraction of horizontal control while in air
+        [SerializeField] public float internalDampingRate = 1f;
+        [SerializeField] public float externalDampingRate = 1f;
         private const float GroundedRadius = .5f; // Radius of the overlap circle to determine if onGround
         private const float CeilingRadius = 1f; // Radius of the overlap circle to determine should jump through the ceiling 
 
 //        private Vector2 setterVelocity;
+        internal Vector2 internalVelocity;
+        internal Vector2 externalVelocity;
         internal float airSideJumpSpeedX;
         internal float airSideJumpSpeedY;
         internal bool canAirJump;
@@ -45,8 +49,8 @@ namespace Assets.Scripts.Player
         private bool onGround;
         internal bool passThroughFloor; // TODO: Try to get rid of this
         internal float recoverySpeed;
-        internal float speedX;
-        internal float speedY;
+        internal float velocityX;
+        internal float velocityY;
         internal float sideJumpSpeedX;
         internal float sideJumpSpeedY;
         internal float jumpSpeed { get; set; }
@@ -101,42 +105,44 @@ namespace Assets.Scripts.Player
         private void Awake()
         {
             // Setting up references.
-            animator = GetComponent<Animator>();
+            animator = GetComponentInParent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
+            internalVelocity = new Vector2();
+            externalVelocity = new Vector2();
+            internalVelocity = Vector2.zero;
+            externalVelocity = Vector2.zero;
             CalculatePhysics();
         }
 
         // Update is called once per frame
         private void Update()
         {
-            speedX = rigidBody.velocity.x;
-            speedY = rigidBody.velocity.y;
+            velocityX = rigidBody.velocity.x;
+            velocityY = rigidBody.velocity.y;
             //            print(currentPlayerState.GetName());
         }
 
         private void FixedUpdate()
         {
-            //            CheckForGround();
-            if (canFall) // && !onGround) // TODO: This line could interfere with falling through floor
+            if (canFall)
             {
                 if (fastFall)
                     FallFast();
                 else
                     FallRegular();
             }
-//            CheckCollisions();
-            //            else if (onGround)
-            //            {
-            //                SetVelocityY(0f);
-            //            }
-//            passThroughFloor = false;
-            animator.SetFloat("xVelocity", speedX);
-            animator.SetFloat("yVelocity", speedY);
-            animator.SetFloat("xSpeed", Mathf.Abs(speedX));
-            animator.SetFloat("ySpeed", Mathf.Abs(speedY));
+            animator.SetFloat("xVelocity", velocityX);
+            animator.SetFloat("yVelocity", velocityY);
+            animator.SetFloat("xVelocityInternal", internalVelocity.x);
+            animator.SetFloat("yVelocityInternal", internalVelocity.y);
+            animator.SetFloat("xSpeed", Mathf.Abs(velocityX));
+            animator.SetFloat("ySpeed", Mathf.Abs(velocityY));
+            animator.SetFloat("xSpeedInternal", Mathf.Abs(internalVelocity.x));
+            animator.SetFloat("ySpeedInternal", Mathf.Abs(internalVelocity.y));
             animator.SetBool("Run", run);
             animator.SetBool("CanAirJump", canAirJump);
             animator.SetBool("CanRecover", canRecover);
+
             // Use coroutine for vibration throughout
             if (timedVibrate)
             {
@@ -145,6 +151,27 @@ namespace Assets.Scripts.Player
 
             // Push other players
             PushOthers();
+
+            // TODO: Need to figure out a way to account for the state of the world in internal velocity
+//            if (Mathf.Abs(rigidBody.velocity.x) - Mathf.Abs(externalVelocity.x) < Mathf.Abs(internalVelocity.x))
+//            {
+//                if (internalVelocity.x > 0)
+//                {
+//                    internalVelocity.x = Mathf.Abs(rigidBody.velocity.x) - Mathf.Abs(externalVelocity.x);
+//                }
+//                else if (internalVelocity.x < 0)
+//                {
+//                    internalVelocity.x = -Mathf.Abs(rigidBody.velocity.x) + Mathf.Abs(externalVelocity.x);
+//                }
+//            }
+
+            // Update velocity
+//            rigidBody.velocity = rigidBody.velocity + internalVelocity + externalVelocity;
+
+            // Velocity damping
+            DampExternal();
+//            internalVelocity = Vector2.zero;
+//            externalVelocity = Vector2.zero;
 
             transform.parent.position = transform.position;
             transform.localPosition = Vector3.zero;
@@ -170,26 +197,124 @@ namespace Assets.Scripts.Player
         private void FallRegular()
         {
             // Handles acceleration due to gravity
-            if (rigidBody.velocity.y > terminalVelocity)
+            if (internalVelocity.y > terminalVelocity)
             {
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y + gravity*Time.fixedDeltaTime);
+                print("Fall " + internalVelocity.y);
+                IncrementInternalVelocityY(gravity*Time.fixedDeltaTime);
             }
             // Caps terminal velocity
-            if (rigidBody.velocity.y < terminalVelocity)
+            if (internalVelocity.y < terminalVelocity)
             {
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x, terminalVelocity);
+                print("Fall " + internalVelocity.y);
+                SetInternalVelocityY(terminalVelocity);
             }
         }
 
         private void FallFast()
         {
-            if (rigidBody.velocity.y > terminalVelocityFast)
+            if (internalVelocity.y > terminalVelocityFast)
             {
-                SetVelocityY(rigidBody.velocity.y + gravity*fastFallFactor*Time.fixedDeltaTime);
+                IncrementInternalVelocityY(gravity*fastFallFactor*Time.fixedDeltaTime);
             }
-            if (rigidBody.velocity.y < terminalVelocityFast)
+            if (internalVelocity.y < terminalVelocityFast)
             {
-                SetVelocityY(terminalVelocityFast);
+                SetInternalVelocityY(terminalVelocityFast);
+            }
+        }
+
+        public void DampInternal()
+        {
+            if (internalVelocity.x > 0)
+            {
+                if (internalVelocity.x > internalDampingRate)
+                {
+                    internalVelocity.x -= internalDampingRate;
+                }
+                else
+                {
+                    internalVelocity.x = 0;
+                }
+            }
+            else if (internalVelocity.x < 0)
+            {
+                if (internalVelocity.x < -internalDampingRate)
+                {
+                    internalVelocity.x += internalDampingRate;
+                }
+                else
+                {
+                    internalVelocity.x = 0;
+                }
+            }
+//            if (internalVelocity.y > 0)
+//            {
+//                if (internalVelocity.y > internalDampingRate)
+//                {
+//                    internalVelocity.y -= internalDampingRate;
+//                }
+//                else
+//                {
+//                    internalVelocity.y = 0;
+//                }
+//            }
+//            else if (internalVelocity.y < 0)
+//            {
+//                if (internalVelocity.y < -internalDampingRate)
+//                {
+//                    internalVelocity.y += internalDampingRate;
+//                }
+//                else
+//                {
+//                    internalVelocity.y = 0;
+//                }
+//            }
+        }
+
+        public void DampExternal()
+        {
+            if (externalVelocity.x > 0)
+            {
+                if (externalVelocity.x > externalDampingRate)
+                {
+                    IncrementExternalVelocityX(-externalDampingRate);
+                }
+                else
+                {
+                    SetExternalVelocityX(0);
+                }
+            }
+            else if (externalVelocity.x < 0)
+            {
+                if (externalVelocity.x < -externalDampingRate)
+                {
+                    IncrementExternalVelocityX(externalDampingRate);
+                }
+                else
+                {
+                    SetExternalVelocityX(0);
+                }
+            }
+            if (externalVelocity.y > 0)
+            {
+                if (externalVelocity.y > externalDampingRate)
+                {
+                    IncrementExternalVelocityY(-externalDampingRate);
+                }
+                else
+                {
+                    SetExternalVelocityY(0);
+                }
+            }
+            else if (externalVelocity.y < 0)
+            {
+                if (externalVelocity.y < -externalDampingRate)
+                {
+                    IncrementExternalVelocityY(externalDampingRate);
+                }
+                else
+                {
+                    SetExternalVelocityY(0);
+                }
             }
         }
 
@@ -213,7 +338,7 @@ namespace Assets.Scripts.Player
                 {
                     //                    if (!onGround)
                     //                    {
-                    //                        if (rigidBody.velocity.y > 15)
+                    //                        if (internalVelocity.y > 15)
                     //                        {
                     //                            SetTimedVibrate(12, .8f, .0f);
                     //                        }
@@ -276,7 +401,7 @@ namespace Assets.Scripts.Player
 //                print("Checking opponents");
 //                if (transform.parent.GetComponentsInChildren<Collider2D>().Any(collider => opponent.rigidBody.IsTouching(collider)))
 //                {
-//                    opponent.IncrementVelocityX(rigidBody.velocity.x*.05f);
+//                    opponent.IncrementInternalVelocityX(internalVelocity.x*.05f);
 //                    print("Moving");
 //                }
 //            }
@@ -316,64 +441,142 @@ namespace Assets.Scripts.Player
         }
 
         // Don't increment velocity per frame unintentionally!!!
-        public void IncrementVelocity(Vector2 velocity)
+        public void IncrementInternalVelocity(Vector2 velocity)
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x + velocity.x, rigidBody.velocity.y + velocity.y);
+//            internalVelocity = new Vector2(internalVelocity.x + velocity.x, internalVelocity.y + velocity.y);
+            internalVelocity = velocity;
+            rigidBody.velocity += velocity;
         }
 
-        public void IncrementVelocity(float x, float y)
+        public void IncrementInternalVelocity(float x, float y)
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x + x, rigidBody.velocity.y + y);
+//            internalVelocity = new Vector2(internalVelocity.x + x, internalVelocity.y + y);
+            internalVelocity.x += x;
+            internalVelocity.y += y;
+            rigidBody.velocity += new Vector2(x, y);
         }
 
-        public void IncrementVelocityX(float x)
+        public void IncrementInternalVelocityX(float x)
         {
-//            setterVelocity.x = rigidBody.velocity.x + x;
-//            setterVelocity.y = rigidBody.velocity.y;
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x + x, rigidBody.velocity.y);
-//            rigidBody.velocity = setterVelocity;
+//            internalVelocity = new Vector2(internalVelocity.x + x, internalVelocity.y);
+            internalVelocity.x += x;
+            rigidBody.velocity += new Vector2(x, 0);
         }
 
-        public void IncrementVelocityY(float y)
+        public void IncrementInternalVelocityY(float y)
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y);
+//            internalVelocity = new Vector2(internalVelocity.x, internalVelocity.y);
+            // TODO: Incrementing isn't working right
+            internalVelocity.y += y;
+            rigidBody.velocity += new Vector2(0, y);
+            print(rigidBody.velocity.y);
         }
 
-        public void SetVelocity(Vector2 velocity)
+        public void SetInternalVelocity(Vector2 velocity)
         {
-            rigidBody.velocity = velocity;
+            rigidBody.velocity += velocity - internalVelocity;
+            internalVelocity = velocity;
         }
 
-        public void SetVelocity(float x, float y)
+        public void SetInternalVelocity(float x, float y)
         {
-            rigidBody.velocity = new Vector2(x, y);
+            rigidBody.velocity += new Vector2(x, y) - internalVelocity;
+            internalVelocity.x = x;
+            internalVelocity.y = y;
+            //            internalVelocity = new Vector2(x, y);
         }
 
-        public void SetVelocityX(float x)
+        public void SetInternalVelocityX(float x)
         {
-            rigidBody.velocity = new Vector2(x, rigidBody.velocity.y);
+            rigidBody.velocity += new Vector2(x - internalVelocity.x, 0);
+            internalVelocity.x = x;
+            //            internalVelocity = new Vector2(x, internalVelocity.y);
         }
 
-        public void SetVelocityY(float y)
+        public void SetInternalVelocityY(float y)
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, y);
+            print("Old internalVelocity.y = " + internalVelocity.y);
+            print("Old rigidBody.velocity.y = " + rigidBody.velocity.y);
+            print(rigidBody.velocity.y + " += " + y + " - " + internalVelocity.y);
+            rigidBody.velocity += new Vector2(0, y - internalVelocity.y);
+            internalVelocity.y = y;
+            print("y = " + y + ", internal.y = " + internalVelocity.y);
+            print("Set " + rigidBody.velocity.y);
+            //            internalVelocity = new Vector2(internalVelocity.x, y);
         }
 
+        public void IncrementExternalVelocity(Vector2 velocity)
+        {
+//            externalVelocity = new Vector2(externalVelocity.x + velocity.x, externalVelocity.y + velocity.y);
+            externalVelocity = velocity;
+            rigidBody.velocity += velocity;
+        }
+
+        public void IncrementExternalVelocity(float x, float y)
+        {
+//            externalVelocity = new Vector2(externalVelocity.x + x, externalVelocity.y + y);
+            externalVelocity.x += x;
+            externalVelocity.y += y;
+            rigidBody.velocity += new Vector2(x, y);
+        }
+
+        public void IncrementExternalVelocityX(float x)
+        {
+//            externalVelocity = new Vector2(externalVelocity.x + x, externalVelocity.y);
+            externalVelocity.x += x;
+            rigidBody.velocity += new Vector2(x, 0);
+        }
+
+        public void IncrementExternalVelocityY(float y)
+        {
+//            externalVelocity = new Vector2(externalVelocity.x, externalVelocity.y);
+            externalVelocity.y += y;
+            rigidBody.velocity += new Vector2(0, y);
+        }
+
+        public void SetExternalVelocity(Vector2 velocity)
+        {
+            rigidBody.velocity += velocity - externalVelocity;
+            externalVelocity = velocity;
+        }
+
+        public void SetExternalVelocity(float x, float y)
+        {
+            rigidBody.velocity += new Vector2(x, y) - externalVelocity;
+            externalVelocity.x = x;
+            externalVelocity.y = y;
+            //            externalVelocity = new Vector2(x, y);
+        }
+
+        public void SetExternalVelocityX(float x)
+        {
+            rigidBody.velocity += new Vector2(x - externalVelocity.x, 0);
+            externalVelocity.x = x;
+            //            externalVelocity = new Vector2(x, externalVelocity.y);
+        }
+
+        public void SetExternalVelocityY(float y)
+        {
+            rigidBody.velocity += new Vector2(0, y - externalVelocity.y);
+            externalVelocity.y = y;
+            //            externalVelocity = new Vector2(externalVelocity.x, y);
+        }
         public void Flip()
         {
             // Switch the way the player is labelled as facing.
             facingRight = !facingRight;
 
             // Multiply the player's x local scale by -1.
-            Vector3 theScale = transform.localScale;
+            Vector3 parentTransform = transform.parent.transform.localScale;
+            Vector3 theScale = parentTransform;
             theScale.x *= -1;
-            transform.localScale = theScale;
+            transform.parent.transform.localScale = theScale;
         }
 
         // Move each player up by more than the number of layers in the biggest character
         public void SetLayerOrder(int height)
         {
-            foreach (SpriteRenderer spritePiece in GetComponentsInChildren<SpriteRenderer>())
+            foreach (SpriteRenderer spritePiece in transform.parent.GetComponentsInChildren<SpriteRenderer>())
             {
                 spritePiece.sortingOrder += height;
             }

@@ -50,18 +50,18 @@ namespace Assets.Scripts.Player.States
 
             if (!directionalControl || jumpDirection == 0)
             {
-                playerController.SetVelocityY(playerController.recoverySpeed);
+                playerController.SetInternalVelocityY(playerController.recoverySpeed);
             }
             // TODO: Recovery side jumps should be set up
             else if (jumpDirection == 1)
             {
-                playerController.SetVelocityX(playerController.airSideJumpSpeedX*directionModifier);
-                playerController.SetVelocityY(playerController.recoverySpeed);
+                playerController.SetInternalVelocityX(playerController.airSideJumpSpeedX*directionModifier);
+                playerController.SetInternalVelocityY(playerController.recoverySpeed);
             }
             else if (jumpDirection == -1)
             {
-                playerController.SetVelocityX(-playerController.airSideJumpSpeedX*directionModifier);
-                playerController.SetVelocityY(playerController.recoverySpeed);
+                playerController.SetInternalVelocityX(-playerController.airSideJumpSpeedX*directionModifier);
+                playerController.SetInternalVelocityY(playerController.recoverySpeed);
                 playerController.Flip();
             }
         }

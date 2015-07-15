@@ -7,9 +7,11 @@ namespace Assets.Scripts.Player
 {
     public class PushOpponents : MonoBehaviour
     {
+        [SerializeField] private bool right;
         private PlayerController playerController;
         private Rigidbody2D rigidBody;
-        private List<PlayerController> touchingPlayers; 
+        private List<PlayerController> touchingPlayers;
+        private float pushSpeed = 2f;
 
         private void Awake()
         {
@@ -22,9 +24,20 @@ namespace Assets.Scripts.Player
         {
             foreach (PlayerController player in touchingPlayers)
             {
-                // TODO: Doesn't work because input controller canceling out
-                player.IncrementVelocityX(rigidBody.velocity.x * .5f);
-                print("Moving " + (rigidBody.velocity.x * .5f));
+                if (right)
+                {
+                    if (Mathf.Abs(player.externalVelocity.x) < pushSpeed)
+                    {
+                        player.SetExternalVelocityX(pushSpeed);
+                    }
+                }
+                else
+                {
+                    if (Mathf.Abs(player.externalVelocity.x) < pushSpeed)
+                    {
+                        player.SetExternalVelocityX(-pushSpeed);
+                    }
+                }
             }
         }
         
@@ -36,7 +49,6 @@ namespace Assets.Scripts.Player
                 if (!touchingPlayers.Contains(otherController) && otherController != playerController)
                 {
                     touchingPlayers.Add(otherController);
-                    print("Adding");
                 }
             }
         }
@@ -46,7 +58,10 @@ namespace Assets.Scripts.Player
             if (other.gameObject.tag == "Player")
             {
                 PlayerController otherController = other.GetComponent<PlayerController>();
-                touchingPlayers.Remove(otherController);
+                if (touchingPlayers.Contains(otherController))
+                {
+                    touchingPlayers.Remove(otherController);
+                }
             }
         }
     }

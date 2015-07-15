@@ -1,0 +1,2805 @@
+fileFormatVersion: 2
+guid: b228180a25319644080ac1a99b29fc22
+timeCreated: 1436989685
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PlayerSword_Player_idle_0
+    21300002: PlayerSword_Player_idle_1
+    21300004: PlayerSword_Player_idle_2
+    21300006: PlayerSword_Player_idle_3
+    21300008: PlayerSword_Player_idle_4
+    21300010: PlayerSword_Player_idle_5
+    21300012: PlayerSword_Player_idle_6
+    21300014: PlayerSword_Player_idle_7
+    21300016: PlayerSword_Player_idle_8
+    21300018: PlayerSword_Player_idle_9
+    21300020: PlayerSword_Player_idle_10
+    21300022: PlayerSword_Player_idle_11
+    21300024: PlayerSword_Player_idle_12
+    21300026: PlayerSword_Player_idle_13
+    21300028: PlayerSword_Player_idle_14
+    21300030: PlayerSword_Player_idle_15
+    21300032: PlayerSword_Player_idle_16
+    21300034: PlayerSword_Player_idle_17
+    21300036: PlayerSword_Player_idle_18
+    21300038: PlayerSword_Player_idle_19
+    21300040: PlayerSword_Player_idle_20
+    21300042: PlayerSword_Player_idle_21
+    21300044: PlayerSword_Player_idle_22
+    21300046: PlayerSword_Player_idle_23
+    21300048: PlayerSword_Player_idle_24
+    21300050: PlayerSword_Player_idle_25
+    21300052: PlayerSword_Player_idle_26
+    21300054: PlayerSword_Player_idle_27
+    21300056: PlayerSword_Player_idle_28
+    21300058: PlayerSword_Player_idle_29
+    21300060: PlayerSword_Player_idle_30
+    21300062: PlayerSword_Player_idle_31
+    21300064: PlayerSword_Player_idle_32
+    21300066: PlayerSword_Player_idle_33
+    21300068: PlayerSword_Player_idle_34
+    21300070: PlayerSword_Player_idle_35
+    21300072: PlayerSword_Player_idle_36
+    21300074: PlayerSword_Player_idle_37
+    21300076: PlayerSword_Player_idle_38
+    21300078: PlayerSword_Player_idle_39
+    21300080: PlayerSword_Player_idle_40
+    21300082: PlayerSword_Player_idle_41
+    21300084: PlayerSword_Player_idle_42
+    21300086: PlayerSword_Player_idle_43
+    21300088: PlayerSword_Player_idle_44
+    21300090: PlayerSword_Player_idle_45
+    21300092: PlayerSword_Player_idle_46
+    21300094: PlayerSword_Player_idle_47
+    21300096: PlayerSword_Player_idle_48
+    21300098: PlayerSword_Player_idle_49
+    21300100: PlayerSword_Player_idle_50
+    21300102: PlayerSword_Player_idle_51
+    21300104: PlayerSword_Player_idle_52
+    21300106: PlayerSword_Player_idle_53
+    21300108: PlayerSword_Player_idle_54
+    21300110: PlayerSword_Player_idle_55
+    21300112: PlayerSword_Player_idle_56
+    21300114: PlayerSword_Player_idle_57
+    21300116: PlayerSword_Player_idle_58
+    21300118: PlayerSword_Player_idle_59
+    21300120: PlayerSword_Player_idle_60
+    21300122: PlayerSword_Player_idle_61
+    21300124: PlayerSword_Player_idle_62
+    21300126: PlayerSword_Player_idle_63
+    21300128: PlayerSword_Player_idle_64
+    21300130: PlayerSword_Player_idle_65
+    21300132: PlayerSword_Player_idle_66
+    21300134: PlayerSword_Player_idle_67
+    21300136: PlayerSword_Player_idle_68
+    21300138: PlayerSword_Player_idle_69
+    21300140: PlayerSword_Player_idle_70
+    21300142: PlayerSword_Player_idle_71
+    21300144: PlayerSword_Player_idle_72
+    21300146: PlayerSword_Player_idle_73
+    21300148: PlayerSword_Player_idle_74
+    21300150: PlayerSword_Player_idle_75
+    21300152: PlayerSword_Player_idle_76
+    21300154: PlayerSword_Player_idle_77
+    21300156: PlayerSword_Player_idle_78
+    21300158: PlayerSword_Player_idle_79
+    21300160: PlayerSword_Player_idle_80
+    21300162: PlayerSword_Player_idle_81
+    21300164: PlayerSword_Player_idle_82
+    21300166: PlayerSword_Player_idle_83
+    21300168: PlayerSword_Player_idle_84
+    21300170: PlayerSword_Player_idle_85
+    21300172: PlayerSword_Player_idle_86
+    21300174: PlayerSword_Player_idle_87
+    21300176: PlayerSword_Player_idle_88
+    21300178: PlayerSword_Player_idle_89
+    21300180: PlayerSword_Player_idle_90
+    21300182: PlayerSword_Player_idle_91
+    21300184: PlayerSword_Player_idle_92
+    21300186: PlayerSword_Player_idle_93
+    21300188: PlayerSword_Player_idle_94
+    21300190: PlayerSword_Player_idle_95
+    21300192: PlayerSword_Player_idle_96
+    21300194: PlayerSword_Player_idle_97
+    21300196: PlayerSword_Player_idle_98
+    21300198: PlayerSword_Player_idle_99
+    21300200: PlayerSword_Player_idle_100
+    21300202: PlayerSword_Player_idle_101
+    21300204: PlayerSword_Player_idle_102
+    21300206: PlayerSword_Player_idle_103
+    21300208: PlayerSword_Player_idle_104
+    21300210: PlayerSword_Player_idle_105
+    21300212: PlayerSword_Player_idle_106
+    21300214: PlayerSword_Player_idle_107
+    21300216: PlayerSword_Player_idle_108
+    21300218: PlayerSword_Player_idle_109
+    21300220: PlayerSword_Player_idle_110
+    21300222: PlayerSword_Player_idle_111
+    21300224: PlayerSword_Player_idle_112
+    21300226: PlayerSword_Player_idle_113
+    21300228: PlayerSword_Player_idle_114
+    21300230: PlayerSword_Player_idle_115
+    21300232: PlayerSword_Player_idle_116
+    21300234: PlayerSword_Player_idle_117
+    21300236: PlayerSword_Player_idle_118
+    21300238: PlayerSword_Player_idle_119
+    21300240: PlayerSword_Player_idle_120
+    21300242: PlayerSword_Player_idle_121
+    21300244: PlayerSword_Player_idle_122
+    21300246: PlayerSword_Player_idle_123
+    21300248: PlayerSword_Player_idle_124
+    21300250: PlayerSword_Player_idle_125
+    21300252: PlayerSword_Player_idle_126
+    21300254: PlayerSword_Player_idle_127
+    21300256: PlayerSword_Player_idle_128
+    21300258: PlayerSword_Player_idle_129
+    21300260: PlayerSword_Player_idle_130
+    21300262: PlayerSword_Player_idle_131
+    21300264: PlayerSword_Player_idle_132
+    21300266: PlayerSword_Player_idle_133
+    21300268: PlayerSword_Player_idle_134
+    21300270: PlayerSword_Player_idle_135
+    21300272: PlayerSword_Player_idle_136
+    21300274: PlayerSword_Player_idle_137
+    21300276: PlayerSword_Player_idle_138
+    21300278: PlayerSword_Player_idle_139
+    21300280: PlayerSword_Player_idle_140
+    21300282: PlayerSword_Player_idle_141
+    21300284: PlayerSword_Player_idle_142
+    21300286: PlayerSword_Player_idle_143
+    21300288: PlayerSword_Player_idle_144
+    21300290: PlayerSword_Player_idle_145
+    21300292: PlayerSword_Player_idle_146
+    21300294: PlayerSword_Player_idle_147
+    21300296: PlayerSword_Player_idle_148
+    21300298: PlayerSword_Player_idle_149
+    21300300: PlayerSword_Player_idle_150
+    21300302: PlayerSword_Player_idle_151
+    21300304: PlayerSword_Player_idle_152
+    21300306: PlayerSword_Player_idle_153
+    21300308: PlayerSword_Player_idle_154
+    21300310: PlayerSword_Player_idle_155
+    21300312: PlayerSword_Player_idle_156
+    21300314: PlayerSword_Player_idle_157
+    21300316: PlayerSword_Player_idle_158
+    21300318: PlayerSword_Player_idle_159
+    21300320: PlayerSword_Player_idle_160
+    21300322: PlayerSword_Player_idle_161
+    21300324: PlayerSword_Player_idle_162
+    21300326: PlayerSword_Player_idle_163
+    21300328: PlayerSword_Player_idle_164
+    21300330: PlayerSword_Player_idle_165
+    21300332: PlayerSword_Player_idle_166
+    21300334: PlayerSword_Player_idle_167
+    21300336: PlayerSword_Player_idle_168
+    21300338: PlayerSword_Player_idle_169
+    21300340: PlayerSword_Player_idle_170
+    21300342: PlayerSword_Player_idle_171
+    21300344: PlayerSword_Player_idle_172
+    21300346: PlayerSword_Player_idle_173
+    21300348: PlayerSword_Player_idle_174
+    21300350: PlayerSword_Player_idle_175
+    21300352: PlayerSword_Player_idle_176
+    21300354: PlayerSword_Player_idle_177
+    21300356: PlayerSword_Player_idle_178
+    21300358: PlayerSword_Player_idle_179
+    21300360: PlayerSword_Player_idle_180
+    21300362: PlayerSword_Player_idle_181
+    21300364: PlayerSword_Player_idle_182
+    21300366: PlayerSword_Player_idle_183
+    21300368: PlayerSword_Player_idle_184
+    21300370: PlayerSword_Player_idle_185
+    21300372: PlayerSword_Player_idle_186
+    21300374: PlayerSword_Player_idle_187
+    21300376: PlayerSword_Player_idle_188
+    21300378: PlayerSword_Player_idle_189
+    21300380: PlayerSword_Player_idle_190
+    21300382: PlayerSword_Player_idle_191
+    21300384: PlayerSword_Player_idle_192
+    21300386: PlayerSword_Player_idle_193
+    21300388: PlayerSword_Player_idle_194
+    21300390: PlayerSword_Player_idle_195
+    21300392: PlayerSword_Player_idle_196
+    21300394: PlayerSword_Player_idle_197
+    21300396: PlayerSword_Player_idle_198
+    21300398: PlayerSword_Player_idle_199
+    21300400: PlayerSword_Player_idle_200
+    21300402: PlayerSword_Player_idle_201
+    21300404: PlayerSword_Player_idle_202
+    21300406: PlayerSword_Player_idle_203
+    21300408: PlayerSword_Player_idle_204
+    21300410: PlayerSword_Player_idle_205
+    21300412: PlayerSword_Player_idle_206
+    21300414: PlayerSword_Player_idle_207
+    21300416: PlayerSword_Player_idle_208
+    21300418: PlayerSword_Player_idle_209
+    21300420: PlayerSword_Player_idle_210
+    21300422: PlayerSword_Player_idle_211
+    21300424: PlayerSword_Player_idle_212
+    21300426: PlayerSword_Player_idle_213
+    21300428: PlayerSword_Player_idle_214
+    21300430: PlayerSword_Player_idle_215
+    21300432: PlayerSword_Player_idle_216
+    21300434: PlayerSword_Player_idle_217
+    21300436: PlayerSword_Player_idle_218
+    21300438: PlayerSword_Player_idle_219
+    21300440: PlayerSword_Player_idle_220
+    21300442: PlayerSword_Player_idle_221
+    21300444: PlayerSword_Player_idle_222
+    21300446: PlayerSword_Player_idle_223
+    21300448: PlayerSword_Player_idle_224
+    21300450: PlayerSword_Player_idle_225
+    21300452: PlayerSword_Player_idle_226
+    21300454: PlayerSword_Player_idle_227
+    21300456: PlayerSword_Player_idle_228
+    21300458: PlayerSword_Player_idle_229
+    21300460: PlayerSword_Player_idle_230
+    21300462: PlayerSword_Player_idle_231
+    21300464: PlayerSword_Player_idle_232
+    21300466: PlayerSword_Player_idle_233
+    21300468: PlayerSword_Player_idle_234
+    21300470: PlayerSword_Player_idle_235
+    21300472: PlayerSword_Player_idle_236
+    21300474: PlayerSword_Player_idle_237
+    21300476: PlayerSword_Player_idle_238
+    21300478: PlayerSword_Player_idle_239
+    21300480: PlayerSword_Player_idle_240
+    21300482: PlayerSword_Player_idle_241
+    21300484: PlayerSword_Player_idle_242
+    21300486: PlayerSword_Player_idle_243
+    21300488: PlayerSword_Player_idle_244
+    21300490: PlayerSword_Player_idle_245
+    21300492: PlayerSword_Player_idle_246
+    21300494: PlayerSword_Player_idle_247
+    21300496: PlayerSword_Player_idle_248
+    21300498: PlayerSword_Player_idle_249
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 8192
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PlayerSword_Player_idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_1
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_2
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_3
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_4
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_5
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_6
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_7
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_8
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_9
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 5664
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_11
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_12
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_13
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_14
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_15
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_16
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_17
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_18
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_19
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 5428
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_21
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_22
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_23
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_24
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_25
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_26
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_27
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_28
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_29
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 5192
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_31
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_32
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_33
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_34
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_35
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_36
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_37
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_38
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_39
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 4956
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_41
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_42
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_43
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_44
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_45
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_46
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_47
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_48
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_49
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 4720
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_51
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_52
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_53
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_54
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_55
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_56
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_57
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_58
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_59
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 4484
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_61
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_62
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_63
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_64
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_65
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_66
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_67
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_68
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_69
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 4248
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_71
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_72
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_73
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_74
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_75
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_76
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_77
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_78
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_79
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 4012
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_81
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_82
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_83
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_84
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_85
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_86
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_87
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_88
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_89
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 3776
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_91
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_92
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_93
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_94
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_95
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_96
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_97
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_98
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_99
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 3540
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_100
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_101
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_102
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_103
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_104
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_105
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_106
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_107
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_108
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_109
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 3304
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_110
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_111
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_112
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_113
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_114
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_115
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_116
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_117
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_118
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_119
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 3068
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_120
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_121
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_122
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_123
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_124
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_125
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_126
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_127
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_128
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_129
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 2832
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_130
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_131
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_132
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_133
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_134
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_135
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_136
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_137
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_138
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_139
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 2596
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_141
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_142
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_143
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_144
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_145
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_146
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_147
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_148
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_149
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 2360
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_150
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_151
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_152
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_153
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_154
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_155
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_156
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_157
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_158
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_159
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 2124
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_160
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_161
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_162
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_163
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_164
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_165
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_166
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_167
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_168
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_169
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 1888
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_170
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_171
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_172
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_173
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_174
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_175
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_176
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_177
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_178
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_179
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 1652
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_180
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_181
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_182
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_183
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_184
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_185
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_186
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_187
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_188
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_189
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 1416
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_190
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_191
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_192
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_193
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_194
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_195
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_196
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_197
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_198
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_199
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 1180
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_200
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_201
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_202
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_203
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_204
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_205
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_206
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_207
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_208
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_209
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 944
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_210
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_211
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_212
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_213
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_214
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_215
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_216
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_217
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_218
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_219
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 708
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_220
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_221
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_222
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_223
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_224
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_225
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_226
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_227
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_228
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_229
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 472
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_230
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_231
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_232
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_233
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_234
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_235
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_236
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_237
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_238
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_239
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 236
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_240
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_241
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_242
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_243
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_244
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_245
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_246
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_247
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_248
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_idle_249
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 0
+        width: 197
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

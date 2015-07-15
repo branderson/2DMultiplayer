@@ -17,3 +17,7 @@ Ported all animations over to spriter
 Implemented jumping through and falling through platforms
 Moved players into child objects so that players could interact with each other while collision layer is disabled
 Set up player pushing interaction although SetVelocity in IdleState overrides this
+
+Set up external and internal velocities
+Pushing players works now!
+Moved animator to parent object in player and sprite renderer to child object for manipulation separate from rigidbody

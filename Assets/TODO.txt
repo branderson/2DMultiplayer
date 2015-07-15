@@ -9,7 +9,5 @@ Input Controllers (Do this one soonish)
 	This will remove bugs resulting from mismatched controllers
 
 Player Controller	
-	Set up system for managing internal and external velocities
-	Push opponents should work after this
 	
 Animations, animations, animations!

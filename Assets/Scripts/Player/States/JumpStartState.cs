@@ -56,10 +56,10 @@ namespace Assets.Scripts.Player.States
                 if (!directionalControl || jumpDirection == 0)
                 {
                     if (shortHop)
-                        playerController.SetVelocityY(playerController.jumpSpeed*playerController.shortHopFactor);
+                        playerController.SetInternalVelocityY(playerController.jumpSpeed*playerController.shortHopFactor);
                     else
                     {
-                        playerController.SetVelocityY(playerController.jumpSpeed);
+                        playerController.SetInternalVelocityY(playerController.jumpSpeed);
                     }
                 }
                 else if (jumpDirection == 1)
@@ -68,17 +68,17 @@ namespace Assets.Scripts.Player.States
                     {
                         if (animator.GetFloat("xSpeed") < playerController.maxAirSpeedX) 
                         {
-                            playerController.IncrementVelocityX(playerController.sideJumpSpeedX*playerController.shortHopFactor*directionModifier);
+                            playerController.IncrementInternalVelocityX(playerController.sideJumpSpeedX*playerController.shortHopFactor*directionModifier);
                         }
-                        playerController.SetVelocityY(playerController.sideJumpSpeedY*playerController.shortHopFactor);
+                        playerController.SetInternalVelocityY(playerController.sideJumpSpeedY*playerController.shortHopFactor);
                     }
                     else
                     {
                         if (animator.GetFloat("xSpeed") < playerController.maxAirSpeedX) 
                         {
-                            playerController.IncrementVelocityX(playerController.sideJumpSpeedX*directionModifier);
+                            playerController.IncrementInternalVelocityX(playerController.sideJumpSpeedX*directionModifier);
                         }
-                        playerController.SetVelocityY(playerController.sideJumpSpeedY);
+                        playerController.SetInternalVelocityY(playerController.sideJumpSpeedY);
                     }
                 }
                 else if (jumpDirection == -1)
@@ -87,17 +87,17 @@ namespace Assets.Scripts.Player.States
                     {
                         if (animator.GetFloat("xSpeed") < playerController.maxAirSpeedX) 
                         {
-                            playerController.IncrementVelocityX(-playerController.sideJumpSpeedX*playerController.shortHopFactor*directionModifier);
+                            playerController.IncrementInternalVelocityX(-playerController.sideJumpSpeedX*playerController.shortHopFactor*directionModifier);
                         }
-                        playerController.SetVelocityY(playerController.sideJumpSpeedY*playerController.shortHopFactor);
+                        playerController.SetInternalVelocityY(playerController.sideJumpSpeedY*playerController.shortHopFactor);
                     }
                     else
                     {
                         if (animator.GetFloat("xSpeed") < playerController.maxAirSpeedX) 
                         {
-                            playerController.IncrementVelocityX(-playerController.sideJumpSpeedX*directionModifier);
+                            playerController.IncrementInternalVelocityX(-playerController.sideJumpSpeedX*directionModifier);
                         }
-                        playerController.SetVelocityY(playerController.sideJumpSpeedY);
+                        playerController.SetInternalVelocityY(playerController.sideJumpSpeedY);
                     }
                 }
             }
@@ -106,17 +106,17 @@ namespace Assets.Scripts.Player.States
             {
                 if (!directionalControl || jumpDirection == 0)
                 {
-                    playerController.SetVelocityY(playerController.airJumpSpeed);
+                    playerController.SetInternalVelocityY(playerController.airJumpSpeed);
                 }
                 else if (jumpDirection == 1)
                 {
-                    playerController.SetVelocityX(playerController.airSideJumpSpeedX*directionModifier);
-                    playerController.SetVelocityY(playerController.airSideJumpSpeedY);
+                    playerController.SetInternalVelocityX(playerController.airSideJumpSpeedX*directionModifier);
+                    playerController.SetInternalVelocityY(playerController.airSideJumpSpeedY);
                 }
                 else if (jumpDirection == -1)
                 {
-                    playerController.SetVelocityX(-playerController.airSideJumpSpeedX*directionModifier);
-                    playerController.SetVelocityY(playerController.airSideJumpSpeedY);
+                    playerController.SetInternalVelocityX(-playerController.airSideJumpSpeedX*directionModifier);
+                    playerController.SetInternalVelocityY(playerController.airSideJumpSpeedY);
                     // Do I want to be able to flip on air jump?
 //                    PlayerController.Flip();
                 }

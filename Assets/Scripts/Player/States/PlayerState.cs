@@ -12,8 +12,8 @@ namespace Assets.Scripts.Player.States
 
         public virtual new void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
-            playerController = animator.GetComponent<PlayerController>();
-            PlayerInputController = animator.GetComponent<PlayerInputController>();
+            playerController = animator.GetComponentInChildren<PlayerController>();
+            PlayerInputController = animator.GetComponentInChildren<PlayerInputController>();
             playerController.SetState(this);
             playerAnimator = animator;
         }

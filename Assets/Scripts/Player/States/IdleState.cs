@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Assets.Scripts;
 
 namespace Assets.Scripts.Player.States
@@ -15,7 +16,7 @@ namespace Assets.Scripts.Player.States
             base.OnStateEnter(animator, stateInfo, layerIndex);
             // TODO: Sometimes jumping through platforms resets canAirJump
             // To avoid resetting jumps while jumping up through platforms
-            if (animator.GetComponent<Rigidbody2D>().velocity.y <= 0)
+            if (animator.GetComponentInChildren<Rigidbody2D>().velocity.y <= 0)
             {
                 playerController.canAirJump = true;
                 playerController.canRecover = true;
@@ -27,36 +28,35 @@ namespace Assets.Scripts.Player.States
             base.OnStateUpdate(animator, stateInfo, layerIndex);
 
             // Movement
-            // TODO: Set speed absolutely rather than relative to move
-            // TODO: Set up a system for managing internal and external velocities separately
+            // TODO: Set multiple levels of movement (Possibly even modify input to have stages of movement controls)
             if (playerController.run)
             {
                 if (move.x > 0)
                 {
-                    playerController.SetVelocityX(playerController.runSpeedX);
+                    playerController.SetInternalVelocityX(playerController.runSpeedX);
                 }
                 else if (move.x < 0)
                 {
-                    playerController.SetVelocityX(-playerController.runSpeedX);
+                    playerController.SetInternalVelocityX(-playerController.runSpeedX);
                 }
                 else
                 {
-                    playerController.SetVelocityX(0f);
+                    playerController.SetInternalVelocityX(0f);
                 }
             }
             else 
             {
                 if (move.x > 0)
                 {
-                    playerController.SetVelocityX(playerController.maxSpeedX);
+                    playerController.SetInternalVelocityX(playerController.maxSpeedX);
                 }
                 else if (move.x < 0)
                 {
-                    playerController.SetVelocityX(-playerController.maxSpeedX);
+                    playerController.SetInternalVelocityX(-playerController.maxSpeedX);
                 }
                 else
                 {
-                    playerController.SetVelocityX(0f);
+                    playerController.SetInternalVelocityX(0f);
                 }
             }
 
@@ -82,7 +82,7 @@ namespace Assets.Scripts.Player.States
 
         public override void Jump()
         {
-            if (playerController.speedY <= 0)
+            if (playerController.velocityY <= 0)
             {
                 playerAnimator.SetTrigger("Jump");
             }
@@ -99,7 +99,7 @@ namespace Assets.Scripts.Player.States
             base.Up();
             if (PlayerInputController.TapJump)
             {
-                if (playerController.speedY <= 0)
+                if (playerController.velocityY <= 0)
                 {
                     playerAnimator.SetTrigger("Jump");
                 }

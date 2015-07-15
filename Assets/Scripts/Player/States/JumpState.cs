@@ -26,22 +26,22 @@ namespace Assets.Scripts.Player.States
             {
                 if (animator.GetFloat("xVelocity") + playerController.airControlSpeed < playerController.maxAirSpeedX)
                 {
-                    playerController.IncrementVelocityX(playerController.airControlSpeed);
+                    playerController.IncrementInternalVelocityX(playerController.airControlSpeed);
                 }
                 else if (animator.GetFloat("xVelocity") + playerController.airControlSpeed > playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
                 {
-                    playerController.SetVelocityX(playerController.maxAirSpeedX);
+                    playerController.SetInternalVelocityX(playerController.maxAirSpeedX);
                 }
             }
             else if (move.x < 0)
             {
                 if (animator.GetFloat("xVelocity") - playerController.airControlSpeed > -playerController.maxAirSpeedX)
                 {
-                    playerController.IncrementVelocityX(-playerController.airControlSpeed);
+                    playerController.IncrementInternalVelocityX(-playerController.airControlSpeed);
                 }
                 else if (animator.GetFloat("xVelocity") - playerController.airControlSpeed < -playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
                 {
-                    playerController.SetVelocityX(-playerController.maxAirSpeedX);
+                    playerController.SetInternalVelocityX(-playerController.maxAirSpeedX);
                 }
             }
 
@@ -81,7 +81,7 @@ namespace Assets.Scripts.Player.States
         public override void Down()
         {
             // Fast fall
-            if (playerController.speedY < 0)
+            if (playerController.velocityY < 0)
             {
                 playerController.fastFall = true;
                 playerController.canAirJump = false;

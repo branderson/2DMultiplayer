@@ -1,0 +1,737 @@
+fileFormatVersion: 2
+guid: e070007c277a62b43bdc9ccc8fedee62
+timeCreated: 1436989900
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PlayerSword_Player_walk_0
+    21300002: PlayerSword_Player_walk_1
+    21300004: PlayerSword_Player_walk_2
+    21300006: PlayerSword_Player_walk_3
+    21300008: PlayerSword_Player_walk_4
+    21300010: PlayerSword_Player_walk_5
+    21300012: PlayerSword_Player_walk_6
+    21300014: PlayerSword_Player_walk_7
+    21300016: PlayerSword_Player_walk_8
+    21300018: PlayerSword_Player_walk_9
+    21300020: PlayerSword_Player_walk_10
+    21300022: PlayerSword_Player_walk_11
+    21300024: PlayerSword_Player_walk_12
+    21300026: PlayerSword_Player_walk_13
+    21300028: PlayerSword_Player_walk_14
+    21300030: PlayerSword_Player_walk_15
+    21300032: PlayerSword_Player_walk_16
+    21300034: PlayerSword_Player_walk_17
+    21300036: PlayerSword_Player_walk_18
+    21300038: PlayerSword_Player_walk_19
+    21300040: PlayerSword_Player_walk_20
+    21300042: PlayerSword_Player_walk_21
+    21300044: PlayerSword_Player_walk_22
+    21300046: PlayerSword_Player_walk_23
+    21300048: PlayerSword_Player_walk_24
+    21300050: PlayerSword_Player_walk_25
+    21300052: PlayerSword_Player_walk_26
+    21300054: PlayerSword_Player_walk_27
+    21300056: PlayerSword_Player_walk_28
+    21300058: PlayerSword_Player_walk_29
+    21300060: PlayerSword_Player_walk_30
+    21300062: PlayerSword_Player_walk_31
+    21300064: PlayerSword_Player_walk_32
+    21300066: PlayerSword_Player_walk_33
+    21300068: PlayerSword_Player_walk_34
+    21300070: PlayerSword_Player_walk_35
+    21300072: PlayerSword_Player_walk_36
+    21300074: PlayerSword_Player_walk_37
+    21300076: PlayerSword_Player_walk_38
+    21300078: PlayerSword_Player_walk_39
+    21300080: PlayerSword_Player_walk_40
+    21300082: PlayerSword_Player_walk_41
+    21300084: PlayerSword_Player_walk_42
+    21300086: PlayerSword_Player_walk_43
+    21300088: PlayerSword_Player_walk_44
+    21300090: PlayerSword_Player_walk_45
+    21300092: PlayerSword_Player_walk_46
+    21300094: PlayerSword_Player_walk_47
+    21300096: PlayerSword_Player_walk_48
+    21300098: PlayerSword_Player_walk_49
+    21300100: PlayerSword_Player_walk_50
+    21300102: PlayerSword_Player_walk_51
+    21300104: PlayerSword_Player_walk_52
+    21300106: PlayerSword_Player_walk_53
+    21300108: PlayerSword_Player_walk_54
+    21300110: PlayerSword_Player_walk_55
+    21300112: PlayerSword_Player_walk_56
+    21300114: PlayerSword_Player_walk_57
+    21300116: PlayerSword_Player_walk_58
+    21300118: PlayerSword_Player_walk_59
+    21300120: PlayerSword_Player_walk_60
+    21300122: PlayerSword_Player_walk_61
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PlayerSword_Player_walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_1
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_2
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_3
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_4
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_5
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_6
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_7
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_8
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_9
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 1494
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_11
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_12
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_13
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_14
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_15
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_16
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_17
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_18
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_19
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 1245
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_21
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_22
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_23
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_24
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_25
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_26
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_27
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_28
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_29
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 996
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_31
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_32
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_33
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_34
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_35
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_36
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_37
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_38
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_39
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 747
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_41
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_42
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_43
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_44
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_45
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_46
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_47
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_48
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_49
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 498
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_51
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_52
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_53
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_54
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_55
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_56
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_57
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_58
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_59
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 249
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerSword_Player_walk_61
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 0
+        width: 242
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
