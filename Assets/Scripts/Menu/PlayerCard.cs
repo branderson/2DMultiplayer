@@ -111,7 +111,7 @@ namespace Assets.Scripts.Menu
             ready = true;
             panelImage.color = Color.green;
             instructionText.text = "Ready!";
-//            PlayerController.SetTimedVibrate(12, 0f, .8f);
+//            PlayerController.SetVibrate(12, 0f, .8f);
         }
 
         public void UnReady()

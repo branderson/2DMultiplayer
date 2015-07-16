@@ -23,7 +23,7 @@ namespace Assets.Scripts.Player.States
             waitCounter = waitFrames;
             jumpDirection = 0;
             directionModifier = 1;
-            playerController.SetTimedVibrate(15, 1f, 1f);
+            playerController.SetVibrate(15, 1f, 1f);
         }
 
         public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -51,6 +51,8 @@ namespace Assets.Scripts.Player.States
 
             if (!directionalControl || jumpDirection == 0)
             {
+                float adjustSpeed = -playerController.GetVelocityX();
+                AdjustSpeed(adjustSpeed);
                 playerController.Jump(playerController.recoverySpeed);
             }
             // TODO: Recovery side jumps should be set up

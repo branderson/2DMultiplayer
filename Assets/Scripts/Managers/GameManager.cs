@@ -14,7 +14,7 @@ namespace Assets.Scripts.Managers
         public GameConfig GameConfig = new GameConfig();
         public GameSaveData SaveData;
 
-        void Awake()
+        private void Awake()
         {
             // Delete self if GameManager already exists
             if (GameObject.FindGameObjectsWithTag("GameManager").Any(manager => manager != gameObject))
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Managers
             {
                 PlayerConfig[i] = new PlayerConfig();
             }
-
+            
             // Set up PlayerConfig
             foreach (PlayerConfig settings in PlayerConfig)
             {

@@ -8,6 +8,7 @@ TagManager:
   - GameManager
   - PlayerTrigger
   - Impermeable
+  - LevelManager
   layers:
   - Default
   - TransparentFX

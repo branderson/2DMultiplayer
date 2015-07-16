@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Player.States;
@@ -38,8 +39,6 @@ namespace Assets.Scripts.Player
         internal bool facingRight; // For determining which way the player is currently facing
         internal bool fastFall;
         private float gravity; // Rate per second of decreasing vertical speed
-        internal float rightIntensity;
-        internal float leftIntensity;
         internal float maxAirSpeedX;
         private bool onGround;
         internal bool passThroughFloor; // TODO: Try to get rid of this
@@ -51,15 +50,13 @@ namespace Assets.Scripts.Player
         internal float jumpSpeed { get; set; }
         internal float airJumpSpeed { get; set; }
 
+        internal int playerNumber;
         private PlayerState currentPlayerState;
         private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
         internal Animator animator; // Reference to the player's animator component.
         private IInputController input;
         private readonly List<PlayerController> opponents = new List<PlayerController>();
         
-        // TODO: Switch this to coroutines
-        internal bool timedVibrate;
-        internal int vibrate;
         internal bool run;
         private bool GroundCollisions = true;
 
@@ -73,11 +70,8 @@ namespace Assets.Scripts.Player
             canAirJump = true;
             canRecover = true;
             GroundCollisions = true;
-            timedVibrate = false;
-            vibrate = 0;
-            leftIntensity = 0f;
-            rightIntensity = 0f;
             SetLayerOrder(zPosition);
+            playerNumber = slot + 1;
         }
 
         // TODO: Non AI players may not need this info
@@ -128,10 +122,10 @@ namespace Assets.Scripts.Player
             animator.SetBool("CanRecover", canRecover);
 
             // Use coroutine for vibration throughout
-            if (timedVibrate)
-            {
-                Vibrate();
-            }
+//            if (timedVibrate)
+//            {
+//                Vibrate();
+//            }
 
             transform.parent.position = transform.position;
             transform.localPosition = Vector3.zero;
@@ -198,11 +192,11 @@ namespace Assets.Scripts.Player
                     //                    {
                     //                        if (internalVelocity.y > 15)
                     //                        {
-                    //                            SetTimedVibrate(12, .8f, .0f);
+                    //                            SetVibrate(12, .8f, .0f);
                     //                        }
                     //                        else
                     //                        {
-                    //                            SetTimedVibrate(12, .8f, .0f);
+                    //                            SetVibrate(12, .8f, .0f);
                     //                        }
                     //                    }
                     onGround = true;
@@ -236,27 +230,33 @@ namespace Assets.Scripts.Player
             }
         }
 
-        private void Vibrate()
+//        private void Vibrate()
+//        {
+//            if (vibrate == 0)
+//            {
+//                timedVibrate = false;
+//                input.StopVibration();
+//            }
+//            else
+//            {
+//                // TODO: Set tuple to control Vibration intensity
+//                input.VibrateController(leftIntensity, rightIntensity);
+//                vibrate -= 1;
+//            }
+//        }
+
+        public IEnumerator Vibrate(int frames, float leftIntensity, float rightIntensity)
         {
-            if (vibrate == 0)
+            for (int i = 0; i < frames; i++)
             {
-                timedVibrate = false;
-                input.StopVibration();
-            }
-            else
-            {
-                // TODO: Set tuple to control Vibration intensity
-                input.VibrateController(leftIntensity, rightIntensity);
-                vibrate -= 1;
+//                input.VibrateController(leftIntensity, rightIntensity);
+                yield return null;
             }
         }
 
-        public void SetTimedVibrate(int frames, float leftIntensity, float rightIntensity)
+        public void SetVibrate(int frames, float leftIntensity, float rightIntensity)
         {
-            timedVibrate = true;
-            vibrate = frames;
-            this.leftIntensity = leftIntensity;
-            this.rightIntensity = rightIntensity;
+            StartCoroutine(Vibrate(frames, leftIntensity, rightIntensity));
         }
 
         public void SetState(PlayerState state)

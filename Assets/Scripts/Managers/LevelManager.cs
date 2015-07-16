@@ -31,23 +31,36 @@ namespace Assets.Scripts.Managers
             for (int card = 0; card < 4; card++)
             {
                 // Instantiate human players
-                if (!menuManager.playerCards[card].computer && menuManager.Controllers[card])
+                if (menuManager.Controllers[card])
                 {
-                    print("Instantiating player " + menuManager.playerCards[card].PlayerController.playerNumber);
                     GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].PlayerController.playerNumber - 1].transform.position, Quaternion.identity);
-                    player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerInputController>();
-                    player.GetComponentInChildren<PlayerInputController>().Init(menuManager.playerCards[card].InputController);
-                    player.GetComponentInChildren<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
-                    players.Add(player);
-                }
-                // Instantiate AI players
-                if (menuManager.playerCards[card].computer && menuManager.Controllers[card])
-                {
-                    // TODO: Computer player instantiation here
-                    print("Instantiating computer " + menuManager.playerCards[card].PlayerController.playerNumber);
-                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[menuManager.playerCards[card].PlayerController.playerNumber - 1].transform.position, Quaternion.identity);
-                    player.transform.FindChild("Rigidbody").gameObject.AddComponent<AIInputController>();
-                    player.GetComponentInChildren<AIInputController>().Init(menuManager.playerCards[card].InputController);
+                    if (!menuManager.playerCards[card].computer)
+                    {
+                        print("Instantiating player " + menuManager.playerCards[card].PlayerController.playerNumber);
+                        player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerInputController>();
+                        player.GetComponentInChildren<PlayerInputController>().Init(menuManager.playerCards[card].InputController);
+                    }
+                    else
+                    {
+                        print("Instantiating computer " + menuManager.playerCards[card].PlayerController.playerNumber);
+                        player.transform.FindChild("Rigidbody").gameObject.AddComponent<AIInputController>();
+                        player.GetComponentInChildren<AIInputController>().Init(menuManager.playerCards[card].InputController);
+                    }
+                    switch (card)
+                    {
+                        case 0:
+                            player.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                            break;
+                        case 1:
+                            player.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+                            break;
+                        case 2:
+                            player.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+                            break;
+                        case 3:
+                            player.GetComponentInChildren<SpriteRenderer>().color = Color.green;
+                            break;
+                    }
                     player.GetComponentInChildren<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
                     players.Add(player);
                 }
@@ -78,6 +91,12 @@ namespace Assets.Scripts.Managers
             {
                 Application.LoadLevel("MenuScene");
             }
+        }
+
+        public void Respawn(PlayerController player)
+        {
+            player.GetComponent<Rigidbody2D>().velocity = new Vector2();
+            player.transform.position = spawnPoints[player.playerNumber - 1].transform.position;
         }
     }
 }

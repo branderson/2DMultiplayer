@@ -12,7 +12,7 @@ namespace Assets.Scripts.Player
         private PlayerController playerController;
         private Rigidbody2D rigidBody;
         private List<PlayerController> touchingPlayers;
-        private float pushSpeed = 2f;
+        private float pushSpeed = 4f;
 
         private void Awake()
         {

@@ -58,9 +58,15 @@ namespace Assets.Scripts.Player.States
                 if (!directionalControl || jumpDirection == 0)
                 {
                     if (shortHop)
+                    {
+                        float adjustSpeed = -playerController.GetVelocityX();
+                        AdjustSpeed(adjustSpeed);
                         playerController.Jump(playerController.jumpSpeed*playerController.shortHopFactor);
+                    }
                     else
                     {
+                        float adjustSpeed = -playerController.GetVelocityX();
+                        AdjustSpeed(adjustSpeed);
                         playerController.Jump(playerController.jumpSpeed);
                     }
                 }
@@ -114,6 +120,8 @@ namespace Assets.Scripts.Player.States
             {
                 if (!directionalControl || jumpDirection == 0)
                 {
+                    float adjustSpeed = -playerController.GetVelocityX();
+                    AdjustSpeed(adjustSpeed);
                     playerController.Jump(playerController.airJumpSpeed);
                 }
                 else if (jumpDirection == 1)
