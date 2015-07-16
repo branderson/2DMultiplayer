@@ -97,5 +97,10 @@ namespace Assets.Scripts.Managers
         {
             player.Respawn(spawnPoints[player.playerNumber - 1].transform.position);
         }
+
+        public List<GameObject> GetPlayers()
+        {
+            return players;
+        }
     }
 }
