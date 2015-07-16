@@ -98,5 +98,10 @@ namespace Assets.Scripts.Managers
             player.GetComponent<Rigidbody2D>().velocity = new Vector2();
             player.transform.position = spawnPoints[player.playerNumber - 1].transform.position;
         }
+
+        public List<GameObject> GetPlayers()
+        {
+            return players;
+        }
     }
 }
