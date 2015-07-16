@@ -26,7 +26,7 @@ namespace Assets.Scripts.Player
         [SerializeField] private float terminalVelocity = -15f; // Maximum regular falling rate
         [SerializeField] private float terminalVelocityFast = -30f; // Fast fall terminal velocity
         [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
-        [SerializeField] public float shortHopFactor = .5f; // Fraction of neutral jump height/distance for short hop
+        [SerializeField] public float shortHopFactor = .7f; // Fraction of neutral jump height/distance for short hop
         [SerializeField] public float airControlSpeed = .5f; // Fraction of horizontal control while in air
         private const float GroundedRadius = .5f; // Radius of the overlap circle to determine if onGround
         private const float CeilingRadius = 1f; // Radius of the overlap circle to determine should jump through the ceiling 
@@ -56,10 +56,9 @@ namespace Assets.Scripts.Player
         internal Animator animator; // Reference to the player's animator component.
         private IInputController input;
         private readonly List<PlayerController> opponents = new List<PlayerController>();
-        
-        internal bool run;
-        private bool GroundCollisions = true;
 
+        internal bool Invincible = false;
+        internal bool Run;
         internal bool CanFallThroughFloor = false;
 
         public void Init(int zPosition, int slot)
@@ -69,9 +68,18 @@ namespace Assets.Scripts.Player
             facingRight = true;
             canAirJump = true;
             canRecover = true;
-            GroundCollisions = true;
             SetLayerOrder(zPosition);
             playerNumber = slot + 1;
+        }
+
+        public void Respawn(Vector2 position)
+        {
+//            facingRight = true;
+            fastFall = false;
+            // TODO: Set the state to helpless
+//            SetState();
+            SetVelocity(Vector2.zero);
+            transform.position = position;
         }
 
         // TODO: Non AI players may not need this info
@@ -117,16 +125,9 @@ namespace Assets.Scripts.Player
             animator.SetFloat("yVelocity", velocityY);
             animator.SetFloat("xSpeed", Mathf.Abs(velocityX));
             animator.SetFloat("ySpeed", Mathf.Abs(velocityY));
-            animator.SetBool("Run", run);
+            animator.SetBool("Run", Run);
             animator.SetBool("CanAirJump", canAirJump);
             animator.SetBool("CanRecover", canRecover);
-
-            // Use coroutine for vibration throughout
-//            if (timedVibrate)
-//            {
-//                Vibrate();
-//            }
-
             transform.parent.position = transform.position;
             transform.localPosition = Vector3.zero;
         }
@@ -153,10 +154,10 @@ namespace Assets.Scripts.Player
             }
             // Caps terminal velocity
             // TODO: Change falling speed to set safely
-            if (GetVelocityY() < terminalVelocity)
-            {
-                SetVelocityY(terminalVelocity);
-            }
+//            if (GetVelocityY() < terminalVelocity)
+//            {
+//                SetVelocityY(terminalVelocity);
+//            }
         }
 
         private void FallFast()
@@ -165,10 +166,10 @@ namespace Assets.Scripts.Player
             {
                 IncrementVelocityY(gravity*fastFallFactor*Time.fixedDeltaTime);
             }
-            if (GetVelocityY() < terminalVelocityFast)
-            {
-                SetVelocityY(terminalVelocityFast);
-            }
+//            if (GetVelocityY() < terminalVelocityFast)
+//            {
+//                SetVelocityY(terminalVelocityFast);
+//            }
         }
 
         public bool CheckForGround()
@@ -188,18 +189,6 @@ namespace Assets.Scripts.Player
             {
                 if (colliders[i].gameObject != gameObject && (!passThroughFloor || colliders[i].transform.parent.CompareTag("Impermeable")))
                 {
-                    //                    if (!onGround)
-                    //                    {
-                    //                        if (internalVelocity.y > 15)
-                    //                        {
-                    //                            SetVibrate(12, .8f, .0f);
-                    //                        }
-                    //                        else
-                    //                        {
-                    //                            SetVibrate(12, .8f, .0f);
-                    //                        }
-                    //                    }
-                    onGround = true;
                     grounded = true;
                     fastFall = false;
                     animator.SetBool("Ground", true);
@@ -230,28 +219,14 @@ namespace Assets.Scripts.Player
             }
         }
 
-//        private void Vibrate()
-//        {
-//            if (vibrate == 0)
-//            {
-//                timedVibrate = false;
-//                input.StopVibration();
-//            }
-//            else
-//            {
-//                // TODO: Set tuple to control Vibration intensity
-//                input.VibrateController(leftIntensity, rightIntensity);
-//                vibrate -= 1;
-//            }
-//        }
-
         public IEnumerator Vibrate(int frames, float leftIntensity, float rightIntensity)
         {
             for (int i = 0; i < frames; i++)
             {
-//                input.VibrateController(leftIntensity, rightIntensity);
+                input.VibrateController(leftIntensity, rightIntensity);
                 yield return null;
             }
+            input.StopVibration();
         }
 
         public void SetVibrate(int frames, float leftIntensity, float rightIntensity)

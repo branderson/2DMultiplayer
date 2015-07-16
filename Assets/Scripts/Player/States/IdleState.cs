@@ -30,7 +30,7 @@ namespace Assets.Scripts.Player.States
 
             // Movement
             // TODO: Set multiple levels of movement (Possibly even modify input to have stages of movement controls)
-            if (playerController.run)
+            if (playerController.Run)
             {
                 if (move.x > 0)
                 {
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Player.States
                 }
 //                else
 //                {
-//                    playerController.IncrementSpeedX(-moveSpeed);
+//                    PlayerController.IncrementSpeedX(-moveSpeed);
 //                }
             }
             else 
@@ -69,7 +69,7 @@ namespace Assets.Scripts.Player.States
                 }
 //                else
 //                {
-//                    playerController.IncrementSpeedX(-moveSpeed);
+//                    PlayerController.IncrementSpeedX(-moveSpeed);
 //                }
             }
 
@@ -131,11 +131,11 @@ namespace Assets.Scripts.Player.States
         {
             base.Down();
             playerController.passThroughFloor = true;
-            //            playerController.CheckForGround();
+            //            PlayerController.CheckForGround();
             //            if (playerAnimator.GetBool("CanFallThroughFloor"))
             //            {
             //                // TODO: I need to be handling passing through the floor only while actually passing through the floor
-            //                playerController.passThroughFloor = true;
+            //                PlayerController.passThroughFloor = true;
             //                playerAnimator.SetTrigger("FallThroughFloor");
             //            }
         }

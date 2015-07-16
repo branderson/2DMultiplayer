@@ -18,6 +18,7 @@ namespace Assets.Scripts.Stage
         {
             if (other.tag == "Player")
             {
+                print("Sees player");
                 levelManager.Respawn(other.GetComponent<PlayerController>());
             }
         }

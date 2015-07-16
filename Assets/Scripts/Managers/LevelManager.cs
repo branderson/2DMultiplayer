@@ -95,8 +95,7 @@ namespace Assets.Scripts.Managers
 
         public void Respawn(PlayerController player)
         {
-            player.GetComponent<Rigidbody2D>().velocity = new Vector2();
-            player.transform.position = spawnPoints[player.playerNumber - 1].transform.position;
+            player.Respawn(spawnPoints[player.playerNumber - 1].transform.position);
         }
     }
 }

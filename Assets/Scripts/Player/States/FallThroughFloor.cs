@@ -8,19 +8,19 @@ namespace Assets.Scripts.Player.States
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
             base.OnStateEnter(animator, stateInfo, layerIndex);
-//            playerController.SetGroundCollisions(false);
+//            PlayerController.SetGroundCollisions(false);
         }
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
             base.OnStateUpdate(animator, stateInfo, layerIndex);
-//            playerController.passThroughFloor = true; // TODO: Remove this variable
-//            playerController.SetGroundCollisions(false);
+//            PlayerController.passThroughFloor = true; // TODO: Remove this variable
+//            PlayerController.SetGroundCollisions(false);
             // TODO: Player not falling at all
             // TODO: Seemingly, OnGround is becoming true too early
-//            if (!playerController.CheckForCeiling() && !playerController.CheckForGround())
+//            if (!PlayerController.CheckForCeiling() && !PlayerController.CheckForGround())
 //            {
-//                playerController.SetGroundCollisions(false);
-//                playerController.passThroughFloor = false;
+//                PlayerController.SetGroundCollisions(false);
+//                PlayerController.passThroughFloor = false;
 //            }
         }
 

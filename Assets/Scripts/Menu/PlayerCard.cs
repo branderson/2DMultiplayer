@@ -89,7 +89,7 @@ namespace Assets.Scripts.Menu
             panelImage.color = Color.yellow;
             titleText.text = "Player " + number;
             instructionText.text = "Press Start\nWhen Ready";
-            PlayerController.SetTimedVibrate(12, 0f, .8f);
+            PlayerController.SetVibrate(12, 0f, .8f);
             PlayerController.SetSelected(PlayerController.InitialSelection);
         }
 

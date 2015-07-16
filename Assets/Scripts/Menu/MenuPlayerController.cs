@@ -12,10 +12,6 @@ namespace Assets.Scripts.Menu
         private PlayerCard playerCard;
         private PointerEventData pointer = new PointerEventData(EventSystem.current);
         internal int playerNumber;
-        internal bool timedVibrate = false;
-        internal int vibrate = 0;
-        internal float leftIntensity = 0f;
-        internal float rightIntensity = 0f;
 
         private MenuInputController input;
 
@@ -34,14 +30,6 @@ namespace Assets.Scripts.Menu
         // Update is called once per frame
         void Update()
         {
-        }
-
-        private void FixedUpdate()
-        {
-            if (timedVibrate)
-            {
-                Vibrate();
-            }
         }
 
         public void Deactivate()
@@ -149,27 +137,19 @@ namespace Assets.Scripts.Menu
             
         }
 
-        private void Vibrate()
+        public IEnumerator Vibrate(int frames, float leftIntensity, float rightIntensity)
         {
-            if (vibrate == 0)
+            for (int i = 0; i < frames; i++)
             {
-                timedVibrate = false;
-                input.StopVibration();
-            }
-            else
-            {
-                // TODO: Set tuple to control Vibration intensity
                 input.VibrateController(leftIntensity, rightIntensity);
-                vibrate -= 1;
+                yield return null;
             }
+            input.StopVibration();
         }
 
-        public void SetTimedVibrate(int frames, float leftIntensity, float rightIntensity)
+        public void SetVibrate(int frames, float leftIntensity, float rightIntensity)
         {
-            timedVibrate = true;
-            this.vibrate = frames;
-            this.leftIntensity = leftIntensity;
-            this.rightIntensity = rightIntensity;
+            StartCoroutine(Vibrate(frames, leftIntensity, rightIntensity));
         }
 
         public bool IsActive()

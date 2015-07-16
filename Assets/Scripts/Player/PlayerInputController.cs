@@ -154,7 +154,7 @@ namespace Assets.Scripts.Player
                     character.GetState().Jump();
                     jump = false;
                 }
-                character.run = run;
+                character.Run = run;
                 if (primary)
                 {
                     character.GetState().Primary(x, y);

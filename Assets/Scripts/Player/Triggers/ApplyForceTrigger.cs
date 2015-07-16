@@ -4,12 +4,16 @@ namespace Assets.Scripts.Player.Triggers
 {
     public class ApplyForceTrigger : MonoBehaviour
     {
+        [SerializeField] public bool OverrideOthers;
+        [SerializeField] private int damageApplied;
         [SerializeField] private Vector2 forceApplied;
         private PlayerController playerController;
+        private ForceTriggerManager manager;
 
         private void Awake()
         {
-            playerController = transform.parent.GetComponentInChildren<PlayerController>();
+            playerController = transform.parent.parent.GetComponentInChildren<PlayerController>();
+            manager = GetComponentInParent<ForceTriggerManager>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -17,17 +21,20 @@ namespace Assets.Scripts.Player.Triggers
             if (other.tag == "Player")
             {
                 PlayerController controller = other.GetComponent<PlayerController>();
-                Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
+                manager.AddForce(controller, forceApplied, damageApplied);
 
-                // TODO: Maybe add a tag for hitable for team battles
-                if (playerController.facingRight)
-                {
-                    controller.IncrementVelocity(forceApplied);
-                }
-                else
-                {
-                    controller.IncrementVelocity(-forceApplied);
-                }
+//                if (controller != playerController && !controller.Invincible)
+//                {
+//                    // TODO: Maybe add a tag for hitable for team battles
+//                    if (playerController.facingRight)
+//                    {
+//                        controller.IncrementVelocity(forceApplied);
+//                    }
+//                    else
+//                    {
+//                        controller.IncrementVelocity(-forceApplied);
+//                    }
+//                }
             }
         }
     }

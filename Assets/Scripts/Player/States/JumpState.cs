@@ -28,13 +28,13 @@ namespace Assets.Scripts.Player.States
                 {
                     playerController.IncrementVelocityX(1f);
                 }
-//                if (animator.GetFloat("xVelocity") + playerController.airControlSpeed < playerController.maxAirSpeedX)
+//                if (animator.GetFloat("xVelocity") + PlayerController.airControlSpeed < PlayerController.maxAirSpeedX)
 //                {
-//                    playerController.IncrementVelocityX(playerController.airControlSpeed);
+//                    PlayerController.IncrementVelocityX(PlayerController.airControlSpeed);
 //                }
-//                else if (animator.GetFloat("xVelocity") + playerController.airControlSpeed > playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
+//                else if (animator.GetFloat("xVelocity") + PlayerController.airControlSpeed > PlayerController.maxAirSpeedX && animator.GetFloat("xSpeed") < PlayerController.maxAirSpeedX)
 //                {
-//                    playerController.SetVelocityX(playerController.maxAirSpeedX);
+//                    PlayerController.SetVelocityX(PlayerController.maxAirSpeedX);
 //                }
             }
             else if (move.x < 0)
@@ -43,13 +43,13 @@ namespace Assets.Scripts.Player.States
                 {
                     playerController.IncrementVelocityX(-1f);
                 }
-//                if (animator.GetFloat("xVelocity") - playerController.airControlSpeed > -playerController.maxAirSpeedX)
+//                if (animator.GetFloat("xVelocity") - PlayerController.airControlSpeed > -PlayerController.maxAirSpeedX)
 //                {
-//                    playerController.IncrementVelocityX(-playerController.airControlSpeed);
+//                    PlayerController.IncrementVelocityX(-PlayerController.airControlSpeed);
 //                }
-//                else if (animator.GetFloat("xVelocity") - playerController.airControlSpeed < -playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
+//                else if (animator.GetFloat("xVelocity") - PlayerController.airControlSpeed < -PlayerController.maxAirSpeedX && animator.GetFloat("xSpeed") < PlayerController.maxAirSpeedX)
 //                {
-//                    playerController.SetVelocityX(-playerController.maxAirSpeedX);
+//                    PlayerController.SetVelocityX(-PlayerController.maxAirSpeedX);
 //                }
             }
 
