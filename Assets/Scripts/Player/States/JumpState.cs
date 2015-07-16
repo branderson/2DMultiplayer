@@ -24,25 +24,33 @@ namespace Assets.Scripts.Player.States
             // TODO: Jumps between absolute values at max
             if (move.x > 0)
             {
-                if (animator.GetFloat("xVelocity") + playerController.airControlSpeed < playerController.maxAirSpeedX)
+                if (playerController.GetVelocityX() < playerController.maxAirSpeedX)
                 {
-                    playerController.IncrementInternalVelocityX(playerController.airControlSpeed);
+                    playerController.IncrementVelocityX(1f);
                 }
-                else if (animator.GetFloat("xVelocity") + playerController.airControlSpeed > playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
-                {
-                    playerController.SetInternalVelocityX(playerController.maxAirSpeedX);
-                }
+//                if (animator.GetFloat("xVelocity") + playerController.airControlSpeed < playerController.maxAirSpeedX)
+//                {
+//                    playerController.IncrementVelocityX(playerController.airControlSpeed);
+//                }
+//                else if (animator.GetFloat("xVelocity") + playerController.airControlSpeed > playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
+//                {
+//                    playerController.SetVelocityX(playerController.maxAirSpeedX);
+//                }
             }
             else if (move.x < 0)
             {
-                if (animator.GetFloat("xVelocity") - playerController.airControlSpeed > -playerController.maxAirSpeedX)
+                if (playerController.GetVelocityX() > -playerController.maxAirSpeedX)
                 {
-                    playerController.IncrementInternalVelocityX(-playerController.airControlSpeed);
+                    playerController.IncrementVelocityX(-1f);
                 }
-                else if (animator.GetFloat("xVelocity") - playerController.airControlSpeed < -playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
-                {
-                    playerController.SetInternalVelocityX(-playerController.maxAirSpeedX);
-                }
+//                if (animator.GetFloat("xVelocity") - playerController.airControlSpeed > -playerController.maxAirSpeedX)
+//                {
+//                    playerController.IncrementVelocityX(-playerController.airControlSpeed);
+//                }
+//                else if (animator.GetFloat("xVelocity") - playerController.airControlSpeed < -playerController.maxAirSpeedX && animator.GetFloat("xSpeed") < playerController.maxAirSpeedX)
+//                {
+//                    playerController.SetVelocityX(-playerController.maxAirSpeedX);
+//                }
             }
 
             // Check if holding down for falling through platforms

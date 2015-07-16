@@ -59,6 +59,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 493082}
   - 61: {fileID: 6126094}
+  - 61: {fileID: 6150516}
+  - 61: {fileID: 6153612}
   - 114: {fileID: 11424894}
   m_Layer: 0
   m_Name: BottomTrigger
@@ -131,7 +133,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.260851562, y: -1.19266343, z: 0}
+  m_LocalPosition: {x: -11.9011116, y: -6.37563705, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children:
   - {fileID: 410996}
@@ -218,7 +220,33 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -1}
   serializedVersion: 2
-  m_Size: {x: 1.20000005, y: 1}
+  m_Size: {x: 1.5, y: 1}
+--- !u!61 &6150516
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139080}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -.625, y: 0}
+  serializedVersion: 2
+  m_Size: {x: .25, y: 1}
+--- !u!61 &6153612
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139080}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: .625, y: 0}
+  serializedVersion: 2
+  m_Size: {x: .25, y: 1}
 --- !u!61 &6154900
 BoxCollider2D:
   m_ObjectHideFlags: 1

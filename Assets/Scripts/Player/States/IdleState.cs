@@ -10,6 +10,7 @@ namespace Assets.Scripts.Player.States
     public class IdleState : PlayerState
     {
         private Vector2 move;
+        private float moveSpeed = 6f;
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -33,31 +34,43 @@ namespace Assets.Scripts.Player.States
             {
                 if (move.x > 0)
                 {
-                    playerController.SetInternalVelocityX(playerController.runSpeedX);
+                    if (playerController.GetVelocityX() < playerController.runSpeedX)
+                    {
+                        playerController.IncrementVelocityX(moveSpeed*1.5f);
+                    }
                 }
                 else if (move.x < 0)
                 {
-                    playerController.SetInternalVelocityX(-playerController.runSpeedX);
+                    if (playerController.GetVelocityX() > -playerController.runSpeedX)
+                    {
+                        playerController.IncrementVelocityX(-moveSpeed*1.5f);                       
+                    }
                 }
-                else
-                {
-                    playerController.SetInternalVelocityX(0f);
-                }
+//                else
+//                {
+//                    playerController.IncrementSpeedX(-moveSpeed);
+//                }
             }
             else 
             {
                 if (move.x > 0)
                 {
-                    playerController.SetInternalVelocityX(playerController.maxSpeedX);
+                    if (playerController.GetVelocityX() < playerController.maxSpeedX)
+                    {
+                        playerController.IncrementVelocityX(moveSpeed);
+                    }
                 }
                 else if (move.x < 0)
                 {
-                    playerController.SetInternalVelocityX(-playerController.maxSpeedX);
+                    if (playerController.GetVelocityX() > -playerController.maxSpeedX)
+                    {
+                        playerController.IncrementVelocityX(-moveSpeed);                       
+                    }
                 }
-                else
-                {
-                    playerController.SetInternalVelocityX(0f);
-                }
+//                else
+//                {
+//                    playerController.IncrementSpeedX(-moveSpeed);
+//                }
             }
 
             // Flip code

@@ -15,8 +15,10 @@ namespace Assets.Scripts.Stage
 
         public void OnTriggerEnter2D(Collider2D other)
         {
+            // TODO: Look for a collision with the head, on a separate collider (non rigidbody). If detected, turn on collision for feet
             if (other.tag == "Player")
             {
+                // TODO: Could put side triggers on separate script and disable on enter
                 PlayerController controller = other.GetComponent<PlayerController>();
                 Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
                 // If enterring from the bottom, pass through, otherwise turn on collisions

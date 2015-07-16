@@ -47,6 +47,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &133514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 418302}
+  - 61: {fileID: 6186066}
+  - 114: {fileID: 11494832}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &136114
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +285,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 473438}
   m_RootOrder: 11
+--- !u!4 &418302
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133514}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 473438}
+  m_RootOrder: 12
 --- !u!4 &423310
 Transform:
   m_ObjectHideFlags: 1
@@ -359,7 +388,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.46400118, y: -.252098441, z: 0}
+  m_LocalPosition: {x: -19.0192966, y: -5.44569302, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458906}
@@ -374,6 +403,7 @@ Transform:
   - {fileID: 423310}
   - {fileID: 436750}
   - {fileID: 417856}
+  - {fileID: 418302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5005666
@@ -399,7 +429,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156888}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: d3666ced0e58aac4784325b037c7c466, type: 2}
+  m_Material: {fileID: 6200000, guid: 9fc038c1888fa5c42900fd3ffa3fdc09, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -.5}
@@ -412,7 +442,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156888}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: cba76659a92a28b44bd4061b6954ddde, type: 2}
+  m_Material: {fileID: 6200000, guid: 9fc038c1888fa5c42900fd3ffa3fdc09, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: .460000008}
@@ -464,12 +494,25 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156888}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: cba76659a92a28b44bd4061b6954ddde, type: 2}
+  m_Material: {fileID: 6200000, guid: 9fc038c1888fa5c42900fd3ffa3fdc09, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -.0199999996}
   serializedVersion: 2
   m_Size: {x: .949999988, y: .629999995}
+--- !u!61 &6186066
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133514}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!95 &9507752
 Animator:
   serializedVersion: 3
@@ -525,9 +568,9 @@ MonoBehaviour:
   maxSpeedX: 8
   runSpeedX: 14
   jumpHeight: 6
-  airJumpHeight: 4
-  airSideJumpDistance: 4
-  airSideJumpHeight: 4
+  airJumpHeight: 6
+  airSideJumpDistance: 5
+  airSideJumpHeight: 6
   recoveryHeight: 8
   neutralAirTime: .600000024
   groundCheck:
@@ -549,8 +592,6 @@ MonoBehaviour:
   fastFallFactor: 3
   shortHopFactor: .5
   airControlSpeed: 1
-  internalDampingRate: 1
-  externalDampingRate: 2
 --- !u!114 &11489166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -563,6 +604,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   right: 0
+--- !u!114 &11494832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceApplied: {x: 0, y: 0}
 --- !u!212 &21296116
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -627,7 +680,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 6200000, guid: cba76659a92a28b44bd4061b6954ddde, type: 2}
+      objectReference: {fileID: 6200000, guid: 9fc038c1888fa5c42900fd3ffa3fdc09, type: 2}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
@@ -650,7 +703,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Offset.x
@@ -659,6 +712,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: externalDampingRate
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: airSideJumpHeight
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: airSideJumpDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: airJumpHeight
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

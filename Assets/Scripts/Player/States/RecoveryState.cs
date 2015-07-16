@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player.States
     {
         [SerializeField] private int waitFrames = 4;
         [SerializeField] private bool directionalControl = true;
+        private float maximumNegationVelocity = 40f;
         private int waitCounter;
         private int jumpDirection = 0;
         private float directionModifier = 1;
@@ -50,20 +51,45 @@ namespace Assets.Scripts.Player.States
 
             if (!directionalControl || jumpDirection == 0)
             {
-                playerController.SetInternalVelocityY(playerController.recoverySpeed);
+                playerController.Jump(playerController.recoverySpeed);
             }
             // TODO: Recovery side jumps should be set up
             else if (jumpDirection == 1)
             {
-                playerController.SetInternalVelocityX(playerController.airSideJumpSpeedX*directionModifier);
-                playerController.SetInternalVelocityY(playerController.recoverySpeed);
+                if (playerController.GetSpeedX() < playerController.maxAirSpeedX) 
+                {
+                    float adjustSpeed = 2*playerController.airSideJumpSpeedX*directionModifier - playerController.GetVelocityX();
+                    AdjustSpeed(adjustSpeed);
+                }
+                playerController.Jump(playerController.recoverySpeed);
             }
             else if (jumpDirection == -1)
             {
-                playerController.SetInternalVelocityX(-playerController.airSideJumpSpeedX*directionModifier);
-                playerController.SetInternalVelocityY(playerController.recoverySpeed);
+                if (playerController.GetSpeedX() < playerController.maxAirSpeedX) 
+                {
+                    float adjustSpeed = -2*playerController.airSideJumpSpeedX*directionModifier - playerController.GetVelocityX();
+                    AdjustSpeed(adjustSpeed);
+                }
+                playerController.Jump(playerController.recoverySpeed);
                 playerController.Flip();
             }
+        }
+
+        private void AdjustSpeed(float adjustSpeed)
+        {
+//            MonoBehaviour.print("Adjusting speed: Target speed is " + playerController.airSideJumpSpeedX);
+//            MonoBehaviour.print("Current speed: " + playerController.GetVelocityX() + ", adjusting by: " + adjustSpeed);
+//            MonoBehaviour.print("Final speed should be " + playerController.GetVelocityX() + " + " + adjustSpeed  + " = " + (playerController.GetVelocityX() + adjustSpeed));
+            if (Mathf.Abs(adjustSpeed) < maximumNegationVelocity)
+            {
+                playerController.IncrementVelocityX(adjustSpeed);
+            }
+            else
+            {
+                playerController.IncrementVelocityX(maximumNegationVelocity*directionModifier);
+//                MonoBehaviour.print("Adjustment of " + Mathf.Abs(adjustSpeed) + " exceeded maximum of " + maximumNegationVelocity);
+            }
+//            MonoBehaviour.print("Final velocity: " + playerController.GetVelocityX());
         }
 
         public override string GetName()

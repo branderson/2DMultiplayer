@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Player;
+using UnityEditor;
 
 namespace Assets.Scripts.Player
 {
@@ -24,18 +25,18 @@ namespace Assets.Scripts.Player
         {
             foreach (PlayerController player in touchingPlayers)
             {
-                if (right)
+                if ((right && playerController.facingRight) || (!right && !playerController.facingRight))
                 {
-                    if (Mathf.Abs(player.externalVelocity.x) < pushSpeed)
+                    if (player.GetSpeedX() < pushSpeed)
                     {
-                        player.SetExternalVelocityX(pushSpeed);
+                        player.IncrementVelocityX(pushSpeed);
                     }
                 }
                 else
                 {
-                    if (Mathf.Abs(player.externalVelocity.x) < pushSpeed)
+                    if (player.GetSpeedX() < pushSpeed)
                     {
-                        player.SetExternalVelocityX(-pushSpeed);
+                        player.IncrementVelocityX(-pushSpeed);
                     }
                 }
             }

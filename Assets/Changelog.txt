@@ -21,3 +21,5 @@ Set up player pushing interaction although SetVelocity in IdleState overrides th
 Set up external and internal velocities
 Pushing players works now!
 Moved animator to parent object in player and sprite renderer to child object for manipulation separate from rigidbody
+Reverted back to only using rigidody velocities, no external or internal
+	Instead, made SetVelocity private. Everything must be done in terms of IncrementVelocity

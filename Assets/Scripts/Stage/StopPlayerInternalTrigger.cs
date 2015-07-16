@@ -14,15 +14,15 @@ namespace Assets.Scripts.Stage
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "Player")
-            {
-                PlayerController controller = other.GetComponent<PlayerController>();
-                Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
-                if (rigidbody.velocity.y < 0)
-                {
-                    controller.SetInternalVelocityX(0f);
-                }
-            }
+//            if (other.tag == "Player")
+//            {
+//                PlayerController controller = other.GetComponent<PlayerController>();
+//                Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
+//                if (rigidbody.velocity.y < 0)
+//                {
+//                    controller.SetVelocityX(0f);
+//                }
+//            }
         }
     }
 }
