@@ -23,18 +23,7 @@ namespace Assets.Scripts.Player.Triggers
                 PlayerController controller = other.GetComponent<PlayerController>();
                 manager.AddForce(controller, forceApplied, damageApplied);
 
-//                if (controller != playerController && !controller.Invincible)
-//                {
 //                    // TODO: Maybe add a tag for hitable for team battles
-//                    if (playerController.facingRight)
-//                    {
-//                        controller.IncrementVelocity(forceApplied);
-//                    }
-//                    else
-//                    {
-//                        controller.IncrementVelocity(-forceApplied);
-//                    }
-//                }
             }
         }
     }

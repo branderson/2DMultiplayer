@@ -57,6 +57,8 @@ namespace Assets.Scripts.Player
         private IInputController input;
         private readonly List<PlayerController> opponents = new List<PlayerController>();
 
+        internal bool onEdgeRight = false;
+        internal bool onEdgeLeft = false;
         internal bool Invincible = false;
         internal bool Run;
         internal bool CanFallThroughFloor = false;
@@ -77,7 +79,7 @@ namespace Assets.Scripts.Player
 //            facingRight = true;
             fastFall = false;
             // TODO: Set the state to helpless
-//            SetState();
+            animator.SetTrigger("Helpless");
             SetVelocity(Vector2.zero);
             transform.position = position;
         }
@@ -125,6 +127,7 @@ namespace Assets.Scripts.Player
             animator.SetFloat("yVelocity", velocityY);
             animator.SetFloat("xSpeed", Mathf.Abs(velocityX));
             animator.SetFloat("ySpeed", Mathf.Abs(velocityY));
+            animator.SetFloat("WalkAnimationSpeed", Mathf.Abs(velocityX)/8);
             animator.SetBool("Run", Run);
             animator.SetBool("CanAirJump", canAirJump);
             animator.SetBool("CanRecover", canRecover);
@@ -219,7 +222,7 @@ namespace Assets.Scripts.Player
             }
         }
 
-        public IEnumerator Vibrate(int frames, float leftIntensity, float rightIntensity)
+        private IEnumerator Vibrate(int frames, float leftIntensity, float rightIntensity)
         {
             for (int i = 0; i < frames; i++)
             {

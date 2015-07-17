@@ -543,14 +543,6 @@ Prefab:
       propertyPath: m_Name
       value: Platform (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 432770, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 120302, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
   m_IsPrefabParent: 0
@@ -632,6 +624,14 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: d3666ced0e58aac4784325b037c7c466, type: 2}
+    - target: {fileID: 120302, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
+      propertyPath: m_TagString
+      value: Impermeable
+      objectReference: {fileID: 0}
+    - target: {fileID: 432770, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da1561b4f312f0a49b01ce31a836e400, type: 2}
   m_IsPrefabParent: 0

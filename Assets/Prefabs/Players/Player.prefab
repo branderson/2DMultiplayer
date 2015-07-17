@@ -778,7 +778,7 @@ MonoBehaviour:
   terminalVelocity: -20
   terminalVelocityFast: -40
   fastFallFactor: 3
-  shortHopFactor: .5
+  shortHopFactor: .649999976
   airControlSpeed: 1
 --- !u!114 &11464966
 MonoBehaviour:
@@ -960,6 +960,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shortHopFactor
+      value: .649999976
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

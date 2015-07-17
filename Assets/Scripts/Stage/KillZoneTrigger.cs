@@ -18,8 +18,9 @@ namespace Assets.Scripts.Stage
         {
             if (other.tag == "Player")
             {
-                print("Sees player");
-                levelManager.Respawn(other.GetComponent<PlayerController>());
+                PlayerController playerController = other.GetComponent<PlayerController>();
+                playerController.SetVibrate(25, 1f, .5f);
+                levelManager.Respawn(playerController);
             }
         }
     }

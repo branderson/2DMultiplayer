@@ -96,7 +96,7 @@ namespace Assets.Scripts.Player.States
 
         public override string GetName()
         {
-            throw new System.NotImplementedException();
+            return "Recovery";
         }
 
         public override void Move(float x, float y)

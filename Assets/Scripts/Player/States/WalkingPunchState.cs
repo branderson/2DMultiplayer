@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Assets.Scripts.Player.States
 {
-    public class WalkingPunchState : StateMachineBehaviour
+    public class WalkingPunchState : PlayerState
     {
         
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -30,5 +30,9 @@ namespace Assets.Scripts.Player.States
         //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         //
         //}
+        public override string GetName()
+        {
+            return "WalkingPunch";
+        }
     }
 }

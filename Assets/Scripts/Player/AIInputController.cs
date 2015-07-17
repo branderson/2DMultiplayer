@@ -125,12 +125,10 @@ namespace Assets.Scripts.Player
 
         public void VibrateController(float leftMotor, float rightMotor)
         {
-            throw new NotImplementedException();
         }
 
         public void StopVibration()
         {
-            throw new NotImplementedException();
         }
     }
 }

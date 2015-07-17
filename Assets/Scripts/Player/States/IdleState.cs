@@ -10,6 +10,7 @@ namespace Assets.Scripts.Player.States
     public class IdleState : PlayerState
     {
         private Vector2 move;
+        private float threshold = .9f;
         private float moveSpeed = 6f;
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -32,6 +33,7 @@ namespace Assets.Scripts.Player.States
             // TODO: Set multiple levels of movement (Possibly even modify input to have stages of movement controls)
             if (playerController.Run)
             {
+                // Run
                 if (move.x > 0)
                 {
                     if (playerController.GetVelocityX() < playerController.runSpeedX)
@@ -55,16 +57,40 @@ namespace Assets.Scripts.Player.States
             {
                 if (move.x > 0)
                 {
-                    if (playerController.GetVelocityX() < playerController.maxSpeedX)
+                    // Fast walk
+                    if (move.x > threshold)
                     {
-                        playerController.IncrementVelocityX(moveSpeed);
+                        if (playerController.GetVelocityX() < playerController.maxSpeedX)
+                        {
+                            playerController.IncrementVelocityX(moveSpeed);
+                        }
+                    }
+                    // Slow walk
+                    else
+                    {
+                        if (playerController.GetVelocityX() < .5f*playerController.maxSpeedX && !playerController.onEdgeRight)
+                        {
+                            playerController.IncrementVelocityX(moveSpeed);
+                        }
                     }
                 }
                 else if (move.x < 0)
                 {
-                    if (playerController.GetVelocityX() > -playerController.maxSpeedX)
+                    // Fast walk
+                    if (move.x < -threshold)
                     {
-                        playerController.IncrementVelocityX(-moveSpeed);                       
+                        if (playerController.GetVelocityX() > -playerController.maxSpeedX)
+                        {
+                            playerController.IncrementVelocityX(-moveSpeed);
+                        }
+                    }
+                    // Slow walk
+                    else
+                    {
+                        if (playerController.GetVelocityX() > -.5f*playerController.maxSpeedX && !playerController.onEdgeLeft)
+                        {
+                            playerController.IncrementVelocityX(-moveSpeed);
+                        }
                     }
                 }
 //                else

@@ -30,7 +30,7 @@ namespace Assets.Scripts.Player.States
 
         public override string GetName()
         {
-            throw new System.NotImplementedException();
+            return "FallThroughFloor";
         }
     }
 }
