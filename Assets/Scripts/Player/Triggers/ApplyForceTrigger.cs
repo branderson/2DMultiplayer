@@ -4,9 +4,11 @@ namespace Assets.Scripts.Player.Triggers
 {
     public class ApplyForceTrigger : MonoBehaviour
     {
-        [SerializeField] public bool OverrideOthers;
+        [SerializeField] private bool overrideOthers;
         [SerializeField] private int damageApplied;
         [SerializeField] private Vector2 forceApplied;
+        [SerializeField] private bool vibrateSelf;
+        [SerializeField] private bool vibrateOpponent;
         private PlayerController playerController;
         private ForceTriggerManager manager;
 
@@ -21,8 +23,14 @@ namespace Assets.Scripts.Player.Triggers
             if (other.tag == "Player")
             {
                 PlayerController controller = other.GetComponent<PlayerController>();
-                manager.AddForce(controller, forceApplied, damageApplied);
-
+                if (controller != playerController)
+                {
+                    manager.AddForce(controller, forceApplied, damageApplied, overrideOthers, vibrateOpponent);
+                    if (vibrateSelf)
+                    {
+                        playerController.SetVibrate(12, .8f, .5f);
+                    }
+                }
 //                    // TODO: Maybe add a tag for hitable for team battles
             }
         }

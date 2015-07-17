@@ -1,0 +1,2112 @@
+fileFormatVersion: 2
+guid: 02513392166c81b49bd0421722d28a34
+timeCreated: 1437163978
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CrouchLoop_0
+    21300002: CrouchLoop_1
+    21300004: CrouchLoop_2
+    21300006: CrouchLoop_3
+    21300008: CrouchLoop_4
+    21300010: CrouchLoop_5
+    21300012: CrouchLoop_6
+    21300014: CrouchLoop_7
+    21300016: CrouchLoop_8
+    21300018: CrouchLoop_9
+    21300020: CrouchLoop_10
+    21300022: CrouchLoop_11
+    21300024: CrouchLoop_12
+    21300026: CrouchLoop_13
+    21300028: CrouchLoop_14
+    21300030: CrouchLoop_15
+    21300032: CrouchLoop_16
+    21300034: CrouchLoop_17
+    21300036: CrouchLoop_18
+    21300038: CrouchLoop_19
+    21300040: CrouchLoop_20
+    21300042: CrouchLoop_21
+    21300044: CrouchLoop_22
+    21300046: CrouchLoop_23
+    21300048: CrouchLoop_24
+    21300050: CrouchLoop_25
+    21300052: CrouchLoop_26
+    21300054: CrouchLoop_27
+    21300056: CrouchLoop_28
+    21300058: CrouchLoop_29
+    21300060: CrouchLoop_30
+    21300062: CrouchLoop_31
+    21300064: CrouchLoop_32
+    21300066: CrouchLoop_33
+    21300068: CrouchLoop_34
+    21300070: CrouchLoop_35
+    21300072: CrouchLoop_36
+    21300074: CrouchLoop_37
+    21300076: CrouchLoop_38
+    21300078: CrouchLoop_39
+    21300080: CrouchLoop_40
+    21300082: CrouchLoop_41
+    21300084: CrouchLoop_42
+    21300086: CrouchLoop_43
+    21300088: CrouchLoop_44
+    21300090: CrouchLoop_45
+    21300092: CrouchLoop_46
+    21300094: CrouchLoop_47
+    21300096: CrouchLoop_48
+    21300098: CrouchLoop_49
+    21300100: CrouchLoop_50
+    21300102: CrouchLoop_51
+    21300104: CrouchLoop_52
+    21300106: CrouchLoop_53
+    21300108: CrouchLoop_54
+    21300110: CrouchLoop_55
+    21300112: CrouchLoop_56
+    21300114: CrouchLoop_57
+    21300116: CrouchLoop_58
+    21300118: CrouchLoop_59
+    21300120: CrouchLoop_60
+    21300122: CrouchLoop_61
+    21300124: CrouchLoop_62
+    21300126: CrouchLoop_63
+    21300128: CrouchLoop_64
+    21300130: CrouchLoop_65
+    21300132: CrouchLoop_66
+    21300134: CrouchLoop_67
+    21300136: CrouchLoop_68
+    21300138: CrouchLoop_69
+    21300140: CrouchLoop_70
+    21300142: CrouchLoop_71
+    21300144: CrouchLoop_72
+    21300146: CrouchLoop_73
+    21300148: CrouchLoop_74
+    21300150: CrouchLoop_75
+    21300152: CrouchLoop_76
+    21300154: CrouchLoop_77
+    21300156: CrouchLoop_78
+    21300158: CrouchLoop_79
+    21300160: CrouchLoop_80
+    21300162: CrouchLoop_81
+    21300164: CrouchLoop_82
+    21300166: CrouchLoop_83
+    21300168: CrouchLoop_84
+    21300170: CrouchLoop_85
+    21300172: CrouchLoop_86
+    21300174: CrouchLoop_87
+    21300176: CrouchLoop_88
+    21300178: CrouchLoop_89
+    21300180: CrouchLoop_90
+    21300182: CrouchLoop_91
+    21300184: CrouchLoop_92
+    21300186: CrouchLoop_93
+    21300188: CrouchLoop_94
+    21300190: CrouchLoop_95
+    21300192: CrouchLoop_96
+    21300194: CrouchLoop_97
+    21300196: CrouchLoop_98
+    21300198: CrouchLoop_99
+    21300200: CrouchLoop_100
+    21300202: CrouchLoop_101
+    21300204: CrouchLoop_102
+    21300206: CrouchLoop_103
+    21300208: CrouchLoop_104
+    21300210: CrouchLoop_105
+    21300212: CrouchLoop_106
+    21300214: CrouchLoop_107
+    21300216: CrouchLoop_108
+    21300218: CrouchLoop_109
+    21300220: CrouchLoop_110
+    21300222: CrouchLoop_111
+    21300224: CrouchLoop_112
+    21300226: CrouchLoop_113
+    21300228: CrouchLoop_114
+    21300230: CrouchLoop_115
+    21300232: CrouchLoop_116
+    21300234: CrouchLoop_117
+    21300236: CrouchLoop_118
+    21300238: CrouchLoop_119
+    21300240: CrouchLoop_120
+    21300242: CrouchLoop_121
+    21300244: CrouchLoop_122
+    21300246: CrouchLoop_123
+    21300248: CrouchLoop_124
+    21300250: CrouchLoop_125
+    21300252: CrouchLoop_126
+    21300254: CrouchLoop_127
+    21300256: CrouchLoop_128
+    21300258: CrouchLoop_129
+    21300260: CrouchLoop_130
+    21300262: CrouchLoop_131
+    21300264: CrouchLoop_132
+    21300266: CrouchLoop_133
+    21300268: CrouchLoop_134
+    21300270: CrouchLoop_135
+    21300272: CrouchLoop_136
+    21300274: CrouchLoop_137
+    21300276: CrouchLoop_138
+    21300278: CrouchLoop_139
+    21300280: CrouchLoop_140
+    21300282: CrouchLoop_141
+    21300284: CrouchLoop_142
+    21300286: CrouchLoop_143
+    21300288: CrouchLoop_144
+    21300290: CrouchLoop_145
+    21300292: CrouchLoop_146
+    21300294: CrouchLoop_147
+    21300296: CrouchLoop_148
+    21300298: CrouchLoop_149
+    21300300: CrouchLoop_150
+    21300302: CrouchLoop_151
+    21300304: CrouchLoop_152
+    21300306: CrouchLoop_153
+    21300308: CrouchLoop_154
+    21300310: CrouchLoop_155
+    21300312: CrouchLoop_156
+    21300314: CrouchLoop_157
+    21300316: CrouchLoop_158
+    21300318: CrouchLoop_159
+    21300320: CrouchLoop_160
+    21300322: CrouchLoop_161
+    21300324: CrouchLoop_162
+    21300326: CrouchLoop_163
+    21300328: CrouchLoop_164
+    21300330: CrouchLoop_165
+    21300332: CrouchLoop_166
+    21300334: CrouchLoop_167
+    21300336: CrouchLoop_168
+    21300338: CrouchLoop_169
+    21300340: CrouchLoop_170
+    21300342: CrouchLoop_171
+    21300344: CrouchLoop_172
+    21300346: CrouchLoop_173
+    21300348: CrouchLoop_174
+    21300350: CrouchLoop_175
+    21300352: CrouchLoop_176
+    21300354: CrouchLoop_177
+    21300356: CrouchLoop_178
+    21300358: CrouchLoop_179
+    21300360: CrouchLoop_180
+    21300362: CrouchLoop_181
+    21300364: CrouchLoop_182
+    21300366: CrouchLoop_183
+    21300368: CrouchLoop_184
+    21300370: CrouchLoop_185
+    21300372: CrouchLoop_186
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 8192
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: CrouchLoop_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_1
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_2
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_3
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_4
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_5
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_6
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_7
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_8
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_9
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 4842
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_11
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_12
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_13
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_14
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_15
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_16
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_17
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_18
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_19
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 4573
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_21
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_22
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_23
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_24
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_25
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_26
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_27
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_28
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_29
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 4304
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_31
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_32
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_33
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_34
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_35
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_36
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_37
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_38
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_39
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 4035
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_41
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_42
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_43
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_44
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_45
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_46
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_47
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_48
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_49
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 3766
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_51
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_52
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_53
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_54
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_55
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_56
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_57
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_58
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_59
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 3497
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_61
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_62
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_63
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_64
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_65
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_66
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_67
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_68
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_69
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 3228
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_71
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_72
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_73
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_74
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_75
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_76
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_77
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_78
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_79
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 2959
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_81
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_82
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_83
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_84
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_85
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_86
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_87
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_88
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_89
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 2690
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_91
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_92
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_93
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_94
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_95
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_96
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_97
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_98
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_99
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 2421
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_100
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_101
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_102
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_103
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_104
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_105
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_106
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_107
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_108
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_109
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 2152
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_110
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_111
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_112
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_113
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_114
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_115
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_116
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_117
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_118
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_119
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 1883
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_120
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_121
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_122
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_123
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_124
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_125
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_126
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_127
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_128
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_129
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 1614
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_130
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_131
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_132
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_133
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_134
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_135
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_136
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_137
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_138
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_139
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 1345
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_141
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_142
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_143
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_144
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_145
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_146
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_147
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_148
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_149
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 1076
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_150
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_151
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_152
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_153
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_154
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_155
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_156
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_157
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_158
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_159
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 807
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_160
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_161
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_162
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_163
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_164
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_165
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_166
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_167
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_168
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_169
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 538
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_170
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_171
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_172
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_173
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_174
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_175
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_176
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_177
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_178
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_179
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 269
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_180
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_181
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_182
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 0
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_183
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 0
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_184
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 0
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_185
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 0
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CrouchLoop_186
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 0
+        width: 198
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

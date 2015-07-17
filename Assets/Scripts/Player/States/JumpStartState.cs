@@ -12,6 +12,7 @@ namespace Assets.Scripts.Player.States
         private float maximumNegationVelocity = 25f;
         private int waitCounter;
         private int jumpDirection = 0;
+        private bool jump = true;
         private float directionModifier = 1;
         private bool shortHop = false;
         private Vector2 move;
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Player.States
         {
             base.OnStateEnter(animator, stateinfo, layerindex);
             waitCounter = waitFrames;
+            jump = true;
             jumpDirection = 0;
             directionModifier = 1;
             shortHop = false;
@@ -52,99 +54,102 @@ namespace Assets.Scripts.Player.States
             else
                 directionModifier = -1;
 
-            if (playerController.CheckForGround() && playerController.GetVelocityY() < .1f)
+            if (jump)
             {
-                // Need to do this in this state for now because short hop information would not pass on to next state
-                if (!directionalControl || jumpDirection == 0)
+                if (playerController.CheckForGround() && playerController.GetVelocityY() < .1f)
                 {
-                    if (shortHop)
+                    // Need to do this in this state for now because short hop information would not pass on to next state
+                    if (!directionalControl || jumpDirection == 0)
                     {
-                        float adjustSpeed = -playerController.GetVelocityX();
-                        AdjustSpeed(adjustSpeed);
-                        playerController.Jump(playerController.jumpSpeed*playerController.shortHopFactor);
+                        if (shortHop)
+                        {
+                            float adjustSpeed = -playerController.GetVelocityX();
+                            AdjustSpeed(adjustSpeed);
+                            playerController.Jump(playerController.jumpSpeed*playerController.shortHopFactor);
+                        }
+                        else
+                        {
+                            float adjustSpeed = -playerController.GetVelocityX();
+                            AdjustSpeed(adjustSpeed);
+                            playerController.Jump(playerController.jumpSpeed);
+                        }
                     }
-                    else
+                    else if (jumpDirection == 1)
                     {
-                        float adjustSpeed = -playerController.GetVelocityX();
-                        AdjustSpeed(adjustSpeed);
-                        playerController.Jump(playerController.jumpSpeed);
+                        if (shortHop)
+                        {
+                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+                            {
+                                float adjustSpeed = playerController.sideJumpSpeedX*playerController.shortHopFactor*
+                                                    directionModifier - playerController.GetVelocityX();
+                                AdjustSpeed(adjustSpeed);
+                            }
+                            playerController.Jump(playerController.sideJumpSpeedY*playerController.shortHopFactor);
+                        }
+                        else
+                        {
+                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+                            {
+                                float adjustSpeed = playerController.sideJumpSpeedX*directionModifier - playerController.GetVelocityX();
+                                AdjustSpeed(adjustSpeed);
+                            }
+                            playerController.Jump(playerController.sideJumpSpeedY);
+                        }
+                    }
+                    else if (jumpDirection == -1)
+                    {
+                        if (shortHop)
+                        {
+                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+                            {
+                                float adjustSpeed = -playerController.sideJumpSpeedX*playerController.shortHopFactor*
+                                                    directionModifier - playerController.GetVelocityX();
+                                AdjustSpeed(adjustSpeed);
+                            }
+                            playerController.Jump(playerController.sideJumpSpeedY*playerController.shortHopFactor);
+                        }
+                        else
+                        {
+                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+                            {
+                                float adjustSpeed = -playerController.sideJumpSpeedX*directionModifier - playerController.GetVelocityX();
+                                AdjustSpeed(adjustSpeed);
+                            }
+                            playerController.Jump(playerController.sideJumpSpeedY);
+                        }
                     }
                 }
-                else if (jumpDirection == 1)
+                // Air jump
+                else
                 {
-                    if (shortHop)
+                    if (!directionalControl || jumpDirection == 0)
+                    {
+                        float adjustSpeed = -playerController.GetVelocityX();
+                        AdjustSpeed(adjustSpeed);
+                        playerController.Jump(playerController.airJumpSpeed);
+                    }
+                    else if (jumpDirection == 1)
                     {
                         if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
                         {
-                            float adjustSpeed = playerController.sideJumpSpeedX*playerController.shortHopFactor*
-                                                directionModifier - playerController.GetVelocityX();
+                            float adjustSpeed = playerController.airSideJumpSpeedX*directionModifier - playerController.GetVelocityX();
                             AdjustSpeed(adjustSpeed);
                         }
-                        playerController.Jump(playerController.sideJumpSpeedY*playerController.shortHopFactor);
+                        playerController.Jump(playerController.airSideJumpSpeedY);
                     }
-                    else
+                    else if (jumpDirection == -1)
                     {
-                        if (playerController.GetSpeedX() < playerController.maxAirSpeedX) 
+                        if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
                         {
-                            float adjustSpeed = playerController.sideJumpSpeedX*directionModifier - playerController.GetVelocityX();
+                            float adjustSpeed = -playerController.airSideJumpSpeedX*directionModifier - playerController.GetVelocityX();
                             AdjustSpeed(adjustSpeed);
                         }
-                        playerController.Jump(playerController.sideJumpSpeedY);
+                        playerController.Jump(playerController.airSideJumpSpeedY);
+                        // Do I want to be able to flip on air jump?
+                        //                    PlayerController.Flip();
                     }
+                    playerController.canAirJump = false;
                 }
-                else if (jumpDirection == -1)
-                {
-                    if (shortHop)
-                    {
-                        if (playerController.GetSpeedX() < playerController.maxAirSpeedX) 
-                        {
-                            float adjustSpeed = -playerController.sideJumpSpeedX*playerController.shortHopFactor*
-                                                directionModifier - playerController.GetVelocityX();
-                            AdjustSpeed(adjustSpeed);
-                        }
-                        playerController.Jump(playerController.sideJumpSpeedY*playerController.shortHopFactor);
-                    }
-                    else
-                    {
-                        if (playerController.GetSpeedX() < playerController.maxAirSpeedX) 
-                        {
-                            float adjustSpeed = -playerController.sideJumpSpeedX*directionModifier - playerController.GetVelocityX();
-                            AdjustSpeed(adjustSpeed);
-                        }
-                        playerController.Jump(playerController.sideJumpSpeedY);
-                    }
-                }
-            }
-            // Air jump
-            else
-            {
-                if (!directionalControl || jumpDirection == 0)
-                {
-                    float adjustSpeed = -playerController.GetVelocityX();
-                    AdjustSpeed(adjustSpeed);
-                    playerController.Jump(playerController.airJumpSpeed);
-                }
-                else if (jumpDirection == 1)
-                {
-                    if (playerController.GetSpeedX() < playerController.maxAirSpeedX) 
-                    {
-                        float adjustSpeed = playerController.airSideJumpSpeedX*directionModifier - playerController.GetVelocityX();
-                        AdjustSpeed(adjustSpeed);
-                    }
-                    playerController.Jump(playerController.airSideJumpSpeedY);
-                }
-                else if (jumpDirection == -1)
-                {
-                    if (playerController.GetSpeedX() < playerController.maxAirSpeedX) 
-                    {
-                        float adjustSpeed = -playerController.airSideJumpSpeedX*directionModifier - playerController.GetVelocityX();
-                        AdjustSpeed(adjustSpeed);
-                    }
-                    playerController.Jump(playerController.airSideJumpSpeedY);
-                    // Do I want to be able to flip on air jump?
-//                    PlayerController.Flip();
-                }
-                playerController.canAirJump = false;
             }
         }
 
@@ -189,6 +194,15 @@ namespace Assets.Scripts.Player.States
 
         public override void Right()
         {
+        }
+
+        public override void Primary(float x, float y)
+        {
+            if (waitCounter > 0 && move.y > 0)
+            {
+                base.Primary(x, y);
+                jump = false;
+            }
         }
     }
 }

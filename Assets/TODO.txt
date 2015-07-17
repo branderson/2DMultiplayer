@@ -9,5 +9,6 @@ Input Controllers (Do this one soonish)
 	This will remove bugs resulting from mismatched controllers
 
 Player Controller	
-	
+	Possible to escape attack animations by using recovery
+
 Animations, animations, animations!

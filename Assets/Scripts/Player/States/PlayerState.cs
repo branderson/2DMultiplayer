@@ -30,6 +30,7 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("Secondary");
             animator.ResetTrigger("FallThroughFloor");
             animator.ResetTrigger("Helpless");
+            animator.ResetTrigger("EdgeGrab");
         }
 
         public virtual void Jump()

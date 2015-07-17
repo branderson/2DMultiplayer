@@ -16,11 +16,13 @@ namespace Assets.Scripts.Player
         [SerializeField] public bool Vibration = true;
         internal int XIndex;
         private PlayerController character;
-        private bool xActive = false;
-        private bool yActive = false;
+        private int xActiveFrames = 0;
+        private int yActiveFrames = 0;
+        private bool xInactiveFrame = false;
+        private bool yInactiveFrame = false;
 
-        private const float thresholdX = 0.1f;
-        private const float thresholdY = 1f;
+        private const float thresholdX = .5f;
+        private const float thresholdY = .5f;
 
         private float x = 0f;
         private float y = 0f;
@@ -61,44 +63,44 @@ namespace Assets.Scripts.Player
             y = CrossPlatformInputManager.GetAxis("Vertical" + player[ControllerNumber]);
 
             // Check if axes have just been pressed
-            if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) != 0)
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal" + player[ControllerNumber])) > .1)
             {
-                if (!xActive)
+                if (xActiveFrames < 3)
                 {
-                    if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) < 0)
+                    if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) < -thresholdX) // < 0)
                     {
                         leftPressed = true;
                     }
-                    else
+                    else if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) > thresholdX)
                     {
                         rightPressed = true;
                     }
-                    xActive = true;
                 }
+                xActiveFrames++;
             }
             else
             {
-                xActive = false;
+                xActiveFrames = 0;
             }
 
-            if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) != 0)
+            if (Mathf.Abs(Input.GetAxisRaw("Vertical" + player[ControllerNumber])) > .1)
             {
-                if (!yActive)
+                if (yActiveFrames < 3)
                 {
-                    if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) < 0)
+                    if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) < -thresholdY)
                     {
                         downPressed = true;
                     }
-                    else
+                    else if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) > thresholdY)
                     {
                         upPressed = true;
                     }
-                    yActive = true; 
                 }
+                yActiveFrames++;
             }
             else
             {
-                yActive = false;
+                yActiveFrames = 0;
             }
             
             // Check button presses

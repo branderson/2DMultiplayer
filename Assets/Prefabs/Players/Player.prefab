@@ -212,6 +212,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &167322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 490918}
+  - 61: {fileID: 6182126}
+  m_Layer: 0
+  m_Name: GrabCheck
+  m_TagString: PlayerGrab
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &192402
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +479,7 @@ Transform:
   - {fileID: 465754}
   - {fileID: 410468}
   m_Father: {fileID: 473438}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!4 &458906
 Transform:
   m_ObjectHideFlags: 1
@@ -507,7 +523,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.8713264, y: -.196846455, z: 0}
+  m_LocalPosition: {x: -5.2488265, y: 1.76785123, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458906}
@@ -522,9 +538,22 @@ Transform:
   - {fileID: 423310}
   - {fileID: 436750}
   - {fileID: 417856}
+  - {fileID: 490918}
   - {fileID: 452676}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &490918
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.02999997, y: .879999995, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 473438}
+  m_RootOrder: 12
 --- !u!50 &5005666
 Rigidbody2D:
   serializedVersion: 2
@@ -690,6 +719,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -.0299999993}
   serializedVersion: 2
   m_Size: {x: .829999983, y: 1.35000002}
+--- !u!61 &6182126
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167322}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!95 &9507752
 Animator:
   serializedVersion: 3
@@ -791,9 +833,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverrideOthers: 0
+  overrideOthers: 0
   damageApplied: 0
   forceApplied: {x: 0, y: 0}
+  vibrateSelf: 0
+  vibrateOpponent: 0
 --- !u!114 &11473750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -805,9 +849,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverrideOthers: 0
+  overrideOthers: 0
   damageApplied: 0
   forceApplied: {x: 0, y: 0}
+  vibrateSelf: 0
+  vibrateOpponent: 0
 --- !u!114 &11474450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -819,9 +865,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverrideOthers: 0
+  overrideOthers: 0
   damageApplied: 0
   forceApplied: {x: 0, y: 0}
+  vibrateSelf: 0
+  vibrateOpponent: 0
 --- !u!114 &11489166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -845,9 +893,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverrideOthers: 0
+  overrideOthers: 0
   damageApplied: 0
   forceApplied: {x: 0, y: 0}
+  vibrateSelf: 0
+  vibrateOpponent: 0
 --- !u!212 &21296116
 SpriteRenderer:
   m_ObjectHideFlags: 1

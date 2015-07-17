@@ -274,6 +274,120 @@ AnimationClip:
     path: Hitboxes/Hitbox2
     classID: 114
     script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateSelf
+    path: Hitboxes/Hitbox1
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateOpponent
+    path: Hitboxes/Hitbox1
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateSelf
+    path: Hitboxes/Hitbox2
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateOpponent
+    path: Hitboxes/Hitbox2
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateSelf
+    path: Hitboxes/Hitbox3
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateOpponent
+    path: Hitboxes/Hitbox3
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
   m_PPtrCurves:
   - curve:
     - time: 0
@@ -415,6 +529,42 @@ AnimationClip:
       isPPtrCurve: 0
     - path: 1908347230
       attribute: 3465841240
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3904258276
+      attribute: 3667886291
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3904258276
+      attribute: 977941151
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1908347230
+      attribute: 3667886291
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1908347230
+      attribute: 977941151
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 112730568
+      attribute: 3667886291
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 112730568
+      attribute: 977941151
       script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
       classID: 114
       customType: 0
@@ -795,6 +945,120 @@ AnimationClip:
       m_PostInfinity: 2
     attribute: forceApplied.x
     path: Hitboxes/Hitbox2
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateSelf
+    path: Hitboxes/Hitbox1
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateOpponent
+    path: Hitboxes/Hitbox1
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateSelf
+    path: Hitboxes/Hitbox2
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateOpponent
+    path: Hitboxes/Hitbox2
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateSelf
+    path: Hitboxes/Hitbox3
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: .241935477
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: vibrateOpponent
+    path: Hitboxes/Hitbox3
     classID: 114
     script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
   m_EulerEditorCurves: []

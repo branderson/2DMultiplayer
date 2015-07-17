@@ -28,14 +28,6 @@ namespace Assets.Scripts.Player.States
                 {
                     playerController.IncrementVelocityX(1f);
                 }
-//                if (animator.GetFloat("xVelocity") + PlayerController.airControlSpeed < PlayerController.maxAirSpeedX)
-//                {
-//                    PlayerController.IncrementVelocityX(PlayerController.airControlSpeed);
-//                }
-//                else if (animator.GetFloat("xVelocity") + PlayerController.airControlSpeed > PlayerController.maxAirSpeedX && animator.GetFloat("xSpeed") < PlayerController.maxAirSpeedX)
-//                {
-//                    PlayerController.SetVelocityX(PlayerController.maxAirSpeedX);
-//                }
             }
             else if (move.x < 0)
             {
@@ -43,14 +35,6 @@ namespace Assets.Scripts.Player.States
                 {
                     playerController.IncrementVelocityX(-1f);
                 }
-//                if (animator.GetFloat("xVelocity") - PlayerController.airControlSpeed > -PlayerController.maxAirSpeedX)
-//                {
-//                    PlayerController.IncrementVelocityX(-PlayerController.airControlSpeed);
-//                }
-//                else if (animator.GetFloat("xVelocity") - PlayerController.airControlSpeed < -PlayerController.maxAirSpeedX && animator.GetFloat("xSpeed") < PlayerController.maxAirSpeedX)
-//                {
-//                    PlayerController.SetVelocityX(-PlayerController.maxAirSpeedX);
-//                }
             }
 
             // Check if holding down for falling through platforms

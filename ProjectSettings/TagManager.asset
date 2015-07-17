@@ -9,6 +9,7 @@ TagManager:
   - PlayerTrigger
   - Impermeable
   - LevelManager
+  - PlayerGrab
   layers:
   - Default
   - TransparentFX

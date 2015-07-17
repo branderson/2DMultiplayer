@@ -57,6 +57,7 @@ namespace Assets.Scripts.Player
         private IInputController input;
         private readonly List<PlayerController> opponents = new List<PlayerController>();
 
+        internal int DamageRatio = 1;
         internal bool onEdgeRight = false;
         internal bool onEdgeLeft = false;
         internal bool Invincible = false;
@@ -127,7 +128,8 @@ namespace Assets.Scripts.Player
             animator.SetFloat("yVelocity", velocityY);
             animator.SetFloat("xSpeed", Mathf.Abs(velocityX));
             animator.SetFloat("ySpeed", Mathf.Abs(velocityY));
-            animator.SetFloat("WalkAnimationSpeed", Mathf.Abs(velocityX)/8);
+            animator.SetFloat("WalkAnimationSpeed", Mathf.Abs(velocityX)/6);
+            animator.SetBool("FacingRight", facingRight);
             animator.SetBool("Run", Run);
             animator.SetBool("CanAirJump", canAirJump);
             animator.SetBool("CanRecover", canRecover);

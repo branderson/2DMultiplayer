@@ -52,6 +52,14 @@ namespace Assets.Scripts.Player.States
             }
         }
 
+        public override void Up()
+        {
+            if (waitCounter > 0)
+            {
+                base.Up();
+            }
+        }
+
         public override void Left()
         {
         }

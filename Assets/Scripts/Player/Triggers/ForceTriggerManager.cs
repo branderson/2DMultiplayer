@@ -4,11 +4,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.Player.Triggers
 {
-    public struct PlayerForces
+    public class PlayerForces
     {
         public PlayerController PlayerController;
-        public List<Vector2> Forces;
-        public List<int> Damages;
+        public List<Vector2> Forces = new List<Vector2>();
+        public List<int> Damages = new List<int>();
+        public List<bool> Vibrate = new List<bool>(); 
+        public bool Overridden = false;
+        public bool Applied = false;
     }
 
     public class ForceTriggerManager : MonoBehaviour
@@ -19,15 +22,45 @@ namespace Assets.Scripts.Player.Triggers
         private void Awake()
         {
             playerController = transform.parent.GetComponentInChildren<PlayerController>();
+            pendingForces = new List<PlayerForces>();
         }
 
         private void OnEnable()
         {
 //            print("OnEnable");
-            pendingForces = new List<PlayerForces>();
+            pendingForces.Clear();
         }
 
-        public void AddForce(PlayerController player, Vector2 force, int damage)
+        private void Update()
+        {
+            int forceLength = pendingForces.Count();
+            foreach (PlayerForces pendingForce in pendingForces)
+            {
+                if (!pendingForce.Applied)
+                {
+                    if (pendingForce.Overridden)
+                    {
+                        ApplyForce(pendingForce.PlayerController, pendingForce.Forces.Last(), pendingForce.Damages.Last(), pendingForce.Vibrate.Last());
+                    }
+                    else
+                    {
+                        float highestX = Mathf.Abs(pendingForce.Forces.OrderByDescending(item => item.x).First().x);
+                        float highestY = Mathf.Abs(pendingForce.Forces.OrderByDescending(item => item.y).First().y);
+                        int highestDamage = Mathf.Abs(pendingForce.Damages.Max());
+                        bool vibrate = pendingForce.Vibrate.Any(item => item);
+                        ApplyForce(pendingForce.PlayerController, new Vector2(highestX, highestY), highestDamage, vibrate);
+                    }
+                }
+            }
+            pendingForces.ForEach(SetApplied);
+        }
+
+        private void SetApplied(PlayerForces force)
+        {
+            force.Applied = true;
+        }
+
+        public void AddForce(PlayerController player, Vector2 force, int damage, bool overrideOthers, bool vibrate)
         {
             if (player != playerController && !player.Invincible)
             {
@@ -37,72 +70,47 @@ namespace Assets.Scripts.Player.Triggers
 //                    print("Existing player");
                     PlayerForces forces = pendingForces.Where(playerForces => playerForces.PlayerController == player).FirstOrDefault();
 
-                    Vector2 appliedForce = new Vector2();
-                    int appliedDamage = 0;
-
-                    float highestX = Mathf.Abs(forces.Forces.OrderByDescending(item => item.x).First().x);
-                    float highestY = Mathf.Abs(forces.Forces.OrderByDescending(item => item.y).First().y);
-                    int highestDamage = Mathf.Abs(forces.Damages.Max());
-
-//                    print("Highest x = " + highestX + ", highest y = " + highestY);
-
-                    if (Mathf.Abs(force.x) > highestX)
+                    if (!forces.Overridden)
                     {
-                        appliedForce.x = force.x - highestX;
+                        forces.Forces.Add(force);
+                        forces.Damages.Add(damage);
+                        forces.Overridden = overrideOthers;
                     }
-                    else
-                    {
-                        appliedForce.x = 0;
-                    }
-                    if (Mathf.Abs(force.y) > highestY)
-                    {
-                        appliedForce.y = force.y - highestY;
-                    }
-                    else
-                    {
-                        appliedForce.y = 0;
-                    }
-                    if (damage > highestDamage)
-                    {
-                        appliedDamage = damage - highestDamage;
-                    }
-                    else
-                    {
-                        appliedDamage = 0;
-                    }
-
-                    forces.Forces.Add(force);
-                    forces.Damages.Add(damage);
-
-                    ApplyForce(player, appliedForce, appliedDamage);
                 }
                 else
                 {
 //                    print("New player");
                     PlayerForces forces = new PlayerForces()
                     {
-                        PlayerController = player,
-                        Forces = new List<Vector2>(),
-                        Damages = new List<int>()
+                        PlayerController = player, 
                     };
                     forces.Forces.Add(force);
                     forces.Damages.Add(damage);
+                    forces.Vibrate.Add(vibrate);
+                    if (overrideOthers)
+                    {
+                        forces.Overridden = true;
+                    }
                     pendingForces.Add(forces);
-                    ApplyForce(player, force, damage);
                 }
             }
         }
 
-        private void ApplyForce(PlayerController player, Vector2 force, int damage)
+        private void ApplyForce(PlayerController player, Vector2 force, int damage, bool vibrate)
         {
 //            print("Applying force: x = " + force.x + ", y = " + force.y);
+            // Do I want attacks cancelling out opponents' momentum?
             if (playerController.facingRight)
             {
-                player.IncrementVelocity(force);
+                player.IncrementVelocity(force - player.GetVelocity());
             }
             else
             {
-                player.IncrementVelocity(-force.x, force.y);
+                player.IncrementVelocity(-force.x - player.GetVelocityX(), force.y - player.GetVelocityY());
+            }
+            if (vibrate)
+            {
+                player.SetVibrate(15, .8f, .5f);
             }
         }
     }
