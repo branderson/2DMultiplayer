@@ -26,7 +26,7 @@ namespace Assets.Scripts.Player.Triggers
                 if (controller != playerController)
                 {
                     manager.AddForce(controller, forceApplied, damageApplied, overrideOthers, vibrateOpponent);
-                    if (vibrateSelf)
+                    if (vibrateSelf && !controller.Invincible)
                     {
                         playerController.SetVibrate(12, .8f, .5f);
                     }

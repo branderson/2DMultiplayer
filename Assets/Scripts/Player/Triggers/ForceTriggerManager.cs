@@ -36,7 +36,7 @@ namespace Assets.Scripts.Player.Triggers
             int forceLength = pendingForces.Count();
             foreach (PlayerForces pendingForce in pendingForces)
             {
-                if (!pendingForce.Applied)
+                if (!pendingForce.Applied && !pendingForce.PlayerController.Invincible)
                 {
                     if (pendingForce.Overridden)
                     {

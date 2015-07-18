@@ -15,22 +15,22 @@ namespace Assets.Scripts.Stage
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "Player")
+            if (other.tag == "PlayerFeet")
             {
-                PlayerController controller = other.GetComponent<PlayerController>();
-                Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
+                PlayerController controller = other.transform.parent.GetComponentInChildren<PlayerController>();
+                Rigidbody2D rigidbody = other.transform.parent.GetComponentInChildren<Rigidbody2D>();
                 if (rigidbody.velocity.y < 0)
                 {
-                    if (controller.passThroughFloor && transform.parent.tag != "Impermeable")
+                    if (controller.passThroughFloor) // && transform.parent.tag != "Impermeable")
                     {
                         controller.IgnoreCollision(platformCollider);
                     }
-                    else if (transform.parent.tag == "Impermeable")
-                    {
-                        controller.passThroughFloor = false;
-                        controller.CheckForGround();
-                        // TODO: Put into idle state
-                    }
+//                    else if (transform.parent.tag == "Impermeable")
+//                    {
+//                        controller.passThroughFloor = false;
+//                        controller.CheckForGround();
+//                        // TODO: Put into idle state
+//                    }
                     else
                     {
                         controller.IgnoreCollision(platformCollider, false);
@@ -44,19 +44,19 @@ namespace Assets.Scripts.Stage
 
         public void OnTriggerStay2D(Collider2D other)
         {
-            if (other.tag == "Player")
+            if (other.tag == "PlayerFeet")
             {
-                PlayerController controller = other.GetComponent<PlayerController>();
-                Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
+                PlayerController controller = other.transform.parent.GetComponentInChildren<PlayerController>();
+//                Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
 
-                if (controller.passThroughFloor && transform.parent.tag != "Impermeable")
+                if (controller.passThroughFloor) // && transform.parent.tag != "Impermeable")
                 {
                     controller.IgnoreCollision(platformCollider);
                     controller.animator.SetTrigger("FallThroughFloor");
                 }
-                else
-                {
-                }
+//                else
+//                {
+//                }
             }
         }
     }

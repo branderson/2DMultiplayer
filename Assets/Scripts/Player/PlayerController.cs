@@ -18,7 +18,6 @@ namespace Assets.Scripts.Player
         [SerializeField] private float recoveryHeight = 8f;
         [SerializeField] private float neutralAirTime = .68f; // Time in air jumping once from flat ground, will be incorrect if terminal velocity set too low
         [SerializeField] private List<Transform> groundCheck; // A position marking where to check if the player is on the ground
-        [SerializeField] private List<Transform> ceilingCheck; // A position marking where to check for ceilings
         [SerializeField] private LayerMask groundLayer; // A mask determining what is ground to the character
         [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private float sideJumpDistance = 5f; // Horizontal distance of side jump
@@ -29,7 +28,6 @@ namespace Assets.Scripts.Player
         [SerializeField] public float shortHopFactor = .7f; // Fraction of neutral jump height/distance for short hop
         [SerializeField] public float airControlSpeed = .5f; // Fraction of horizontal control while in air
         private const float GroundedRadius = .5f; // Radius of the overlap circle to determine if onGround
-        private const float CeilingRadius = 1f; // Radius of the overlap circle to determine should jump through the ceiling 
 
         internal float airSideJumpSpeedX;
         internal float airSideJumpSpeedY;
@@ -61,6 +59,8 @@ namespace Assets.Scripts.Player
         internal bool onEdgeRight = false;
         internal bool onEdgeLeft = false;
         internal bool Invincible = false;
+        internal bool StateInvincible = false;
+        internal int IFrames = 0;
         internal bool Run;
         internal bool CanFallThroughFloor = false;
 
@@ -73,6 +73,7 @@ namespace Assets.Scripts.Player
             canRecover = true;
             SetLayerOrder(zPosition);
             playerNumber = slot + 1;
+            IFrames = 120; // 5 seconds of invincibility
         }
 
         public void Respawn(Vector2 position)
@@ -83,6 +84,7 @@ namespace Assets.Scripts.Player
             animator.SetTrigger("Helpless");
             SetVelocity(Vector2.zero);
             transform.position = position;
+            IFrames = 120; // 5 seconds of invincibility
         }
 
         // TODO: Non AI players may not need this info
@@ -135,6 +137,21 @@ namespace Assets.Scripts.Player
             animator.SetBool("CanRecover", canRecover);
             transform.parent.position = transform.position;
             transform.localPosition = Vector3.zero;
+
+            // Manage invincibility state
+            if (IFrames > 0)
+            {
+                Invincible = true;
+                IFrames -= 1;
+            }
+            else if (!StateInvincible)
+            {
+                Invincible = false;
+            }
+            else if (StateInvincible)
+            {
+                Invincible = true;
+            }
         }
 
         private void CalculatePhysics()

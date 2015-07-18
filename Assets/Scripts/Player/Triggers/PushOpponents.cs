@@ -27,14 +27,14 @@ namespace Assets.Scripts.Player
             {
                 if ((right && playerController.facingRight) || (!right && !playerController.facingRight))
                 {
-                    if (player.GetSpeedX() < pushSpeed)
+                    if (player.GetSpeedX() < pushSpeed && !player.Invincible)
                     {
                         player.IncrementVelocityX(pushSpeed);
                     }
                 }
                 else
                 {
-                    if (player.GetSpeedX() < pushSpeed)
+                    if (player.GetSpeedX() < pushSpeed && !player.Invincible)
                     {
                         player.IncrementVelocityX(-pushSpeed);
                     }

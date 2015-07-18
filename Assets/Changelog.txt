@@ -27,3 +27,8 @@ Reverted back to only using rigidody velocities, no external or internal
 General improvements with control and feel
 Separated tilt and smash controls
 Added crouch
+
+Added invincibility and IFrames
+Added but haven't implemented most if not all future states
+Fixed ledge grab
+Fixed platform passthrough when approaching horizontally (passes through now)

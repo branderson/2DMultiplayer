@@ -10,6 +10,8 @@ TagManager:
   - Impermeable
   - LevelManager
   - PlayerGrab
+  - PlayerFeet
+  - PlayerHead
   layers:
   - Default
   - TransparentFX
