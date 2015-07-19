@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Runtime.InteropServices;
+using UnityEngine;
 
 namespace Assets.Scripts.Player.States
 {
@@ -31,10 +32,12 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("FallThroughFloor");
             animator.ResetTrigger("Helpless");
             animator.ResetTrigger("EdgeGrab");
+            animator.ResetTrigger("TurnAround");
         }
 
         public virtual void Jump()
         {
+            MonoBehaviour.print(GetName());
             playerAnimator.SetTrigger("Jump");
         }
 

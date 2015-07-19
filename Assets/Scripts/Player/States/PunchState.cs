@@ -17,6 +17,7 @@ namespace Assets.Scripts.Player.States
         {
             base.OnStateEnter(animator, stateinfo, layerindex);
             waitCounter = waitFrames;
+            flip = false;
         }
 
         public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -28,6 +29,7 @@ namespace Assets.Scripts.Player.States
                 if (flip && directionalControl)
                 {
                     flip = false;
+//                    MonoBehaviour.print("Flipping");
                     playerController.Flip();
                 }
             }
@@ -48,24 +50,51 @@ namespace Assets.Scripts.Player.States
             move = new Vector2(x, y);
             if ((move.x < 0 && playerController.facingRight) || (move.x > 0 && !playerController.facingRight))
             {
+//                MonoBehaviour.print("Flip = true");
                 flip = true;
             }
         }
 
         public override void Up()
         {
-            if (waitCounter > 0)
+            if (waitCounter > 7)
             {
                 base.Up();
             }
         }
 
+        public override void Down()
+        {
+            if (waitCounter > 7)
+            {
+                base.Down();
+            }
+        }
+
         public override void Left()
         {
+            if (waitCounter > 7)
+            {
+                base.Left();
+                if (playerController.facingRight)
+                {
+                    flip = false;
+                    playerController.Flip();
+                }
+            }
         }
 
         public override void Right()
         {
+            if (waitCounter > 7)
+            {
+                base.Right();
+                if (!playerController.facingRight)
+                {
+                    flip = false;
+                    playerController.Flip();
+                }
+            }
         }
     }
 }
