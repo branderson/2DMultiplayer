@@ -32,3 +32,5 @@ Added invincibility and IFrames
 Added but haven't implemented most if not all future states
 Fixed ledge grab
 Fixed platform passthrough when approaching horizontally (passes through now)
+
+Implemented transitions to all airial attacks, specials, and idle attacks

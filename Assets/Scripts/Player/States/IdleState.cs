@@ -25,6 +25,9 @@ namespace Assets.Scripts.Player.States
             base.OnStateEnter(animator, stateInfo, layerIndex);
             moveAttackCountdown = waitFrames;
             firstFrame = true;
+            rightSmashed = false;
+            leftSmashed = false;
+            downSmashed = false;
             // TODO: Sometimes jumping through platforms resets canAirJump
             // To avoid resetting jumps while jumping up through platforms
             if (animator.GetComponentInChildren<Rigidbody2D>().velocity.y <= 0)
@@ -198,6 +201,7 @@ namespace Assets.Scripts.Player.States
                     else if (downSmashed)
                     {
                         base.Down();
+                        playerController.passThroughFloor = true;
                     }
                     base.Move(x, y);
                     move.x = x;
