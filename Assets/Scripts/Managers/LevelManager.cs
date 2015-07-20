@@ -49,7 +49,14 @@ namespace Assets.Scripts.Managers
                     switch (card)
                     {
                         case 0:
-                            player.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                            if (gameManager.GameConfig.TournamentMode)
+                            {
+                                player.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                            }
+                            else
+                            {
+                                player.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                            }
                             break;
                         case 1:
                             player.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
@@ -68,6 +75,7 @@ namespace Assets.Scripts.Managers
                 // TODO: I broke toggle boxes and also playerCards aren't being loaded in the menu from settings properly
                 gameManager.PlayerConfig[card].Vibration = menuManager.playerCards[card].InputController.Vibration;
                 gameManager.PlayerConfig[card].TapJump = menuManager.playerCards[card].InputController.TapJump;
+                gameManager.PlayerConfig[card].DPad = menuManager.playerCards[card].InputController.DPad;
                 gameManager.PlayerConfig[card].Computer = menuManager.playerCards[card].computer;
                 gameManager.PlayerConfig[card].Active = menuManager.playerCards[card].IsActive();
                 gameManager.PlayerConfig[card].Slot = card + 1;

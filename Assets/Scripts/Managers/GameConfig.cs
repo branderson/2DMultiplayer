@@ -2,6 +2,6 @@
 {
     public class GameConfig
     {
-         
+        public bool TournamentMode = false;
     }
 }

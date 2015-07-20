@@ -14,6 +14,7 @@ namespace Assets.Scripts.Menu
         private GameObject instruction;
         private ToggleBox tapJumpBox;
         private ToggleBox vibrationBox;
+        private ToggleBox dPadBox;
         private Image panelImage;
         private Text titleText;
         private Text instructionText;
@@ -35,6 +36,7 @@ namespace Assets.Scripts.Menu
             InputController.UseXIndex = config.UseXIndex;
             tapJumpBox.SetToggle(config.TapJump);
             vibrationBox.SetToggle(config.Vibration);
+            dPadBox.SetToggle(config.DPad);
             this.active = config.Active;
             this.number = config.Slot;
             this.titleText.text = "None";
@@ -54,6 +56,7 @@ namespace Assets.Scripts.Menu
             instruction = transform.Find("Instruction").gameObject;
             tapJumpBox = transform.Find("TapJump").gameObject.GetComponent<ToggleBox>();
             vibrationBox = transform.Find("Vibrate").gameObject.GetComponent<ToggleBox>();
+            dPadBox = transform.Find("DPad").gameObject.GetComponent<ToggleBox>();
             panelImage = GetComponent<Image>();
             titleText = title.GetComponent<Text>();
             instructionText = instruction.GetComponent<Text>();

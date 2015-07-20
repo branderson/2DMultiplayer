@@ -6,7 +6,7 @@ using XInputDotNetPure;
 namespace Assets.Scripts.Menu
 {
     [RequireComponent(typeof (MenuPlayerController))]
-    public class MenuInputController : MonoBehaviour {
+    public class MenuXInputController : MonoBehaviour {
         internal int ControllerNumber = -1;
         internal bool UseXIndex = false;
         [SerializeField] public int XIndex = -1;

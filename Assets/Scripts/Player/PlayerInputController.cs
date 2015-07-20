@@ -15,6 +15,7 @@ namespace Assets.Scripts.Player
         [SerializeField] public int ControllerNumber = 0;
         [SerializeField] public bool TapJump = true;
         [SerializeField] public bool Vibration = true;
+        [SerializeField] public bool DPad = false;
         internal int XIndex;
         private PlayerController character;
         private int xActiveFrames = 0;
@@ -35,6 +36,8 @@ namespace Assets.Scripts.Player
         private bool run = false;
         private bool primary = false;
         private bool secondary = false;
+        private string horizontalString = "Horizontal";
+        private string verticalString = "Vertical";
 
         private readonly string[] player = {"K", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
 
@@ -44,6 +47,17 @@ namespace Assets.Scripts.Player
             XIndex = menuInputController.XIndex; // TODO: Integrate XIndices into MenuInputController
             TapJump = menuInputController.TapJump;
             Vibration = menuInputController.Vibration;
+            DPad = menuInputController.DPad;
+            if (DPad)
+            {
+                horizontalString = "HorizontalDPad";
+                verticalString = "VerticalDPad";
+            }
+            else
+            {
+                horizontalString = "Horizontal";
+                verticalString = "Vertical";
+            }
         }
 
         private void Awake()
@@ -60,8 +74,8 @@ namespace Assets.Scripts.Player
 
         private void Update()
         {
-            x = CrossPlatformInputManager.GetAxis("Horizontal" + player[ControllerNumber]);
-            y = CrossPlatformInputManager.GetAxis("Vertical" + player[ControllerNumber]);
+            x = CrossPlatformInputManager.GetAxis(horizontalString + player[ControllerNumber]);
+            y = CrossPlatformInputManager.GetAxis(verticalString + player[ControllerNumber]);
 
             if (ButtonActive("TiltLock"))
             {
@@ -76,18 +90,18 @@ namespace Assets.Scripts.Player
             }
 
             // Check if axes have just been pressed
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal" + player[ControllerNumber])) > .1)
+            if (Mathf.Abs(Input.GetAxisRaw(horizontalString + player[ControllerNumber])) > .1)
             {
                 if (xActiveFrames < 3)
                 {
-                    if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) < -thresholdX) // < 0)
+                    if (Input.GetAxisRaw(horizontalString + player[ControllerNumber]) < -thresholdX) // < 0)
                     {
                         if (!ButtonActive("TiltLock"))
                         {
                             leftPressed = true;
                         }
                     }
-                    else if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) > thresholdX)
+                    else if (Input.GetAxisRaw(horizontalString + player[ControllerNumber]) > thresholdX)
                     {
                         if (!ButtonActive("TiltLock"))
                         {
@@ -102,18 +116,18 @@ namespace Assets.Scripts.Player
                 xActiveFrames = 0;
             }
 
-            if (Mathf.Abs(Input.GetAxisRaw("Vertical" + player[ControllerNumber])) > .1)
+            if (Mathf.Abs(Input.GetAxisRaw(verticalString + player[ControllerNumber])) > .1)
             {
                 if (yActiveFrames < 3)
                 {
-                    if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) < -thresholdY)
+                    if (Input.GetAxisRaw(verticalString + player[ControllerNumber]) < -thresholdY)
                     {
                         if (!ButtonActive("TiltLock"))
                         {
                             downPressed = true;
                         }
                     }
-                    else if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) > thresholdY)
+                    else if (Input.GetAxisRaw(verticalString + player[ControllerNumber]) > thresholdY)
                     {
                         if (!ButtonActive("TiltLock"))
                         {
@@ -211,6 +225,14 @@ namespace Assets.Scripts.Player
 
         public bool AxisActive(string name)
         {
+            if (name == "Vertical")
+            {
+                name = verticalString;
+            }
+            else if (name == "Horizontal")
+            {
+                name = horizontalString;
+            }
             if (Input.GetAxisRaw(name + player[ControllerNumber]) != 0)
             {
                 return true;
@@ -220,6 +242,14 @@ namespace Assets.Scripts.Player
 
         public bool AxisPositive(string name)
         {
+            if (name == "Vertical")
+            {
+                name = verticalString;
+            }
+            else if (name == "Horizontal")
+            {
+                name = horizontalString;
+            }
             if (Input.GetAxisRaw(name + player[ControllerNumber]) > 0)
             {
                 return true;
@@ -229,6 +259,14 @@ namespace Assets.Scripts.Player
 
         public bool AxisNegative(string name)
         {
+            if (name == "Vertical")
+            {
+                name = verticalString;
+            }
+            else if (name == "Horizontal")
+            {
+                name = horizontalString;
+            }
             if (Input.GetAxisRaw(name + player[ControllerNumber]) < 0)
             {
                 return true;

@@ -18,18 +18,29 @@ namespace Assets.Scripts.Menu
         internal GameManager gameManager;
         internal bool[] Controllers = new bool[4];
         internal PlayerCard[] playerCards = new PlayerCard[4];
+        private Text tournamentText;
         private string sceneName = "Level1";
 
         private void Awake()
         {
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            tournamentText = GameObject.Find("TournamentText").GetComponent<Text>();
         }
 
         // Use this for initialization
         private void Start()
         {
+            if (gameManager.GameConfig.TournamentMode)
+            {
+                tournamentText.enabled = true;
+            }
+            else
+            {
+                tournamentText.enabled = false;
+            }
             for (int i = 0; i <= 3; i++)
             {
+//                Controllers[i] = false;
                 playerCards[i] = GameObject.Find("Panel" + (i + 1)).GetComponent<PlayerCard>();
                 playerCards[i].Init(gameManager.PlayerConfig[i]);
             }
@@ -172,6 +183,7 @@ namespace Assets.Scripts.Menu
         public void Deactivate(int number)
         {
             Controllers[number - 1] = false;
+            gameManager.PlayerConfig[number - 1].Active = false;
         }
 
         public void SetScene(string scene)
