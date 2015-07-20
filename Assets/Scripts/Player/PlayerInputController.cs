@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Assets.Scripts.Menu;
 using Assets.Scripts.Player;
 using Assets.Scripts.Player.States;
@@ -62,6 +63,18 @@ namespace Assets.Scripts.Player
             x = CrossPlatformInputManager.GetAxis("Horizontal" + player[ControllerNumber]);
             y = CrossPlatformInputManager.GetAxis("Vertical" + player[ControllerNumber]);
 
+            if (ButtonActive("TiltLock"))
+            {
+                if (x > .9f)
+                {
+                    x = .9f;
+                }
+                else if (x < -.9f)
+                {
+                    x = -.9f;
+                }
+            }
+
             // Check if axes have just been pressed
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal" + player[ControllerNumber])) > .1)
             {
@@ -69,11 +82,17 @@ namespace Assets.Scripts.Player
                 {
                     if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) < -thresholdX) // < 0)
                     {
-                        leftPressed = true;
+                        if (!ButtonActive("TiltLock"))
+                        {
+                            leftPressed = true;
+                        }
                     }
                     else if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) > thresholdX)
                     {
-                        rightPressed = true;
+                        if (!ButtonActive("TiltLock"))
+                        {
+                            rightPressed = true;
+                        }
                     }
                 }
                 xActiveFrames++;
@@ -89,11 +108,17 @@ namespace Assets.Scripts.Player
                 {
                     if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) < -thresholdY)
                     {
-                        downPressed = true;
+                        if (!ButtonActive("TiltLock"))
+                        {
+                            downPressed = true;
+                        }
                     }
                     else if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) > thresholdY)
                     {
-                        upPressed = true;
+                        if (!ButtonActive("TiltLock"))
+                        {
+                            upPressed = true;
+                        }
                     }
                 }
                 yActiveFrames++;
@@ -167,6 +192,15 @@ namespace Assets.Scripts.Player
                     character.GetState().Secondary(x, y);
                     secondary = false;
                 }
+            }
+            else
+            {
+                if (character.animator.GetCurrentAnimatorClipInfo(0).Count() != 0)
+                {
+                    print("The current state is not implemented: " +
+                          character.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+                }
+                print("The current state is not implemented");
             }
         }
 

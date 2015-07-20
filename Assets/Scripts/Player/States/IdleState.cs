@@ -128,7 +128,7 @@ namespace Assets.Scripts.Player.States
         {
             if (playerController.velocityY <= 0)
             {
-                MonoBehaviour.print(GetName());
+//                MonoBehaviour.print(GetName());
                 playerAnimator.SetTrigger("Jump");
             }
         }
@@ -149,7 +149,7 @@ namespace Assets.Scripts.Player.States
                 {
                     // Repeats smashed inputs for set number of frames
                     moveAttackCountdown--;
-                    MonoBehaviour.print(moveAttackCountdown);
+//                    MonoBehaviour.print(moveAttackCountdown);
                     if (rightSmashed)
                     {
                         base.Right();
@@ -174,8 +174,10 @@ namespace Assets.Scripts.Player.States
                         playerController.passThroughFloor = true;
                     }
                     base.Move(0, 0);
-                    move.x = x;
-                    move.y = y;
+                    move.x = 0;
+                    move.y = 0;
+//                    move.x = x;
+//                    move.y = y;
                 }
                 else if (Mathf.Abs(x) > 0 || Mathf.Abs(y) > 0)
                 {
@@ -215,6 +217,21 @@ namespace Assets.Scripts.Player.States
                     // If no input, reset countdown and smashed inputs
                     moveAttackCountdown = waitFrames;
                     base.Move(x, y);
+                    if (rightSmashed)
+                    {
+                        base.Right();
+                        rightSmashed = false;
+                    }
+                    if (leftSmashed)
+                    {
+                        base.Left();
+                        leftSmashed = false;
+                    }
+                    if (downSmashed)
+                    {
+                        base.Down();
+                        playerController.passThroughFloor = true;
+                    }
                     move.x = x;
                     move.y = y;
                     rightSmashed = false;
@@ -237,6 +254,7 @@ namespace Assets.Scripts.Player.States
                 if (downSmashed)
                 {
                     base.Right();
+                    playerController.passThroughFloor = true;
                     downSmashed = false;
                 }
                 base.Move(x, y);

@@ -9,5 +9,10 @@ namespace Assets.Scripts.Player.States
         {
             return "DefaultState";
         }
+
+        public override void Primary(float x, float y)
+        {
+            playerAnimator.SetTrigger("Primary");
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace Assets.Scripts.Player.States
 
         public virtual void Jump()
         {
-            MonoBehaviour.print(GetName());
+//            MonoBehaviour.print(GetName());
             playerAnimator.SetTrigger("Jump");
         }
 
@@ -64,12 +64,26 @@ namespace Assets.Scripts.Player.States
 
         public virtual void Left()
         {
-            playerAnimator.SetTrigger("Forward");
+            if (playerController.facingRight)
+            {
+                playerAnimator.SetTrigger("Backward");
+            }
+            else
+            {
+                playerAnimator.SetTrigger("Forward");
+            }
         }
 
         public virtual void Right()
         {
-            playerAnimator.SetTrigger("Backward");
+            if (playerController.facingRight)
+            {
+                playerAnimator.SetTrigger("Forward");
+            }
+            else
+            {
+                playerAnimator.SetTrigger("Backward");
+            }
         }
         
         // TODO: Can remove x and y from Primary and Secondary
