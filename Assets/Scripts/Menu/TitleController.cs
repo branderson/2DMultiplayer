@@ -146,7 +146,7 @@ namespace Assets.Scripts.Menu
                 {
                     gameManager.GameConfig.TournamentMode = true;
                 }
-                Application.LoadLevel("MenuScene");
+                Application.LoadLevel("CharacterMenu");
             }
             if (Input.GetButtonDown("GlobalBack"))
             {

@@ -8,7 +8,7 @@ namespace Assets.Scripts.Menu
 {
     public class PlayerCard : MonoBehaviour, ISelectable
     {
-        private MenuManager manager;
+        private CharacterMenuManager manager;
         private MenuSelectable menuSelectable;
         private GameObject title;
         private GameObject instruction;
@@ -47,7 +47,7 @@ namespace Assets.Scripts.Menu
         {
             active = false;
             ready = false;
-            manager = FindObjectOfType<MenuManager>();
+            manager = FindObjectOfType<CharacterMenuManager>();
             menuSelectable = GetComponent<MenuSelectable>();
             PlayerController = GetComponent<MenuPlayerController>();
             InputController = GetComponent<MenuInputController>();
@@ -60,6 +60,7 @@ namespace Assets.Scripts.Menu
             panelImage = GetComponent<Image>();
             titleText = title.GetComponent<Text>();
             instructionText = instruction.GetComponent<Text>();
+            GameObject.DontDestroyOnLoad(this);
         }
 
         // Use this for initialization
@@ -98,7 +99,7 @@ namespace Assets.Scripts.Menu
 
         public void Deactivate()
         {
-            // TODO: Conflicts with MenuManager's controller list
+            // TODO: Conflicts with CharacterMenuManager's controller list
             manager.Deactivate(number);
             active = false;
             panelImage.color = Color.white;

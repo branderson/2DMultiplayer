@@ -12,14 +12,13 @@ using Object = UnityEngine.Object;
 
 namespace Assets.Scripts.Menu
 {
-    public class MenuManager : MonoBehaviour
+    public class CharacterMenuManager : MonoBehaviour
     {
 //        internal List<MenuInputController> Controllers = new List<MenuInputController>();
         internal GameManager gameManager;
         internal bool[] Controllers = new bool[4];
         internal PlayerCard[] playerCards = new PlayerCard[4];
         private Text tournamentText;
-        private string sceneName = "Level1";
 
         private void Awake()
         {
@@ -118,7 +117,8 @@ namespace Assets.Scripts.Menu
             if (allReady && playerCards.Any(card => (card.IsActive() && !card.computer)))
             {
                 Object.DontDestroyOnLoad(this);
-                Application.LoadLevel(sceneName);
+                Application.LoadLevel("LevelMenu");
+//                Application.LoadLevel("LevelMenu");
             }
         }
 
@@ -184,12 +184,6 @@ namespace Assets.Scripts.Menu
         {
             Controllers[number - 1] = false;
             gameManager.PlayerConfig[number - 1].Active = false;
-        }
-
-        public void SetScene(string scene)
-        {
-            sceneName = scene;
-            print("Setting scene to " + scene);
         }
     }
 }
