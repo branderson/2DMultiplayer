@@ -1,0 +1,605 @@
+fileFormatVersion: 2
+guid: 55d7869858d6e37418cb22815eb1f383
+timeCreated: 1437453803
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DownSmash_0
+    21300002: DownSmash_1
+    21300004: DownSmash_2
+    21300006: DownSmash_3
+    21300008: DownSmash_4
+    21300010: DownSmash_5
+    21300012: DownSmash_6
+    21300014: DownSmash_7
+    21300016: DownSmash_8
+    21300018: DownSmash_9
+    21300020: DownSmash_10
+    21300022: DownSmash_11
+    21300024: DownSmash_12
+    21300026: DownSmash_13
+    21300028: DownSmash_14
+    21300030: DownSmash_15
+    21300032: DownSmash_16
+    21300034: DownSmash_17
+    21300036: DownSmash_18
+    21300038: DownSmash_19
+    21300040: DownSmash_20
+    21300042: DownSmash_21
+    21300044: DownSmash_22
+    21300046: DownSmash_23
+    21300048: DownSmash_24
+    21300050: DownSmash_25
+    21300052: DownSmash_26
+    21300054: DownSmash_27
+    21300056: DownSmash_28
+    21300058: DownSmash_29
+    21300060: DownSmash_30
+    21300062: DownSmash_31
+    21300064: DownSmash_32
+    21300066: DownSmash_33
+    21300068: DownSmash_34
+    21300070: DownSmash_35
+    21300072: DownSmash_36
+    21300074: DownSmash_37
+    21300076: DownSmash_38
+    21300078: DownSmash_39
+    21300080: DownSmash_40
+    21300082: DownSmash_41
+    21300084: DownSmash_42
+    21300086: DownSmash_43
+    21300088: DownSmash_44
+    21300090: DownSmash_45
+    21300092: DownSmash_46
+    21300094: DownSmash_47
+    21300096: DownSmash_48
+    21300098: DownSmash_49
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: DownSmash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_1
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_2
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_3
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_4
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_5
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_6
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_7
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_8
+      rect:
+        serializedVersion: 2
+        x: 2496
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_9
+      rect:
+        serializedVersion: 2
+        x: 2808
+        y: 1068
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_11
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_12
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_13
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_14
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_15
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_16
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_17
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_18
+      rect:
+        serializedVersion: 2
+        x: 2496
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_19
+      rect:
+        serializedVersion: 2
+        x: 2808
+        y: 801
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_21
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_22
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_23
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_24
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_25
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_26
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_27
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_28
+      rect:
+        serializedVersion: 2
+        x: 2496
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_29
+      rect:
+        serializedVersion: 2
+        x: 2808
+        y: 534
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_31
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_32
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_33
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_34
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_35
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_36
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_37
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_38
+      rect:
+        serializedVersion: 2
+        x: 2496
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_39
+      rect:
+        serializedVersion: 2
+        x: 2808
+        y: 267
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_41
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_42
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_43
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_44
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_45
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_46
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_47
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_48
+      rect:
+        serializedVersion: 2
+        x: 2496
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DownSmash_49
+      rect:
+        serializedVersion: 2
+        x: 2808
+        y: 0
+        width: 312
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

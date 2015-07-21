@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: 8fdf262691df5c946b7fd81c226863f0
+timeCreated: 1437453720
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ChargeDownSmash_0
+    21300002: ChargeDownSmash_1
+    21300004: ChargeDownSmash_2
+    21300006: ChargeDownSmash_3
+    21300008: ChargeDownSmash_4
+    21300010: ChargeDownSmash_5
+    21300012: ChargeDownSmash_6
+    21300014: ChargeDownSmash_7
+    21300016: ChargeDownSmash_8
+    21300018: ChargeDownSmash_9
+    21300020: ChargeDownSmash_10
+    21300022: ChargeDownSmash_11
+    21300024: ChargeDownSmash_12
+    21300026: ChargeDownSmash_13
+    21300028: ChargeDownSmash_14
+    21300030: ChargeDownSmash_15
+    21300032: ChargeDownSmash_16
+    21300034: ChargeDownSmash_17
+    21300036: ChargeDownSmash_18
+    21300038: ChargeDownSmash_19
+    21300040: ChargeDownSmash_20
+    21300042: ChargeDownSmash_21
+    21300044: ChargeDownSmash_22
+    21300046: ChargeDownSmash_23
+    21300048: ChargeDownSmash_24
+    21300050: ChargeDownSmash_25
+    21300052: ChargeDownSmash_26
+    21300054: ChargeDownSmash_27
+    21300056: ChargeDownSmash_28
+    21300058: ChargeDownSmash_29
+    21300060: ChargeDownSmash_30
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ChargeDownSmash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_1
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_2
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_3
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_4
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_5
+      rect:
+        serializedVersion: 2
+        x: 1195
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_6
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_7
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_8
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_9
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 999
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_11
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_12
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_13
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_14
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_15
+      rect:
+        serializedVersion: 2
+        x: 1195
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_16
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_17
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_18
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_19
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 666
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_21
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_22
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_23
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_24
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_25
+      rect:
+        serializedVersion: 2
+        x: 1195
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_26
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_27
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_28
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_29
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 333
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ChargeDownSmash_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 239
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
