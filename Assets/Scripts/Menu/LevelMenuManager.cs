@@ -26,8 +26,11 @@ namespace Assets.Scripts.Menu
         {
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             menuManager = GameObject.Find("MenuManager").GetComponent<CharacterMenuManager>();
-            input = menuManager.inputControllers[0];
-            controller = menuManager.playerControllers[0];
+//            int firstPlayerIndex = menuManager.inputControllers.First(inputController => inputController.ControllerNumber >= 0);          
+//            input = menuManager.inputControllers[0];
+            input = menuManager.inputControllers.First(inputController => inputController.ControllerNumber >= 0 && menuManager.playerControllers[Array.IndexOf(menuManager.inputControllers, inputController)].active);
+            print(Array.IndexOf(menuManager.inputControllers, input));
+            controller = menuManager.playerControllers[Array.IndexOf(menuManager.inputControllers, input)]; //menuManager.playerControllers[0];
             controller.SetSelected(GameObject.Find("Level1").GetComponent<MenuSelectable>());
 
             for (int card = 0; card < 4; card++)

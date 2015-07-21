@@ -29,10 +29,12 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("Backward");
             animator.ResetTrigger("Primary");
             animator.ResetTrigger("Secondary");
+            animator.ResetTrigger("PrimaryReleased");
             animator.ResetTrigger("FallThroughFloor");
             animator.ResetTrigger("Helpless");
             animator.ResetTrigger("EdgeGrab");
             animator.ResetTrigger("TurnAround");
+            animator.ResetTrigger("LetGo");
         }
 
         public virtual void Jump()

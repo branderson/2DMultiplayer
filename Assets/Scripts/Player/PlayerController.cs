@@ -55,6 +55,7 @@ namespace Assets.Scripts.Player
         private IInputController input;
         private readonly List<PlayerController> opponents = new List<PlayerController>();
 
+        internal int SmashCharge = 0;
         internal int DamageRatio = 1;
         internal bool onEdgeRight = false;
         internal bool onEdgeLeft = false;
@@ -239,6 +240,18 @@ namespace Assets.Scripts.Player
             {
                 Physics2D.IgnoreCollision(collider, other, ignore);
             }
+        }
+
+        public IEnumerator PauseAnimation(int frames)
+        {
+            float animationSpeed = animator.speed;
+            animator.speed = 0;
+            while (frames > 0)
+            {
+                frames--;
+                yield return null;
+            }
+            animator.speed = animationSpeed;
         }
 
         private IEnumerator Vibrate(int frames, float leftIntensity, float rightIntensity)

@@ -36,3 +36,7 @@ Fixed platform passthrough when approaching horizontally (passes through now)
 Implemented transitions to all airial attacks, specials, and idle attacks
 Implemented basic side special (later should be implemented inside animation, state scripts for testing purposes)
 Added edge hogging
+
+Added down smash
+Fixed no player being assigned to determine level select
+Set up effect instantiation and pausing animations

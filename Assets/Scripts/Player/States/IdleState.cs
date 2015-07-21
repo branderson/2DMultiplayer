@@ -171,7 +171,7 @@ namespace Assets.Scripts.Player.States
                     else if (downSmashed)
                     {
                         base.Down();
-                        playerController.passThroughFloor = true;
+//                        playerController.passThroughFloor = true;
                     }
                     base.Move(0, 0);
                     move.x = 0;
@@ -203,7 +203,10 @@ namespace Assets.Scripts.Player.States
                     else if (downSmashed)
                     {
                         base.Down();
-                        playerController.passThroughFloor = true;
+                        if (!PlayerInputController.ButtonActive("Primary") && !PlayerInputController.ButtonActive("Secondary"))
+                        {
+                            playerController.passThroughFloor = true;
+                        }
                     }
                     base.Move(x, y);
                     move.x = x;

@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Player.States
 {
-    public class FlipPlayer : PlayerState
+    public class FlipPlayerState : PlayerState
     {
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {

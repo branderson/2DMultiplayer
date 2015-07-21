@@ -44,9 +44,9 @@ namespace Assets.Scripts.Player.Triggers
                     }
                     else
                     {
-                        float highestX = Mathf.Abs(pendingForce.Forces.OrderByDescending(item => item.x).First().x);
-                        float highestY = Mathf.Abs(pendingForce.Forces.OrderByDescending(item => item.y).First().y);
-                        int highestDamage = Mathf.Abs(pendingForce.Damages.Max());
+                        float highestX = pendingForce.Forces.OrderByDescending(item => Mathf.Abs(item.x)).First().x;
+                        float highestY = pendingForce.Forces.OrderByDescending(item => Mathf.Abs(item.y)).First().y;
+                        int highestDamage = pendingForce.Damages.Max();
                         bool vibrate = pendingForce.Vibrate.Any(item => item);
                         ApplyForce(pendingForce.PlayerController, new Vector2(highestX, highestY), highestDamage, vibrate);
                     }
