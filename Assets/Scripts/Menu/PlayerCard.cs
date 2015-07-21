@@ -8,6 +8,7 @@ namespace Assets.Scripts.Menu
 {
     public class PlayerCard : MonoBehaviour, ISelectable
     {
+        [SerializeField] private int slot;
         private CharacterMenuManager manager;
         private MenuSelectable menuSelectable;
         private GameObject title;
@@ -18,8 +19,8 @@ namespace Assets.Scripts.Menu
         private Image panelImage;
         private Text titleText;
         private Text instructionText;
-        internal MenuInputController InputController;
-        internal MenuPlayerController PlayerController;
+        internal MenuInputController inputController;
+        internal MenuPlayerController playerController;
         internal int number;
         internal bool computer = false;
         private bool active;
@@ -27,17 +28,19 @@ namespace Assets.Scripts.Menu
 
         public void Init(PlayerConfig config)
         {
-            PlayerController.playerNumber = config.Slot;
+            playerController.playerNumber = config.Slot;
             computer = config.Computer;
-            InputController.ControllerNumber = config.ControllerIndex;
-//            InputController.TapJump = config.TapJump;
-//            InputController.Vibration = config.Vibration;
-            InputController.XIndex = config.XIndex;
-            InputController.UseXIndex = config.UseXIndex;
+            playerController.computer = config.Computer;
+            inputController.ControllerNumber = config.ControllerIndex;
+//            inputController.TapJump = config.TapJump;
+//            inputController.Vibration = config.Vibration;
+            inputController.XIndex = config.XIndex;
+            inputController.UseXIndex = config.UseXIndex;
             tapJumpBox.SetToggle(config.TapJump);
             vibrationBox.SetToggle(config.Vibration);
             dPadBox.SetToggle(config.DPad);
             this.active = config.Active;
+            playerController.active = config.Active;
             this.number = config.Slot;
             this.titleText.text = "None";
             this.instructionText.text = "Press A";
@@ -49,8 +52,8 @@ namespace Assets.Scripts.Menu
             ready = false;
             manager = FindObjectOfType<CharacterMenuManager>();
             menuSelectable = GetComponent<MenuSelectable>();
-            PlayerController = GetComponent<MenuPlayerController>();
-            InputController = GetComponent<MenuInputController>();
+            playerController = manager.transform.Find("Player"+slot).GetComponent<MenuPlayerController>();
+            inputController = manager.transform.Find("Player"+slot).GetComponent<MenuInputController>();
 
             title = transform.Find("TitleText").gameObject;
             instruction = transform.Find("Instruction").gameObject;
@@ -60,7 +63,6 @@ namespace Assets.Scripts.Menu
             panelImage = GetComponent<Image>();
             titleText = title.GetComponent<Text>();
             instructionText = instruction.GetComponent<Text>();
-            GameObject.DontDestroyOnLoad(this);
         }
 
         // Use this for initialization
@@ -81,20 +83,23 @@ namespace Assets.Scripts.Menu
         public void ActivateComputer()
         {
             active = true;
+            playerController.active = true;
             computer = true;
+            playerController.computer = true;
             titleText.text = "Computer";
             Ready();
         }
 
         public void Activate(int controllerNumber)
         {
-            InputController.Init(controllerNumber);
+            inputController.Init(controllerNumber);
             active = true;
+            playerController.active = true;
             panelImage.color = Color.yellow;
             titleText.text = "Player " + number;
             instructionText.text = "Press Start\nWhen Ready";
-            PlayerController.SetVibrate(12, 0f, .8f);
-            PlayerController.SetSelected(PlayerController.InitialSelection);
+            playerController.SetVibrate(12, 0f, .8f);
+            playerController.SetSelected(playerController.InitialSelection);
         }
 
         public void Deactivate()
@@ -105,9 +110,9 @@ namespace Assets.Scripts.Menu
             panelImage.color = Color.white;
             titleText.text = "None";
             instructionText.text = "Press A";
-            PlayerController.Deactivate();
-            InputController.Deactivate();
-            // TODO: Deactivate InputController
+            playerController.Deactivate();
+            inputController.Deactivate();
+            // TODO: Deactivate inputController
         }
 
         public void Ready()
@@ -115,13 +120,13 @@ namespace Assets.Scripts.Menu
             ready = true;
             panelImage.color = Color.green;
             instructionText.text = "Ready!";
-//            PlayerController.SetVibrate(12, 0f, .8f);
+//            playerController.SetVibrate(12, 0f, .8f);
         }
 
         public void UnReady()
         {
             ready = false;
-            Activate(InputController.ControllerNumber);
+            Activate(inputController.ControllerNumber);
         }
 
         public bool IsActive()
@@ -165,6 +170,7 @@ namespace Assets.Scripts.Menu
                 else
                 {
                     computer = false;
+                    playerController.computer = false;
                     UnReady();
                     Deactivate();
                 }
@@ -174,10 +180,6 @@ namespace Assets.Scripts.Menu
 
         public void Secondary(MenuPlayerController player)
         {
-//            if (IsReady())
-//            {
-//                UnReady();
-//            }
         }
 
         public void Left(MenuPlayerController player)

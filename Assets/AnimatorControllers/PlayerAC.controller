@@ -6828,6 +6828,29 @@ AnimatorState:
   m_SpeedParameter: yVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &110273854
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ChargeUpSmash
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 9899a1d3d53a973479ae4b288a4fdb1b, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &110275518
 AnimatorState:
   serializedVersion: 5
@@ -7615,6 +7638,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 110253582}
     m_Position: {x: 264, y: 156, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110273854}
+    m_Position: {x: 299, y: 221, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 110785856}
@@ -7658,6 +7684,9 @@ AnimatorStateMachine:
       first: {fileID: 110785856}
       second: []
     data:
+      first: {fileID: 110715200}
+      second: []
+    data:
       first: {fileID: 110750514}
       second: []
     data:
@@ -7671,9 +7700,6 @@ AnimatorStateMachine:
       second: []
     data:
       first: {fileID: 110738332}
-      second: []
-    data:
-      first: {fileID: 110715200}
       second: []
     data:
       first: {fileID: 110719254}

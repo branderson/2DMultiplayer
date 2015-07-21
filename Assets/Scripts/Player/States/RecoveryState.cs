@@ -79,9 +79,9 @@ namespace Assets.Scripts.Player.States
 
         private void AdjustSpeed(float adjustSpeed)
         {
-//            MonoBehaviour.print("Adjusting speed: Target speed is " + PlayerController.airSideJumpSpeedX);
-//            MonoBehaviour.print("Current speed: " + PlayerController.GetVelocityX() + ", adjusting by: " + adjustSpeed);
-//            MonoBehaviour.print("Final speed should be " + PlayerController.GetVelocityX() + " + " + adjustSpeed  + " = " + (PlayerController.GetVelocityX() + adjustSpeed));
+//            MonoBehaviour.print("Adjusting speed: Target speed is " + playerController.airSideJumpSpeedX);
+//            MonoBehaviour.print("Current speed: " + playerController.GetVelocityX() + ", adjusting by: " + adjustSpeed);
+//            MonoBehaviour.print("Final speed should be " + playerController.GetVelocityX() + " + " + adjustSpeed  + " = " + (playerController.GetVelocityX() + adjustSpeed));
             if (Mathf.Abs(adjustSpeed) < maximumNegationVelocity)
             {
                 playerController.IncrementVelocityX(adjustSpeed);
@@ -91,7 +91,7 @@ namespace Assets.Scripts.Player.States
                 playerController.IncrementVelocityX(maximumNegationVelocity*directionModifier);
 //                MonoBehaviour.print("Adjustment of " + Mathf.Abs(adjustSpeed) + " exceeded maximum of " + maximumNegationVelocity);
             }
-//            MonoBehaviour.print("Final velocity: " + PlayerController.GetVelocityX());
+//            MonoBehaviour.print("Final velocity: " + playerController.GetVelocityX());
         }
 
         public override string GetName()

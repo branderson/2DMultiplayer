@@ -33,18 +33,18 @@ namespace Assets.Scripts.Managers
                 // Instantiate human players
                 if (characterMenuManager.Controllers[card])
                 {
-                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[characterMenuManager.playerCards[card].PlayerController.playerNumber - 1].transform.position, Quaternion.identity);
-                    if (!characterMenuManager.playerCards[card].computer)
+                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[characterMenuManager.playerControllers[card].playerNumber - 1].transform.position, Quaternion.identity);
+                    if (!characterMenuManager.playerControllers[card].computer)
                     {
-                        print("Instantiating player " + characterMenuManager.playerCards[card].PlayerController.playerNumber);
+                        print("Instantiating player " + characterMenuManager.playerControllers[card].playerNumber);
                         player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerInputController>();
-                        player.GetComponentInChildren<PlayerInputController>().Init(characterMenuManager.playerCards[card].InputController);
+                        player.GetComponentInChildren<PlayerInputController>().Init(characterMenuManager.inputControllers[card]);
                     }
                     else
                     {
-                        print("Instantiating computer " + characterMenuManager.playerCards[card].PlayerController.playerNumber);
+                        print("Instantiating computer " + characterMenuManager.playerControllers[card].playerNumber);
                         player.transform.FindChild("Rigidbody").gameObject.AddComponent<AIInputController>();
-                        player.GetComponentInChildren<AIInputController>().Init(characterMenuManager.playerCards[card].InputController);
+                        player.GetComponentInChildren<AIInputController>().Init(characterMenuManager.inputControllers[card]);
                     }
                     switch (card)
                     {
@@ -71,17 +71,6 @@ namespace Assets.Scripts.Managers
                     player.GetComponentInChildren<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
                     players.Add(player);
                 }
-                // Save playerCard states to GameManager
-                // TODO: I broke toggle boxes and also playerCards aren't being loaded in the menu from settings properly
-                gameManager.PlayerConfig[card].Vibration = characterMenuManager.playerCards[card].InputController.Vibration;
-                gameManager.PlayerConfig[card].TapJump = characterMenuManager.playerCards[card].InputController.TapJump;
-                gameManager.PlayerConfig[card].DPad = characterMenuManager.playerCards[card].InputController.DPad;
-                gameManager.PlayerConfig[card].Computer = characterMenuManager.playerCards[card].computer;
-                gameManager.PlayerConfig[card].Active = characterMenuManager.playerCards[card].IsActive();
-                gameManager.PlayerConfig[card].Slot = card + 1;
-                gameManager.PlayerConfig[card].ControllerIndex = characterMenuManager.playerCards[card].InputController.ControllerNumber;
-                gameManager.PlayerConfig[card].XIndex = characterMenuManager.playerCards[card].InputController.XIndex;
-                gameManager.PlayerConfig[card].UseXIndex = characterMenuManager.playerCards[card].InputController.UseXIndex;
             }
             foreach (GameObject player in players)
             {

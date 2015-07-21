@@ -11,13 +11,13 @@ namespace Assets.Scripts.Menu
     [RequireComponent(typeof (MenuSelectable))]
     public class MenuButton : MonoBehaviour, ISelectable
     {
-        private Button button;
+//        private Button button;
         private MenuSelectable menuSelectable;
         private AllowedSelections allowedSelections;
 
         private void Awake()
         {
-            button = GetComponent<Button>();
+//            button = GetComponent<Button>();
             menuSelectable = GetComponent<MenuSelectable>();
             allowedSelections = GetComponent<AllowedSelections>();
         }

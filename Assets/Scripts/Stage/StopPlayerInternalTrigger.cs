@@ -16,7 +16,7 @@ namespace Assets.Scripts.Stage
         {
 //            if (other.tag == "Player")
 //            {
-//                PlayerController controller = other.GetComponent<PlayerController>();
+//                playerController controller = other.GetComponent<playerController>();
 //                Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
 //                if (rigidbody.velocity.y < 0)
 //                {

@@ -33,7 +33,7 @@ namespace Assets.Scripts.Player.Triggers
 
         private void Update()
         {
-            int forceLength = pendingForces.Count();
+//            int forceLength = pendingForces.Count();
             foreach (PlayerForces pendingForce in pendingForces)
             {
                 if (!pendingForce.Applied && !pendingForce.PlayerController.Invincible)

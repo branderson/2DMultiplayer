@@ -17,13 +17,17 @@ namespace Assets.Scripts.Menu
 //        internal List<MenuInputController> Controllers = new List<MenuInputController>();
         internal GameManager gameManager;
         internal bool[] Controllers = new bool[4];
+        internal MenuPlayerController[] playerControllers = new MenuPlayerController[4];
+        internal MenuInputController[] inputControllers = new MenuInputController[4];
         internal PlayerCard[] playerCards = new PlayerCard[4];
-        private Text tournamentText;
+        [SerializeField] private GameObject tournamentText;
+
+        private bool inCharacterMenu = true;
 
         private void Awake()
         {
+            inCharacterMenu = true;
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-            tournamentText = GameObject.Find("TournamentText").GetComponent<Text>();
         }
 
         // Use this for initialization
@@ -31,17 +35,21 @@ namespace Assets.Scripts.Menu
         {
             if (gameManager.GameConfig.TournamentMode)
             {
-                tournamentText.enabled = true;
+                tournamentText.SetActive(true);
             }
             else
             {
-                tournamentText.enabled = false;
+                tournamentText.SetActive(false);
             }
             for (int i = 0; i <= 3; i++)
             {
 //                Controllers[i] = false;
                 playerCards[i] = GameObject.Find("Panel" + (i + 1)).GetComponent<PlayerCard>();
                 playerCards[i].Init(gameManager.PlayerConfig[i]);
+                GameObject player = GameObject.Find("Player" + (i + 1));
+                playerControllers[i] = player.GetComponent<MenuPlayerController>();
+                inputControllers[i] = player.GetComponent<MenuInputController>();
+                playerControllers[i].GetComponent<MenuPlayerController>().Init(playerCards[i]);
             }
 
             // Load player settings from gameManager
@@ -79,46 +87,53 @@ namespace Assets.Scripts.Menu
         // Update is called once per frame
         private void LateUpdate()
         {
-            // TODO: Back out when someone presses back when no non-computer players left
-            // Allow no more than 4 controllers
-            if (Controllers.Any(controller => !controller))
+            if (inCharacterMenu)
             {
-                // Allow setting keyboard as a controller
-                if (Input.GetButtonDown("PrimaryK") && !playerCards.Any(card => (card.InputController.ControllerNumber == 0 && card.IsActive())))
-                    // Linq expression checks if any object in Controllers has a ControllerNumber == 0
+                // TODO: Back out when someone presses back when no non-computer players left
+                // Allow no more than 4 controllers
+                if (Controllers.Any(controller => !controller))
                 {
-                    Activate(0);
-                }
-
-                // Allow setting any joystick as a controller
-                // TODO: Separate input controller for XBox controllers
-                for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
-                {
-                    if (Input.GetButtonDown("PrimaryJ" + i) && !playerCards.Any(card => (card.InputController.ControllerNumber == i && card.IsActive())))
+                    // Allow setting keyboard as a controller
+                    if (Input.GetButtonDown("PrimaryK") &&
+                        !playerCards.Any(card => (card.inputController.ControllerNumber == 0 && card.IsActive())))
+                        // Linq expression checks if any object in Controllers has a ControllerNumber == 0
                     {
-                        Activate(i);
+                        Activate(0);
+                    }
+
+                    // Allow setting any joystick as a controller
+                    // TODO: Separate input controller for XBox controllers
+                    for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
+                    {
+                        if (Input.GetButtonDown("PrimaryJ" + i) &&
+                            !playerCards.Any(card => (card.inputController.ControllerNumber == i && card.IsActive())))
+                        {
+                            Activate(i);
+                        }
                     }
                 }
-            }
 
-            bool allReady = true;
+                bool allReady = true;
 
-            // Check if all added controllers have pressed start
-            for (int controller = 0; controller < 4; controller++)
-            {
-                if (!playerCards[controller].IsReady() && playerCards[controller].IsActive())
+                // Check if all added controllers have pressed start
+                for (int controller = 0; controller < 4; controller++)
                 {
-                    allReady = false;
+                    if (!playerCards[controller].IsReady() && playerCards[controller].IsActive())
+                    {
+                        allReady = false;
+                    }
                 }
-            }
 
-            // If all players ready, load level
-            // TODO: Load level select scene here instead
-            if (allReady && playerCards.Any(card => (card.IsActive() && !card.computer)))
-            {
-                Object.DontDestroyOnLoad(this);
-                Application.LoadLevel("LevelMenu");
-//                Application.LoadLevel("LevelMenu");
+                // If all players ready, load level
+                // TODO: Load level select scene here instead
+                if (allReady && playerCards.Any(card => (card.IsActive() && !card.computer)))
+                {
+                    Object.DontDestroyOnLoad(this);
+                    playerCards = null;
+                    inCharacterMenu = false;
+                    //                Application.LoadLevel("Level1");
+                    Application.LoadLevel("LevelMenu");
+                }
             }
         }
 
@@ -147,7 +162,7 @@ namespace Assets.Scripts.Menu
 
             foreach (PlayerCard card in playerCards)
             {
-                if (card.InputController.ControllerNumber == inputIndex)
+                if (card.inputController.ControllerNumber == inputIndex)
                 {
                     slot = card.number - 1;
                 }
@@ -169,10 +184,10 @@ namespace Assets.Scripts.Menu
                     {
                         // TODO: Vibrations can be mapped to the wrong controller if selected on the exact same frame
                         if (GamePad.GetState((PlayerIndex) controller).Buttons.A == ButtonState.Pressed &&
-                            !playerCards.Any(card => card.InputController.XIndex == controller))
+                            !playerCards.Any(card => card.inputController.XIndex == controller))
                         {
-                            playerCards[slot].InputController.UseXIndex = true;
-                            playerCards[slot].InputController.XIndex = controller;
+                            inputControllers[slot].UseXIndex = true;
+                            inputControllers[slot].XIndex = controller;
                         }
                     }
                 }

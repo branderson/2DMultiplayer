@@ -17,17 +17,32 @@ namespace Assets.Scripts.Menu
 //        internal List<MenuInputController> Controllers = new List<MenuInputController>();
         internal GameManager gameManager;
         internal CharacterMenuManager menuManager;
-//        internal PlayerCard[] playerCards;
-        private Text tournamentText;
-        private string sceneName = "Level1";
+        internal MenuInputController input;
+        internal MenuPlayerController controller;
+        [SerializeField] private GameObject tournamentText;
+//        private string sceneName = "Level1";
 
         private void Awake()
         {
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             menuManager = GameObject.Find("MenuManager").GetComponent<CharacterMenuManager>();
-//            playerCards = menuManager.playerCards;
-//            playerCards[0].PlayerController.SetSelected(GameObject.Find("Level1").GetComponent<MenuSelectable>());
-            tournamentText = GameObject.Find("TournamentText").GetComponent<Text>();
+            input = menuManager.inputControllers[0];
+            controller = menuManager.playerControllers[0];
+            controller.SetSelected(GameObject.Find("Level1").GetComponent<MenuSelectable>());
+
+            for (int card = 0; card < 4; card++)
+            {
+                gameManager.PlayerConfig[card].Vibration = menuManager.inputControllers[card].Vibration;
+                gameManager.PlayerConfig[card].TapJump = menuManager.inputControllers[card].TapJump;
+                gameManager.PlayerConfig[card].DPad = menuManager.inputControllers[card].DPad;
+                gameManager.PlayerConfig[card].Computer = menuManager.playerControllers[card].computer;
+                gameManager.PlayerConfig[card].Active = menuManager.playerControllers[card].active;
+                gameManager.PlayerConfig[card].Slot = card + 1;
+                gameManager.PlayerConfig[card].ControllerIndex =
+                    menuManager.inputControllers[card].ControllerNumber;
+                gameManager.PlayerConfig[card].XIndex = menuManager.inputControllers[card].XIndex;
+                gameManager.PlayerConfig[card].UseXIndex = menuManager.inputControllers[card].UseXIndex;
+            }
         }
 
         // Use this for initialization
@@ -35,12 +50,13 @@ namespace Assets.Scripts.Menu
         {
             if (gameManager.GameConfig.TournamentMode)
             {
-                tournamentText.enabled = true;
+                tournamentText.SetActive(true);
             }
             else
             {
-                tournamentText.enabled = false;
+                tournamentText.SetActive(false);
             }
+//            LoadScene("Level1");
         }
 
         private void Update()
@@ -48,6 +64,7 @@ namespace Assets.Scripts.Menu
             // If no controllers active, next back goes to title
             if (Input.GetButtonDown("GlobalBack"))
             {
+                Destroy(menuManager.gameObject);
                 Application.LoadLevel("CharacterMenu");
             }
         }

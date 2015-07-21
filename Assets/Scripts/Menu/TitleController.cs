@@ -9,7 +9,7 @@ namespace Assets.Scripts.Menu
     public class TitleController : MonoBehaviour
     {
         private GameManager gameManager;
-        private Text tournamentText;
+        [SerializeField] private GameObject tournamentText;
         private readonly string[] tournamentCode = {"up", "up", "down", "down", "left", "right", "left", "right", "b", "a"};
         private int inputStringIndex;
 
@@ -22,10 +22,9 @@ namespace Assets.Scripts.Menu
         {
             inputStringIndex = 0;
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-            tournamentText = transform.Find("TournamentText").GetComponent<Text>();
             if (gameManager.GameConfig.TournamentMode)
             {
-                tournamentText.enabled = true;
+                tournamentText.SetActive(true);
             }
         }
 
@@ -134,9 +133,9 @@ namespace Assets.Scripts.Menu
             }
             else
             {
-                if (!tournamentText.enabled)
+                if (!tournamentText.activeSelf)
                 {
-                    tournamentText.enabled = true;
+                    tournamentText.SetActive(true);
                 }
             }
 

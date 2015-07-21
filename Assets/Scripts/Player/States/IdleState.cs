@@ -281,11 +281,11 @@ namespace Assets.Scripts.Player.States
 //            base.Down();
 //            playerController.passThroughFloor = true;
             // TODO: Need to make down smash turn off pass through floor
-            //            PlayerController.CheckForGround();
+            //            playerController.CheckForGround();
             //            if (playerAnimator.GetBool("CanFallThroughFloor"))
             //            {
             //                // TODO: I need to be handling passing through the floor only while actually passing through the floor
-            //                PlayerController.passThroughFloor = true;
+            //                playerController.passThroughFloor = true;
             //                playerAnimator.SetTrigger("FallThroughFloor");
             //            }
         }

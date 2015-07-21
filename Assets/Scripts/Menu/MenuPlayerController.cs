@@ -13,12 +13,21 @@ namespace Assets.Scripts.Menu
         private PointerEventData pointer = new PointerEventData(EventSystem.current);
         internal int playerNumber;
 
+        internal bool computer;
+        internal bool active;
+
         private MenuInputController input;
+
+        public void Init(PlayerCard card)
+        {
+            playerCard = card;
+        }
 
         void Awake()
         {
+            computer = false;
+            active = false;
             input = GetComponent<MenuInputController>();
-            playerCard = GetComponent<PlayerCard>();
         }
 
         // Use this for initialization
@@ -34,6 +43,7 @@ namespace Assets.Scripts.Menu
 
         public void Deactivate()
         {
+            active = false;
             if (selected != null)
             {
                 selected.Unselect(this, pointer);
@@ -112,14 +122,17 @@ namespace Assets.Scripts.Menu
             if (selected != null)
             {
                 selected.Secondary(this);
-                if (playerCard.IsReady() && !playerCard.computer)
+                if (playerCard != null)
                 {
-                    playerCard.UnReady();
-                }
-                    // TODO: Not a good place to put this. Prevents backing up through menus
-                else if (playerCard.IsActive() && !playerCard.computer)
-                {
-                    playerCard.Deactivate();
+                    if (playerCard.IsReady() && !playerCard.computer)
+                    {
+                        playerCard.UnReady();
+                    }
+                        // TODO: Not a good place to put this. Prevents backing up through menus
+                    else if (playerCard.IsActive() && !playerCard.computer)
+                    {
+                        playerCard.Deactivate();
+                    }
                 }
             }
         }

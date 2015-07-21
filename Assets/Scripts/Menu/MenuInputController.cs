@@ -13,6 +13,8 @@ namespace Assets.Scripts.Menu
         [SerializeField] public bool TapJump = true;
         [SerializeField] public bool Vibration = true;
         [SerializeField] public bool DPad = false;
+        private int repeatFrames = 15;
+        private int repeatCountdown = 0;
         private readonly string[] player = {"K", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
 
         private MenuPlayerController playerController;
@@ -37,6 +39,7 @@ namespace Assets.Scripts.Menu
 
         void Awake()
         {
+            repeatCountdown = repeatFrames;
             playerController = GetComponent<MenuPlayerController>();
         }
 
@@ -57,12 +60,18 @@ namespace Assets.Scripts.Menu
                 x = CrossPlatformInputManager.GetAxis("Horizontal" + player[ControllerNumber]);
                 y = CrossPlatformInputManager.GetAxis("Vertical" + player[ControllerNumber]);
 
+                if (x == 0 && y == 0)
+                {
+                    repeatCountdown = repeatFrames;
+                }
+
                 // Check if axes have just been pressed
                 if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) != 0 || Input.GetAxisRaw("HorizontalDPad" + player[ControllerNumber]) != 0)
                 {
                     if (!xActive)
                     {
-                        if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) < 0 || Input.GetAxisRaw("HorizontalDPad" + player[ControllerNumber]) < 0)
+                        if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) < 0 ||
+                            Input.GetAxisRaw("HorizontalDPad" + player[ControllerNumber]) < 0)
                         {
                             leftPressed = true;
                         }
@@ -71,6 +80,18 @@ namespace Assets.Scripts.Menu
                             rightPressed = true;
                         }
                         xActive = true;
+                        repeatCountdown = repeatFrames;
+                    }
+                    else
+                    {
+                        if (repeatCountdown == 0)
+                        {
+                            xActive = false;
+                        }
+                        else
+                        {
+                            repeatCountdown--;
+                        }
                     }
                 }
                 else
@@ -91,6 +112,18 @@ namespace Assets.Scripts.Menu
                             upPressed = true;
                         }
                         yActive = true;
+                        repeatCountdown = repeatFrames;
+                    }
+                    else
+                    {
+                        if (repeatCountdown == 0)
+                        {
+                            yActive = false;
+                        }
+                        else
+                        {
+                            repeatCountdown--;
+                        }
                     }
                 }
                 else
