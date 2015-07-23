@@ -34,10 +34,10 @@ namespace Assets.Scripts.Player.States
                 directionModifier = 1f;
                 damageMultiplier = 1f;
 
-                if (DamageScaled)
-                {
-                    damageMultiplier = playerController.DamageRatio;
-                }
+//                if (DamageScaled)
+//                {
+//                    damageMultiplier = playerController.shield;
+//                }
 
                 if (!playerController.facingRight)
                 {

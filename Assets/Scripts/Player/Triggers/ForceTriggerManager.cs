@@ -98,16 +98,17 @@ namespace Assets.Scripts.Player.Triggers
 
         private void ApplyForce(PlayerController player, Vector2 force, int damage, bool vibrate)
         {
-//            print("Applying force: x = " + force.x + ", y = " + force.y);
             // Do I want attacks cancelling out opponents' momentum?
+//            print("Applying force: x = " + force.x + ", y = " + force.y);
             if (playerController.facingRight)
             {
-                player.IncrementVelocity(force - player.GetVelocity());
+                player.IncrementVelocity(force*player.GetDamageRatio()*(1f/player.WeightRatio) - player.GetVelocity());
             }
             else
             {
-                player.IncrementVelocity(-force.x - player.GetVelocityX(), force.y - player.GetVelocityY());
+                player.IncrementVelocity(-force.x*player.GetDamageRatio()*(1f/player.WeightRatio) - player.GetVelocityX(), force.y*player.GetDamageRatio()*(1f/player.WeightRatio) - player.GetVelocityY());
             }
+            player.TakeDamage(damage);
             if (vibrate)
             {
                 player.SetVibrate(15, .8f, .5f);

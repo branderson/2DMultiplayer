@@ -40,3 +40,7 @@ Added edge hogging
 Added down smash
 Fixed no player being assigned to determine level select
 Set up effect instantiation and pausing animations
+
+Adds smash charging
+Adds shield percentages and damage multipliers
+Adds in game UI

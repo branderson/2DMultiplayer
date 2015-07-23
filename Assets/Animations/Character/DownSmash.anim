@@ -69,44 +69,6 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 184.615387
-        outSlope: 184.615387
-        tangentMode: 10
-      - time: .216666669
-        value: 40
-        inSlope: 184.615387
-        outSlope: 184.615387
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: forceApplied.x
-    path: Hitboxes/HitboxDownSmashFront
-    classID: 114
-    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 23.0769234
-        outSlope: 23.0769234
-        tangentMode: 10
-      - time: .216666669
-        value: 5
-        inSlope: 23.0769234
-        outSlope: 23.0769234
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: forceApplied.y
-    path: Hitboxes/HitboxDownSmashFront
-    classID: 114
-    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
@@ -169,44 +131,6 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: -184.615387
-        outSlope: -184.615387
-        tangentMode: 10
-      - time: .216666669
-        value: -40
-        inSlope: -184.615387
-        outSlope: -184.615387
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: forceApplied.x
-    path: Hitboxes/HitboxDownSmashBack
-    classID: 114
-    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 23.0769234
-        outSlope: 23.0769234
-        tangentMode: 10
-      - time: .216666669
-        value: 5
-        inSlope: 23.0769234
-        outSlope: 23.0769234
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: forceApplied.y
-    path: Hitboxes/HitboxDownSmashBack
-    classID: 114
-    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
@@ -237,6 +161,82 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: vibrateOpponent
+    path: Hitboxes/HitboxDownSmashBack
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 92.3076935
+        outSlope: 92.3076935
+        tangentMode: 10
+      - time: .216666669
+        value: 20
+        inSlope: 92.3076935
+        outSlope: 92.3076935
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: ForceApplied.x
+    path: Hitboxes/HitboxDownSmashFront
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 23.0769234
+        outSlope: 23.0769234
+        tangentMode: 10
+      - time: .216666669
+        value: 5
+        inSlope: 23.0769234
+        outSlope: 23.0769234
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: ForceApplied.y
+    path: Hitboxes/HitboxDownSmashFront
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: -92.3076935
+        outSlope: -92.3076935
+        tangentMode: 10
+      - time: .216666669
+        value: -20
+        inSlope: -92.3076935
+        outSlope: -92.3076935
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: ForceApplied.x
+    path: Hitboxes/HitboxDownSmashBack
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 23.0769234
+        outSlope: 23.0769234
+        tangentMode: 10
+      - time: .216666669
+        value: 5
+        inSlope: 23.0769234
+        outSlope: 23.0769234
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: ForceApplied.y
     path: Hitboxes/HitboxDownSmashBack
     classID: 114
     script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
@@ -365,18 +365,6 @@ AnimationClip:
       classID: 114
       customType: 0
       isPPtrCurve: 0
-    - path: 4101151773
-      attribute: 3465841240
-      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - path: 4101151773
-      attribute: 3113466574
-      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
     - path: 437519652
       attribute: 2086281974
       script: {fileID: 0}
@@ -396,18 +384,6 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - path: 3835563449
-      attribute: 3465841240
-      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - path: 3835563449
-      attribute: 3113466574
-      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - path: 3835563449
       attribute: 3667886291
       script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
       classID: 114
@@ -415,6 +391,30 @@ AnimationClip:
       isPPtrCurve: 0
     - path: 3835563449
       attribute: 977941151
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4101151773
+      attribute: 66122368
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4101151773
+      attribute: 1962394134
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3835563449
+      attribute: 66122368
+      script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3835563449
+      attribute: 1962394134
       script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
       classID: 114
       customType: 0
@@ -585,44 +585,6 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 184.615387
-        outSlope: 184.615387
-        tangentMode: 10
-      - time: .216666669
-        value: 40
-        inSlope: 184.615387
-        outSlope: 184.615387
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: forceApplied.x
-    path: Hitboxes/HitboxDownSmashFront
-    classID: 114
-    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 23.0769234
-        outSlope: 23.0769234
-        tangentMode: 10
-      - time: .216666669
-        value: 5
-        inSlope: 23.0769234
-        outSlope: 23.0769234
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: forceApplied.y
-    path: Hitboxes/HitboxDownSmashFront
-    classID: 114
-    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
@@ -685,44 +647,6 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: -184.615387
-        outSlope: -184.615387
-        tangentMode: 10
-      - time: .216666669
-        value: -40
-        inSlope: -184.615387
-        outSlope: -184.615387
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: forceApplied.x
-    path: Hitboxes/HitboxDownSmashBack
-    classID: 114
-    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 23.0769234
-        outSlope: 23.0769234
-        tangentMode: 10
-      - time: .216666669
-        value: 5
-        inSlope: 23.0769234
-        outSlope: 23.0769234
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: forceApplied.y
-    path: Hitboxes/HitboxDownSmashBack
-    classID: 114
-    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
@@ -753,6 +677,82 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: vibrateOpponent
+    path: Hitboxes/HitboxDownSmashBack
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 92.3076935
+        outSlope: 92.3076935
+        tangentMode: 10
+      - time: .216666669
+        value: 20
+        inSlope: 92.3076935
+        outSlope: 92.3076935
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: ForceApplied.x
+    path: Hitboxes/HitboxDownSmashFront
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 23.0769234
+        outSlope: 23.0769234
+        tangentMode: 10
+      - time: .216666669
+        value: 5
+        inSlope: 23.0769234
+        outSlope: 23.0769234
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: ForceApplied.y
+    path: Hitboxes/HitboxDownSmashFront
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: -92.3076935
+        outSlope: -92.3076935
+        tangentMode: 10
+      - time: .216666669
+        value: -20
+        inSlope: -92.3076935
+        outSlope: -92.3076935
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: ForceApplied.x
+    path: Hitboxes/HitboxDownSmashBack
+    classID: 114
+    script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 23.0769234
+        outSlope: 23.0769234
+        tangentMode: 10
+      - time: .216666669
+        value: 5
+        inSlope: 23.0769234
+        outSlope: 23.0769234
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: ForceApplied.y
     path: Hitboxes/HitboxDownSmashBack
     classID: 114
     script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}

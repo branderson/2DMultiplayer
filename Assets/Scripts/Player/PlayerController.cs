@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Menu;
 using Assets.Scripts.Player.States;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
         [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
+        [SerializeField] internal float WeightRatio = 1f;
         [SerializeField] private float jumpHeight = 6f; // Height of single jump from flat ground
         [SerializeField] private float airJumpHeight = 4f; // Height of air jump
         [SerializeField] private float airSideJumpDistance = 4f;
@@ -54,9 +56,11 @@ namespace Assets.Scripts.Player
         internal Animator animator; // Reference to the player's animator component.
         private IInputController input;
         private readonly List<PlayerController> opponents = new List<PlayerController>();
+        internal PlayerUI playerUI;
 
         internal int SmashCharge = 0;
-        internal int DamageRatio = 1;
+        private int shield = 100;
+        private float damageRatio = .005f;
         internal bool onEdgeRight = false;
         internal bool onEdgeLeft = false;
         internal bool Invincible = false;
@@ -68,6 +72,7 @@ namespace Assets.Scripts.Player
         public void Init(int zPosition, int slot)
         {
             input = GetComponent<IInputController>();
+            shield = 100;
             canFall = true;
             facingRight = true;
             canAirJump = true;
@@ -77,15 +82,26 @@ namespace Assets.Scripts.Player
             IFrames = 120; // 5 seconds of invincibility
         }
 
+        public void InitUI(PlayerUI uiCard)
+        {
+            playerUI = uiCard;
+            playerUI.Init(this);
+        }
+
         public void Respawn(Vector2 position)
         {
 //            facingRight = true;
-            fastFall = false;
-            // TODO: Set the state to helpless
-            animator.SetTrigger("Helpless");
-            SetVelocity(Vector2.zero);
-            transform.position = position;
-            IFrames = 120; // 5 seconds of invincibility
+            if (playerUI.Lives > 0)
+            {
+                playerUI.Lives -= 1;
+                shield = 100;
+                playerUI.Shield = 100;
+                fastFall = false;
+                animator.SetTrigger("Helpless");
+                SetVelocity(Vector2.zero);
+                transform.position = position;
+                IFrames = 120; // 2 seconds of invincibility
+            }
         }
 
         // TODO: Non AI players may not need this info
@@ -416,6 +432,29 @@ namespace Assets.Scripts.Player
                 }
             }
             
+        }
+
+        public void TakeDamage(int damage)
+        {
+            shield -= damage;
+            if (shield < 0)
+            {
+                shield = 0;
+            }
+            playerUI.Shield = shield;
+        }
+
+        public float GetDamageRatio()
+        {
+            if (shield > 0)
+            {
+                print(((100-shield)*damageRatio + 1));
+                return ((100 - shield)*damageRatio + 1);
+            }
+            else
+            {
+                return (2);
+            }
         }
 
         public void Flip()
