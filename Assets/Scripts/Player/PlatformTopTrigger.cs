@@ -19,7 +19,7 @@ namespace Assets.Scripts.Stage
             {
                 PlayerController controller = other.transform.parent.GetComponentInChildren<PlayerController>();
                 Rigidbody2D rigidbody = other.transform.parent.GetComponentInChildren<Rigidbody2D>();
-                if (rigidbody.velocity.y < 0)
+                if (rigidbody.velocity.y <= 0)
                 {
                     if (controller.passThroughFloor) // && transform.parent.tag != "Impermeable")
                     {

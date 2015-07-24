@@ -507,7 +507,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -175.756119, y: 316.787292, z: 0}
+  m_LocalPosition: {x: -17.5426559, y: 1.62011755, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458906}
@@ -854,10 +854,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideOthers: 0
-  damageApplied: 5
-  ForceApplied: {x: 0, y: 0}
-  vibrateSelf: 0
-  vibrateOpponent: 0
+  damageApplied: 10
+  ForceApplied: {x: 20, y: 5}
+  Stun: 1
+  vibrateSelf: 1
+  vibrateOpponent: 1
 --- !u!114 &11464192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -872,6 +873,8 @@ MonoBehaviour:
   maxSpeedX: 8
   runSpeedX: 14
   WeightRatio: 1
+  noShieldPenalty: .5
+  noShieldBonus: .5
   jumpHeight: 6
   airJumpHeight: 6
   airSideJumpDistance: 5
@@ -885,7 +888,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  crouchSpeed: .360000014
   sideJumpDistance: 5
   sideJumpHeight: 6
   terminalVelocity: -20
@@ -904,11 +906,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overrideOthers: 0
-  damageApplied: 5
-  ForceApplied: {x: 0, y: 0}
-  vibrateSelf: 0
-  vibrateOpponent: 0
+  overrideOthers: 1
+  damageApplied: 8
+  ForceApplied: {x: 10, y: 10}
+  Stun: 1
+  vibrateSelf: 1
+  vibrateOpponent: 1
 --- !u!114 &11473750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -923,6 +926,7 @@ MonoBehaviour:
   overrideOthers: 0
   damageApplied: 0
   ForceApplied: {x: 0, y: 0}
+  Stun: 0
   vibrateSelf: 0
   vibrateOpponent: 0
 --- !u!114 &11474450
@@ -937,10 +941,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideOthers: 0
-  damageApplied: 2
-  ForceApplied: {x: 0, y: 0}
-  vibrateSelf: 0
-  vibrateOpponent: 0
+  damageApplied: 5
+  ForceApplied: {x: 2, y: 8}
+  Stun: 1
+  vibrateSelf: 1
+  vibrateOpponent: 1
 --- !u!114 &11474854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -953,10 +958,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideOthers: 0
-  damageApplied: 5
-  ForceApplied: {x: 0, y: 0}
-  vibrateSelf: 0
-  vibrateOpponent: 0
+  damageApplied: 10
+  ForceApplied: {x: -20, y: 5}
+  Stun: 1
+  vibrateSelf: 1
+  vibrateOpponent: 1
 --- !u!114 &11489166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -981,10 +987,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideOthers: 0
-  damageApplied: 2
-  ForceApplied: {x: 0, y: 0}
-  vibrateSelf: 0
-  vibrateOpponent: 0
+  damageApplied: 5
+  ForceApplied: {x: 8, y: 2}
+  Stun: 1
+  vibrateSelf: 1
+  vibrateOpponent: 1
 --- !u!212 &21296116
 SpriteRenderer:
   m_ObjectHideFlags: 1

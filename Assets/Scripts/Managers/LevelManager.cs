@@ -78,7 +78,11 @@ namespace Assets.Scripts.Managers
             }
             for (int i = 0; i < players.Count(); i++)
             {
-                if (players.Count() < 3)
+                if (players.Count() == 1)
+                {
+                    players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[4].GetComponent<PlayerUI>());
+                }
+                else if (players.Count() == 2)
                 {
                     switch (i)
                     {

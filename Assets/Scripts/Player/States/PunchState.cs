@@ -22,7 +22,6 @@ namespace Assets.Scripts.Player.States
 
         public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            base.OnStateUpdate(animator, stateInfo, layerIndex);
             waitCounter -= 1;
             if (waitCounter > 0)
             {
@@ -35,8 +34,9 @@ namespace Assets.Scripts.Player.States
             }
         }
 
-        public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
+        public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            base.OnStateUpdate(animator, stateInfo, layerIndex);
         }
 
         public override string GetName()

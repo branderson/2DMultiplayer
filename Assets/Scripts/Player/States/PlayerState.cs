@@ -92,6 +92,7 @@ namespace Assets.Scripts.Player.States
         public virtual void Primary(float x, float y)
         {
             playerAnimator.SetTrigger("Primary");
+            MonoBehaviour.print("Primary");
         }
 
         public virtual void Secondary(float x, float y)

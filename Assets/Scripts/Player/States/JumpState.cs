@@ -21,19 +21,18 @@ namespace Assets.Scripts.Player.States
 
             // Air movement control
             // Only add to speed if below max speed or slowing down from above max speed
-            // TODO: Jumps between absolute values at max
             if (move.x > 0)
             {
                 if (playerController.GetVelocityX() < playerController.maxAirSpeedX)
                 {
-                    playerController.IncrementVelocityX(1f);
+                    playerController.IncrementVelocityX(1f/playerController.WeightRatio);
                 }
             }
             else if (move.x < 0)
             {
                 if (playerController.GetVelocityX() > -playerController.maxAirSpeedX)
                 {
-                    playerController.IncrementVelocityX(-1f);
+                    playerController.IncrementVelocityX(-1f/playerController.WeightRatio);
                 }
             }
 

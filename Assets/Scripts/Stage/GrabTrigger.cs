@@ -39,6 +39,19 @@ namespace Assets.Scripts.Stage
             }
         }
 
+        private void OnTriggerUpdate2D(Collider2D other)
+        {
+            if (other.tag == "PlayerGrab" && other.transform.parent.GetComponentInChildren<PlayerController>() == occupyingPlayer)
+            {
+                if (other.transform.position != transform.position)
+                {
+                    print("Correcting grab");
+                    OnTriggerExit2D(other);
+                    OnTriggerEnter2D(other);
+                }
+            }
+        }
+
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.tag == "PlayerGrab")

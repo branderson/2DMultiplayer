@@ -10,6 +10,7 @@ namespace Assets.Scripts.Player.States
         private ApplyForceTrigger[] forceTriggers;
         private int charge = 0;
         private float chargeMultiplier = .01f;
+        private float damageMultiplier = .1f;
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -21,7 +22,8 @@ namespace Assets.Scripts.Player.States
             foreach (ApplyForceTrigger trigger in forceTriggers)
             {
                 trigger.ForceMultiplier = charge*chargeMultiplier + 1;
-//                trigger.DamageSupplement = (int)charge*chargeMultiplier + 1;
+                trigger.DamageSupplement = (int)Mathf.Floor(charge*damageMultiplier);
+                //                trigger.DamageSupplement = (int)charge*chargeMultiplier + 1;
             }
         }
 

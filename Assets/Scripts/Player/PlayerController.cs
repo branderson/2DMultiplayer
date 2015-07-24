@@ -12,7 +12,9 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
         [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
-        [SerializeField] internal float WeightRatio = 1f;
+        [Range(.25f, 2)][SerializeField] internal float WeightRatio = 1f;
+        [SerializeField] private float noShieldPenalty = .5f;
+        [SerializeField] private float noShieldBonus = .5f;
         [SerializeField] private float jumpHeight = 6f; // Height of single jump from flat ground
         [SerializeField] private float airJumpHeight = 4f; // Height of air jump
         [SerializeField] private float airSideJumpDistance = 4f;
@@ -21,7 +23,6 @@ namespace Assets.Scripts.Player
         [SerializeField] private float neutralAirTime = .68f; // Time in air jumping once from flat ground, will be incorrect if terminal velocity set too low
         [SerializeField] private List<Transform> groundCheck; // A position marking where to check if the player is on the ground
         [SerializeField] private LayerMask groundLayer; // A mask determining what is ground to the character
-        [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f; // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private float sideJumpDistance = 5f; // Horizontal distance of side jump
         [SerializeField] private float sideJumpHeight = 6f; // Height of side jump
         [SerializeField] private float terminalVelocity = -15f; // Maximum regular falling rate
@@ -91,7 +92,7 @@ namespace Assets.Scripts.Player
         public void Respawn(Vector2 position)
         {
 //            facingRight = true;
-            if (playerUI.Lives > 0)
+            if (true) //(playerUI.Lives > 0)
             {
                 playerUI.Lives -= 1;
                 shield = 100;
@@ -147,6 +148,7 @@ namespace Assets.Scripts.Player
             animator.SetFloat("yVelocity", velocityY);
             animator.SetFloat("xSpeed", Mathf.Abs(velocityX));
             animator.SetFloat("ySpeed", Mathf.Abs(velocityY));
+            animator.SetInteger("ShieldPercent", shield);
             animator.SetFloat("WalkAnimationSpeed", Mathf.Abs(velocityX)/6);
             animator.SetBool("FacingRight", facingRight);
             animator.SetBool("Run", Run);
@@ -453,8 +455,37 @@ namespace Assets.Scripts.Player
             }
             else
             {
-                return (2);
+                return (100*damageRatio + 1 + noShieldPenalty);
             }
+        }
+
+        public float GetAttackRatio()
+        {
+            if (shield > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 1 + noShieldBonus;
+            }
+        }
+
+        public void Stun(int frames)
+        {
+            StopCoroutine("StunRoutine");
+            StartCoroutine("StunRoutine", frames);
+        }
+
+        private IEnumerator StunRoutine(int frames)
+        {
+            animator.SetBool("Stunned", true);
+            while (frames > 0)
+            {
+                frames--;
+                yield return null;
+            }
+            animator.SetBool("Stunned", false);
         }
 
         public void Flip()

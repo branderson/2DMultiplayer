@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player.Triggers
         [SerializeField] private bool overrideOthers;
         [SerializeField] public int damageApplied;
         [SerializeField] public Vector2 ForceApplied;
+        [SerializeField] public bool Stun = true;
         [SerializeField] private bool vibrateSelf;
         [SerializeField] private bool vibrateOpponent;
         internal float ForceMultiplier = 1f;
@@ -28,7 +29,7 @@ namespace Assets.Scripts.Player.Triggers
                 PlayerController controller = other.GetComponent<PlayerController>();
                 if (controller != playerController)
                 {
-                    manager.AddForce(controller, ForceApplied*ForceMultiplier, damageApplied+DamageSupplement, overrideOthers, vibrateOpponent);
+                    manager.AddForce(controller, ForceApplied*ForceMultiplier, damageApplied+DamageSupplement, Stun, overrideOthers, vibrateOpponent);
                     if (vibrateSelf && !controller.Invincible)
                     {
                         playerController.SetVibrate(12, .8f, .5f);

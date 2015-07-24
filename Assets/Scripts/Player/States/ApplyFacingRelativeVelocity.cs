@@ -14,9 +14,11 @@ namespace Assets.Scripts.Player.States
         private bool applied = false;
         private float directionModifier = 1f;
         private float damageMultiplier = 1f;
+        private PlayerController playerController;
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            playerController = animator.GetComponentInChildren<PlayerController>();
             countDown = frameApplied;
             applied = false;
         }
@@ -30,7 +32,6 @@ namespace Assets.Scripts.Player.States
             else if (!applied || continuous)
             {
                 applied = true;
-                PlayerController playerController = animator.GetComponentInChildren<PlayerController>();
                 directionModifier = 1f;
                 damageMultiplier = 1f;
 
