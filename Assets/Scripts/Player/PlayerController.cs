@@ -63,9 +63,11 @@ namespace Assets.Scripts.Player
         internal SpriteRenderer sprite;
         internal Color color; // TODO: Get rid of this
 
+        private float animationResumeSpeed;
+        internal bool Paused = false;
         internal int SmashCharge = 0;
         private int shield = 100;
-        private float damageRatio = .005f;
+        private float damageRatio = .01f;
         internal bool onEdgeRight = false;
         internal bool onEdgeLeft = false;
         internal bool Invincible = false;
@@ -166,11 +168,11 @@ namespace Assets.Scripts.Player
             // Manage invincibility state
             if (IFrames > 0)
             {
-                if (IFrames%6 == 0)
+                if (IFrames%10 == 0)
                 {
                     sprite.color = Color.yellow;
                 }
-                else if (IFrames%3 == 0)
+                else if (IFrames%5 == 0)
                 {
                     sprite.color = color;
                 }
@@ -280,14 +282,22 @@ namespace Assets.Scripts.Player
 
         public IEnumerator PauseAnimation(int frames)
         {
-            float animationSpeed = animator.speed;
+            animationResumeSpeed = animator.speed;
+            Paused = true;
             animator.speed = 0;
             while (frames > 0)
             {
                 frames--;
                 yield return null;
             }
-            animator.speed = animationSpeed;
+            animator.speed = animationResumeSpeed;
+        }
+
+        public void ResumeAnimation()
+        {
+            StopCoroutine("PauseAnimation");
+            Paused = false;
+            animator.speed = animationResumeSpeed;
         }
 
         private IEnumerator Vibrate(int frames, float leftIntensity, float rightIntensity)
@@ -456,12 +466,15 @@ namespace Assets.Scripts.Player
 
         public void TakeDamage(int damage)
         {
-            shield -= damage;
-            if (shield < 0)
+            if (!Invincible)
             {
-                shield = 0;
+                shield -= damage;
+                if (shield < 0)
+                {
+                    shield = 0;
+                }
+                playerUI.Shield = shield;
             }
-            playerUI.Shield = shield;
         }
 
         public float GetDamageRatio()
@@ -491,12 +504,15 @@ namespace Assets.Scripts.Player
 
         public void Stun(int frames)
         {
-            StopCoroutine("StunRoutine");
-            if (frames < 10)
+            if (!Invincible)
             {
-                frames = 10;
+                StopCoroutine("StunRoutine");
+                if (frames < 10)
+                {
+                    frames = 10;
+                }
+                StartCoroutine("StunRoutine", frames);
             }
-            StartCoroutine("StunRoutine", frames);
         }
 
         private IEnumerator StunRoutine(int frames)
@@ -508,6 +524,29 @@ namespace Assets.Scripts.Player
                 yield return null;
             }
             animator.SetBool("Stunned", false);
+            yield break;
+        }
+
+        private IEnumerator Shake(float intensity)
+        {
+            // TODO: This doesn't work
+            int frame = 0;
+            Vector3 spritePosition = sprite.transform.localPosition;
+            Vector3 forwardPosition = new Vector3(spritePosition.x + .01f, spritePosition.y, spritePosition.z);
+            Vector3 backwardPosition = new Vector3(spritePosition.x - .01f, spritePosition.y, spritePosition.z);
+            while (true)
+            {
+                if (frame%10 == 0)
+                {
+                    sprite.transform.localPosition = forwardPosition;
+                }
+                else if (frame%5 == 0)
+                {
+                    sprite.transform.localPosition = backwardPosition;
+                }
+                frame++;
+                yield return null;
+            }
         }
 
         public void Stagger(int stagger)

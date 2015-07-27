@@ -18,7 +18,7 @@ namespace Assets.Scripts.Player.States
 
         public void PauseAnimation(int frames)
         {
-            StartCoroutine(playerController.PauseAnimation(frames));
+            playerController.StartCoroutine("PauseAnimation", frames);
         }
 
         public void ApplySpeedX(float x)
@@ -33,7 +33,6 @@ namespace Assets.Scripts.Player.States
 
         public void ShakeSpriteX(float intensity)
         {
-            
         }
 
         public void InstantiateGroundSmashEffect(float xOffset)

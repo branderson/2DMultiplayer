@@ -50,11 +50,11 @@ TagManager:
   - name: Background
     uniqueID: 1866062987
     locked: 0
-  - name: UI
-    uniqueID: 933501651
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 933501651
     locked: 0
   - name: Character
     uniqueID: 1605209347

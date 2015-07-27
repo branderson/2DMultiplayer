@@ -46,7 +46,7 @@ namespace Assets.Scripts.Stage
             }
         }
 
-        private void OnTriggerUpdate2D(Collider2D other)
+        private void OnTriggerStay2D(Collider2D other)
         {
             if (other.tag == "PlayerGrab" && other.transform.parent.GetComponentInChildren<PlayerController>() == occupyingPlayer)
             {

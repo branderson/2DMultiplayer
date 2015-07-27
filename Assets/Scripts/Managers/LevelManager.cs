@@ -23,10 +23,6 @@ namespace Assets.Scripts.Managers
         {
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             characterMenuManager = GameObject.Find("MenuManager").GetComponent<CharacterMenuManager>();
-        }
-
-        void Start()
-        {
 //            spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
 //            playerUI = GameObject.FindGameObjectsWithTag("PlayerUI");
 
@@ -128,6 +124,10 @@ namespace Assets.Scripts.Managers
             
             // Get rid of menu manager so it's not still waiting for inputs
             Destroy(characterMenuManager.gameObject);
+        }
+
+        void Start()
+        {
         }
 
         // Update is called once per frame

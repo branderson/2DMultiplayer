@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 488942}
   - 61: {fileID: 6146662}
-  - 114: {fileID: 11445896}
+  - 114: {fileID: 11409412}
   m_Layer: 0
   m_Name: HitboxDownSmashFront
   m_TagString: Untagged
@@ -226,7 +226,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 457306}
   - 61: {fileID: 6120934}
-  - 114: {fileID: 11474854}
+  - 114: {fileID: 11450450}
   m_Layer: 0
   m_Name: HitboxDownSmashBack
   m_TagString: Untagged
@@ -507,7 +507,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.187664, y: 1.47523534, z: 0}
+  m_LocalPosition: {x: -3.89299989, y: -.0549999997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458906}
@@ -810,6 +810,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11409412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a036909979f424408d4adca2a978b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideOthers: 0
+  damagePerFrame: .100000001
+  baseDamage: 5
+  ForceApplied: {x: 15, y: 5}
+  Stun: 1
+  Stagger: 1
+  vibrateSelf: 1
+  vibrateOpponent: 1
 --- !u!114 &11411246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -845,20 +864,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc17c35913e01844b5681f608aef11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11445896
+--- !u!114 &11450450
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152010}
+  m_GameObject: {fileID: 173530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a036909979f424408d4adca2a978b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   overrideOthers: 0
-  damageApplied: 10
-  ForceApplied: {x: 20, y: 5}
+  damagePerFrame: .100000001
+  baseDamage: 5
+  ForceApplied: {x: -15, y: 5}
   Stun: 1
   Stagger: 1
   vibrateSelf: 1
@@ -954,24 +974,6 @@ MonoBehaviour:
   Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
---- !u!114 &11474854
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overrideOthers: 0
-  damageApplied: 10
-  ForceApplied: {x: -20, y: 5}
-  Stun: 1
-  Stagger: 1
-  vibrateSelf: 1
-  vibrateOpponent: 1
 --- !u!114 &11489166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1024,7 +1026,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1605209347
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b228180a25319644080ac1a99b29fc22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1130,6 +1132,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: WeightRatio
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: 1605209347
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -110,21 +110,21 @@ namespace Assets.Scripts.Player.Triggers
             // Do I want attacks cancelling out opponents' momentum?
 //            print("Applying force: x = " + force.x + ", y = " + force.y);
             // Stagger can be used to cancel stun and launch for weak attacks against strong enemies. Might be better used for other purposes
-            if (stagger > player.resistance) // TODO: Get rid of this weird stagger stuff
+//            if (stagger > player.resistance) // TODO: Get rid of this weird stagger stuff
+//            {
+            if (playerController.facingRight)
             {
-                if (playerController.facingRight)
-                {
-                    player.IncrementVelocity(force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity());
-                }
-                else
-                {
-                    player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
-                }
-
-                int stunFrames = (int) Mathf.Ceil(force.x + force.y);
-                player.Stun(stunFrames);
-                player.Stagger(stagger);
+                player.IncrementVelocity(force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity());
             }
+            else
+            {
+                player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
+            }
+
+            int stunFrames = (int) Mathf.Ceil(force.x + force.y);
+            player.Stun(stunFrames);
+            player.Stagger(stagger);
+//            }
 
             player.TakeDamage(damage);
 
