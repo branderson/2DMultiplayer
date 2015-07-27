@@ -44,3 +44,7 @@ Set up effect instantiation and pausing animations
 Adds smash charging
 Adds shield percentages and damage multipliers
 Adds in game UI
+
+Adds combo
+Side special doesn't go off edge (adds stop on edge script)
+Only edge grab while falling

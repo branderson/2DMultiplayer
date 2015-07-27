@@ -10,7 +10,8 @@ namespace Assets.Scripts.Player.Triggers
         public List<Vector2> Forces = new List<Vector2>();
         public List<int> Damages = new List<int>();
         public List<bool> Vibrate = new List<bool>();
-        public List<bool> Stun = new List<bool>(); 
+        public List<bool> Stun = new List<bool>();
+        public List<int> Stagger = new List<int>(); 
         public bool Overridden = false;
         public bool Applied = false;
     }
@@ -41,7 +42,7 @@ namespace Assets.Scripts.Player.Triggers
                 {
                     if (pendingForce.Overridden)
                     {
-                        ApplyForce(pendingForce.PlayerController, pendingForce.Forces.Last(), pendingForce.Damages.Last(), pendingForce.Vibrate.Last(), pendingForce.Stun.Last());
+                        ApplyForce(pendingForce.PlayerController, pendingForce.Forces.Last(), pendingForce.Damages.Last(), pendingForce.Vibrate.Last(), pendingForce.Stun.Last(), pendingForce.Stagger.Last());
                     }
                     else
                     {
@@ -49,8 +50,9 @@ namespace Assets.Scripts.Player.Triggers
                         float highestY = pendingForce.Forces.OrderByDescending(item => Mathf.Abs(item.y)).First().y;
                         int highestDamage = pendingForce.Damages.Max();
                         bool stun = pendingForce.Stun.Any(item => item);
+                        int stagger = pendingForce.Stagger.Max();
                         bool vibrate = pendingForce.Vibrate.Any(item => item);
-                        ApplyForce(pendingForce.PlayerController, new Vector2(highestX, highestY), highestDamage, vibrate, stun);
+                        ApplyForce(pendingForce.PlayerController, new Vector2(highestX, highestY), highestDamage, vibrate, stun, stagger);
                     }
                 }
             }
@@ -62,7 +64,7 @@ namespace Assets.Scripts.Player.Triggers
             force.Applied = true;
         }
 
-        public void AddForce(PlayerController player, Vector2 force, int damage, bool stun, bool overrideOthers, bool vibrate)
+        public void AddForce(PlayerController player, Vector2 force, int damage, bool stun, int stagger, bool overrideOthers, bool vibrate)
         {
             if (player != playerController && !player.Invincible)
             {
@@ -78,6 +80,7 @@ namespace Assets.Scripts.Player.Triggers
                         forces.Damages.Add(damage);
                         forces.Vibrate.Add(vibrate);
                         forces.Stun.Add(stun);
+                        forces.Stagger.Add(stagger);
                         forces.Overridden = overrideOthers;
                     }
                 }
@@ -92,6 +95,7 @@ namespace Assets.Scripts.Player.Triggers
                     forces.Damages.Add(damage);
                     forces.Vibrate.Add(vibrate);
                     forces.Stun.Add(stun);
+                    forces.Stagger.Add(stagger);
                     if (overrideOthers)
                     {
                         forces.Overridden = true;
@@ -101,22 +105,28 @@ namespace Assets.Scripts.Player.Triggers
             }
         }
 
-        private void ApplyForce(PlayerController player, Vector2 force, int damage, bool vibrate, bool stun)
+        private void ApplyForce(PlayerController player, Vector2 force, int damage, bool vibrate, bool stun, int stagger)
         {
             // Do I want attacks cancelling out opponents' momentum?
 //            print("Applying force: x = " + force.x + ", y = " + force.y);
-            if (playerController.facingRight)
+            // Stagger can be used to cancel stun and launch for weak attacks against strong enemies. Might be better used for other purposes
+            if (stagger > player.resistance) // TODO: Get rid of this weird stagger stuff
             {
-                player.IncrementVelocity(force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity());
-            }
-            else
-            {
-                player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
-            }
-            player.TakeDamage(damage);
+                if (playerController.facingRight)
+                {
+                    player.IncrementVelocity(force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity());
+                }
+                else
+                {
+                    player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
+                }
 
-            int stunFrames = (int) Mathf.Ceil(force.x + force.y);
-            player.Stun(stunFrames);
+                int stunFrames = (int) Mathf.Ceil(force.x + force.y);
+                player.Stun(stunFrames);
+                player.Stagger(stagger);
+            }
+
+            player.TakeDamage(damage);
 
             if (vibrate)
             {

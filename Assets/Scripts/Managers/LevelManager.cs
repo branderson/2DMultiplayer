@@ -65,7 +65,7 @@ namespace Assets.Scripts.Managers
                             player.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
                             break;
                         case 2:
-                            player.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+                            player.GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
                             break;
                         case 3:
                             player.GetComponentInChildren<SpriteRenderer>().color = Color.green;

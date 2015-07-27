@@ -14,7 +14,14 @@ namespace Assets.Scripts.Stage
         {
             if (other.tag == "PlayerGrab" && !occupied)
             {
-                occupyingPlayer = other.transform.parent.GetComponentInChildren<PlayerController>();
+                PlayerController encounteredPlayer = other.transform.parent.GetComponentInChildren<PlayerController>();
+
+                // TODO: Account for cases where player begins falling without leaving trigger (make trigger smaller maybe?)
+                if (!(encounteredPlayer.GetVelocityY() < 0))
+                {
+                    return;
+                }
+                occupyingPlayer = encounteredPlayer;
                 occupied = true;
 
                 occupyingPlayer.animator.SetTrigger("EdgeGrab");

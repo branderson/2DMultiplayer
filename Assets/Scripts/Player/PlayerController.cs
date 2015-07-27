@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using Assets.Scripts.Menu;
 using Assets.Scripts.Player.States;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
         [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
+        [SerializeField] internal int resistance = 0;
         [Range(.25f, 2)][SerializeField] internal float WeightRatio = 1f;
         [SerializeField] private float noShieldPenalty = .5f;
         [SerializeField] private float noShieldBonus = .5f;
@@ -58,6 +60,8 @@ namespace Assets.Scripts.Player
         private IInputController input;
         private readonly List<PlayerController> opponents = new List<PlayerController>();
         internal PlayerUI playerUI;
+        internal SpriteRenderer sprite;
+        internal Color color; // TODO: Get rid of this
 
         internal int SmashCharge = 0;
         private int shield = 100;
@@ -73,6 +77,7 @@ namespace Assets.Scripts.Player
         public void Init(int zPosition, int slot)
         {
             input = GetComponent<IInputController>();
+            color = sprite.color;
             shield = 100;
             canFall = true;
             facingRight = true;
@@ -124,6 +129,7 @@ namespace Assets.Scripts.Player
             // Setting up references.
             animator = GetComponentInParent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
+            sprite = transform.parent.GetComponentInChildren<SpriteRenderer>();
             CalculatePhysics();
         }
 
@@ -160,6 +166,14 @@ namespace Assets.Scripts.Player
             // Manage invincibility state
             if (IFrames > 0)
             {
+                if (IFrames%6 == 0)
+                {
+                    sprite.color = Color.yellow;
+                }
+                else if (IFrames%3 == 0)
+                {
+                    sprite.color = color;
+                }
                 Invincible = true;
                 IFrames -= 1;
             }
@@ -170,6 +184,10 @@ namespace Assets.Scripts.Player
             else if (StateInvincible)
             {
                 Invincible = true;
+            }
+            else
+            {
+                sprite.color = color;
             }
         }
 
@@ -450,7 +468,7 @@ namespace Assets.Scripts.Player
         {
             if (shield > 0)
             {
-                print(((100-shield)*damageRatio + 1));
+//                print(((100-shield)*damageRatio + 1));
                 return ((100 - shield)*damageRatio + 1);
             }
             else
@@ -474,6 +492,10 @@ namespace Assets.Scripts.Player
         public void Stun(int frames)
         {
             StopCoroutine("StunRoutine");
+            if (frames < 10)
+            {
+                frames = 10;
+            }
             StartCoroutine("StunRoutine", frames);
         }
 
@@ -486,6 +508,11 @@ namespace Assets.Scripts.Player
                 yield return null;
             }
             animator.SetBool("Stunned", false);
+        }
+
+        public void Stagger(int stagger)
+        {
+            animator.SetTrigger("Stagger");
         }
 
         public void Flip()

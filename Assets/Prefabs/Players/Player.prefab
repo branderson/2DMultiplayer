@@ -507,7 +507,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.5426559, y: 1.62011755, z: 0}
+  m_LocalPosition: {x: -17.187664, y: 1.47523534, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458906}
@@ -651,10 +651,13 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: .566581726, y: .205316544}
-      - {x: .558353424, y: -.786942244}
-      - {x: -.528921127, y: -.772226095}
-      - {x: -.531639099, y: .1986444}
+    - - {x: .403073311, y: 1.75767028}
+      - {x: 1.79802322, y: .645758986}
+      - {x: 2.25316715, y: -.555015028}
+      - {x: 1.77181721, y: -1.63187277}
+      - {x: .621623039, y: -1.38345242}
+      - {x: .86400795, y: .225064039}
+      - {x: -1.33162689, y: 1.34918797}
 --- !u!60 &6096754
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -857,6 +860,7 @@ MonoBehaviour:
   damageApplied: 10
   ForceApplied: {x: 20, y: 5}
   Stun: 1
+  Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11464192
@@ -872,6 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeedX: 8
   runSpeedX: 14
+  resistance: 0
   WeightRatio: 1
   noShieldPenalty: .5
   noShieldBonus: .5
@@ -910,6 +915,7 @@ MonoBehaviour:
   damageApplied: 8
   ForceApplied: {x: 10, y: 10}
   Stun: 1
+  Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11473750
@@ -924,11 +930,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overrideOthers: 0
-  damageApplied: 0
-  ForceApplied: {x: 0, y: 0}
-  Stun: 0
-  vibrateSelf: 0
-  vibrateOpponent: 0
+  damageApplied: 8
+  ForceApplied: {x: 10, y: 5}
+  Stun: 1
+  Stagger: 1
+  vibrateSelf: 1
+  vibrateOpponent: 1
 --- !u!114 &11474450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -942,8 +949,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overrideOthers: 0
   damageApplied: 5
-  ForceApplied: {x: 2, y: 8}
+  ForceApplied: {x: 2, y: 2}
   Stun: 1
+  Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11474854
@@ -961,6 +969,7 @@ MonoBehaviour:
   damageApplied: 10
   ForceApplied: {x: -20, y: 5}
   Stun: 1
+  Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11489166
@@ -988,8 +997,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overrideOthers: 0
   damageApplied: 5
-  ForceApplied: {x: 8, y: 2}
+  ForceApplied: {x: 2, y: 2}
   Stun: 1
+  Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!212 &21296116
