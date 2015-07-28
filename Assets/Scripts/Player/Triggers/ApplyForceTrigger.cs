@@ -33,7 +33,7 @@ namespace Assets.Scripts.Player.Triggers
                     manager.AddForce(controller, ForceApplied*ForceMultiplier, damageApplied+DamageSupplement, Stun, Stagger, overrideOthers, vibrateOpponent);
                     if (vibrateSelf && !controller.Invincible)
                     {
-                        playerController.SetVibrate(12, .8f, .5f);
+                        playerController.SetVibrate(12, 0f, 1f);
                     }
                 }
 //                    // TODO: Maybe add a tag for hitable for team battles

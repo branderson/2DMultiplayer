@@ -11,5 +11,8 @@ Input Controllers (Do this one soonish)
 Player Controller	
 	Possible to escape attack animations by using recovery
 	Noticed pressing left and secondary and doing a right secondary once. Could not duplicate.:w
+	Observed sprite becoming moved to the up and to the left from the rigidbody
+
+Make force triggers able to launch opposite direction of contact
 
 Animations, animations, animations!

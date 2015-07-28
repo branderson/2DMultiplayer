@@ -364,6 +364,30 @@ Prefab:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2092205588}
+    - target: {fileID: 22420338, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.80000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420338, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471752, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471752, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22457928, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.79999733
+      objectReference: {fileID: 0}
+    - target: {fileID: 22457928, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.00001144
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11446662, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
     - {fileID: 11443026, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
@@ -606,6 +630,30 @@ Prefab:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1645414233}
+    - target: {fileID: 22420338, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.4000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420338, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471752, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -10.3459969
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471752, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.50000381
+      objectReference: {fileID: 0}
+    - target: {fileID: 22457928, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.39999771
+      objectReference: {fileID: 0}
+    - target: {fileID: 22457928, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.00001144
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11446662, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
     - {fileID: 11443026, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
@@ -838,6 +886,30 @@ Prefab:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 406363291}
+    - target: {fileID: 22420338, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.69999981
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420338, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471752, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471752, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 22457928, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.69999886
+      objectReference: {fileID: 0}
+    - target: {fileID: 22457928, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.00001144
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11446662, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
     - {fileID: 11443026, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
@@ -969,6 +1041,30 @@ Prefab:
     - target: {fileID: 11411870, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToggleDPad
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420338, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.65399981
+      objectReference: {fileID: 0}
+    - target: {fileID: 22420338, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471752, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 22471752, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -10.2000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 22457928, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.65400314
+      objectReference: {fileID: 0}
+    - target: {fileID: 22457928, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11446662, guid: 0e66c3aa048461a4897e456f2ff99625, type: 2}
@@ -1521,10 +1617,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

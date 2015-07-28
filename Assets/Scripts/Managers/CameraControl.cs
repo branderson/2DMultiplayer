@@ -16,6 +16,7 @@ namespace Assets.Scripts.Managers
         private LevelManager levelManager;
         private Camera camera;
         private float cameraPadding = 4f;
+        private float verticalPadding = 3f;
         private float maxX = 0f;
         private float minX = 0f;
         private float maxY = 0f;
@@ -34,7 +35,7 @@ namespace Assets.Scripts.Managers
             minX = maxCameraBounds.OrderByDescending(item => item.position.x).Last().position.x;
             maxY = maxCameraBounds.OrderByDescending(item => item.position.y).First().position.y;
             minY = maxCameraBounds.OrderByDescending(item => item.position.y).Last().position.y;
-            print(maxX + " " + minX + " " + maxY + " " + minY);
+//            print(maxX + " " + minX + " " + maxY + " " + minY);
             List<GameObject> playerObjects = levelManager.GetPlayers();
             foreach (GameObject playerObject in playerObjects)
             {
@@ -100,13 +101,13 @@ namespace Assets.Scripts.Managers
             maxDistance.y = Mathf.Abs(players.Where(item => (item.position.y < maxY && item.position.y > minY)).Max(item => (item.position.y - transform.position.y))); // - transform.position.y;
 //            print(maxDistance.x + " " + maxDistance.y);
 
-            if (maxDistance.x/camera.aspect > maxDistance.y && maxDistance.x/camera.aspect + cameraPadding > minimumSize)
+            if (maxDistance.x/camera.aspect > maxDistance.y + verticalPadding && maxDistance.x/camera.aspect + cameraPadding > minimumSize)
             {
                 if (maxDistance.x/camera.aspect + cameraPadding > maximumSize)
                 {
                     camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, maximumSize, resizeRate*1.5f); // Time.fixedDeltaTime);
                 }
-                else if (camera.orthographicSize < maxDistance.x/camera.aspect)
+                else if (camera.orthographicSize < maxDistance.x/camera.aspect + cameraPadding)
                 {
                     camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, maxDistance.x/camera.aspect + cameraPadding, resizeRate*1.5f); // Time.fixedDeltaTime);
                 }
@@ -115,20 +116,20 @@ namespace Assets.Scripts.Managers
                     camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, maxDistance.x/camera.aspect + cameraPadding, resizeRate); // Time.fixedDeltaTime);
                 }
             }
-            else if (maxDistance.y > minimumSize)
+            else if (maxDistance.y + cameraPadding + verticalPadding > minimumSize)
             {
-                if (maxDistance.y + cameraPadding > maximumSize)
+                if (maxDistance.y + cameraPadding + verticalPadding > maximumSize)
                 {
                     camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, maximumSize, resizeRate*1.5f);
                 }
-                else if (camera.orthographicSize < maxDistance.y)
+                else if (camera.orthographicSize < maxDistance.y + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding + cameraPadding + verticalPadding)
                 {
-                    camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, maxDistance.y + cameraPadding + 2, resizeRate*1.5f);
+                    camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, maxDistance.y + cameraPadding + verticalPadding, resizeRate*1.5f);
                         //Time.fixedDeltaTime);
                 }
                 else
                 {
-                    camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, maxDistance.y + cameraPadding + 2, resizeRate);
+                    camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, maxDistance.y + cameraPadding + verticalPadding, resizeRate);
                         //Time.fixedDeltaTime);
                 }
             }

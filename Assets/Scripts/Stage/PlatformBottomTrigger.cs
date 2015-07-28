@@ -22,10 +22,11 @@ namespace Assets.Scripts.Stage
                 PlayerController controller = other.transform.parent.GetComponentInChildren<PlayerController>();
                 Rigidbody2D rigidbody = other.transform.parent.GetComponentInChildren<Rigidbody2D>();
                 // If enterring from the bottom, pass through, otherwise turn on collisions
-                if (rigidbody.velocity.y > 0) // && !transform.parent.CompareTag("Impermeable"))
-                {
-                    controller.IgnoreCollision(platformCollider);
-                }
+//                if (rigidbody.velocity.y > 0) // && !transform.parent.CompareTag("Impermeable"))
+//                {
+                controller.IgnoreCollision(platformCollider);
+//                print("Ignoring collision");
+//                }
 //                else if (transform.parent.CompareTag("Impermeable"))
 //                {
 //                    controller.IgnoreCollision(platformCollider, false);

@@ -112,16 +112,18 @@ namespace Assets.Scripts.Player.Triggers
             // Stagger can be used to cancel stun and launch for weak attacks against strong enemies. Might be better used for other purposes
 //            if (stagger > player.resistance) // TODO: Get rid of this weird stagger stuff
 //            {
+            Vector2 hitForce = force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity();
             if (playerController.facingRight)
             {
-                player.IncrementVelocity(force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity());
+                player.IncrementVelocity(hitForce);
             }
             else
             {
-                player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
+                player.IncrementVelocity(-hitForce.x, hitForce.y);
+//                player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
             }
 
-            int stunFrames = (int) Mathf.Ceil(force.x + force.y)/8;
+            int stunFrames = (int) Mathf.Ceil(hitForce.x + hitForce.y)/6;
             player.Stun(stunFrames);
             player.Stagger(stagger);
 //            }
@@ -130,7 +132,7 @@ namespace Assets.Scripts.Player.Triggers
 
             if (vibrate)
             {
-                player.SetVibrate(15, .8f, .5f);
+                player.SetVibrate(15, 0f, 1f);
             }
         }
     }

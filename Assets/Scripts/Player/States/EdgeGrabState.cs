@@ -31,7 +31,14 @@ namespace Assets.Scripts.Player.States
         {
             return "EdgeGrabState";
         }
-//
+
+        public override void Down()
+        {
+            base.Down();
+            playerAnimator.SetTrigger("LetGo");
+        }
+
+        //
 //        public override void Primary(float x, float y)
 //        {
 //            playerAnimator.SetTrigger("Primary");

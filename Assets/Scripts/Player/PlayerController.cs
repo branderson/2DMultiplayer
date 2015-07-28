@@ -33,7 +33,7 @@ namespace Assets.Scripts.Player
         [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
         [SerializeField] public float shortHopFactor = .7f; // Fraction of neutral jump height/distance for short hop
         [SerializeField] public float airControlSpeed = .5f; // Fraction of horizontal control while in air
-        private const float GroundedRadius = .5f; // Radius of the overlap circle to determine if onGround
+        private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if onGround
 
         internal float airSideJumpSpeedX;
         internal float airSideJumpSpeedY;
@@ -59,7 +59,7 @@ namespace Assets.Scripts.Player
         private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
         internal Animator animator; // Reference to the player's animator component.
         private IInputController input;
-        private readonly List<PlayerController> opponents = new List<PlayerController>();
+        internal readonly List<PlayerController> opponents = new List<PlayerController>();
         internal PlayerUI playerUI;
         internal SpriteRenderer sprite;
         internal Color color; // TODO: Get rid of this
@@ -118,7 +118,7 @@ namespace Assets.Scripts.Player
         {
             foreach (GameObject player in players)
             {
-                PlayerController controller = player.GetComponent<PlayerController>();
+                PlayerController controller = player.GetComponentInChildren<PlayerController>();
                 if (controller != this)
                 {
                     opponents.Add(controller);
@@ -265,7 +265,7 @@ namespace Assets.Scripts.Player
 
         public void IgnoreCollision(Collider2D other)
         {
-            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>(true);
             foreach (Collider2D collider in colliders)
             {
                 Physics2D.IgnoreCollision(collider, other);
@@ -274,7 +274,7 @@ namespace Assets.Scripts.Player
 
         public void IgnoreCollision(Collider2D other, bool ignore)
         {
-            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>(true);
             foreach (Collider2D collider in colliders)
             {
                 Physics2D.IgnoreCollision(collider, other, ignore);
