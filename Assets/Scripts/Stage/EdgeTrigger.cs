@@ -13,7 +13,7 @@ namespace Assets.Scripts.Stage
         {
             if (other.tag == "Player")
             {
-                PlayerController player = other.GetComponent<PlayerController>();
+                PlayerController player = other.GetComponentInParent<PlayerController>();
                 if (right)
                 {
                     player.onEdgeRight = true;
@@ -30,7 +30,7 @@ namespace Assets.Scripts.Stage
         {
             if (other.tag == "Player")
             {
-                PlayerController player = other.GetComponent<PlayerController>();
+                PlayerController player = other.GetComponentInParent<PlayerController>();
                 if (right)
                 {
                     player.onEdgeRight = false;

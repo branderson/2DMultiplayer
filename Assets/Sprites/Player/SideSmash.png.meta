@@ -1,0 +1,330 @@
+fileFormatVersion: 2
+guid: f704d2fb785fc174db6550f0f6725ef1
+timeCreated: 1438041498
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SideSmash_0
+    21300002: SideSmash_1
+    21300004: SideSmash_2
+    21300006: SideSmash_3
+    21300008: SideSmash_4
+    21300010: SideSmash_5
+    21300012: SideSmash_6
+    21300014: SideSmash_7
+    21300016: SideSmash_8
+    21300018: SideSmash_9
+    21300020: SideSmash_10
+    21300022: SideSmash_11
+    21300024: SideSmash_12
+    21300026: SideSmash_13
+    21300028: SideSmash_14
+    21300030: SideSmash_15
+    21300032: SideSmash_16
+    21300034: SideSmash_17
+    21300036: SideSmash_18
+    21300038: SideSmash_19
+    21300040: SideSmash_20
+    21300042: SideSmash_21
+    21300044: SideSmash_22
+    21300046: SideSmash_23
+    21300048: SideSmash_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SideSmash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_1
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_2
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_3
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_4
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_5
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_6
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_7
+      rect:
+        serializedVersion: 2
+        x: 2555
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_8
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_9
+      rect:
+        serializedVersion: 2
+        x: 3285
+        y: 488
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_11
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_12
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_13
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_14
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_15
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_16
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_17
+      rect:
+        serializedVersion: 2
+        x: 2555
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_18
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_19
+      rect:
+        serializedVersion: 2
+        x: 3285
+        y: 244
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_21
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 0
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_22
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 0
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_23
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 0
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SideSmash_24
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 0
+        width: 365
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

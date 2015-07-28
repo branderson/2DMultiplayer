@@ -14,6 +14,7 @@ namespace Assets.Scripts.Player
         [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
         [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
         [SerializeField] internal int resistance = 0;
+        [SerializeField] internal int launchFrames = 30;
         [Range(.25f, 2)][SerializeField] internal float WeightRatio = 1f;
         [SerializeField] private float noShieldPenalty = .5f;
         [SerializeField] private float noShieldBonus = .5f;
@@ -264,7 +265,7 @@ namespace Assets.Scripts.Player
 
         public void IgnoreCollision(Collider2D other)
         {
-            Collider2D[] colliders = GetComponents<Collider2D>();
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
             foreach (Collider2D collider in colliders)
             {
                 Physics2D.IgnoreCollision(collider, other);
@@ -273,7 +274,7 @@ namespace Assets.Scripts.Player
 
         public void IgnoreCollision(Collider2D other, bool ignore)
         {
-            Collider2D[] colliders = GetComponents<Collider2D>();
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
             foreach (Collider2D collider in colliders)
             {
                 Physics2D.IgnoreCollision(collider, other, ignore);
@@ -507,6 +508,10 @@ namespace Assets.Scripts.Player
             if (!Invincible)
             {
                 StopCoroutine("StunRoutine");
+                if (frames >= launchFrames)
+                {
+                    animator.SetBool("Launch", true);
+                }
                 if (frames < 10)
                 {
                     frames = 10;
@@ -517,6 +522,7 @@ namespace Assets.Scripts.Player
 
         private IEnumerator StunRoutine(int frames)
         {
+            print("Stun frames: " + frames);
             animator.SetBool("Stunned", true);
             while (frames > 0)
             {
@@ -524,6 +530,7 @@ namespace Assets.Scripts.Player
                 yield return null;
             }
             animator.SetBool("Stunned", false);
+            animator.SetBool("Launch", false);
             yield break;
         }
 

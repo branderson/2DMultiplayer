@@ -33,7 +33,7 @@ namespace Assets.Scripts.Player.Triggers
         {
             if (other.tag == "Player")
             {
-                PlayerController controller = other.GetComponent<PlayerController>();
+                PlayerController controller = other.GetComponentInParent<PlayerController>();
                 if (!hitFrames.ContainsKey(controller)&& controller != playerController)
                 {
                     hitFrames.Add(controller, 0);
@@ -46,7 +46,7 @@ namespace Assets.Scripts.Player.Triggers
         {
             if (other.tag == "Player")
             {
-                PlayerController controller = other.GetComponent<PlayerController>();
+                PlayerController controller = other.GetComponentInParent<PlayerController>();
                 if (hitFrames.ContainsKey(controller) && controller != playerController)
                 {
                     hitFrames[controller] += 1;
@@ -68,7 +68,7 @@ namespace Assets.Scripts.Player.Triggers
         {
             if (other.tag == "Player")
             {
-                PlayerController controller = other.GetComponent<PlayerController>();
+                PlayerController controller = other.GetComponentInParent<PlayerController>();
                 if (hitFrames.ContainsKey(controller) && controller != playerController)
                 {
                     hitFrames.Remove(controller);

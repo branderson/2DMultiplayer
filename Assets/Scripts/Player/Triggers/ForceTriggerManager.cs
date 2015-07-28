@@ -121,7 +121,7 @@ namespace Assets.Scripts.Player.Triggers
                 player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
             }
 
-            int stunFrames = (int) Mathf.Ceil(force.x + force.y);
+            int stunFrames = (int) Mathf.Ceil(force.x + force.y)/8;
             player.Stun(stunFrames);
             player.Stagger(stagger);
 //            }

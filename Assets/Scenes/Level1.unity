@@ -835,11 +835,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e749200125bfb044ad7693cce7787f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimumSize: 6
   maxCameraBounds:
   - {fileID: 459432607}
   - {fileID: 359595598}
   - {fileID: 1458249011}
   - {fileID: 438137840}
+  translationRate: .100000001
+  resizeRate: .0500000007
 --- !u!1 &1254600684
 GameObject:
   m_ObjectHideFlags: 0

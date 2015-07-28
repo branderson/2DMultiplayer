@@ -6,7 +6,7 @@ namespace Assets.Scripts.Player.States
     public class ChargeSmashState : PlayerState
     {
         private int chargeFrames = 0;
-        private int maxChargeFrames = 60;
+        private int maxChargeFrames = 45;
         private int minChargeFrames = 15;
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

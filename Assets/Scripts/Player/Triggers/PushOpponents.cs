@@ -12,7 +12,7 @@ namespace Assets.Scripts.Player
         private PlayerController playerController;
         private Rigidbody2D rigidBody;
         private List<PlayerController> touchingPlayers;
-        private float pushSpeed = 4f;
+        private float pushSpeed = 3.29f;
 
         private void Awake()
         {
@@ -46,7 +46,7 @@ namespace Assets.Scripts.Player
         {
             if (other.gameObject.tag == "Player")
             {
-                PlayerController otherController = other.GetComponent<PlayerController>();
+                PlayerController otherController = other.GetComponentInParent<PlayerController>();
                 if (!touchingPlayers.Contains(otherController) && otherController != playerController)
                 {
                     touchingPlayers.Add(otherController);
@@ -58,7 +58,7 @@ namespace Assets.Scripts.Player
         {
             if (other.gameObject.tag == "Player")
             {
-                PlayerController otherController = other.GetComponent<PlayerController>();
+                PlayerController otherController = other.GetComponentInParent<PlayerController>();
                 if (touchingPlayers.Contains(otherController))
                 {
                     touchingPlayers.Remove(otherController);

@@ -14,6 +14,7 @@ namespace Assets.Scripts.Player
         [SerializeField] public bool Vibration = true;
         internal int XIndex;
         private PlayerController character;
+        private AIBehaviourController brain;
         private bool xActive = false;
         private bool yActive = false;
 
@@ -36,10 +37,12 @@ namespace Assets.Scripts.Player
         private void Awake()
         {
             character = GetComponent<PlayerController>();
+            brain = gameObject.AddComponent<AIBehaviourController>();
         }
 
         public void Init(Menu.MenuInputController menuInputController)
         {
+            brain.Init(this, character);
             ControllerNumber = menuInputController.ControllerNumber;
             TapJump = false;
         }
@@ -100,7 +103,55 @@ namespace Assets.Scripts.Player
                     character.GetState().Secondary(x, y);
                     secondary = false;
                 }
+                x = 0f;
+                y = 0f;
             }
+        }
+
+        public void Move(float moveX, float moveY)
+        {
+            x = moveX;
+            y = moveY;
+        }
+
+        public void Up()
+        {
+            upPressed = true;
+        }
+
+        public void Down()
+        {
+            downPressed = true;
+        }
+
+        public void Left()
+        {
+            leftPressed = true;
+        }
+
+        public void Right()
+        {
+            rightPressed = true;
+        }
+
+        public void Primary()
+        {
+            primary = true;
+        }
+
+        public void Secondary()
+        {
+            secondary = true;
+        }
+
+        public void Jump()
+        {
+            jump = true;
+        }
+
+        public void Run(bool newRun)
+        {
+            run = newRun;
         }
 
         public bool ButtonActive(string name)

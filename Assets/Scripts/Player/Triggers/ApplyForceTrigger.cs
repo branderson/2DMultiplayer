@@ -27,7 +27,7 @@ namespace Assets.Scripts.Player.Triggers
         {
             if (other.tag == "Player")
             {
-                PlayerController controller = other.GetComponent<PlayerController>();
+                PlayerController controller = other.GetComponentInParent<PlayerController>();
                 if (controller != playerController)
                 {
                     manager.AddForce(controller, ForceApplied*ForceMultiplier, damageApplied+DamageSupplement, Stun, Stagger, overrideOthers, vibrateOpponent);
