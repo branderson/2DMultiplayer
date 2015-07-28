@@ -7,4 +7,4 @@ PhysicsMaterial2D:
   m_PrefabInternal: {fileID: 0}
   m_Name: PlayerBounceMaterial
   friction: .300000012
-  bounciness: .300000012
+  bounciness: .800000012

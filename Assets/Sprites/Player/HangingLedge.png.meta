@@ -1,0 +1,737 @@
+fileFormatVersion: 2
+guid: 13f61c81c55d03a4bb78baba335c1b70
+timeCreated: 1438114227
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: HangingLedge_0
+    21300002: HangingLedge_1
+    21300004: HangingLedge_2
+    21300006: HangingLedge_3
+    21300008: HangingLedge_4
+    21300010: HangingLedge_5
+    21300012: HangingLedge_6
+    21300014: HangingLedge_7
+    21300016: HangingLedge_8
+    21300018: HangingLedge_9
+    21300020: HangingLedge_10
+    21300022: HangingLedge_11
+    21300024: HangingLedge_12
+    21300026: HangingLedge_13
+    21300028: HangingLedge_14
+    21300030: HangingLedge_15
+    21300032: HangingLedge_16
+    21300034: HangingLedge_17
+    21300036: HangingLedge_18
+    21300038: HangingLedge_19
+    21300040: HangingLedge_20
+    21300042: HangingLedge_21
+    21300044: HangingLedge_22
+    21300046: HangingLedge_23
+    21300048: HangingLedge_24
+    21300050: HangingLedge_25
+    21300052: HangingLedge_26
+    21300054: HangingLedge_27
+    21300056: HangingLedge_28
+    21300058: HangingLedge_29
+    21300060: HangingLedge_30
+    21300062: HangingLedge_31
+    21300064: HangingLedge_32
+    21300066: HangingLedge_33
+    21300068: HangingLedge_34
+    21300070: HangingLedge_35
+    21300072: HangingLedge_36
+    21300074: HangingLedge_37
+    21300076: HangingLedge_38
+    21300078: HangingLedge_39
+    21300080: HangingLedge_40
+    21300082: HangingLedge_41
+    21300084: HangingLedge_42
+    21300086: HangingLedge_43
+    21300088: HangingLedge_44
+    21300090: HangingLedge_45
+    21300092: HangingLedge_46
+    21300094: HangingLedge_47
+    21300096: HangingLedge_48
+    21300098: HangingLedge_49
+    21300100: HangingLedge_50
+    21300102: HangingLedge_51
+    21300104: HangingLedge_52
+    21300106: HangingLedge_53
+    21300108: HangingLedge_54
+    21300110: HangingLedge_55
+    21300112: HangingLedge_56
+    21300114: HangingLedge_57
+    21300116: HangingLedge_58
+    21300118: HangingLedge_59
+    21300120: HangingLedge_60
+    21300122: HangingLedge_61
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 8192
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: HangingLedge_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_1
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_2
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_3
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_4
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_5
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_6
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_7
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_8
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_9
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1602
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_11
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_12
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_13
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_14
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_15
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_16
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_17
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_18
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_19
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1335
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_21
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_22
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_23
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_24
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_25
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_26
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_27
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_28
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_29
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1068
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_31
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_32
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_33
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_34
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_35
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_36
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_37
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_38
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_39
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 801
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_41
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_42
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_43
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_44
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_45
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_46
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_47
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_48
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_49
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 534
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_51
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_52
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_53
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_54
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_55
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_56
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_57
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_58
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_59
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 267
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HangingLedge_61
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 0
+        width: 152
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

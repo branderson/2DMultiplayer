@@ -32,16 +32,28 @@ namespace Assets.Scripts.Player.States
             return "EdgeGrabState";
         }
 
+        public override void Up()
+        {
+            base.Up();
+            playerController.IncrementVelocity(-playerController.GetVelocity());
+        }
+
         public override void Down()
         {
             base.Down();
             playerAnimator.SetTrigger("LetGo");
         }
 
-        //
-//        public override void Primary(float x, float y)
-//        {
-//            playerAnimator.SetTrigger("Primary");
-//        }
+        public override void Jump()
+        {
+            base.Jump();
+            playerController.IncrementVelocity(-playerController.GetVelocity());
+        }
+
+        public override void Primary(float x, float y)
+        {
+            base.Primary(x, y);
+            playerController.IncrementVelocity(-playerController.GetVelocity());
+        }
     }
 }

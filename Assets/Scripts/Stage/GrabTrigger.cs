@@ -29,19 +29,20 @@ namespace Assets.Scripts.Stage
 //                print("Edge position: " + transform.position + ", localPosition: " + other.transform.localPosition);
 //                print("Goal position: " +
 //                      (transform.position - other.transform.localPosition));
+                Rigidbody2D occupyingRigidbody = occupyingPlayer.GetComponent<Rigidbody2D>();
                 if (occupyingPlayer.facingRight)
                 {
-                    occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
-                                                        other.transform.localPosition);
+//                    occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
+//                                                        other.transform.localPosition);
+                    occupyingRigidbody.MovePosition(transform.position - other.transform.localPosition);
                 }
                 else
                 {
                     Vector3 reverseX = new Vector3(-other.transform.localPosition.x, other.transform.localPosition.y,
                         other.transform.localPosition.z);
-                    occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
-                                                        reverseX);
+                    occupyingRigidbody.MovePosition(transform.position - reverseX);
                 }
-                occupyingPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+//                occupyingPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 //                print("New: " + player.GetComponent<Rigidbody2D>().transform.position);
             }
         }
