@@ -86,6 +86,7 @@ namespace Assets.Scripts.Menu
             playerController.active = true;
             computer = true;
             playerController.computer = true;
+            inputController.Computer = true;
             titleText.text = "Computer";
             Ready();
         }

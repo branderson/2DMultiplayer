@@ -5,6 +5,8 @@ namespace Assets.Scripts
     public interface IInputController
     {
         void Init(MenuInputController menuInputController);
+//        string GetType();
+        bool GetTapJump();
         bool ButtonActive(string name);
         bool AxisActive(string name);
         bool AxisPositive(string name);

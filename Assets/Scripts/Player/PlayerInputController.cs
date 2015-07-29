@@ -36,6 +36,8 @@ namespace Assets.Scripts.Player
         private bool run = false;
         private bool primary = false;
         private bool secondary = false;
+        private bool block = false;
+        private bool grab = false;
         private string horizontalString = "Horizontal";
         private string verticalString = "Vertical";
 
@@ -160,6 +162,15 @@ namespace Assets.Scripts.Player
                 secondary = CrossPlatformInputManager.GetButtonDown("Secondary" + player[ControllerNumber]);
             }
 
+            if (!block)
+            {
+                block = CrossPlatformInputManager.GetButtonDown("Block" + player[ControllerNumber]);
+            }
+
+            if (!grab)
+            {
+//                grab = CrossPlatformInputManager.GetButtonDown("Grab" + player[ControllerNumber]);
+            }
             // TODO: Implement start menu
         }
 
@@ -205,6 +216,16 @@ namespace Assets.Scripts.Player
                 {
                     character.GetState().Secondary(x, y);
                     secondary = false;
+                }
+                if (block)
+                {
+                    character.GetState().Block();
+                    block = false;
+                }
+                if (grab)
+                {
+                    character.GetState().Grab();
+                    grab = false;
                 }
             }
             else
@@ -290,5 +311,16 @@ namespace Assets.Scripts.Player
                 GamePad.SetVibration((PlayerIndex) XIndex, 0f, 0f);
             }
         }
+
+        public bool GetTapJump()
+        {
+            return TapJump;
+        }
+
+
+//        public new string GetType()
+//        {
+//            return "DirectInputController";
+//        }
     }
 }

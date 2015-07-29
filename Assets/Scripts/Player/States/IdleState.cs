@@ -268,7 +268,7 @@ namespace Assets.Scripts.Player.States
         public override void Up()
         {
             base.Up();
-            if (PlayerInputController.TapJump)
+            if (PlayerInputController.GetTapJump())
             {
                 if (playerController.velocityY <= 0)
                 {

@@ -60,6 +60,15 @@ namespace Assets.Scripts.Player
             {
                 inputController.Jump();
             }
+
+            if (opponentPositions.Any(item => Mathf.Abs(item.position.x - transform.position.x) < 2 && Mathf.Abs(item.position.y - transform.position.y) < 1))
+            {
+                inputController.SetBlock(true);
+            }
+            else
+            {
+                inputController.SetBlock(false);
+            }
         }
     }
 }

@@ -216,5 +216,16 @@ namespace Assets.Scripts.Player
                 GamePad.SetVibration((PlayerIndex) XIndex, 0f, 0f);
             }
         }
+
+
+        public bool GetTapJump()
+        {
+            return TapJump;
+        }
+
+//        public new string GetType()
+//        {
+//            return "XInputController";
+//        }
     }
 }

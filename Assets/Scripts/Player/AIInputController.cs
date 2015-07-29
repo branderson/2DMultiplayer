@@ -31,6 +31,7 @@ namespace Assets.Scripts.Player
         private bool run = false;
         private bool primary = false;
         private bool secondary = false;
+        private bool block = false;
 
         private int frame = 0;
 
@@ -103,6 +104,10 @@ namespace Assets.Scripts.Player
                     character.GetState().Secondary(x, y);
                     secondary = false;
                 }
+                if (block)
+                {
+                    character.GetState().Block();
+                }
                 x = 0f;
                 y = 0f;
             }
@@ -144,6 +149,11 @@ namespace Assets.Scripts.Player
             secondary = true;
         }
 
+        public void SetBlock(bool value)
+        {
+            block = value;
+        }
+
         public void Jump()
         {
             jump = true;
@@ -156,7 +166,14 @@ namespace Assets.Scripts.Player
 
         public bool ButtonActive(string name)
         {
-            throw new NotImplementedException();
+            if (name == "Block")
+            {
+                return block;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool AxisActive(string name)
@@ -181,5 +198,16 @@ namespace Assets.Scripts.Player
         public void StopVibration()
         {
         }
+
+
+        public bool GetTapJump()
+        {
+            return false;
+        }
+
+//        public new string GetType()
+//        {
+//            return "AIInputController";
+//        }
     }
 }

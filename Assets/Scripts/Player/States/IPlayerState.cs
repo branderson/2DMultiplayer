@@ -14,6 +14,6 @@ namespace Assets.Scripts.Player.States
         void Primary(float x, float y);
         void Secondary(float x, float y);
         void Block();
-        void Throw();
+        void Grab();
     }
 }

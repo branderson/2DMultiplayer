@@ -6,7 +6,7 @@ namespace Assets.Scripts.Player.States
     public abstract class PlayerState : StateMachineBehaviour, IPlayerState
     {
         protected PlayerController playerController;
-        protected PlayerInputController PlayerInputController;
+        protected IInputController PlayerInputController;
         protected Animator playerAnimator;
 
         public abstract string GetName();
@@ -14,7 +14,7 @@ namespace Assets.Scripts.Player.States
         public virtual new void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
             playerController = animator.GetComponentInChildren<PlayerController>();
-            PlayerInputController = animator.GetComponentInChildren<PlayerInputController>();
+            PlayerInputController = animator.GetComponentInChildren<IInputController>();
             playerController.SetState(this);
             playerAnimator = animator;
         }
@@ -29,7 +29,12 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("Backward");
             animator.ResetTrigger("Primary");
             animator.ResetTrigger("Secondary");
+            animator.ResetTrigger("Block");
+            animator.ResetTrigger("Grab");
             animator.ResetTrigger("PrimaryReleased");
+            animator.ResetTrigger("SecondaryReleased");
+            animator.ResetTrigger("BlockReleased");
+            animator.ResetTrigger("GrabReleased");
             animator.ResetTrigger("FallThroughFloor");
             animator.ResetTrigger("Helpless");
             animator.ResetTrigger("EdgeGrab");
@@ -105,9 +110,9 @@ namespace Assets.Scripts.Player.States
             playerAnimator.SetTrigger("Block");
         }
 
-        public virtual void Throw()
+        public virtual void Grab()
         {
-            playerAnimator.SetTrigger("Throw");
+            playerAnimator.SetTrigger("Grab");
         }
     }
 }

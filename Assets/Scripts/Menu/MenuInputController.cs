@@ -9,6 +9,7 @@ namespace Assets.Scripts.Menu
     public class MenuInputController : MonoBehaviour {
         internal int ControllerNumber = -1;
         internal bool UseXIndex = false;
+        internal bool Computer = false;
         [SerializeField] public int XIndex = -1;
         [SerializeField] public bool TapJump = true;
         [SerializeField] public bool Vibration = true;

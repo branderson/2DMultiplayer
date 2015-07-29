@@ -1216,7 +1216,7 @@ MonoBehaviour:
   WeightRatio: 1
   noShieldPenalty: .5
   noShieldBonus: .5
-  MaxAirJumps: 100
+  MaxAirJumps: 1
   airJumpDecayFactor: .25
   jumpHeight: 6
   airJumpHeight: 6
@@ -1519,7 +1519,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 6af92b6f319f98a46bafc73dfc5c77be, type: 2}
     - target: {fileID: 0}
       propertyPath: MaxAirJumps
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: airJumpDecayFactor

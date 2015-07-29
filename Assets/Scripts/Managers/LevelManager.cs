@@ -33,11 +33,17 @@ namespace Assets.Scripts.Managers
                 if (characterMenuManager.Controllers[card])
                 {
                     GameObject player = (GameObject)Instantiate(Player, spawnPoints[characterMenuManager.playerControllers[card].playerNumber - 1].transform.position, Quaternion.identity);
-                    if (!characterMenuManager.playerControllers[card].computer)
+                    if (!characterMenuManager.playerControllers[card].computer && !characterMenuManager.inputControllers[card].UseXIndex)
                     {
-                        print("Instantiating player " + characterMenuManager.playerControllers[card].playerNumber);
+                        print("Instantiating XInput " + characterMenuManager.playerControllers[card].playerNumber);
                         player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerInputController>();
                         player.GetComponentInChildren<PlayerInputController>().Init(characterMenuManager.inputControllers[card]);
+                    }
+                    else if (!characterMenuManager.playerControllers[card].computer)
+                    {
+                        print("Instantiating XInput " + characterMenuManager.playerControllers[card].playerNumber);
+                        player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerXInputController>();
+                        player.GetComponentInChildren<PlayerXInputController>().Init(characterMenuManager.inputControllers[card]);
                     }
                     else
                     {

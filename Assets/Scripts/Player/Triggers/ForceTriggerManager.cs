@@ -110,25 +110,32 @@ namespace Assets.Scripts.Player.Triggers
             // Do I want attacks cancelling out opponents' momentum?
 //            print("Applying force: x = " + force.x + ", y = " + force.y);
             // Stagger can be used to cancel stun and launch for weak attacks against strong enemies. Might be better used for other purposes
-//            if (stagger > player.resistance) // TODO: Get rid of this weird stagger stuff
-//            {
-            Vector2 hitForce = force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity();
-            if (playerController.facingRight)
+            if (stagger > player.resistance)
             {
-                player.IncrementVelocity(hitForce);
+                Vector2 hitForce = force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity();
+                if (playerController.facingRight)
+                {
+                    player.IncrementVelocity(hitForce);
+                }
+                else
+                {
+                    player.IncrementVelocity(-hitForce.x, hitForce.y);
+    //                player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
+                }
+
+                int stunFrames = (int) Mathf.Ceil(hitForce.x + hitForce.y)/6;
+                player.Stun(stunFrames);
+                player.Stagger(stagger);
+            }
+
+            if (!player.Blocking)
+            {
+                player.TakeDamage(damage);
             }
             else
             {
-                player.IncrementVelocity(-hitForce.x, hitForce.y);
-//                player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
+                player.TakeDamage(damage/2);
             }
-
-            int stunFrames = (int) Mathf.Ceil(hitForce.x + hitForce.y)/6;
-            player.Stun(stunFrames);
-            player.Stagger(stagger);
-//            }
-
-            player.TakeDamage(damage);
 
             if (vibrate)
             {

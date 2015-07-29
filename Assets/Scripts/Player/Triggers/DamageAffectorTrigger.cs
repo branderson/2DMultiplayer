@@ -81,7 +81,10 @@ namespace Assets.Scripts.Player.Triggers
         {
             foreach (PlayerController controller in hitFrames.Keys)
             {
-                manager.AddForce(controller, HitFrameVector(hitFrames[controller], ForceApplied)*ForceMultiplier, baseDamage+DamageSupplement, Stun, Stagger, overrideOthers, vibrateOpponent);
+                if (controller.resistance < Stagger)
+                {
+                    manager.AddForce(controller, HitFrameVector(hitFrames[controller], ForceApplied)*ForceMultiplier, baseDamage+DamageSupplement, Stun, Stagger, overrideOthers, vibrateOpponent);
+                }
                 if (vibrateSelf && !controller.Invincible)
                 {
                     playerController.SetVibrate(15, 1f, 1f);

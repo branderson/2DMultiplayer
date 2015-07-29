@@ -77,6 +77,7 @@ namespace Assets.Scripts.Player
         internal bool StateInvincible = false;
         internal int IFrames = 0;
         internal bool Run;
+        internal bool Blocking = false;
         internal bool CanFallThroughFloor = false;
 
         public void Init(int zPosition, int slot)
@@ -107,6 +108,8 @@ namespace Assets.Scripts.Player
                 playerUI.Lives -= 1;
                 shield = 100;
                 playerUI.Shield = 100;
+                AirJumps = MaxAirJumps;
+                canRecover = true;
                 fastFall = false;
                 animator.SetTrigger("Helpless");
                 SetVelocity(Vector2.zero);
@@ -549,7 +552,7 @@ namespace Assets.Scripts.Player
 
         public void Stun(int frames)
         {
-            if (!Invincible)
+            if (!Invincible && !Blocking)
             {
                 StopCoroutine("StunRoutine");
                 if (frames >= launchFrames)
