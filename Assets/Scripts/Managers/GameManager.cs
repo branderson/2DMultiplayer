@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Linq;
 using Assets.Scripts.Player;
+using XInputDotNetPure;
 using Object = UnityEngine.Object;
 
 namespace Assets.Scripts.Managers
@@ -40,7 +41,7 @@ namespace Assets.Scripts.Managers
                 settings.Slot = Array.IndexOf(PlayerConfig, settings) + 1;
                 settings.Computer = false;
                 settings.ControllerIndex = -1;
-                settings.XIndex = -1;
+                settings.XIndex = PlayerIndex.One;
                 settings.Active = false;
             }
         }

@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Player
+﻿using XInputDotNetPure;
+
+namespace Assets.Scripts.Player
 {
     public class PlayerConfig
     {
@@ -7,7 +9,7 @@
         public bool DPad = false;
         public int Slot = 0;
         public int ControllerIndex = -1;
-        public int XIndex = -1;
+        public PlayerIndex XIndex = PlayerIndex.One;
         public bool UseXIndex = false;
         public bool Computer = false;
         public bool Active = false;

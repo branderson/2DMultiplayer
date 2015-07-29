@@ -11,10 +11,9 @@ namespace Assets.Scripts.Player
     [RequireComponent(typeof (PlayerController))]
     public class PlayerXInputController : MonoBehaviour, IInputController
     {
-        [SerializeField] public int ControllerNumber = 0;
         [SerializeField] public bool TapJump = true;
         [SerializeField] public bool Vibration = true;
-        internal int XIndex;
+        internal PlayerIndex XIndex;
         private PlayerController character;
         private bool xActive = false;
         private bool yActive = false;
@@ -37,8 +36,7 @@ namespace Assets.Scripts.Player
 
         public void Init(MenuInputController menuInputController)
         {
-            ControllerNumber = menuInputController.ControllerNumber;
-            XIndex = menuInputController.XIndex; // TODO: Integrate XIndices into MenuInputController
+            XIndex = menuInputController.XIndex;
             TapJump = menuInputController.TapJump;
             Vibration = menuInputController.Vibration;
         }
@@ -57,67 +55,6 @@ namespace Assets.Scripts.Player
 
         private void Update()
         {
-            x = CrossPlatformInputManager.GetAxis("Horizontal" + player[ControllerNumber]);
-            y = CrossPlatformInputManager.GetAxis("Vertical" + player[ControllerNumber]);
-
-            // Check if axes have just been pressed
-            if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) != 0)
-            {
-                if (!xActive)
-                {
-                    if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) < 0)
-                    {
-                        leftPressed = true;
-                    }
-                    else
-                    {
-                        rightPressed = true;
-                    }
-                    xActive = true;
-                }
-            }
-            else
-            {
-                xActive = false;
-            }
-
-            if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) != 0)
-            {
-                if (!yActive)
-                {
-                    if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) < 0)
-                    {
-                        downPressed = true;
-                    }
-                    else
-                    {
-                        upPressed = true;
-                    }
-                    yActive = true; 
-                }
-            }
-            else
-            {
-                yActive = false;
-            }
-            
-            // Check button presses
-            if (!jump)
-            {
-                jump = CrossPlatformInputManager.GetButtonDown("Jump" + player[ControllerNumber]);
-            }
-
-            run = CrossPlatformInputManager.GetButton("Run" + player[ControllerNumber]);
-
-            if (!primary)
-            {
-                primary = CrossPlatformInputManager.GetButtonDown("Primary" + player[ControllerNumber]);
-            }
-
-            if (!secondary)
-            {
-                secondary = CrossPlatformInputManager.GetButtonDown("Secondary" + player[ControllerNumber]);
-            }
 
             // TODO: Implement start menu
         }
@@ -170,50 +107,51 @@ namespace Assets.Scripts.Player
 
         public bool ButtonActive(string name)
         {
-            return Input.GetButton(name + player[ControllerNumber]);
+//            return Input.GetButton(name + player[ControllerNumber]);
+            return false;
         }
 
         public bool AxisActive(string name)
         {
-            if (Input.GetAxisRaw(name + player[ControllerNumber]) != 0)
-            {
-                return true;
-            }
+//            if (Input.GetAxisRaw(name + player[ControllerNumber]) != 0)
+//            {
+//                return true;
+//            }
             return false;
         }
 
         public bool AxisPositive(string name)
         {
-            if (Input.GetAxisRaw(name + player[ControllerNumber]) > 0)
-            {
-                return true;
-            }
+//            if (Input.GetAxisRaw(name + player[ControllerNumber]) > 0)
+//            {
+//                return true;
+//            }
             return false;
         }
 
         public bool AxisNegative(string name)
         {
-            if (Input.GetAxisRaw(name + player[ControllerNumber]) < 0)
-            {
-                return true;
-            }
+//            if (Input.GetAxisRaw(name + player[ControllerNumber]) < 0)
+//            {
+//                return true;
+//            }
             return false;
         }
 
         public void VibrateController(float leftMotor, float rightMotor)
         {
 //            print("Trying to vibrate " + (PlayerIndex)(ControllerNumber));
-            if (XIndex != -1 && Vibration)
+            if (Vibration)
             {
-                GamePad.SetVibration((PlayerIndex) XIndex, leftMotor, rightMotor);
+                GamePad.SetVibration(XIndex, leftMotor, rightMotor);
             }
         }
 
         public void StopVibration()
         {
-            if (XIndex != -1 && Vibration)
+            if (Vibration)
             {
-                GamePad.SetVibration((PlayerIndex) XIndex, 0f, 0f);
+                GamePad.SetVibration(XIndex, 0f, 0f);
             }
         }
 

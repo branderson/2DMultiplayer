@@ -3,6 +3,7 @@ using System.Collections;
 using Assets.Scripts.Player;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using XInputDotNetPure;
 
 namespace Assets.Scripts.Menu
 {
@@ -91,9 +92,20 @@ namespace Assets.Scripts.Menu
             Ready();
         }
 
-        public void Activate(int controllerNumber)
+        public void ActivateDirectInput(int controllerNumber)
         {
             inputController.Init(controllerNumber);
+            active = true;
+            playerController.active = true;
+            panelImage.color = Color.yellow;
+            titleText.text = "Player " + number;
+            instructionText.text = "Press Start\nWhen Ready";
+            playerController.SetVibrate(12, 0f, .8f);
+            playerController.SetSelected(playerController.InitialSelection);
+        }
+
+        public void ActivateXInput(PlayerIndex XIndex)
+        {
             active = true;
             playerController.active = true;
             panelImage.color = Color.yellow;
@@ -127,7 +139,8 @@ namespace Assets.Scripts.Menu
         public void UnReady()
         {
             ready = false;
-            Activate(inputController.ControllerNumber);
+            // TODO: Get rid of playerCard knowledge of XInput vs DirectInput
+            ActivateDirectInput(inputController.ControllerNumber);
         }
 
         public bool IsActive()

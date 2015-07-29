@@ -9,10 +9,8 @@ namespace Assets.Scripts.Player
     [RequireComponent(typeof (PlayerController))]
     public class AIInputController : MonoBehaviour, IInputController
     {
-        [SerializeField] public int ControllerNumber = 0;
         [SerializeField] public bool TapJump = true;
         [SerializeField] public bool Vibration = true;
-        internal int XIndex;
         private PlayerController character;
         private AIBehaviourController brain;
         private bool xActive = false;
@@ -44,7 +42,6 @@ namespace Assets.Scripts.Player
         public void Init(Menu.MenuInputController menuInputController)
         {
             brain.Init(this, character);
-            ControllerNumber = menuInputController.ControllerNumber;
             TapJump = false;
         }
 

@@ -16,7 +16,6 @@ namespace Assets.Scripts.Player
         [SerializeField] public bool TapJump = true;
         [SerializeField] public bool Vibration = true;
         [SerializeField] public bool DPad = false;
-        internal int XIndex;
         private PlayerController character;
         private int xActiveFrames = 0;
         private int yActiveFrames = 0;
@@ -46,7 +45,6 @@ namespace Assets.Scripts.Player
         public void Init(MenuInputController menuInputController)
         {
             ControllerNumber = menuInputController.ControllerNumber;
-            XIndex = menuInputController.XIndex; // TODO: Integrate XIndices into MenuInputController
             TapJump = menuInputController.TapJump;
             Vibration = menuInputController.Vibration;
             DPad = menuInputController.DPad;
@@ -143,7 +141,7 @@ namespace Assets.Scripts.Player
             {
                 yActiveFrames = 0;
             }
-            
+
             // Check button presses
             if (!jump)
             {
@@ -169,7 +167,7 @@ namespace Assets.Scripts.Player
 
             if (!grab)
             {
-//                grab = CrossPlatformInputManager.GetButtonDown("Grab" + player[ControllerNumber]);
+                //                grab = CrossPlatformInputManager.GetButtonDown("Grab" + player[ControllerNumber]);
             }
             // TODO: Implement start menu
         }
@@ -297,19 +295,12 @@ namespace Assets.Scripts.Player
 
         public void VibrateController(float leftMotor, float rightMotor)
         {
-//            print("Trying to vibrate " + (PlayerIndex)(ControllerNumber));
-            if (XIndex != -1 && Vibration)
-            {
-                GamePad.SetVibration((PlayerIndex) XIndex, leftMotor, rightMotor);
-            }
+            return;
         }
 
         public void StopVibration()
         {
-            if (XIndex != -1 && Vibration)
-            {
-                GamePad.SetVibration((PlayerIndex) XIndex, 0f, 0f);
-            }
+            return;
         }
 
         public bool GetTapJump()

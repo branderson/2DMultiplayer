@@ -58,12 +58,12 @@ namespace Assets.Scripts.Menu
                 // TODO: What about case where player has been added, then removed (no longer active), and later player added in place (should skip slot) (or should it?)
                 if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer && !gameManager.PlayerConfig[i].UseXIndex)
                 {
-                    Activate(gameManager.PlayerConfig[i].ControllerIndex);
+                    ActivateDirectInput(gameManager.PlayerConfig[i].ControllerIndex);
                 }
                 else if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer && gameManager.PlayerConfig[i].UseXIndex)
                 {
-                    Activate(gameManager.PlayerConfig[i].ControllerIndex);
-//                    ActivateXInput(gameManager.PlayerConfig[i].XIndex);
+//                    ActivateDirectInput(gameManager.PlayerConfig[i].ControllerIndex);
+                    ActivateXInput(gameManager.PlayerConfig[i].XIndex);
                 }
                 else if (gameManager.PlayerConfig[i].Active && gameManager.PlayerConfig[i].Computer)
                 {
@@ -89,7 +89,6 @@ namespace Assets.Scripts.Menu
         {
             if (inCharacterMenu)
             {
-                // TODO: Back out when someone presses back when no non-computer players left
                 // Allow no more than 4 controllers
                 if (Controllers.Any(controller => !controller))
                 {
@@ -98,19 +97,32 @@ namespace Assets.Scripts.Menu
                         !playerCards.Any(card => (card.inputController.ControllerNumber == 0 && card.IsActive())))
                         // Linq expression checks if any object in Controllers has a ControllerNumber == 0
                     {
-                        Activate(0);
+                        ActivateDirectInput(0);
+                    }
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        PlayerIndex controller = (PlayerIndex) i;
+                        if (GamePad.GetState(controller).IsConnected)
+                        {
+                            if (GamePad.GetState(controller).Buttons.A == ButtonState.Pressed && 
+                                !playerCards.Any(card => (card.inputController.UseXIndex && card.inputController.XIndex == controller && card.IsActive())))
+                            {
+                                ActivateXInput(controller);
+                            }
+                        }
                     }
 
                     // Allow setting any joystick as a controller
                     // TODO: Separate input controller for XBox controllers
-                    for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
-                    {
-                        if (Input.GetButtonDown("PrimaryJ" + i) &&
-                            !playerCards.Any(card => (card.inputController.ControllerNumber == i && card.IsActive())))
-                        {
-                            Activate(i);
-                        }
-                    }
+//                    for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
+//                    {
+//                        if (Input.GetButtonDown("PrimaryJ" + i) &&
+//                            !playerCards.Any(card => (card.inputController.ControllerNumber == i && card.IsActive())))
+//                        {
+//                            ActivateDirectInput(i);
+//                        }
+//                    }
                 }
 
                 bool allReady = true;
@@ -143,12 +155,35 @@ namespace Assets.Scripts.Menu
             playerCards[slot-1].ActivateComputer();
         }
 
-        private void ActivateXInput(int XIndex)
+        private void ActivateXInput(PlayerIndex XIndex)
         {
-            
+            int slot = 3;
+
+            for (int i = 3; i >= 0; i--)
+            {
+                if (!Controllers[i])
+                {
+                    slot = i;
+                }
+            }
+
+            foreach (PlayerCard card in playerCards)
+            {
+                if (card.inputController.XIndex == XIndex)
+                {
+                    slot = card.number - 1;
+                }
+            }
+
+            Controllers[slot] = true;
+            playerCards[slot].ActivateXInput(XIndex);
+            print("Adding XInput");
+
+            inputControllers[slot].UseXIndex = true;
+            inputControllers[slot].XIndex = XIndex;
         }
 
-        private void Activate(int inputIndex)
+        private void ActivateDirectInput(int inputIndex)
         {
             int slot = 3;
 
@@ -171,28 +206,28 @@ namespace Assets.Scripts.Menu
             if (inputIndex == 0)
             {
                 Controllers[slot] = true;
-                playerCards[slot].Activate(0);
+                playerCards[slot].ActivateDirectInput(0);
                 print("Adding keyboard");
             }
-            else
-            {
-                Controllers[slot] = true;
-                playerCards[slot].Activate(inputIndex);
-                for (int controller = 0; controller < 4; controller++)
-                {
-                    if (GamePad.GetState((PlayerIndex) controller).IsConnected)
-                    {
-                        // TODO: Vibrations can be mapped to the wrong controller if selected on the exact same frame
-                        if (GamePad.GetState((PlayerIndex) controller).Buttons.A == ButtonState.Pressed &&
-                            !playerCards.Any(card => card.inputController.XIndex == controller))
-                        {
-                            inputControllers[slot].UseXIndex = true;
-                            inputControllers[slot].XIndex = controller;
-                        }
-                    }
-                }
-                print("Adding joystick " + inputIndex);
-            }
+//            else
+//            {
+//                Controllers[slot] = true;
+//                playerCards[slot].ActivateDirectInput(inputIndex);
+//                for (int controller = 0; controller < 4; controller++)
+//                {
+//                    if (GamePad.GetState((PlayerIndex) controller).IsConnected)
+//                    {
+//                        // TODO: Vibrations can be mapped to the wrong controller if selected on the exact same frame
+//                        if (GamePad.GetState((PlayerIndex) controller).Buttons.A == ButtonState.Pressed &&
+//                            !playerCards.Any(card => card.inputController.XIndex == controller))
+//                        {
+//                            inputControllers[slot].UseXIndex = true;
+//                            inputControllers[slot].XIndex = controller;
+//                        }
+//                    }
+//                }
+//                print("Adding joystick " + inputIndex);
+//            }
         }
 
         public void Deactivate(int number)
