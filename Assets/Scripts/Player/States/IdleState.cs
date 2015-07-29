@@ -28,11 +28,10 @@ namespace Assets.Scripts.Player.States
             rightSmashed = false;
             leftSmashed = false;
             downSmashed = false;
-            // TODO: Sometimes jumping through platforms resets canAirJump
             // To avoid resetting jumps while jumping up through platforms
             if (animator.GetComponentInChildren<Rigidbody2D>().velocity.y <= 0)
             {
-                playerController.canAirJump = true;
+                playerController.ResetAirJumps();
                 playerController.canRecover = true;
             }
         }

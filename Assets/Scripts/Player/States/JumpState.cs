@@ -75,7 +75,7 @@ namespace Assets.Scripts.Player.States
             if (playerController.velocityY < 0)
             {
                 playerController.fastFall = true;
-                playerController.canAirJump = false;
+                playerController.AirJumps = 0;
             }
         }
     }

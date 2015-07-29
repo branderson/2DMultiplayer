@@ -18,6 +18,8 @@ namespace Assets.Scripts.Player
         [Range(.25f, 2)][SerializeField] internal float WeightRatio = 1f;
         [SerializeField] private float noShieldPenalty = .5f;
         [SerializeField] private float noShieldBonus = .5f;
+        [SerializeField] private int MaxAirJumps = 1;
+        [SerializeField] private float airJumpDecayFactor = .5f;
         [SerializeField] private float jumpHeight = 6f; // Height of single jump from flat ground
         [SerializeField] private float airJumpHeight = 4f; // Height of air jump
         [SerializeField] private float airSideJumpDistance = 4f;
@@ -37,7 +39,7 @@ namespace Assets.Scripts.Player
 
         internal float airSideJumpSpeedX;
         internal float airSideJumpSpeedY;
-        internal bool canAirJump;
+        internal int AirJumps;
         internal bool canFall;
         internal bool canRecover;
         internal bool facingRight; // For determining which way the player is currently facing
@@ -84,7 +86,7 @@ namespace Assets.Scripts.Player
             shield = 100;
             canFall = true;
             facingRight = true;
-            canAirJump = true;
+            AirJumps = MaxAirJumps;
             canRecover = true;
             SetLayerOrder(zPosition);
             playerNumber = slot + 1;
@@ -161,7 +163,7 @@ namespace Assets.Scripts.Player
             animator.SetFloat("WalkAnimationSpeed", Mathf.Abs(velocityX)/6);
             animator.SetBool("FacingRight", facingRight);
             animator.SetBool("Run", Run);
-            animator.SetBool("CanAirJump", canAirJump);
+            animator.SetInteger("AirJumps", AirJumps);
             animator.SetBool("CanRecover", canRecover);
             transform.parent.position = transform.position;
             transform.localPosition = Vector3.zero;
@@ -253,9 +255,6 @@ namespace Assets.Scripts.Player
                 {
                     grounded = true;
                     fastFall = false;
-                    if (GetState().GetName() == "Idle")
-                    {
-                    }
                     animator.SetBool("Ground", true);
                 }
                 else if (colliders[i].gameObject != gameObject)
@@ -466,6 +465,48 @@ namespace Assets.Scripts.Player
                 }
             }
             
+        }
+
+        public void ResetAirJumps()
+        {
+            AirJumps = MaxAirJumps;
+        }
+
+        public float GetAirJumpSpeed()
+        {
+            if (AirJumps == MaxAirJumps)
+            {
+                return airJumpSpeed;
+            }
+            else
+            {
+//                print(Mathf.Pow(airJumpSpeed, 1f/(airJumpDecayFactor*(MaxAirJumps - AirJumps))));
+                return airJumpSpeed*Mathf.Exp(-airJumpDecayFactor*(MaxAirJumps - AirJumps));
+            }
+        }
+
+        public float GetAirSideJumpSpeedX()
+        {
+            if (AirJumps == MaxAirJumps)
+            {
+                return airSideJumpSpeedX;
+            }
+            else
+            {
+                return airSideJumpSpeedX*Mathf.Exp(-airJumpDecayFactor*(MaxAirJumps - AirJumps));
+            }
+        }
+
+        public float GetAirSideJumpSpeedY()
+        {
+            if (AirJumps == MaxAirJumps)
+            {
+                return airSideJumpSpeedY;
+            }
+            else
+            {
+                return airSideJumpSpeedY*Mathf.Exp(-airJumpDecayFactor*(MaxAirJumps - AirJumps));
+            }
         }
 
         public void TakeDamage(int damage)

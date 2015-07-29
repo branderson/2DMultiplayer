@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Assets.Scripts.Player.States
 {
@@ -7,13 +9,17 @@ namespace Assets.Scripts.Player.States
         [SerializeField] private GameObject GroundSmashEffect;
         private PlayerController playerController;
         private SpriteRenderer sprite;
+        private PlayerSpriteController spriteController;
         private Animator animator;
+        private List<GameObject> instantiatedObjects; 
 
         private void Awake()
         {
             playerController = GetComponentInChildren<PlayerController>();
             sprite = GetComponentInChildren<SpriteRenderer>();
+            spriteController = sprite.GetComponent<PlayerSpriteController>();
             animator = GetComponent<Animator>();
+            instantiatedObjects = new List<GameObject>();
         }
 
         public void PauseAnimation(int frames)
@@ -31,8 +37,20 @@ namespace Assets.Scripts.Player.States
             playerController.IncrementSpeedY(y);
         }
 
-        public void ShakeSpriteX(float intensity)
+        public void ShakeSpriteX(int frames)
         {
+            // inputs.x is frames, inputs.y is intensity
+            spriteController.ShakeSpriteX(frames);
+        }
+
+        public void StopShakingSprite()
+        {
+            spriteController.StopShaking();
+        }
+
+        public void VibrateControllerHard(int frames)
+        {
+            playerController.SetVibrate(frames, 0f, 1f);
         }
 
         public void InstantiateGroundSmashEffect(float xOffset)
@@ -46,7 +64,13 @@ namespace Assets.Scripts.Player.States
             {
                 xPosition = playerController.transform.position.x - xOffset;
             }
-            GameObject.Instantiate(GroundSmashEffect, new Vector3(xPosition, playerController.transform.position.y, playerController.transform.position.z), Quaternion.identity);
+            instantiatedObjects.Add((GameObject) GameObject.Instantiate(GroundSmashEffect, new Vector3(xPosition, playerController.transform.position.y, playerController.transform.position.z), Quaternion.identity));
+        }
+
+        public void DeleteLastInstantiated()
+        {
+            Destroy(instantiatedObjects.Last());
+            instantiatedObjects.RemoveAt(instantiatedObjects.IndexOf(instantiatedObjects.Last()));
         }
     }
 }

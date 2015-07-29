@@ -244,6 +244,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 458906}
   - 212: {fileID: 21296116}
+  - 114: {fileID: 11446316}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -675,7 +676,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.9680605, y: 16.9872513, z: 0}
+  m_LocalPosition: {x: 242.095322, y: -90.3106232, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458906}
@@ -1148,6 +1149,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc17c35913e01844b5681f608aef11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11446316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2864b1077713c42b4301e3b9f81525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11450450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1204,6 +1216,8 @@ MonoBehaviour:
   WeightRatio: 1
   noShieldPenalty: .5
   noShieldBonus: .5
+  MaxAirJumps: 100
+  airJumpDecayFactor: .25
   jumpHeight: 6
   airJumpHeight: 6
   airSideJumpDistance: 5
@@ -1503,6 +1517,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6af92b6f319f98a46bafc73dfc5c77be, type: 2}
+    - target: {fileID: 0}
+      propertyPath: MaxAirJumps
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: airJumpDecayFactor
+      value: .25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 197230}

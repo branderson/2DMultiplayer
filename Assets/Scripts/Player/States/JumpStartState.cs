@@ -49,7 +49,6 @@ namespace Assets.Scripts.Player.States
 
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
-            // TODO: Air jumps need to use airJumpSpeed
             if (playerController.facingRight)
                 directionModifier = 1;
             else
@@ -124,34 +123,33 @@ namespace Assets.Scripts.Player.States
                 // Air jump
                 else
                 {
-                    MonoBehaviour.print("Double jumping");
                     if (!directionalControl || jumpDirection == 0)
                     {
                         float adjustSpeed = -playerController.GetVelocityX();
                         AdjustSpeed(adjustSpeed);
-                        playerController.Jump(playerController.airJumpSpeed);
+                        playerController.Jump(playerController.GetAirJumpSpeed());
                     }
                     else if (jumpDirection == 1)
                     {
                         if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
                         {
-                            float adjustSpeed = playerController.airSideJumpSpeedX*directionModifier - playerController.GetVelocityX();
+                            float adjustSpeed = playerController.GetAirSideJumpSpeedX()*directionModifier - playerController.GetVelocityX();
                             AdjustSpeed(adjustSpeed);
                         }
-                        playerController.Jump(playerController.airSideJumpSpeedY);
+                        playerController.Jump(playerController.GetAirSideJumpSpeedY());
                     }
                     else if (jumpDirection == -1)
                     {
                         if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
                         {
-                            float adjustSpeed = -playerController.airSideJumpSpeedX*directionModifier - playerController.GetVelocityX();
+                            float adjustSpeed = -playerController.GetAirSideJumpSpeedX()*directionModifier - playerController.GetVelocityX();
                             AdjustSpeed(adjustSpeed);
                         }
-                        playerController.Jump(playerController.airSideJumpSpeedY);
+                        playerController.Jump(playerController.GetAirSideJumpSpeedY());
                         // Do I want to be able to flip on air jump?
                         //                    playerController.Flip();
                     }
-                    playerController.canAirJump = false;
+                    playerController.AirJumps -= 1;
                 }
             }
         }
