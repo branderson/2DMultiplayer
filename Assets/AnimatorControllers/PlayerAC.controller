@@ -268,6 +268,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idle: 0
+--- !u!114 &11403246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedc7f86a4b53d54c83b40ff972a4000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11406070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,6 +426,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc9230385b4a6c469518e68fadebe64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11414284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f59188017a2e9d4ea0970af2c529ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingFrame: 84
+  frames: 20
+  continuous: 0
+  leftMotor: 0
+  rightMotor: 1
+--- !u!114 &11415134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f59188017a2e9d4ea0970af2c529ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingFrame: 62
+  frames: 12
+  continuous: 0
+  leftMotor: 0
+  rightMotor: 1
+--- !u!114 &11418698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f59188017a2e9d4ea0970af2c529ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingFrame: 10
+  frames: 12
+  continuous: 0
+  leftMotor: 0
+  rightMotor: .800000012
 --- !u!114 &11419830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -549,6 +608,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11433888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f59188017a2e9d4ea0970af2c529ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingFrame: 22
+  frames: 12
+  continuous: 0
+  leftMotor: 0
+  rightMotor: 1
 --- !u!114 &11437152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1145,6 +1220,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc9230385b4a6c469518e68fadebe64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11487814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f59188017a2e9d4ea0970af2c529ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingFrame: 10
+  frames: 12
+  continuous: 0
+  leftMotor: 0
+  rightMotor: 1
 --- !u!114 &11488080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7920,7 +8011,12 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110127498}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 11403246}
+  - {fileID: 11487814}
+  - {fileID: 11433888}
+  - {fileID: 11415134}
+  - {fileID: 11414284}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -8229,6 +8325,7 @@ AnimatorState:
   - {fileID: 110108346}
   m_StateMachineBehaviours:
   - {fileID: 11478384}
+  - {fileID: 11418698}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -8843,9 +8940,6 @@ AnimatorStateMachine:
       first: {fileID: 110785856}
       second: []
     data:
-      first: {fileID: 110715200}
-      second: []
-    data:
       first: {fileID: 110750514}
       second: []
     data:
@@ -8859,6 +8953,9 @@ AnimatorStateMachine:
       second: []
     data:
       first: {fileID: 110738332}
+      second: []
+    data:
+      first: {fileID: 110715200}
       second: []
     data:
       first: {fileID: 110719254}
