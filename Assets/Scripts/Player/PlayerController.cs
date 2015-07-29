@@ -146,7 +146,7 @@ namespace Assets.Scripts.Player
 
         private void FixedUpdate()
         {
-            if (canFall)
+            if (canFall && !onGround)
             {
                 if (fastFall)
                     FallFast();
@@ -253,6 +253,9 @@ namespace Assets.Scripts.Player
                 {
                     grounded = true;
                     fastFall = false;
+                    if (GetState().GetName() == "Idle")
+                    {
+                    }
                     animator.SetBool("Ground", true);
                 }
                 else if (colliders[i].gameObject != gameObject)

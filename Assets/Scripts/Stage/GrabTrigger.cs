@@ -8,6 +8,7 @@ namespace Assets.Scripts.Stage
     {
         private bool occupied = false;
         private PlayerController occupyingPlayer;
+        private Rigidbody2D occupyingRigidbody;
 
         // When player changes between states, edge triggers get wiped
         private void OnTriggerEnter2D(Collider2D other)
@@ -25,40 +26,52 @@ namespace Assets.Scripts.Stage
                 occupied = true;
 
                 occupyingPlayer.animator.SetTrigger("EdgeGrab");
-//                print("Old: " + player.GetComponent<Rigidbody2D>().transform.position);
-//                print("Edge position: " + transform.position + ", localPosition: " + other.transform.localPosition);
-//                print("Goal position: " +
-//                      (transform.position - other.transform.localPosition));
-                Rigidbody2D occupyingRigidbody = occupyingPlayer.GetComponent<Rigidbody2D>();
+                occupyingRigidbody = occupyingPlayer.GetComponent<Rigidbody2D>();
+                occupyingPlayer.IncrementVelocity(-occupyingPlayer.GetVelocity());
                 if (occupyingPlayer.facingRight)
                 {
-//                    occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
-//                                                        other.transform.localPosition);
+                    occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
+                                                        other.transform.localPosition);
                     occupyingRigidbody.MovePosition(transform.position - other.transform.localPosition);
+//                        print("Moving: " + (transform.position.x - other.transform.localPosition.x) + " " +
+//                              (transform.position.y - other.transform.localPosition.y));
                 }
                 else
                 {
                     Vector3 reverseX = new Vector3(-other.transform.localPosition.x, other.transform.localPosition.y,
                         other.transform.localPosition.z);
+                    occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
+                                                        reverseX);
                     occupyingRigidbody.MovePosition(transform.position - reverseX);
                 }
-//                occupyingPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-//                print("New: " + player.GetComponent<Rigidbody2D>().transform.position);
             }
         }
 
-//        private void OnTriggerStay2D(Collider2D other)
-//        {
-//            if (other.tag == "PlayerGrab" && other.transform.parent.GetComponentInChildren<PlayerController>() == occupyingPlayer)
-//            {
-//                if (other.transform.position != transform.position)
-//                {
-//                    print("Correcting grab");
-//                    OnTriggerExit2D(other);
-//                    OnTriggerEnter2D(other);
-//                }
-//            }
-//        }
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (occupied && other.tag == "PlayerGrab")
+            {
+                if (occupyingPlayer.GetState().GetName() == "EdgeGrabState")
+                {
+//                    occupyingPlayer.IncrementVelocity(-occupyingPlayer.GetVelocity());
+                    if (occupyingPlayer.facingRight)
+                    {
+                        //                    occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
+                        //                                                        other.transform.localPosition);
+                        occupyingRigidbody.MovePosition(transform.position - other.transform.localPosition);
+//                        print("Moving: " + (transform.position.x - other.transform.localPosition.x) + " " +
+//                              (transform.position.y - other.transform.localPosition.y));
+                    }
+                    else
+                    {
+                        Vector3 reverseX = new Vector3(-other.transform.localPosition.x, other.transform.localPosition.y,
+                            other.transform.localPosition.z);
+                        occupyingRigidbody.MovePosition(transform.position - reverseX);
+                    }
+
+                }
+            }
+        }
 
         private void OnTriggerExit2D(Collider2D other)
         {
@@ -68,6 +81,7 @@ namespace Assets.Scripts.Stage
                 {
                     occupied = false;
                     occupyingPlayer = null;
+                    occupyingRigidbody = null;
                 }
             }
         }

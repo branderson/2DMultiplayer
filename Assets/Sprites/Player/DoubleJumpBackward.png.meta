@@ -1,0 +1,330 @@
+fileFormatVersion: 2
+guid: 8e797aa024214264a80fad4808924bd5
+timeCreated: 1438129060
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DoubleJumpBackward_0
+    21300002: DoubleJumpBackward_1
+    21300004: DoubleJumpBackward_2
+    21300006: DoubleJumpBackward_3
+    21300008: DoubleJumpBackward_4
+    21300010: DoubleJumpBackward_5
+    21300012: DoubleJumpBackward_6
+    21300014: DoubleJumpBackward_7
+    21300016: DoubleJumpBackward_8
+    21300018: DoubleJumpBackward_9
+    21300020: DoubleJumpBackward_10
+    21300022: DoubleJumpBackward_11
+    21300024: DoubleJumpBackward_12
+    21300026: DoubleJumpBackward_13
+    21300028: DoubleJumpBackward_14
+    21300030: DoubleJumpBackward_15
+    21300032: DoubleJumpBackward_16
+    21300034: DoubleJumpBackward_17
+    21300036: DoubleJumpBackward_18
+    21300038: DoubleJumpBackward_19
+    21300040: DoubleJumpBackward_20
+    21300042: DoubleJumpBackward_21
+    21300044: DoubleJumpBackward_22
+    21300046: DoubleJumpBackward_23
+    21300048: DoubleJumpBackward_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 8192
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: DoubleJumpBackward_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_1
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_2
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_3
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_4
+      rect:
+        serializedVersion: 2
+        x: 1980
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_5
+      rect:
+        serializedVersion: 2
+        x: 2475
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_6
+      rect:
+        serializedVersion: 2
+        x: 2970
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_7
+      rect:
+        serializedVersion: 2
+        x: 3465
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_8
+      rect:
+        serializedVersion: 2
+        x: 3960
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_9
+      rect:
+        serializedVersion: 2
+        x: 4455
+        y: 956
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_11
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_12
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_13
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_14
+      rect:
+        serializedVersion: 2
+        x: 1980
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_15
+      rect:
+        serializedVersion: 2
+        x: 2475
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_16
+      rect:
+        serializedVersion: 2
+        x: 2970
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_17
+      rect:
+        serializedVersion: 2
+        x: 3465
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_18
+      rect:
+        serializedVersion: 2
+        x: 3960
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_19
+      rect:
+        serializedVersion: 2
+        x: 4455
+        y: 478
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_21
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 0
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_22
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 0
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_23
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 0
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJumpBackward_24
+      rect:
+        serializedVersion: 2
+        x: 1980
+        y: 0
+        width: 495
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

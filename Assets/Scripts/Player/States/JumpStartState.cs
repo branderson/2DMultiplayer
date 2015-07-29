@@ -9,6 +9,7 @@ namespace Assets.Scripts.Player.States
     {
         [SerializeField] private int waitFrames = 4;
         [SerializeField] private bool directionalControl = true;
+        [SerializeField] private bool airJump = false;
         private float maximumNegationVelocity = 25f;
         private int waitCounter;
         private int jumpDirection = 0;
@@ -56,7 +57,8 @@ namespace Assets.Scripts.Player.States
 
             if (jump)
             {
-                if (playerController.CheckForGround() && playerController.GetVelocityY() < .1f)
+//                if (playerController.CheckForGround() && playerController.GetVelocityY() < .01f)
+                if (!airJump)
                 {
                     // Need to do this in this state for now because short hop information would not pass on to next state
                     if (!directionalControl || jumpDirection == 0)
@@ -122,6 +124,7 @@ namespace Assets.Scripts.Player.States
                 // Air jump
                 else
                 {
+                    MonoBehaviour.print("Double jumping");
                     if (!directionalControl || jumpDirection == 0)
                     {
                         float adjustSpeed = -playerController.GetVelocityX();

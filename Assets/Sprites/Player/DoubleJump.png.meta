@@ -1,0 +1,330 @@
+fileFormatVersion: 2
+guid: 1ce5f7274f24d8341a534d881c2894d9
+timeCreated: 1438124500
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DoubleJump_0
+    21300002: DoubleJump_1
+    21300004: DoubleJump_2
+    21300006: DoubleJump_3
+    21300008: DoubleJump_4
+    21300010: DoubleJump_5
+    21300012: DoubleJump_6
+    21300014: DoubleJump_7
+    21300016: DoubleJump_8
+    21300018: DoubleJump_9
+    21300020: DoubleJump_10
+    21300022: DoubleJump_11
+    21300024: DoubleJump_12
+    21300026: DoubleJump_13
+    21300028: DoubleJump_14
+    21300030: DoubleJump_15
+    21300032: DoubleJump_16
+    21300034: DoubleJump_17
+    21300036: DoubleJump_18
+    21300038: DoubleJump_19
+    21300040: DoubleJump_20
+    21300042: DoubleJump_21
+    21300044: DoubleJump_22
+    21300046: DoubleJump_23
+    21300048: DoubleJump_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 8192
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: DoubleJump_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_1
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_2
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_3
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_4
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_5
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_6
+      rect:
+        serializedVersion: 2
+        x: 2448
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_7
+      rect:
+        serializedVersion: 2
+        x: 2856
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_8
+      rect:
+        serializedVersion: 2
+        x: 3264
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_9
+      rect:
+        serializedVersion: 2
+        x: 3672
+        y: 728
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_11
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_12
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_13
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_14
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_15
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_16
+      rect:
+        serializedVersion: 2
+        x: 2448
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_17
+      rect:
+        serializedVersion: 2
+        x: 2856
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_18
+      rect:
+        serializedVersion: 2
+        x: 3264
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_19
+      rect:
+        serializedVersion: 2
+        x: 3672
+        y: 364
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_21
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_22
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 0
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_23
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 0
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DoubleJump_24
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 0
+        width: 408
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
