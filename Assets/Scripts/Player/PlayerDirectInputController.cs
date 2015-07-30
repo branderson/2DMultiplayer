@@ -10,7 +10,7 @@ using XInputDotNetPure;
 namespace Assets.Scripts.Player
 {
     [RequireComponent(typeof (PlayerController))]
-    public class PlayerInputController : MonoBehaviour, IInputController
+    public class PlayerDirectInputController : MonoBehaviour, IInputController
     {
         [SerializeField] public int ControllerNumber = 0;
         [SerializeField] public bool TapJump = true;
@@ -19,8 +19,6 @@ namespace Assets.Scripts.Player
         private PlayerController playerController;
         private int xActiveFrames = 0;
         private int yActiveFrames = 0;
-        private bool xInactiveFrame = false;
-        private bool yInactiveFrame = false;
 
         private const float thresholdX = .5f;
         private const float thresholdY = .5f;
@@ -40,7 +38,7 @@ namespace Assets.Scripts.Player
         private string horizontalString = "Horizontal";
         private string verticalString = "Vertical";
 
-        private readonly string[] player = {"K", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
+        private readonly string[] player = {"J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
 
         public void Init(MenuInputController menuInputController)
         {

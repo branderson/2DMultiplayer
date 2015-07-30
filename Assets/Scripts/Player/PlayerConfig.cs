@@ -10,7 +10,8 @@ namespace Assets.Scripts.Player
         public int Slot = 0;
         public int ControllerIndex = -1;
         public PlayerIndex XIndex = PlayerIndex.One;
-        public bool UseXIndex = false;
+        public bool UseXInput = false;
+        public bool Keyboard = false;
         public bool Computer = false;
         public bool Active = false;
     }

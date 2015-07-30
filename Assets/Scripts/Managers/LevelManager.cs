@@ -33,15 +33,23 @@ namespace Assets.Scripts.Managers
                 if (characterMenuManager.Controllers[card])
                 {
                     GameObject player = (GameObject)Instantiate(Player, spawnPoints[characterMenuManager.playerControllers[card].playerNumber - 1].transform.position, Quaternion.identity);
-                    if (!characterMenuManager.inputControllers[card].Computer && !characterMenuManager.inputControllers[card].UseXIndex)
+                    if (!characterMenuManager.inputControllers[card].Computer &&
+                        !characterMenuManager.inputControllers[card].UseXInput &&
+                        characterMenuManager.inputControllers[card].Keyboard)
                     {
-                        print("Instantiating XInput " + characterMenuManager.playerControllers[card].playerNumber);
-                        player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerInputController>();
-                        player.GetComponentInChildren<PlayerInputController>().Init(characterMenuManager.inputControllers[card]);
+                        print("Instantiating keyboard player " + characterMenuManager.playerControllers[card].playerNumber);
+                        player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerKeyboardInputController>();
+                        player.GetComponentInChildren<PlayerKeyboardInputController>().Init(characterMenuManager.inputControllers[card]);
+                    }
+                    else if (!characterMenuManager.inputControllers[card].Computer && !characterMenuManager.inputControllers[card].UseXInput)
+                    {
+                        print("Instantiating DirectInput player " + characterMenuManager.playerControllers[card].playerNumber);
+                        player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerDirectInputController>();
+                        player.GetComponentInChildren<PlayerDirectInputController>().Init(characterMenuManager.inputControllers[card]);
                     }
                     else if (!characterMenuManager.inputControllers[card].Computer)
                     {
-                        print("Instantiating XInput " + characterMenuManager.playerControllers[card].playerNumber);
+                        print("Instantiating XInput player " + characterMenuManager.playerControllers[card].playerNumber);
                         player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerXInputController>();
                         player.GetComponentInChildren<PlayerXInputController>().Init(characterMenuManager.inputControllers[card]);
                     }

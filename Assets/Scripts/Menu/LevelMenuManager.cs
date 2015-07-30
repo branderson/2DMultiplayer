@@ -45,7 +45,8 @@ namespace Assets.Scripts.Menu
                 gameManager.PlayerConfig[card].ControllerIndex =
                     menuManager.inputControllers[card].ControllerNumber;
                 gameManager.PlayerConfig[card].XIndex = menuManager.inputControllers[card].XIndex;
-                gameManager.PlayerConfig[card].UseXIndex = menuManager.inputControllers[card].UseXIndex;
+                gameManager.PlayerConfig[card].UseXInput = menuManager.inputControllers[card].UseXInput;
+                gameManager.PlayerConfig[card].Keyboard = menuManager.inputControllers[card].Keyboard;
             }
         }
 

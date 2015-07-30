@@ -9,7 +9,8 @@ namespace Assets.Scripts.Menu
     [RequireComponent(typeof (MenuPlayerController))]
     public class MenuInputController : MonoBehaviour {
         internal int ControllerNumber = -1;
-        internal bool UseXIndex = false;
+        internal bool Keyboard = false;
+        internal bool UseXInput = false;
         public PlayerIndex XIndex = PlayerIndex.One;
         internal bool Computer = false;
         private bool controllerAssigned = false;
@@ -19,7 +20,7 @@ namespace Assets.Scripts.Menu
         private float xInputThreshold = .2f;
         private int repeatFrames = 30;
         private int repeatCountdown = 0;
-        private readonly string[] player = {"K", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
+        private readonly string[] player = {"J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
 
         private MenuPlayerController playerController;
 
@@ -39,6 +40,7 @@ namespace Assets.Scripts.Menu
 
         public void Init()
         {
+            print("Assigning controller");
             controllerAssigned = true;
         }
 
@@ -61,7 +63,11 @@ namespace Assets.Scripts.Menu
         
         // Update is called once per frame
         void Update () {
-            if (playerController.IsActive() && controllerAssigned && !UseXIndex)
+            if (playerController.IsActive() && controllerAssigned && !UseXInput && Keyboard)
+            {
+                HandleKeyboardInput();
+            }
+            else if (playerController.IsActive() && controllerAssigned && !UseXInput)
             {
                 HandleDirectInput();
             }
@@ -70,6 +76,123 @@ namespace Assets.Scripts.Menu
             {
                 HandleXInput();
             }
+        }
+
+        private void HandleKeyboardInput()
+        {
+            x = CrossPlatformInputManager.GetAxis("HorizontalK");
+            y = CrossPlatformInputManager.GetAxis("VerticalK");
+
+            if (x == 0 && y == 0)
+            {
+                repeatCountdown = repeatFrames;
+            }
+
+            // Check if axes have just been pressed
+            if (Input.GetAxisRaw("HorizontalK") != 0)
+            {
+                if (!xActive)
+                {
+                    if (Input.GetAxisRaw("HorizontalK") < 0)
+                    {
+                        leftPressed = true;
+                    }
+                    else
+                    {
+                        rightPressed = true;
+                    }
+                    xActive = true;
+                    repeatCountdown = repeatFrames;
+                }
+                else
+                {
+                    if (repeatCountdown == 0)
+                    {
+                        xActive = false;
+                    }
+                    else
+                    {
+                        repeatCountdown--;
+                    }
+                }
+            }
+            else
+            {
+                xActive = false;
+            }
+
+            if (Input.GetAxisRaw("VerticalK") != 0)
+            {
+                if (!yActive)
+                {
+                    if (Input.GetAxisRaw("VerticalK") < 0)
+                    {
+                        downPressed = true;
+                    }
+                    else
+                    {
+                        upPressed = true;
+                    }
+                    yActive = true;
+                    repeatCountdown = repeatFrames;
+                }
+                else
+                {
+                    if (repeatCountdown == 0)
+                    {
+                        yActive = false;
+                    }
+                    else
+                    {
+                        repeatCountdown--;
+                    }
+                }
+            }
+            else
+            {
+                yActive = false;
+            }
+
+            // Check button presses
+            if (upPressed)
+            {
+                playerController.PressUp();
+                upPressed = false;
+            }
+            if (downPressed)
+            {
+                playerController.PressDown();
+                downPressed = false;
+            }
+            if (leftPressed)
+            {
+                playerController.PressLeft();
+                leftPressed = false;
+            }
+            if (rightPressed)
+            {
+                playerController.PressRight();
+                rightPressed = false;
+            }
+            if (CrossPlatformInputManager.GetButtonDown("JumpK"))
+            {
+            }
+            if (CrossPlatformInputManager.GetButtonDown("RunK"))
+            {
+            }
+            if (CrossPlatformInputManager.GetButtonDown("PrimaryK"))
+            {
+                playerController.PressPrimary();
+            }
+            if (CrossPlatformInputManager.GetButtonDown("SecondaryK"))
+            {
+                playerController.PressSecondary();
+            }
+            if (CrossPlatformInputManager.GetButtonDown("StartK"))
+            {
+                playerController.PressStart();
+            }
+            
         }
 
         private void HandleDirectInput()
@@ -388,9 +511,11 @@ namespace Assets.Scripts.Menu
             DPad = !DPad;
         }
 
+        // TODO: None of these functions work for xInput or keyboard
+
         public bool ButtonActive(string name)
         {
-            if (!UseXIndex && !Computer)
+            if (!UseXInput && !Computer)
             {
                 return Input.GetButton(name + player[ControllerNumber]);
             }
@@ -399,7 +524,7 @@ namespace Assets.Scripts.Menu
 
         public bool AxisActive(string name)
         {
-            if (!UseXIndex && !Computer)
+            if (!UseXInput && !Computer)
             {
                 if (Input.GetAxisRaw(name + player[ControllerNumber]) != 0)
                 {
@@ -411,7 +536,7 @@ namespace Assets.Scripts.Menu
 
         public bool AxisPositive(string name)
         {
-            if (!UseXIndex && !Computer)
+            if (!UseXInput && !Computer)
             {
                 if (Input.GetAxisRaw(name + player[ControllerNumber]) > 0)
                 {
@@ -423,7 +548,7 @@ namespace Assets.Scripts.Menu
 
         public bool AxisNegative(string name)
         {
-            if (!UseXIndex && !Computer)
+            if (!UseXInput && !Computer)
             {
                 if (Input.GetAxisRaw(name + player[ControllerNumber]) < 0)
                 {
@@ -435,7 +560,7 @@ namespace Assets.Scripts.Menu
 
         public void VibrateController(float leftMotor, float rightMotor)
         {
-            if (UseXIndex && Vibration)
+            if (UseXInput && Vibration)
             {
                 GamePad.SetVibration(XIndex, leftMotor, rightMotor);
             }
@@ -443,7 +568,7 @@ namespace Assets.Scripts.Menu
 
         public void StopVibration()
         {
-            if (UseXIndex && Vibration)
+            if (UseXInput && Vibration)
             {
                 GamePad.SetVibration(XIndex, 0f, 0f);
             }

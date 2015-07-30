@@ -34,7 +34,7 @@ namespace Assets.Scripts.Menu
 //            inputController.TapJump = config.TapJump;
 //            inputController.Vibration = config.Vibration;
             inputController.XIndex = config.XIndex;
-            inputController.UseXIndex = config.UseXIndex;
+            inputController.UseXInput = config.UseXInput;
             tapJumpBox.SetToggle(config.TapJump);
             vibrationBox.SetToggle(config.Vibration);
             dPadBox.SetToggle(config.DPad);
@@ -124,7 +124,13 @@ namespace Assets.Scripts.Menu
         public void UnReady()
         {
             ready = false;
-            Activate();
+            active = true;
+            playerController.active = true;
+            panelImage.color = Color.yellow;
+            titleText.text = "Player " + number;
+            instructionText.text = "Press Start\nWhen Ready";
+            playerController.SetVibrate(12, 0f, .8f);
+            playerController.SetSelected(playerController.InitialSelection);
         }
 
         public bool IsActive()

@@ -56,11 +56,16 @@ namespace Assets.Scripts.Menu
             for (int i = 0; i <= 3; i++)
             {
                 // TODO: What about case where player has been added, then removed (no longer active), and later player added in place (should skip slot) (or should it?)
-                if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer && !gameManager.PlayerConfig[i].UseXIndex)
+                if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer && !gameManager.PlayerConfig[i].UseXInput &&
+                         gameManager.PlayerConfig[i].Keyboard)
+                {
+                    ActivateKeyboard();
+                }
+                else if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer && !gameManager.PlayerConfig[i].UseXInput)
                 {
                     ActivateDirectInput(gameManager.PlayerConfig[i].ControllerIndex);
                 }
-                else if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer && gameManager.PlayerConfig[i].UseXIndex)
+                else if (gameManager.PlayerConfig[i].Active && !gameManager.PlayerConfig[i].Computer && gameManager.PlayerConfig[i].UseXInput)
                 {
 //                    ActivateDirectInput(gameManager.PlayerConfig[i].ControllerIndex);
                     ActivateXInput(gameManager.PlayerConfig[i].XIndex);
@@ -95,10 +100,10 @@ namespace Assets.Scripts.Menu
                 {
                     // Allow setting keyboard as a controller
                     if (Input.GetButtonDown("PrimaryK") &&
-                        !playerCards.Any(card => (card.inputController.ControllerNumber == 0 && card.IsActive())))
+                        !playerCards.Any(card => (card.inputController.Keyboard && card.IsActive())))
                         // Linq expression checks if any object in Controllers has a ControllerNumber == 0
                     {
-                        ActivateDirectInput(0);
+                        ActivateKeyboard();
                     }
 
                     for (int i = 0; i < 4; i++)
@@ -107,7 +112,7 @@ namespace Assets.Scripts.Menu
                         if (GamePad.GetState(controller).IsConnected)
                         {
                             if (GamePad.GetState(controller).Buttons.A == ButtonState.Pressed && 
-                                !playerCards.Any(card => (card.inputController.UseXIndex && card.inputController.XIndex == controller && card.IsActive())))
+                                !playerCards.Any(card => (card.inputController.UseXInput && card.inputController.XIndex == controller && card.IsActive())))
                             {
                                 ActivateXInput(controller);
                             }
@@ -121,7 +126,7 @@ namespace Assets.Scripts.Menu
 //                        if (Input.GetButtonDown("PrimaryJ" + i) &&
 //                            !playerCards.Any(card => (card.inputController.ControllerNumber == i && card.IsActive())))
 //                        {
-//                            ActivateDirectInput(i);
+//                            ActivateDirectInput(i-1);
 //                        }
 //                    }
                 }
@@ -170,7 +175,7 @@ namespace Assets.Scripts.Menu
 
             foreach (PlayerCard card in playerCards)
             {
-                if (card.inputController.XIndex == xIndex && card.inputController.UseXIndex)
+                if (card.inputController.XIndex == xIndex && card.inputController.UseXInput)
                 {
                     slot = card.number - 1;
                 }
@@ -180,8 +185,34 @@ namespace Assets.Scripts.Menu
             playerCards[slot].Activate();
             print("Adding XInput");
 
-            inputControllers[slot].UseXIndex = true;
+            inputControllers[slot].UseXInput = true;
             inputControllers[slot].XIndex = xIndex;
+        }
+
+        private void ActivateKeyboard()
+        {
+            int slot = 3;
+
+            for (int i = 3; i >= 0; i--)
+            {
+                if (!Controllers[i])
+                {
+                    slot = i;
+                }
+            }
+
+            foreach (PlayerCard card in playerCards)
+            {
+                if (card.inputController.Keyboard)
+                {
+                    slot = card.number - 1;
+                }
+            }
+
+            Controllers[slot] = true;
+            playerCards[slot].Activate();
+            inputControllers[slot].Keyboard = true;
+            print("Adding keyboard");
         }
 
         private void ActivateDirectInput(int inputIndex)
@@ -202,14 +233,6 @@ namespace Assets.Scripts.Menu
                 {
                     slot = card.number - 1;
                 }
-            }
-
-            if (inputIndex == 0)
-            {
-                Controllers[slot] = true;
-                playerCards[slot].Activate();
-                inputControllers[slot].ControllerNumber = 0;
-                print("Adding keyboard");
             }
         }
 

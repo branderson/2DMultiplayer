@@ -109,7 +109,6 @@ namespace Assets.Scripts.Menu
 
         public void PressPrimary()
         {
-            print("Receiving primary");
             if (selected != null)
             {
                 selected.Primary(this, pointer);
