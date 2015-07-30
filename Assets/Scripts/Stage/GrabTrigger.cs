@@ -58,6 +58,8 @@ namespace Assets.Scripts.Stage
                     {
                         //                    occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
                         //                                                        other.transform.localPosition);
+                        occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
+                                                            other.transform.localPosition);
                         occupyingRigidbody.MovePosition(transform.position - other.transform.localPosition);
 //                        print("Moving: " + (transform.position.x - other.transform.localPosition.x) + " " +
 //                              (transform.position.y - other.transform.localPosition.y));
@@ -66,6 +68,8 @@ namespace Assets.Scripts.Stage
                     {
                         Vector3 reverseX = new Vector3(-other.transform.localPosition.x, other.transform.localPosition.y,
                             other.transform.localPosition.z);
+                        occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
+                                                            reverseX);
                         occupyingRigidbody.MovePosition(transform.position - reverseX);
                     }
 

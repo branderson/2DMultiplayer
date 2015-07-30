@@ -1,0 +1,330 @@
+fileFormatVersion: 2
+guid: afb57c51f77687e4b955a58bfdb5b436
+timeCreated: 1438268383
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Dodge_0
+    21300002: Dodge_1
+    21300004: Dodge_2
+    21300006: Dodge_3
+    21300008: Dodge_4
+    21300010: Dodge_5
+    21300012: Dodge_6
+    21300014: Dodge_7
+    21300016: Dodge_8
+    21300018: Dodge_9
+    21300020: Dodge_10
+    21300022: Dodge_11
+    21300024: Dodge_12
+    21300026: Dodge_13
+    21300028: Dodge_14
+    21300030: Dodge_15
+    21300032: Dodge_16
+    21300034: Dodge_17
+    21300036: Dodge_18
+    21300038: Dodge_19
+    21300040: Dodge_20
+    21300042: Dodge_21
+    21300044: Dodge_22
+    21300046: Dodge_23
+    21300048: Dodge_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dodge_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_1
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_2
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_3
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_4
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_5
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_6
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_7
+      rect:
+        serializedVersion: 2
+        x: 1603
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_8
+      rect:
+        serializedVersion: 2
+        x: 1832
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_9
+      rect:
+        serializedVersion: 2
+        x: 2061
+        y: 674
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_11
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_12
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_13
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_14
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_15
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_16
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_17
+      rect:
+        serializedVersion: 2
+        x: 1603
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_18
+      rect:
+        serializedVersion: 2
+        x: 1832
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_19
+      rect:
+        serializedVersion: 2
+        x: 2061
+        y: 337
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_21
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 0
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_22
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 0
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_23
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 0
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dodge_24
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 0
+        width: 229
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

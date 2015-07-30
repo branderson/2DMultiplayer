@@ -33,6 +33,10 @@ namespace Assets.Scripts.Player.States
         public override void Up()
         {
             base.Up();
+            if (PlayerInputController.GetTapJump())
+            {
+                playerAnimator.SetTrigger("Jump");
+            }
         }
     }
 }

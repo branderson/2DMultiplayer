@@ -106,11 +106,16 @@ namespace Assets.Scripts.Menu
                         ActivateKeyboard();
                     }
 
+                    bool xInputPressed = false;
                     for (int i = 0; i < 4; i++)
                     {
                         PlayerIndex controller = (PlayerIndex) i;
                         if (GamePad.GetState(controller).IsConnected)
                         {
+                            if (GamePad.GetState(controller).Buttons.A == ButtonState.Pressed)
+                            {
+                                xInputPressed = true;
+                            }
                             if (GamePad.GetState(controller).Buttons.A == ButtonState.Pressed && 
                                 !playerCards.Any(card => (card.inputController.UseXInput && card.inputController.XIndex == controller && card.IsActive())))
                             {
@@ -119,16 +124,20 @@ namespace Assets.Scripts.Menu
                         }
                     }
 
-                    // Allow setting any joystick as a controller
-                    // TODO: Separate input controller for XBox controllers
-//                    for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
-//                    {
-//                        if (Input.GetButtonDown("PrimaryJ" + i) &&
-//                            !playerCards.Any(card => (card.inputController.ControllerNumber == i && card.IsActive())))
-//                        {
-//                            ActivateDirectInput(i-1);
-//                        }
-//                    }
+                    // Only allow adding DirectInput controllers if no xInput controller is pressing A to avoid control mismatches
+                    // TODO: Switch from checking for holding A to pressing A possibly (very low importance)
+                    if (!xInputPressed)
+                    {
+                        for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
+                        {
+                            if (Input.GetButtonDown("PrimaryJ" + i) &&
+                                !playerCards.Any(card => (card.inputController.ControllerNumber == i-1 && card.IsActive())))
+                            {
+                                print("Trying to activate");
+                                ActivateDirectInput(i-1);
+                            }
+                        }
+                    }
                 }
 
                 bool allReady = true;
@@ -234,6 +243,11 @@ namespace Assets.Scripts.Menu
                     slot = card.number - 1;
                 }
             }
+
+            Controllers[slot] = true;
+            playerCards[slot].Activate();
+            inputControllers[slot].ControllerNumber = inputIndex;
+            print("Adding DirectInput");
         }
 
         public void Deactivate(int number)
