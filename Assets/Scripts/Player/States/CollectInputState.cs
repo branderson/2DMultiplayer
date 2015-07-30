@@ -12,6 +12,7 @@ namespace Assets.Scripts.Player.States
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            base.OnStateExit(animator, stateInfo, layerIndex);
             base.OnStateUpdate(animator, stateInfo, layerIndex);
         }
 

@@ -6,6 +6,7 @@ namespace Assets.Scripts.Player.States
     {
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            base.OnStateEnter(animator, stateInfo, layerIndex);
             animator.GetComponentInChildren<PlayerController>().Flip();
         }
 

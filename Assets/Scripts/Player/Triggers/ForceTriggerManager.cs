@@ -123,19 +123,12 @@ namespace Assets.Scripts.Player.Triggers
     //                player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
                 }
 
-                int stunFrames = (int) Mathf.Ceil(hitForce.x + hitForce.y)/6;
+                int stunFrames = (int) Mathf.Ceil(hitForce.x + hitForce.y)/4;
                 player.Stun(stunFrames);
                 player.Stagger(stagger);
             }
 
-            if (!player.Blocking)
-            {
-                player.TakeDamage(damage);
-            }
-            else
-            {
-                player.TakeDamage(damage/2);
-            }
+            player.TakeDamage(damage);
 
             if (vibrate)
             {

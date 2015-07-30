@@ -42,6 +42,7 @@ namespace Assets.Scripts.Player.States
 
         override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            base.OnStateExit(animator, stateInfo, layerIndex);
             foreach (ApplyForceTrigger trigger in forceTriggers)
             {
                 trigger.ForceMultiplier = 1f;

@@ -471,6 +471,7 @@ namespace Assets.Scripts.Player
             {
                 if (gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
                 {
+                    print("Blocking");
                     return true;
                 }
             }

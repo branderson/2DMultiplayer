@@ -43,6 +43,7 @@ namespace Assets.Scripts.Player.States
 
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
+            base.OnStateExit(animator, stateinfo, layerindex);
             // TODO: Air jumps need to use airJumpSpeed
             if (playerController.facingRight)
                 directionModifier = 1;

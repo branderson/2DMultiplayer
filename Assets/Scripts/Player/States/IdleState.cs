@@ -57,7 +57,6 @@ namespace Assets.Scripts.Player.States
             else
             {
                 // Movement
-                // TODO: Set multiple levels of movement (Possibly even modify input to have stages of movement controls)
                 if (playerController.Run)
                 {
                     // Run

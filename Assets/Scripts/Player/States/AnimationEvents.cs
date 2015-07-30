@@ -37,15 +37,25 @@ namespace Assets.Scripts.Player.States
             playerController.IncrementSpeedY(y);
         }
 
+        public void ApplyVelocityX(float x)
+        {
+            playerController.IncrementVelocityX(x);
+        }
+
+        public void ApplyVelocityY(float y)
+        {
+            playerController.IncrementVelocityY(y);
+        }
+
         public void ShakeSpriteX(int frames)
         {
             // inputs.x is frames, inputs.y is intensity
-            spriteController.ShakeSpriteX(frames);
+            playerController.ShakeSpriteX(frames);
         }
 
         public void StopShakingSprite()
         {
-            spriteController.StopShaking();
+            playerController.StopShaking();
         }
 
         public void VibrateControllerHard(int frames)

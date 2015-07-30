@@ -97,9 +97,30 @@ namespace Assets.Scripts.Managers
         {
             Vector2 maxDistance;
 //            transform.position = Vector3.MoveTowards(camera.transform.position, MiddlePosition(players), 5*Time.fixedDeltaTime);
-            maxDistance.x = Mathf.Abs(players.Where(item => (item.position.x < maxX && item.position.x > minX)).Max(item => (item.position.x - transform.position.x))); // - transform.position.x;
-            maxDistance.y = Mathf.Abs(players.Where(item => (item.position.y < maxY && item.position.y > minY)).Max(item => (item.position.y - transform.position.y))); // - transform.position.y;
+            List<Transform> inBoundsX = players.Where(item => (item.position.x < maxX && item.position.x > minX)).ToList();
+            List<Transform> inBoundsY = players.Where(item => (item.position.y < maxY && item.position.y > minY)).ToList();
+            if (inBoundsX.Any())
+            {
+                maxDistance.x = Mathf.Abs(inBoundsX.Max(item => (item.position.x - transform.position.x))); // - transform.position.x;
+            }
+            else
+            {
+                maxDistance.x = 0;
+            }
+            if (inBoundsY.Any())
+            {
+                maxDistance.y = Mathf.Abs(inBoundsY.Max(item => (item.position.y - transform.position.y))); // - transform.position.y;
+            }
+            else
+            {
+                maxDistance.y = 0;
+            }
 //            print(maxDistance.x + " " + maxDistance.y);
+            // Don't resize if all players out of bounds
+            if (maxDistance.x < 0 || maxDistance.y < 0)
+            {
+                return;
+            }
 
             if (maxDistance.x/camera.aspect > maxDistance.y + verticalPadding && maxDistance.x/camera.aspect + cameraPadding > minimumSize)
             {
@@ -145,8 +166,22 @@ namespace Assets.Scripts.Managers
             List<Transform> inBoundsX = playerList.Where(item => (item.position.x < maxX && item.position.x > minX)).ToList();
             List<Transform> inBoundsY = playerList.Where(item => (item.position.y < maxY && item.position.y > minY)).ToList();
 //            print("In bounds X: " + inBoundsX.Count() + " In bounds Y: " + inBoundsY.Count());
-            position.x = (inBoundsX.Max(item => item.position.x) + inBoundsX.Min(item => item.position.x))/2;
-            position.y = (inBoundsY.Max(item => item.position.y) + inBoundsY.Min(item => item.position.y))/2;
+            if (inBoundsX.Any())
+            {
+                position.x = (inBoundsX.Max(item => item.position.x) + inBoundsX.Min(item => item.position.x))/2;
+            }
+            else
+            {
+                position.x = 0;
+            }
+            if (inBoundsY.Any())
+            {
+                position.y = (inBoundsY.Max(item => item.position.y) + inBoundsY.Min(item => item.position.y))/2;
+            }
+            else
+            {
+                position.y = 0;
+            }
             position.z = transform.position.z;
 //            print("Average x: " + playerList[0].position.x + "+" + playerList[1].position.x + "\\2=" + position.x + " " +
 //                  ((playerList[0].position.x + playerList[1].position.x)/2) +

@@ -65,6 +65,7 @@ namespace Assets.Scripts.Player
         internal PlayerUI playerUI;
         internal SpriteRenderer sprite;
         internal Color color; // TODO: Get rid of this
+        private Vector2 spritePosition;
 
         private float animationResumeSpeed;
         internal bool Paused = false;
@@ -516,7 +517,14 @@ namespace Assets.Scripts.Player
         {
             if (!Invincible)
             {
-                shield -= damage;
+                if (!Blocking)
+                {
+                    shield -= damage;
+                }
+                else
+                {
+                    shield -= damage/2; // How much to reduce damage by
+                }
                 if (shield < 0)
                 {
                     shield = 0;
@@ -552,7 +560,7 @@ namespace Assets.Scripts.Player
 
         public void Stun(int frames)
         {
-            if (!Invincible && !Blocking)
+            if (!Invincible)
             {
                 StopCoroutine("StunRoutine");
                 if (frames >= launchFrames)
@@ -581,27 +589,59 @@ namespace Assets.Scripts.Player
             yield break;
         }
 
-        private IEnumerator Shake(float intensity)
+
+        public void ShakeSpriteX(int frames)
         {
-            // TODO: This doesn't work
-            int frame = 0;
-            Vector3 spritePosition = sprite.transform.localPosition;
-            Vector3 forwardPosition = new Vector3(spritePosition.x + .01f, spritePosition.y, spritePosition.z);
-            Vector3 backwardPosition = new Vector3(spritePosition.x - .01f, spritePosition.y, spritePosition.z);
-            while (true)
+            spritePosition = transform.localPosition;
+            StopCoroutine("ShakeSprite");
+            StartCoroutine("ShakeSprite", frames);
+        }
+
+        public void StopShaking()
+        {
+            StopCoroutine("ShakeSprite");
+            transform.localPosition = spritePosition;
+        }
+
+        private IEnumerator ShakeSprite(int frames)
+        {
+            while (frames > 0)
             {
-                if (frame%10 == 0)
+                frames--;
+                if (frames%10 == 0)
                 {
-                    sprite.transform.localPosition = forwardPosition;
+                    transform.localPosition = spritePosition + new Vector2(.05f, 0);
                 }
-                else if (frame%5 == 0)
+                else if (frames%5 == 0)
                 {
-                    sprite.transform.localPosition = backwardPosition;
+                    transform.localPosition = spritePosition - new Vector2(.05f, 0);
                 }
-                frame++;
                 yield return null;
             }
+            transform.localPosition = spritePosition;
         }
+
+//        private IEnumerator Shake(float intensity)
+//        {
+//            // TODO: This doesn't work
+//            int frame = 0;
+//            Vector3 spritePosition = sprite.transform.localPosition;
+//            Vector3 forwardPosition = new Vector3(spritePosition.x + .01f, spritePosition.y, spritePosition.z);
+//            Vector3 backwardPosition = new Vector3(spritePosition.x - .01f, spritePosition.y, spritePosition.z);
+//            while (true)
+//            {
+//                if (frame%10 == 0)
+//                {
+//                    sprite.transform.localPosition = forwardPosition;
+//                }
+//                else if (frame%5 == 0)
+//                {
+//                    sprite.transform.localPosition = backwardPosition;
+//                }
+//                frame++;
+//                yield return null;
+//            }
+//        }
 
         public void Stagger(int stagger)
         {

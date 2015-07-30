@@ -31,6 +31,7 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("Secondary");
             animator.ResetTrigger("Block");
             animator.ResetTrigger("Grab");
+            animator.ResetTrigger("Dodge");
             animator.ResetTrigger("PrimaryReleased");
             animator.ResetTrigger("SecondaryReleased");
             animator.ResetTrigger("BlockReleased");
@@ -41,6 +42,14 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("TurnAround");
             animator.ResetTrigger("LetGo");
             animator.ResetTrigger("Stagger");
+        }
+
+        public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            if (!(playerController == null))
+            {
+                playerController.StopShaking();          
+            }
         }
 
         public virtual void Jump()

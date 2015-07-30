@@ -532,7 +532,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.36500001, y: -.0120000001, z: 0}
+  m_LocalPosition: {x: 1.60500002, y: -.0120000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 452676}
@@ -676,7 +676,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 242.095322, y: -90.3106232, z: 0}
+  m_LocalPosition: {x: 1.61866045, y: -1.8458035, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458906}
@@ -1077,7 +1077,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2, y: 1}
+  m_Size: {x: 2.5, y: 1}
 --- !u!95 &9507752
 Animator:
   serializedVersion: 3
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   baseDamage: 5
   ForceApplied: {x: 25, y: 5}
   Stun: 1
-  Stagger: 1
+  Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11411246
@@ -1176,7 +1176,7 @@ MonoBehaviour:
   baseDamage: 5
   ForceApplied: {x: -15, y: 25}
   Stun: 1
-  Stagger: 1
+  Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11459056
@@ -1195,7 +1195,7 @@ MonoBehaviour:
   baseDamage: 5
   ForceApplied: {x: 15, y: 25}
   Stun: 1
-  Stagger: 1
+  Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11464192
@@ -1307,7 +1307,7 @@ MonoBehaviour:
   damageApplied: 5
   ForceApplied: {x: 25, y: 5}
   Stun: 1
-  Stagger: 1
+  Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11488282
@@ -1325,7 +1325,7 @@ MonoBehaviour:
   damageApplied: 0
   ForceApplied: {x: 0, y: 30}
   Stun: 1
-  Stagger: 1
+  Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11489166
@@ -1355,7 +1355,7 @@ MonoBehaviour:
   damageApplied: 0
   ForceApplied: {x: -4, y: 15}
   Stun: 1
-  Stagger: 1
+  Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!114 &11494832

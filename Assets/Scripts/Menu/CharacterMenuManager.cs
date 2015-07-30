@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Managers;
 using Assets.Scripts.Player;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine.UI;
 using XInputDotNetPure;
 using Object = UnityEngine.Object;
@@ -30,7 +30,6 @@ namespace Assets.Scripts.Menu
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         }
 
-        // Use this for initialization
         private void Start()
         {
             if (gameManager.GameConfig.TournamentMode)

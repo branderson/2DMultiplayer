@@ -49,6 +49,7 @@ namespace Assets.Scripts.Player.States
 
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
+            base.OnStateExit(animator, stateinfo, layerindex);
             if (playerController.facingRight)
                 directionModifier = 1;
             else
@@ -199,7 +200,7 @@ namespace Assets.Scripts.Player.States
 
         public override void Primary(float x, float y)
         {
-            if (waitCounter > 0 && move.y > 0)
+            if (PlayerInputController.GetTapJump() && waitCounter > 0 && move.y > 0)
             {
                 base.Primary(x, y);
                 jump = false;
