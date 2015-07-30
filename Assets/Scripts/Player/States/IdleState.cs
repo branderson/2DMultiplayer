@@ -40,6 +40,11 @@ namespace Assets.Scripts.Player.States
         {
             base.OnStateUpdate(animator, stateInfo, layerIndex);
 
+            if (PlayerInputController.ButtonActive("Block"))
+            {
+                playerAnimator.SetTrigger("Block");
+            }
+
              // Flip code
             if (move.x > 0 && !playerController.facingRight)
             {
