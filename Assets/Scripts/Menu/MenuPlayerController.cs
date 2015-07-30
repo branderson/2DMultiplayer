@@ -13,7 +13,6 @@ namespace Assets.Scripts.Menu
         private PointerEventData pointer = new PointerEventData(EventSystem.current);
         internal int playerNumber;
 
-        internal bool computer;
         internal bool active;
 
         private MenuInputController input;
@@ -25,7 +24,6 @@ namespace Assets.Scripts.Menu
 
         void Awake()
         {
-            computer = false;
             active = false;
             input = GetComponent<MenuInputController>();
         }
@@ -111,6 +109,7 @@ namespace Assets.Scripts.Menu
 
         public void PressPrimary()
         {
+            print("Receiving primary");
             if (selected != null)
             {
                 selected.Primary(this, pointer);
@@ -124,12 +123,12 @@ namespace Assets.Scripts.Menu
                 selected.Secondary(this);
                 if (playerCard != null)
                 {
-                    if (playerCard.IsReady() && !playerCard.computer)
+                    if (playerCard.IsReady() && !input.Computer)
                     {
                         playerCard.UnReady();
                     }
                         // TODO: Not a good place to put this. Prevents backing up through menus
-                    else if (playerCard.IsActive() && !playerCard.computer)
+                    else if (playerCard.IsActive() && !input.Computer)
                     {
                         playerCard.Deactivate();
                     }

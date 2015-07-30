@@ -23,15 +23,13 @@ namespace Assets.Scripts.Menu
         internal MenuInputController inputController;
         internal MenuPlayerController playerController;
         internal int number;
-        internal bool computer = false;
         private bool active;
         private bool ready;
 
         public void Init(PlayerConfig config)
         {
             playerController.playerNumber = config.Slot;
-            computer = config.Computer;
-            playerController.computer = config.Computer;
+            inputController.Computer = config.Computer;
             inputController.ControllerNumber = config.ControllerIndex;
 //            inputController.TapJump = config.TapJump;
 //            inputController.Vibration = config.Vibration;
@@ -85,27 +83,14 @@ namespace Assets.Scripts.Menu
         {
             active = true;
             playerController.active = true;
-            computer = true;
-            playerController.computer = true;
             inputController.Computer = true;
             titleText.text = "Computer";
             Ready();
         }
 
-        public void ActivateDirectInput(int controllerNumber)
+        public void Activate()
         {
-            inputController.Init(controllerNumber);
-            active = true;
-            playerController.active = true;
-            panelImage.color = Color.yellow;
-            titleText.text = "Player " + number;
-            instructionText.text = "Press Start\nWhen Ready";
-            playerController.SetVibrate(12, 0f, .8f);
-            playerController.SetSelected(playerController.InitialSelection);
-        }
-
-        public void ActivateXInput(PlayerIndex XIndex)
-        {
+            inputController.Init();
             active = true;
             playerController.active = true;
             panelImage.color = Color.yellow;
@@ -139,8 +124,7 @@ namespace Assets.Scripts.Menu
         public void UnReady()
         {
             ready = false;
-            // TODO: Get rid of playerCard knowledge of XInput vs DirectInput
-            ActivateDirectInput(inputController.ControllerNumber);
+            Activate();
         }
 
         public bool IsActive()
@@ -176,15 +160,14 @@ namespace Assets.Scripts.Menu
             // TODO: Sometimes cycles Computer, None on player 1
             if (true) //player.ControllerNumber != number)
             {
-                if (!computer)
+                if (!inputController.Computer)
                 {
                     Deactivate();
                     manager.ActivateComputer(number);
                 }
                 else
                 {
-                    computer = false;
-                    playerController.computer = false;
+                    inputController.Computer = false;
                     UnReady();
                     Deactivate();
                 }

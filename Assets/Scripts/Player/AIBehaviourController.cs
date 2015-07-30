@@ -46,6 +46,7 @@ namespace Assets.Scripts.Player
             }
 
             // Detect hanging
+            // TODO: There was no state here
             if (playerController.GetState().GetName() == "EdgeGrabState")
             {
                 hanging = true;

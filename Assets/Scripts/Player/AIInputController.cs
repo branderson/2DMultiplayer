@@ -11,7 +11,7 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] public bool TapJump = true;
         [SerializeField] public bool Vibration = true;
-        private PlayerController character;
+        private PlayerController playerController;
         private AIBehaviourController brain;
         private bool xActive = false;
         private bool yActive = false;
@@ -35,13 +35,13 @@ namespace Assets.Scripts.Player
 
         private void Awake()
         {
-            character = GetComponent<PlayerController>();
+            playerController = GetComponent<PlayerController>();
             brain = gameObject.AddComponent<AIBehaviourController>();
         }
 
         public void Init(Menu.MenuInputController menuInputController)
         {
-            brain.Init(this, character);
+            brain.Init(this, playerController);
             TapJump = false;
         }
 
@@ -61,49 +61,49 @@ namespace Assets.Scripts.Player
 //                frame = 0;
 //            }
 
-            // Execute character moves
-            if (character.GetState() != null)
+            // Execute playerController moves
+            if (playerController.GetState() != null)
             {
-                character.GetState().Move(x, y);
+                playerController.GetState().Move(x, y);
                 if (upPressed)
                 {
-                    character.GetState().Up();
+                    playerController.GetState().Up();
                     upPressed = false;
                 }
                 if (downPressed)
                 {
-                    character.GetState().Down();
+                    playerController.GetState().Down();
                     downPressed = false;
                 }
                 if (leftPressed)
                 {
-                    character.GetState().Left();
+                    playerController.GetState().Left();
                     leftPressed = false;
                 }
                 if (rightPressed)
                 {
-                    character.GetState().Right();
+                    playerController.GetState().Right();
                     rightPressed = false;
                 }
                 if (jump)
                 {
-                    character.GetState().Jump();
+                    playerController.GetState().Jump();
                     jump = false;
                 }
-                character.Run = run;
+                playerController.Run = run;
                 if (primary)
                 {
-                    character.GetState().Primary(x, y);
+                    playerController.GetState().Primary(x, y);
                     primary = false;
                 }
                 if (secondary)
                 {
-                    character.GetState().Secondary(x, y);
+                    playerController.GetState().Secondary(x, y);
                     secondary = false;
                 }
                 if (block)
                 {
-                    character.GetState().Block();
+                    playerController.GetState().Block();
                 }
                 x = 0f;
                 y = 0f;
@@ -201,10 +201,5 @@ namespace Assets.Scripts.Player
         {
             return false;
         }
-
-//        public new string GetType()
-//        {
-//            return "AIInputController";
-//        }
     }
 }

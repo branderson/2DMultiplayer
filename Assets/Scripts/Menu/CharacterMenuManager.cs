@@ -77,6 +77,7 @@ namespace Assets.Scripts.Menu
             // If no controllers active, next back goes to title
             if (!Controllers.Any(controller => controller))
             {
+                // TODO: Reading XInput controllers as GlobalBack and backing out
                 if (Input.GetButtonDown("GlobalBack"))
                 {
                     Application.LoadLevel("TitleMenu");
@@ -138,7 +139,7 @@ namespace Assets.Scripts.Menu
 
                 // If all players ready, load level
                 // TODO: Load level select scene here instead
-                if (allReady && playerCards.Any(card => (card.IsActive() && !card.computer)))
+                if (allReady && playerCards.Any(card => (card.IsActive() && !card.inputController.Computer)))
                 {
                     Object.DontDestroyOnLoad(this);
                     playerCards = null;
@@ -155,7 +156,7 @@ namespace Assets.Scripts.Menu
             playerCards[slot-1].ActivateComputer();
         }
 
-        private void ActivateXInput(PlayerIndex XIndex)
+        private void ActivateXInput(PlayerIndex xIndex)
         {
             int slot = 3;
 
@@ -169,18 +170,18 @@ namespace Assets.Scripts.Menu
 
             foreach (PlayerCard card in playerCards)
             {
-                if (card.inputController.XIndex == XIndex)
+                if (card.inputController.XIndex == xIndex && card.inputController.UseXIndex)
                 {
                     slot = card.number - 1;
                 }
             }
 
             Controllers[slot] = true;
-            playerCards[slot].ActivateXInput(XIndex);
+            playerCards[slot].Activate();
             print("Adding XInput");
 
             inputControllers[slot].UseXIndex = true;
-            inputControllers[slot].XIndex = XIndex;
+            inputControllers[slot].XIndex = xIndex;
         }
 
         private void ActivateDirectInput(int inputIndex)
@@ -206,28 +207,10 @@ namespace Assets.Scripts.Menu
             if (inputIndex == 0)
             {
                 Controllers[slot] = true;
-                playerCards[slot].ActivateDirectInput(0);
+                playerCards[slot].Activate();
+                inputControllers[slot].ControllerNumber = 0;
                 print("Adding keyboard");
             }
-//            else
-//            {
-//                Controllers[slot] = true;
-//                playerCards[slot].ActivateDirectInput(inputIndex);
-//                for (int controller = 0; controller < 4; controller++)
-//                {
-//                    if (GamePad.GetState((PlayerIndex) controller).IsConnected)
-//                    {
-//                        // TODO: Vibrations can be mapped to the wrong controller if selected on the exact same frame
-//                        if (GamePad.GetState((PlayerIndex) controller).Buttons.A == ButtonState.Pressed &&
-//                            !playerCards.Any(card => card.inputController.XIndex == controller))
-//                        {
-//                            inputControllers[slot].UseXIndex = true;
-//                            inputControllers[slot].XIndex = controller;
-//                        }
-//                    }
-//                }
-//                print("Adding joystick " + inputIndex);
-//            }
         }
 
         public void Deactivate(int number)

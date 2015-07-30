@@ -39,7 +39,7 @@ namespace Assets.Scripts.Menu
                 gameManager.PlayerConfig[card].Vibration = menuManager.inputControllers[card].Vibration;
                 gameManager.PlayerConfig[card].TapJump = menuManager.inputControllers[card].TapJump;
                 gameManager.PlayerConfig[card].DPad = menuManager.inputControllers[card].DPad;
-                gameManager.PlayerConfig[card].Computer = menuManager.playerControllers[card].computer;
+                gameManager.PlayerConfig[card].Computer = menuManager.inputControllers[card].Computer;
                 gameManager.PlayerConfig[card].Active = menuManager.playerControllers[card].active;
                 gameManager.PlayerConfig[card].Slot = card + 1;
                 gameManager.PlayerConfig[card].ControllerIndex =

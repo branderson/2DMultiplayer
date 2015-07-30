@@ -10,12 +10,14 @@ namespace Assets.Scripts.Menu
     public class MenuInputController : MonoBehaviour {
         internal int ControllerNumber = -1;
         internal bool UseXIndex = false;
-        internal bool Computer = false;
         public PlayerIndex XIndex = PlayerIndex.One;
+        internal bool Computer = false;
+        private bool controllerAssigned = false;
         public bool TapJump = true;
         public bool Vibration = true;
         public bool DPad = false;
-        private int repeatFrames = 15;
+        private float xInputThreshold = .2f;
+        private int repeatFrames = 30;
         private int repeatCountdown = 0;
         private readonly string[] player = {"K", "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11"};
 
@@ -35,9 +37,9 @@ namespace Assets.Scripts.Menu
         private bool primary = false;
         private bool secondary = false;
 
-        public void Init(int number)
+        public void Init()
         {
-            ControllerNumber = number;
+            controllerAssigned = true;
         }
 
         void Awake()
@@ -55,240 +57,249 @@ namespace Assets.Scripts.Menu
 
         public void Deactivate()
         {
-//            ControllerNumber = -1;
         }
         
         // Update is called once per frame
         void Update () {
-            if (playerController.IsActive() && !Computer && !UseXIndex)
+            if (playerController.IsActive() && controllerAssigned && !UseXIndex)
             {
-                x = CrossPlatformInputManager.GetAxis("Horizontal" + player[ControllerNumber]);
-                y = CrossPlatformInputManager.GetAxis("Vertical" + player[ControllerNumber]);
-
-                if (x == 0 && y == 0)
-                {
-                    repeatCountdown = repeatFrames;
-                }
-
-                // Check if axes have just been pressed
-                if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) != 0 || Input.GetAxisRaw("HorizontalDPad" + player[ControllerNumber]) != 0)
-                {
-                    if (!xActive)
-                    {
-                        if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) < 0 ||
-                            Input.GetAxisRaw("HorizontalDPad" + player[ControllerNumber]) < 0)
-                        {
-                            leftPressed = true;
-                        }
-                        else
-                        {
-                            rightPressed = true;
-                        }
-                        xActive = true;
-                        repeatCountdown = repeatFrames;
-                    }
-                    else
-                    {
-                        if (repeatCountdown == 0)
-                        {
-                            xActive = false;
-                        }
-                        else
-                        {
-                            repeatCountdown--;
-                        }
-                    }
-                }
-                else
-                {
-                    xActive = false;
-                }
-
-                if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) != 0 || Input.GetAxisRaw("VerticalDPad" + player[ControllerNumber]) != 0)
-                {
-                    if (!yActive)
-                    {
-                        if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) < 0 || Input.GetAxisRaw("VerticalDPad" + player[ControllerNumber]) < 0)
-                        {
-                            downPressed = true;
-                        }
-                        else
-                        {
-                            upPressed = true;
-                        }
-                        yActive = true;
-                        repeatCountdown = repeatFrames;
-                    }
-                    else
-                    {
-                        if (repeatCountdown == 0)
-                        {
-                            yActive = false;
-                        }
-                        else
-                        {
-                            repeatCountdown--;
-                        }
-                    }
-                }
-                else
-                {
-                    yActive = false;
-                }
-
-                // Check button presses
-                if (upPressed)
-                {
-                    playerController.PressUp();
-                    upPressed = false;
-                }
-                if (downPressed)
-                {
-                    playerController.PressDown();
-                    downPressed = false;
-                }
-                if (leftPressed)
-                {
-                    playerController.PressLeft();
-                    leftPressed = false;
-                }
-                if (rightPressed)
-                {
-                    playerController.PressRight();
-                    rightPressed = false;
-                }
-                if (CrossPlatformInputManager.GetButtonDown("Jump" + player[ControllerNumber]))
-                {
-                }
-                if (CrossPlatformInputManager.GetButtonDown("Run" + player[ControllerNumber]))
-                {
-                }
-                if (CrossPlatformInputManager.GetButtonDown("Primary" + player[ControllerNumber]))
-                {
-                    playerController.PressPrimary();
-                }
-                if (CrossPlatformInputManager.GetButtonDown("Secondary" + player[ControllerNumber]))
-                {
-                    playerController.PressSecondary();
-                }
-                if (CrossPlatformInputManager.GetButtonDown("Start" + player[ControllerNumber]))
-                {
-                    playerController.PressStart();
-                }
+                HandleDirectInput();
             }
             // XInput
-            else if (playerController.IsActive() && !Computer && GamePad.GetState(XIndex).IsConnected)
+            else if (playerController.IsActive() && controllerAssigned && GamePad.GetState(XIndex).IsConnected)
             {
-                GamePadState gamePadState = GamePad.GetState(XIndex, GamePadDeadZone.Circular);
-                x = gamePadState.ThumbSticks.Left.X;
-                y = gamePadState.ThumbSticks.Left.Y;
+                HandleXInput();
+            }
+        }
 
-                if (Mathf.Approximately(x, 0) && Mathf.Approximately(y, 0)) 
+        private void HandleDirectInput()
+        {
+            x = CrossPlatformInputManager.GetAxis("Horizontal" + player[ControllerNumber]);
+            y = CrossPlatformInputManager.GetAxis("Vertical" + player[ControllerNumber]);
+
+            if (x == 0 && y == 0)
+            {
+                repeatCountdown = repeatFrames;
+            }
+
+            // Check if axes have just been pressed
+            if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) != 0 || Input.GetAxisRaw("HorizontalDPad" + player[ControllerNumber]) != 0)
+            {
+                if (!xActive)
                 {
+                    if (Input.GetAxisRaw("Horizontal" + player[ControllerNumber]) < 0 ||
+                        Input.GetAxisRaw("HorizontalDPad" + player[ControllerNumber]) < 0)
+                    {
+                        leftPressed = true;
+                    }
+                    else
+                    {
+                        rightPressed = true;
+                    }
+                    xActive = true;
                     repeatCountdown = repeatFrames;
                 }
-
-                // Check if axes have just been pressed
-                if (!Mathf.Approximately(x, 0) || gamePadState.DPad.Right == ButtonState.Pressed || gamePadState.DPad.Left == ButtonState.Pressed)
+                else
                 {
-                    if (!xActive)
+                    if (repeatCountdown == 0)
                     {
-                        if (x < 0 || gamePadState.DPad.Left == ButtonState.Pressed)
-                        {
-                            leftPressed = true;
-                        }
-                        else if (x > 0 || gamePadState.DPad.Right == ButtonState.Pressed)
-                        {
-                            rightPressed = true;
-                        }
-                        xActive = true;
-                        repeatCountdown = repeatFrames;
+                        xActive = false;
                     }
                     else
                     {
-                        if (repeatCountdown == 0)
-                        {
-                            xActive = false;
-                        }
-                        else
-                        {
-                            repeatCountdown--;
-                        }
+                        repeatCountdown--;
                     }
                 }
-                else
-                {
-                    xActive = false;
-                }
+            }
+            else
+            {
+                xActive = false;
+            }
 
-                if (!Mathf.Approximately(y, 0) || gamePadState.DPad.Up == ButtonState.Pressed || gamePadState.DPad.Down == ButtonState.Pressed)
+            if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) != 0 || Input.GetAxisRaw("VerticalDPad" + player[ControllerNumber]) != 0)
+            {
+                if (!yActive)
                 {
-                    if (!yActive)
+                    if (Input.GetAxisRaw("Vertical" + player[ControllerNumber]) < 0 || Input.GetAxisRaw("VerticalDPad" + player[ControllerNumber]) < 0)
                     {
-                        if (y < 0 || gamePadState.DPad.Down == ButtonState.Pressed)
-                        {
-                            downPressed = true;
-                        }
-                        else if (y > 0 || gamePadState.DPad.Up == ButtonState.Pressed)
-                        {
-                            upPressed = true;
-                        }
-                        yActive = true;
-                        repeatCountdown = repeatFrames;
+                        downPressed = true;
                     }
                     else
                     {
-                        if (repeatCountdown == 0)
-                        {
-                            yActive = false;
-                        }
-                        else
-                        {
-                            repeatCountdown--;
-                        }
+                        upPressed = true;
                     }
+                    yActive = true;
+                    repeatCountdown = repeatFrames;
                 }
                 else
                 {
-                    yActive = false;
+                    if (repeatCountdown == 0)
+                    {
+                        yActive = false;
+                    }
+                    else
+                    {
+                        repeatCountdown--;
+                    }
                 }
+            }
+            else
+            {
+                yActive = false;
+            }
 
-                // Check button presses
-                if (upPressed)
-                {
-                    playerController.PressUp();
-                    upPressed = false;
-                }
-                if (downPressed)
-                {
-                    playerController.PressDown();
-                    downPressed = false;
-                }
-                if (leftPressed)
-                {
-                    playerController.PressLeft();
-                    leftPressed = false;
-                }
-                if (rightPressed)
-                {
-                    playerController.PressRight();
-                    rightPressed = false;
-                }
-                
-                CleanActiveButtons();
+            // Check button presses
+            if (upPressed)
+            {
+                playerController.PressUp();
+                upPressed = false;
+            }
+            if (downPressed)
+            {
+                playerController.PressDown();
+                downPressed = false;
+            }
+            if (leftPressed)
+            {
+                playerController.PressLeft();
+                leftPressed = false;
+            }
+            if (rightPressed)
+            {
+                playerController.PressRight();
+                rightPressed = false;
+            }
+            if (CrossPlatformInputManager.GetButtonDown("Jump" + player[ControllerNumber]))
+            {
+            }
+            if (CrossPlatformInputManager.GetButtonDown("Run" + player[ControllerNumber]))
+            {
+            }
+            if (CrossPlatformInputManager.GetButtonDown("Primary" + player[ControllerNumber]))
+            {
+                playerController.PressPrimary();
+            }
+            if (CrossPlatformInputManager.GetButtonDown("Secondary" + player[ControllerNumber]))
+            {
+                playerController.PressSecondary();
+            }
+            if (CrossPlatformInputManager.GetButtonDown("Start" + player[ControllerNumber]))
+            {
+                playerController.PressStart();
+            }
+        }
 
-                if (GetButtonDown("A"))
+        private void HandleXInput()
+        {
+            GamePadState gamePadState = GamePad.GetState(XIndex, GamePadDeadZone.Circular);
+            x = gamePadState.ThumbSticks.Left.X;
+            y = gamePadState.ThumbSticks.Left.Y;
+
+            if (Mathf.Abs(x) < xInputThreshold && Mathf.Abs(y) < xInputThreshold) 
+            {
+                repeatCountdown = repeatFrames;
+            }
+
+            // Check if axes have just been pressed
+            if (!(Mathf.Abs(x) < xInputThreshold) || gamePadState.DPad.Right == ButtonState.Pressed || gamePadState.DPad.Left == ButtonState.Pressed)
+            {
+                if (!xActive)
                 {
-                    playerController.PressPrimary();
+                    if (x < -xInputThreshold || gamePadState.DPad.Left == ButtonState.Pressed)
+                    {
+                        leftPressed = true;
+                    }
+                    else if (x > xInputThreshold || gamePadState.DPad.Right == ButtonState.Pressed)
+                    {
+                        rightPressed = true;
+                    }
+                    xActive = true;
+                    repeatCountdown = repeatFrames;
                 }
-                if (GetButtonDown("B"))
+                else
                 {
-                    playerController.PressSecondary();
+                    if (repeatCountdown == 0)
+                    {
+                        xActive = false;
+                    }
+                    else
+                    {
+                        repeatCountdown--;
+                    }
                 }
-                if (GetButtonDown("Start"))
+            }
+            else
+            {
+                xActive = false;
+            }
+
+            if (!(Mathf.Abs(y) < xInputThreshold) || gamePadState.DPad.Up == ButtonState.Pressed || gamePadState.DPad.Down == ButtonState.Pressed)
+            {
+                if (!yActive)
                 {
-                    playerController.PressStart();
+                    if (y < -xInputThreshold || gamePadState.DPad.Down == ButtonState.Pressed)
+                    {
+                        downPressed = true;
+                    }
+                    else if (y > xInputThreshold || gamePadState.DPad.Up == ButtonState.Pressed)
+                    {
+                        upPressed = true;
+                    }
+                    yActive = true;
+                    repeatCountdown = repeatFrames;
                 }
+                else
+                {
+                    if (repeatCountdown == 0)
+                    {
+                        yActive = false;
+                    }
+                    else
+                    {
+                        repeatCountdown--;
+                    }
+                }
+            }
+            else
+            {
+                yActive = false;
+            }
+
+            // Check button presses
+            if (upPressed)
+            {
+                playerController.PressUp();
+                upPressed = false;
+            }
+            if (downPressed)
+            {
+                playerController.PressDown();
+                downPressed = false;
+            }
+            if (leftPressed)
+            {
+                playerController.PressLeft();
+                leftPressed = false;
+            }
+            if (rightPressed)
+            {
+                playerController.PressRight();
+                rightPressed = false;
+            }
+            
+            CleanActiveButtons();
+
+            if (GetButtonDown("A"))
+            {
+                playerController.PressPrimary();
+            }
+            if (GetButtonDown("B"))
+            {
+                playerController.PressSecondary();
+            }
+            if (GetButtonDown("Start"))
+            {
+                playerController.PressStart();
             }
         }
 
@@ -333,31 +344,30 @@ namespace Assets.Scripts.Menu
             {
                 return false;
             }
-            else
+
+            if (button == "A")
             {
-                if (button == "A")
+                if (gamePadState.Buttons.A == ButtonState.Pressed)
                 {
-                    if (gamePadState.Buttons.A == ButtonState.Pressed)
-                    {
-                        buttonsPressed.Add(button);
-                        return true;
-                    }
+                    buttonsPressed.Add(button);
+                    return true;
                 }
-                else if (button == "B")
+            }
+            else if (button == "B")
+            {
+                if (gamePadState.Buttons.B == ButtonState.Pressed)
                 {
-                    if (gamePadState.Buttons.B == ButtonState.Pressed)
-                    {
-                        buttonsPressed.Add(button);
-                        return true;
-                    }
+                    print("Adding B");
+                    buttonsPressed.Add(button);
+                    return true;
                 }
-                else if (button == "Start")
+            }
+            else if (button == "Start")
+            {
+                if (gamePadState.Buttons.Start == ButtonState.Pressed)
                 {
-                    if (gamePadState.Buttons.Start == ButtonState.Pressed)
-                    {
-                        buttonsPressed.Add(button);
-                        return true;
-                    }
+                    buttonsPressed.Add(button);
+                    return true;
                 }
             }
             return false;

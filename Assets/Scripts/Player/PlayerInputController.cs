@@ -16,7 +16,7 @@ namespace Assets.Scripts.Player
         [SerializeField] public bool TapJump = true;
         [SerializeField] public bool Vibration = true;
         [SerializeField] public bool DPad = false;
-        private PlayerController character;
+        private PlayerController playerController;
         private int xActiveFrames = 0;
         private int yActiveFrames = 0;
         private bool xInactiveFrame = false;
@@ -62,7 +62,7 @@ namespace Assets.Scripts.Player
 
         private void Awake()
         {
-            character = GetComponent<PlayerController>();
+            playerController = GetComponent<PlayerController>();
         }
 
         private void Start()
@@ -175,63 +175,63 @@ namespace Assets.Scripts.Player
 
         private void FixedUpdate()
         {
-            // Execute character moves
-            if (character.GetState() != null)
+            // Execute playerController moves
+            if (playerController.GetState() != null)
             {
-                character.GetState().Move(x, y);
+                playerController.GetState().Move(x, y);
                 if (upPressed)
                 {
-                    character.GetState().Up();
+                    playerController.GetState().Up();
                     upPressed = false;
                 }
                 if (downPressed)
                 {
-                    character.GetState().Down();
+                    playerController.GetState().Down();
                     downPressed = false;
                 }
                 if (leftPressed)
                 {
-                    character.GetState().Left();
+                    playerController.GetState().Left();
                     leftPressed = false;
                 }
                 if (rightPressed)
                 {
-                    character.GetState().Right();
+                    playerController.GetState().Right();
                     rightPressed = false;
                 }
                 if (jump)
                 {
-                    character.GetState().Jump();
+                    playerController.GetState().Jump();
                     jump = false;
                 }
-                character.Run = run;
+                playerController.Run = run;
                 if (primary)
                 {
-                    character.GetState().Primary(x, y);
+                    playerController.GetState().Primary(x, y);
                     primary = false;
                 }
                 if (secondary)
                 {
-                    character.GetState().Secondary(x, y);
+                    playerController.GetState().Secondary(x, y);
                     secondary = false;
                 }
                 if (block)
                 {
-                    character.GetState().Block();
+                    playerController.GetState().Block();
                     block = false;
                 }
                 if (grab)
                 {
-                    character.GetState().Grab();
+                    playerController.GetState().Grab();
                     grab = false;
                 }
             }
             else
             {
-                if (character.animator.GetCurrentAnimatorClipInfo(0).Count() != 0)
+                if (playerController.animator.GetCurrentAnimatorClipInfo(0).Count() != 0)
                 {
                     print("The current state is not implemented: " +
-                          character.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+                          playerController.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
                 }
                 print("The current state is not implemented");
             }
@@ -295,23 +295,15 @@ namespace Assets.Scripts.Player
 
         public void VibrateController(float leftMotor, float rightMotor)
         {
-            return;
         }
 
         public void StopVibration()
         {
-            return;
         }
 
         public bool GetTapJump()
         {
             return TapJump;
         }
-
-
-//        public new string GetType()
-//        {
-//            return "DirectInputController";
-//        }
     }
 }
