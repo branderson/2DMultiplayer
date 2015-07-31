@@ -30,6 +30,7 @@ namespace Assets.Scripts.Player
         [SerializeField] private LayerMask groundLayer; // A mask determining what is ground to the character
         [SerializeField] private float sideJumpDistance = 5f; // Horizontal distance of side jump
         [SerializeField] private float sideJumpHeight = 6f; // Height of side jump
+        [SerializeField] private float fallSpeed = 0f;
         [SerializeField] private float terminalVelocity = -15f; // Maximum regular falling rate
         [SerializeField] private float terminalVelocityFast = -30f; // Fast fall terminal velocity
         [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
@@ -207,7 +208,14 @@ namespace Assets.Scripts.Player
         private void CalculatePhysics()
         {
             jumpSpeed = 4*jumpHeight/neutralAirTime;
-            gravity = -2*jumpSpeed/neutralAirTime;
+            if (fallSpeed == 0)
+            {
+                gravity = -2*jumpSpeed/neutralAirTime;
+            }
+            else
+            {
+                gravity = -fallSpeed;
+            }
             airJumpSpeed = (float) Math.Sqrt(-2*gravity*airJumpHeight);
             sideJumpSpeedY = (float) Math.Sqrt(-2*gravity*sideJumpHeight);
             sideJumpSpeedX = sideJumpDistance/(neutralAirTime); // TODO: Should be sideJumpDistance/calculated time of vertical side jump in air

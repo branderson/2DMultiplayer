@@ -53,24 +53,24 @@ namespace Assets.Scripts.Menu
 
         public bool AllowSelection(MenuPlayerController player)
         {
-            return uiElement.AllowSelection(player.playerNumber);
+            return uiElement.AllowSelection(player.PlayerNumber);
         }
 
         public void Select(MenuPlayerController player, PointerEventData pointer)
         {
             selectors.Add(player);
-            uiElement.Select(player.playerNumber, pointer);
+            uiElement.Select(player.PlayerNumber, pointer);
         }
 
         public void Unselect(MenuPlayerController player, PointerEventData pointer)
         {
             selectors.Remove(player);
-            uiElement.Unselect(player.playerNumber, pointer);
+            uiElement.Unselect(player.PlayerNumber, pointer);
         }
 
         public bool SelectedBy(int playerNumber)
         {
-            return selectors.Any(selector => selector.playerNumber == playerNumber);
+            return selectors.Any(selector => selector.PlayerNumber == playerNumber);
         }
 
         public bool IsSelected()

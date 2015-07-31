@@ -14,5 +14,6 @@ namespace Assets.Scripts.Player
         public bool Keyboard = false;
         public bool Computer = false;
         public bool Active = false;
+        public int Character = 0;
     }
 }

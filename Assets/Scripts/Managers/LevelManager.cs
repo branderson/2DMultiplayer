@@ -11,7 +11,7 @@ namespace Assets.Scripts.Managers
     public class LevelManager : MonoBehaviour
     {
         // TODO: Once there is more than one character, need separate fields for every player
-        [SerializeField] public GameObject Player; // Prefab to use for instantiating player
+        [SerializeField] public GameObject[] Players; // Prefab to use for instantiating player
         [SerializeField] private GameObject[] spawnPoints; // Array of spawn points for players
         [SerializeField] private GameObject[] playerUI;
         private GameManager gameManager;
@@ -32,30 +32,30 @@ namespace Assets.Scripts.Managers
                 // Instantiate human players
                 if (characterMenuManager.Controllers[card])
                 {
-                    GameObject player = (GameObject)Instantiate(Player, spawnPoints[characterMenuManager.playerControllers[card].playerNumber - 1].transform.position, Quaternion.identity);
+                    GameObject player = (GameObject)Instantiate(Players[characterMenuManager.playerControllers[card].CharacterIndex], spawnPoints[characterMenuManager.playerControllers[card].PlayerNumber - 1].transform.position, Quaternion.identity);
                     if (!characterMenuManager.inputControllers[card].Computer &&
                         !characterMenuManager.inputControllers[card].UseXInput &&
                         characterMenuManager.inputControllers[card].Keyboard)
                     {
-                        print("Instantiating keyboard player " + characterMenuManager.playerControllers[card].playerNumber);
+                        print("Instantiating keyboard player " + characterMenuManager.playerControllers[card].PlayerNumber);
                         player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerKeyboardInputController>();
                         player.GetComponentInChildren<PlayerKeyboardInputController>().Init(characterMenuManager.inputControllers[card]);
                     }
                     else if (!characterMenuManager.inputControllers[card].Computer && !characterMenuManager.inputControllers[card].UseXInput)
                     {
-                        print("Instantiating DirectInput player " + characterMenuManager.playerControllers[card].playerNumber);
+                        print("Instantiating DirectInput player " + characterMenuManager.playerControllers[card].PlayerNumber);
                         player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerDirectInputController>();
                         player.GetComponentInChildren<PlayerDirectInputController>().Init(characterMenuManager.inputControllers[card]);
                     }
                     else if (!characterMenuManager.inputControllers[card].Computer)
                     {
-                        print("Instantiating XInput player " + characterMenuManager.playerControllers[card].playerNumber);
+                        print("Instantiating XInput player " + characterMenuManager.playerControllers[card].PlayerNumber);
                         player.transform.FindChild("Rigidbody").gameObject.AddComponent<PlayerXInputController>();
                         player.GetComponentInChildren<PlayerXInputController>().Init(characterMenuManager.inputControllers[card]);
                     }
                     else
                     {
-                        print("Instantiating computer " + characterMenuManager.playerControllers[card].playerNumber);
+                        print("Instantiating computer " + characterMenuManager.playerControllers[card].PlayerNumber);
                         player.transform.FindChild("Rigidbody").gameObject.AddComponent<AIInputController>();
                         player.GetComponentInChildren<AIInputController>().Init(characterMenuManager.inputControllers[card]);
                     }

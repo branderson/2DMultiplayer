@@ -28,7 +28,7 @@ namespace Assets.Scripts.Menu
 
         public void Init(PlayerConfig config)
         {
-            playerController.playerNumber = config.Slot;
+            playerController.PlayerNumber = config.Slot;
             inputController.Computer = config.Computer;
             inputController.ControllerNumber = config.ControllerIndex;
 //            inputController.TapJump = config.TapJump;
@@ -40,6 +40,7 @@ namespace Assets.Scripts.Menu
             dPadBox.SetToggle(config.DPad);
             this.active = config.Active;
             playerController.active = config.Active;
+            playerController.CharacterIndex = config.Character;
             this.number = config.Slot;
             this.titleText.text = "None";
             this.instructionText.text = "Press A";

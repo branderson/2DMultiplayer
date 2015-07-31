@@ -1,7 +1,6 @@
 Menu Controllers
 	Implement maybe character select w/ recolored character
-
-Input Controllers (Do this one soonish)
+		Need a way to pass pressing character in to OnClick()
 
 Player Controller	
 	Noticed pressing left and secondary and doing a right secondary once. Could not duplicate.:w
@@ -9,8 +8,8 @@ Player Controller
 	Held state
 	Sprite moved in edge grab permanently (should be fixed)
 	Bigger hitboxes
-	Throws should keep players held
 	Pressed left and did right smash
+	Air dodge
 
 Make force triggers able to launch opposite direction of contact
 Shaders

@@ -8,10 +8,11 @@ namespace Assets.Scripts.Menu
     public class MenuPlayerController : MonoBehaviour
     {
         [SerializeField] public MenuSelectable InitialSelection;
-        internal MenuSelectable selected;
+        internal MenuSelectable Selected;
         private PlayerCard playerCard;
         private PointerEventData pointer = new PointerEventData(EventSystem.current);
-        internal int playerNumber;
+        internal int PlayerNumber;
+        internal int CharacterIndex = 0;
 
         internal bool active;
 
@@ -42,42 +43,47 @@ namespace Assets.Scripts.Menu
         public void Deactivate()
         {
             active = false;
-            if (selected != null)
+            if (Selected != null)
             {
-                selected.Unselect(this, pointer);
+                Selected.Unselect(this, pointer);
             }
+        }
+
+        public void SetCharacter(int index)
+        {
+            CharacterIndex = index;
         }
 
         public void SetSelected(MenuSelectable selection)
         {
-            if (selected != null)
+            if (Selected != null)
             {
-                selected.Unselect(this, pointer);
+                Selected.Unselect(this, pointer);
             }
-            selected = selection;
+            Selected = selection;
             selection.Select(this, pointer);
         }
 
         public void PressUp()
         {
-            if (selected.up != null)
+            if (Selected.up != null)
             {
-                selected.Up(this);
-                if (selected.up.AllowSelection(this))
+                Selected.Up(this);
+                if (Selected.up.AllowSelection(this))
                 {
-                    SetSelected(selected.up);
+                    SetSelected(Selected.up);
                 }
             }
         }
 
         public void PressDown()
         {
-            if (selected.down != null)
+            if (Selected.down != null)
             {
-                selected.Down(this);
-                if (selected.down.AllowSelection(this))
+                Selected.Down(this);
+                if (Selected.down.AllowSelection(this))
                 {
-                    SetSelected(selected.down);
+                    SetSelected(Selected.down);
                 }
             }
         }
@@ -85,41 +91,41 @@ namespace Assets.Scripts.Menu
         public void PressLeft()
         {
             // TODO: Selections are becoming null or something when deactivating
-            if (selected.left != null)
+            if (Selected.left != null)
             {
-                selected.Left(this);
-                if (selected.left.AllowSelection(this))
+                Selected.Left(this);
+                if (Selected.left.AllowSelection(this))
                 {
-                    SetSelected(selected.left);
+                    SetSelected(Selected.left);
                 }
             }
         }
 
         public void PressRight()
         {
-            if (selected.right != null)
+            if (Selected.right != null)
             {
-                selected.Right(this);
-                if (selected.right.AllowSelection(this))
+                Selected.Right(this);
+                if (Selected.right.AllowSelection(this))
                 {
-                    SetSelected(selected.right);
+                    SetSelected(Selected.right);
                 }
             }
         }
 
         public void PressPrimary()
         {
-            if (selected != null)
+            if (Selected != null)
             {
-                selected.Primary(this, pointer);
+                Selected.Primary(this, pointer);
             }
         }
 
         public void PressSecondary()
         {
-            if (selected != null)
+            if (Selected != null)
             {
-                selected.Secondary(this);
+                Selected.Secondary(this);
                 if (playerCard != null)
                 {
                     if (playerCard.IsReady() && !input.Computer)
