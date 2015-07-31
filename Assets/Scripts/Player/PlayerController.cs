@@ -79,6 +79,8 @@ namespace Assets.Scripts.Player
         internal int IFrames = 0;
         internal bool Run;
         internal bool Blocking = false;
+        internal bool Holding = false;
+        internal bool Grabbed = false;
         internal bool CanFallThroughFloor = false;
 
         public void Init(int zPosition, int slot)
@@ -169,6 +171,8 @@ namespace Assets.Scripts.Player
             animator.SetBool("Run", Run);
             animator.SetInteger("AirJumps", AirJumps);
             animator.SetBool("CanRecover", canRecover);
+            animator.SetBool("Holding", Holding);
+            animator.SetBool("Grabbed", Grabbed);
             transform.parent.position = transform.position;
             transform.localPosition = Vector3.zero;
 

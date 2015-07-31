@@ -2,15 +2,15 @@ Menu Controllers
 	Implement maybe character select w/ recolored character
 
 Input Controllers (Do this one soonish)
-	Separate XBox controllers into separate input manager that uses xInput only
-	This will remove bugs resulting from mismatched controllers
 
 Player Controller	
-	Possible to escape attack animations by using recovery
 	Noticed pressing left and secondary and doing a right secondary once. Could not duplicate.:w
 	Observed sprite becoming moved to the up and to the left from the rigidbody
-	There's no stagger in block
-	No nice smashes directly from block
+	Held state
+	Sprite moved in edge grab permanently (should be fixed)
+	Bigger hitboxes
+	Throws should keep players held
+	Pressed left and did right smash
 
 Make force triggers able to launch opposite direction of contact
 Shaders

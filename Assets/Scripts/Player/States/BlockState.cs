@@ -27,12 +27,10 @@ namespace Assets.Scripts.Player.States
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateUpdate(animator, stateInfo, layerIndex);
-            MonoBehaviour.print("Checking block");
             if (!PlayerInputController.ButtonActive("Block"))
             {
                 playerAnimator.SetTrigger("BlockReleased");
                 blockReleased = true;
-                MonoBehaviour.print("Releasing block");
             }
 
             if (!(blockReleased) && (moveAttackCountdown > 0) && (rightSmashed || downSmashed || leftSmashed))

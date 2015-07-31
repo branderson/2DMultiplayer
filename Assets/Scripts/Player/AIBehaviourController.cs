@@ -47,13 +47,16 @@ namespace Assets.Scripts.Player
 
             // Detect hanging
             // TODO: There was no state here
-            if (playerController.GetState().GetName() == "EdgeGrabState")
+            if (playerController.GetState() != null)
             {
-                hanging = true;
-            }
-            else
-            {
-                hanging = false;
+                if (playerController.GetState().GetName() == "EdgeGrabState")
+                {
+                    hanging = true;
+                }
+                else
+                {
+                    hanging = false;
+                }
             }
 
             // Jump if hanging

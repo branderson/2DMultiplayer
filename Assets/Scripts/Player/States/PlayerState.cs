@@ -48,6 +48,7 @@ namespace Assets.Scripts.Player.States
         {
             if (!(playerController == null))
             {
+                playerController.sprite.transform.localPosition = Vector3.zero;
                 playerController.StopShaking();          
             }
         }

@@ -2,30 +2,49 @@
 using Assets.Scripts.Player.States;
 using UnityEngine;
 
-namespace Assets.Scripts.Stage
+namespace Assets.Scripts.Player.States
 {
-    public class GrabTrigger : MonoBehaviour
+    public class PlayerGrabTrigger : MonoBehaviour
     {
         private bool occupied = false;
+        private PlayerController playerController;
         private PlayerController occupyingPlayer;
         private Rigidbody2D occupyingRigidbody;
+
+        private void Awake()
+        {
+            playerController = transform.parent.GetComponentInChildren<PlayerController>();
+        }
+
+        private void OnDisable()
+        {
+            if (occupyingPlayer != null)
+            {
+                occupyingPlayer.Grabbed = false;
+            }
+            playerController.Holding = false;
+            occupied = false;
+            occupyingPlayer = null;
+            occupyingRigidbody = null;
+        }
 
         // When player changes between states, edge triggers get wiped
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "PlayerEdgeGrab" && !occupied)
+            if (other.tag == "Player" && !occupied)
             {
-                PlayerController encounteredPlayer = other.transform.parent.GetComponentInChildren<PlayerController>();
+                PlayerController encounteredPlayer = other.GetComponentInParent<PlayerController>();
 
-                // TODO: Account for cases where player begins falling without leaving trigger (make trigger smaller maybe?)
-                if (!(encounteredPlayer.GetVelocityY() < 0))
+                // TODO: Ungrabbable conditions go here 
+                if (encounteredPlayer == playerController || encounteredPlayer.Grabbed || encounteredPlayer.Invincible)
                 {
                     return;
                 }
                 occupyingPlayer = encounteredPlayer;
                 occupied = true;
 
-                occupyingPlayer.animator.SetTrigger("EdgeGrab");
+                playerController.Holding = true;
+                occupyingPlayer.Grabbed = true;
                 occupyingRigidbody = occupyingPlayer.GetComponent<Rigidbody2D>();
                 occupyingPlayer.IncrementVelocity(-occupyingPlayer.GetVelocity());
                 if (occupyingPlayer.facingRight)
@@ -33,8 +52,6 @@ namespace Assets.Scripts.Stage
                     occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
                                                         other.transform.localPosition);
                     occupyingRigidbody.MovePosition(transform.position - other.transform.localPosition);
-//                        print("Moving: " + (transform.position.x - other.transform.localPosition.x) + " " +
-//                              (transform.position.y - other.transform.localPosition.y));
                 }
                 else
                 {
@@ -49,20 +66,15 @@ namespace Assets.Scripts.Stage
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (occupied && other.tag == "PlayerEdgeGrab")
+            if (occupied && other.tag == "Player")
             {
-                if (occupyingPlayer.GetState().GetName() == "EdgeGrabState")
+                if (occupyingPlayer.Grabbed && playerController.Holding) //(occupyingPlayer.GetState().GetName() == "EdgeGrabState")
                 {
-//                    occupyingPlayer.IncrementVelocity(-occupyingPlayer.GetVelocity());
                     if (occupyingPlayer.facingRight)
                     {
-                        //                    occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
-                        //                                                        other.transform.localPosition);
                         occupyingPlayer.transform.Translate(transform.position - occupyingPlayer.transform.position -
                                                             other.transform.localPosition);
                         occupyingRigidbody.MovePosition(transform.position - other.transform.localPosition);
-//                        print("Moving: " + (transform.position.x - other.transform.localPosition.x) + " " +
-//                              (transform.position.y - other.transform.localPosition.y));
                     }
                     else
                     {
@@ -74,14 +86,18 @@ namespace Assets.Scripts.Stage
                     }
 
                 }
+                else if (!occupyingPlayer.Grabbed)
+                {
+                    playerController.Holding = false;
+                }
             }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.tag == "PlayerEdgeGrab")
+            if (other.tag == "Player")
             {
-                if (other.transform.parent.GetComponentInChildren<PlayerController>() == occupyingPlayer)
+                if (other.GetComponent<PlayerController>() == occupyingPlayer)
                 {
                     occupied = false;
                     occupyingPlayer = null;

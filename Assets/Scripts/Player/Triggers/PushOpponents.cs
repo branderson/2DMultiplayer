@@ -23,18 +23,22 @@ namespace Assets.Scripts.Player
 
         private void FixedUpdate()
         {
+            if (playerController.Grabbed)
+            {
+                return;
+            }
             foreach (PlayerController player in touchingPlayers)
             {
                 if ((right && playerController.facingRight) || (!right && !playerController.facingRight))
                 {
-                    if (player.GetSpeedX() < pushSpeed && !player.Invincible)
+                    if (player.GetSpeedX() < pushSpeed && !player.Invincible && !player.onEdgeRight)
                     {
                         player.IncrementVelocityX(pushSpeed);
                     }
                 }
                 else
                 {
-                    if (player.GetSpeedX() < pushSpeed && !player.Invincible)
+                    if (player.GetSpeedX() < pushSpeed && !player.Invincible && !player.onEdgeLeft) 
                     {
                         player.IncrementVelocityX(-pushSpeed);
                     }
