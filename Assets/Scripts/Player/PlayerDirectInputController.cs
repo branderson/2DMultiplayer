@@ -228,10 +228,10 @@ namespace Assets.Scripts.Player
             {
                 if (playerController.animator.GetCurrentAnimatorClipInfo(0).Count() != 0)
                 {
-                    print("The current state is not implemented: " +
-                          playerController.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+//                    print("The current state is not implemented: " +
+//                          playerController.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
                 }
-                print("The current state is not implemented");
+//                print("The current state is not implemented");
             }
         }
 

@@ -20,7 +20,7 @@ namespace Assets.Scripts.Player.States
             frames = 0;
             forceTriggers = animator.GetComponentsInChildren<ApplyForceTrigger>(true);
             charge = playerController.SmashCharge;
-            MonoBehaviour.print("Charge: " + charge);
+//            MonoBehaviour.print("Charge: " + charge);
             playerController.SmashCharge = 0;
             foreach (ApplyForceTrigger trigger in forceTriggers)
             {

@@ -82,7 +82,7 @@ namespace Assets.Scripts.Menu
 
         public void LoadScene(string scene)
         {
-            print("Setting scene to " + scene);
+//            print("Setting scene to " + scene);
             Application.LoadLevel(scene);
         }
     }

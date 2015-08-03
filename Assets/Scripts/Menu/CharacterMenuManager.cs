@@ -132,7 +132,7 @@ namespace Assets.Scripts.Menu
                             if (Input.GetButtonDown("PrimaryJ" + i) &&
                                 !playerCards.Any(card => (card.inputController.ControllerNumber == i-1 && card.IsActive())))
                             {
-                                print("Trying to activate");
+//                                print("Trying to activate");
                                 ActivateDirectInput(i-1);
                             }
                         }
@@ -190,8 +190,8 @@ namespace Assets.Scripts.Menu
             }
 
             Controllers[slot] = true;
-            playerCards[slot].Activate();
-            print("Adding XInput");
+            playerCards[slot].ActivateXInput();
+//            print("Adding XInput");
 
             inputControllers[slot].UseXInput = true;
             inputControllers[slot].XIndex = xIndex;
@@ -218,9 +218,9 @@ namespace Assets.Scripts.Menu
             }
 
             Controllers[slot] = true;
-            playerCards[slot].Activate();
+            playerCards[slot].ActivateKeyboard();
             inputControllers[slot].Keyboard = true;
-            print("Adding keyboard");
+//            print("Adding keyboard");
         }
 
         private void ActivateDirectInput(int inputIndex)
@@ -244,9 +244,9 @@ namespace Assets.Scripts.Menu
             }
 
             Controllers[slot] = true;
-            playerCards[slot].Activate();
+            playerCards[slot].ActivateDirectInput();
             inputControllers[slot].ControllerNumber = inputIndex;
-            print("Adding DirectInput");
+//            print("Adding DirectInput");
         }
 
         public void Deactivate(int number)

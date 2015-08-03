@@ -42,7 +42,7 @@ namespace Assets.Scripts.Menu
                             if (tournamentCode[inputStringIndex] == "left")
                             {
                                 inputStringIndex++;
-                                print("Left");
+//                                print("Left");
                             }
                             else
                             {
@@ -54,7 +54,7 @@ namespace Assets.Scripts.Menu
                             if (tournamentCode[inputStringIndex] == "right")
                             {
                                 inputStringIndex++;
-                                print("Right");
+//                                print("Right");
                             }
                             else
                             {
@@ -78,7 +78,7 @@ namespace Assets.Scripts.Menu
                             if (tournamentCode[inputStringIndex] == "down")
                             {
                                 inputStringIndex++;
-                                print("Down");
+//                                print("Down");
                             }
                             else
                             {
@@ -90,7 +90,7 @@ namespace Assets.Scripts.Menu
                             if (tournamentCode[inputStringIndex] == "up")
                             {
                                 inputStringIndex++;
-                                print("Up");
+//                                print("Up");
                             }
                             else
                             {
@@ -110,7 +110,7 @@ namespace Assets.Scripts.Menu
                     if (tournamentCode[inputStringIndex] == "a")
                     {
                         inputStringIndex++;
-                        print("A");
+//                        print("A");
                     }
                     else
                     {
@@ -123,7 +123,7 @@ namespace Assets.Scripts.Menu
                     if (tournamentCode[inputStringIndex] == "b")
                     {
                         inputStringIndex++;
-                        print("B");
+//                        print("B");
                     }
                     else
                     {

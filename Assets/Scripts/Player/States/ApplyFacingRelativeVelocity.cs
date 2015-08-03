@@ -9,6 +9,8 @@ namespace Assets.Scripts.Player.States
         [SerializeField] private bool continuous = false;
         [SerializeField] private bool SetAbsolute = false;
         [SerializeField] private bool DamageScaled = false;
+        [SerializeField] private bool applyX = true;
+        [SerializeField] private bool applyY = true;
         [SerializeField] private Vector2 velocity = new Vector2();
         private int countDown = 0;
         private bool applied = false;
@@ -47,11 +49,33 @@ namespace Assets.Scripts.Player.States
 
                 if (SetAbsolute)
                 {
-                    playerController.IncrementVelocity(velocity.x*directionModifier*damageMultiplier - playerController.GetVelocityX(), velocity.y*damageMultiplier - playerController.GetVelocityY());
+                    if (applyX && applyY)
+                    {
+                        playerController.IncrementVelocity(velocity.x*directionModifier*damageMultiplier - playerController.GetVelocityX(), velocity.y*damageMultiplier - playerController.GetVelocityY());
+                    }
+                    else if (applyX)
+                    {
+                        playerController.IncrementVelocityX(velocity.x*directionModifier*damageMultiplier - playerController.GetVelocityX());
+                    }
+                    else if (applyY)
+                    {
+                        playerController.IncrementVelocityY(velocity.y*damageMultiplier - playerController.GetVelocityY());
+                    }
                 }
                 else
                 {
-                    playerController.IncrementVelocity(velocity.x*directionModifier*damageMultiplier, velocity.y*damageMultiplier);
+                    if (applyX && applyY)
+                    {
+                        playerController.IncrementVelocity(velocity.x*directionModifier*damageMultiplier, velocity.y*damageMultiplier);
+                    }
+                    else if (applyX)
+                    {
+                        playerController.IncrementVelocityX(velocity.x*directionModifier*damageMultiplier);
+                    }
+                    else if (applyY)
+                    {
+                        playerController.IncrementVelocityY(velocity.y*damageMultiplier);
+                    }
                 }
             }
         }       

@@ -28,51 +28,12 @@ namespace Assets.Scripts.Player
 
         public void Update()
         {
-//            print(playerController.opponents.Count());
             opponentPositions = playerController.opponents.Select(item => item.transform).ToList();
-//            Transform nearestOpponent = opponentPositions.
 
-            // Move in opposite direction of launch
-            if (!Mathf.Approximately(playerController.velocityX, 0))
-            {
-                if (playerController.velocityX < -10)
-                {
-                    inputController.Move(1, 0);
-                }
-                else if (playerController.velocityX > 10)
-                {
-                    inputController.Move(-1, 0);
-                }
-            }
-
-            // Detect hanging
-            // TODO: There was no state here
             if (playerController.GetState() != null)
             {
-                if (playerController.GetState().GetName() == "EdgeGrabState")
-                {
-                    hanging = true;
-                }
-                else
-                {
-                    hanging = false;
-                }
+                playerController.GetState().ProcessAI(opponentPositions);
             }
-
-            // Jump if hanging
-            if (hanging)
-            {
-                inputController.Jump();
-            }
-//
-//            if (opponentPositions.Any(item => Mathf.Abs(item.position.x - transform.position.x) < 2 && Mathf.Abs(item.position.y - transform.position.y) < 1))
-//            {
-//                inputController.SetBlock(true);
-//            }
-//            else
-//            {
-//                inputController.SetBlock(false);
-//            }
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Assets.Scripts.Menu
     public class MenuButton : MonoBehaviour, ISelectable
     {
 //        private Button button;
+        [SerializeField] private bool active = true;
         private MenuSelectable menuSelectable;
         private AllowedSelections allowedSelections;
 
@@ -20,6 +21,10 @@ namespace Assets.Scripts.Menu
 //            button = GetComponent<Button>();
             menuSelectable = GetComponent<MenuSelectable>();
             allowedSelections = GetComponent<AllowedSelections>();
+            if (!active)
+            {
+                Deactivate();
+            }
         }
 
         // Use this for initialization
@@ -32,6 +37,18 @@ namespace Assets.Scripts.Menu
         private void Update()
         {
 
+        }
+
+        public void Activate()
+        {
+            gameObject.SetActive(true);
+            active = true;
+        }
+
+        public void Deactivate()
+        {
+            gameObject.SetActive(false);
+            active = false;
         }
 
         public void Select(int playerNumber, PointerEventData pointer)
@@ -51,6 +68,10 @@ namespace Assets.Scripts.Menu
 
         public bool AllowSelection(int playerNumber)
         {
+            if (!active)
+            {
+                return false;
+            }
             return allowedSelections.Allow(playerNumber);
         }
 

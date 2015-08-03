@@ -40,7 +40,7 @@ namespace Assets.Scripts.Menu
 
         public void Init()
         {
-            print("Assigning controller");
+//            print("Assigning controller");
             controllerAssigned = true;
         }
 
@@ -480,7 +480,7 @@ namespace Assets.Scripts.Menu
             {
                 if (gamePadState.Buttons.B == ButtonState.Pressed)
                 {
-                    print("Adding B");
+//                    print("Adding B");
                     buttonsPressed.Add(button);
                     return true;
                 }

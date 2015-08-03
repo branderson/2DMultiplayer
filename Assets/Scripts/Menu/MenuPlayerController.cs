@@ -69,6 +69,10 @@ namespace Assets.Scripts.Menu
             if (Selected.up != null)
             {
                 Selected.Up(this);
+                if (!Selected.up.enabled)
+                {
+                    return;
+                }
                 if (Selected.up.AllowSelection(this))
                 {
                     SetSelected(Selected.up);
@@ -81,6 +85,10 @@ namespace Assets.Scripts.Menu
             if (Selected.down != null)
             {
                 Selected.Down(this);
+                if (!Selected.down.enabled)
+                {
+                    return;
+                }
                 if (Selected.down.AllowSelection(this))
                 {
                     SetSelected(Selected.down);
@@ -94,6 +102,10 @@ namespace Assets.Scripts.Menu
             if (Selected.left != null)
             {
                 Selected.Left(this);
+                if (!Selected.left.enabled)
+                {
+                    return;
+                }
                 if (Selected.left.AllowSelection(this))
                 {
                     SetSelected(Selected.left);
@@ -106,6 +118,10 @@ namespace Assets.Scripts.Menu
             if (Selected.right != null)
             {
                 Selected.Right(this);
+                if (!Selected.right.enabled)
+                {
+                    return;
+                }
                 if (Selected.right.AllowSelection(this))
                 {
                     SetSelected(Selected.right);
@@ -133,6 +149,7 @@ namespace Assets.Scripts.Menu
                         playerCard.UnReady();
                     }
                         // TODO: Not a good place to put this. Prevents backing up through menus
+                        // TODO: Try to fire this up to characterMenuManager.Deactivate()
                     else if (playerCard.IsActive() && !input.Computer)
                     {
                         playerCard.Deactivate();

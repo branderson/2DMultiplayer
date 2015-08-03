@@ -21,6 +21,16 @@ namespace Assets.Scripts.Menu
             selectors = new List<MenuPlayerController>();
         }
 
+        public void Activate()
+        {
+            uiElement.Activate();
+        }
+
+        public void Deactivate()
+        {
+            uiElement.Deactivate();
+        }
+
         public void Up(MenuPlayerController player)
         {
             
@@ -53,6 +63,10 @@ namespace Assets.Scripts.Menu
 
         public bool AllowSelection(MenuPlayerController player)
         {
+            if (uiElement == null)
+            {
+                return false;
+            }
             return uiElement.AllowSelection(player.PlayerNumber);
         }
 

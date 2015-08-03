@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.Player.States
 {
@@ -15,5 +16,6 @@ namespace Assets.Scripts.Player.States
         void Secondary(float x, float y);
         void Block();
         void Grab();
+        void ProcessAI(List<Transform> opponentPositions);
     }
 }

@@ -49,7 +49,6 @@ namespace Assets.Scripts.Player.States
 
         public void ShakeSpriteX(int frames)
         {
-            // inputs.x is frames, inputs.y is intensity
             playerController.ShakeSpriteX(frames);
         }
 

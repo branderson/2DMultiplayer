@@ -405,7 +405,6 @@ namespace Assets.Scripts.Player
             {
                 if (gamePadState.Triggers.Right > triggerThreshold)
                 {
-                    print("Block down");
                     buttonsPressed.Add(button);
                     return true;
                 }
@@ -434,7 +433,7 @@ namespace Assets.Scripts.Player
             GamePadState gamePadState = GamePad.GetState(XIndex, GamePadDeadZone.Circular);
             if (!controls.ContainsKey(control))
             {
-                print("Error: " + control);
+//                print("Error: " + control);
                 return false;
             }
             string button = controls[control];

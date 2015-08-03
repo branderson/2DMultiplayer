@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Assets.Scripts.Player.States.AIBehaviourStates;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.States
@@ -8,6 +10,7 @@ namespace Assets.Scripts.Player.States
         protected PlayerController playerController;
         protected IInputController PlayerInputController;
         protected Animator playerAnimator;
+        internal AIBehaviourState AIState;
 
         public abstract string GetName();
 
@@ -62,6 +65,7 @@ namespace Assets.Scripts.Player.States
         public virtual void Move(float x, float y)
         {
             playerAnimator.SetFloat("xInput", x);
+                
             playerAnimator.SetFloat("yInput", y);
         }
 
@@ -123,6 +127,14 @@ namespace Assets.Scripts.Player.States
         public virtual void Grab()
         {
             playerAnimator.SetTrigger("Grab");
+        }
+
+        public virtual void ProcessAI(List<Transform> opponentPositions)
+        {
+            if (AIState != null)
+            {
+                AIState.ProcessAI(opponentPositions);
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ namespace Assets.Scripts.Menu
     public interface ISelectable
     {
         bool AllowSelection(int playerNumber);
+        void Activate();
+        void Deactivate();
         void Select(int playerNumber, PointerEventData pointer);
         void Unselect(int playerNumber, PointerEventData pointer);
         void Primary(MenuPlayerController player, PointerEventData pointer);

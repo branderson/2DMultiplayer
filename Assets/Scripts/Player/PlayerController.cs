@@ -589,7 +589,7 @@ namespace Assets.Scripts.Player
 
         private IEnumerator StunRoutine(int frames)
         {
-            print("Stun frames: " + frames);
+//            print("Stun frames: " + frames);
             animator.SetBool("Stunned", true);
             while (frames > 0)
             {

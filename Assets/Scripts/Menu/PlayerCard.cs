@@ -17,6 +17,7 @@ namespace Assets.Scripts.Menu
         private ToggleBox tapJumpBox;
         private ToggleBox vibrationBox;
         private ToggleBox dPadBox;
+        private ControllerIcon controllerIcon;
         private Image panelImage;
         private Text titleText;
         private Text instructionText;
@@ -35,9 +36,21 @@ namespace Assets.Scripts.Menu
 //            inputController.Vibration = config.Vibration;
             inputController.XIndex = config.XIndex;
             inputController.UseXInput = config.UseXInput;
+            tapJumpBox.Activate();
             tapJumpBox.SetToggle(config.TapJump);
-            vibrationBox.SetToggle(config.Vibration);
-            dPadBox.SetToggle(config.DPad);
+            tapJumpBox.Deactivate();
+            if (config.UseXInput)
+            {
+                vibrationBox.Activate();
+                vibrationBox.SetToggle(config.Vibration);
+                vibrationBox.Deactivate();
+            }
+            if (!config.Keyboard && !config.Computer)
+            {
+                dPadBox.Activate();
+                dPadBox.SetToggle(config.DPad);
+                dPadBox.Deactivate();
+            }
             this.active = config.Active;
             playerController.active = config.Active;
             playerController.CharacterIndex = config.Character;
@@ -60,6 +73,7 @@ namespace Assets.Scripts.Menu
             tapJumpBox = transform.Find("TapJump").gameObject.GetComponent<ToggleBox>();
             vibrationBox = transform.Find("Vibrate").gameObject.GetComponent<ToggleBox>();
             dPadBox = transform.Find("DPad").gameObject.GetComponent<ToggleBox>();
+            controllerIcon = transform.Find("ControllerIcon").gameObject.GetComponent<ControllerIcon>();
             panelImage = GetComponent<Image>();
             titleText = title.GetComponent<Text>();
             instructionText = instruction.GetComponent<Text>();
@@ -78,6 +92,30 @@ namespace Assets.Scripts.Menu
         public void SetText(string text)
         {
             instructionText.text = text;
+        }
+
+        public void ActivateKeyboard()
+        {
+            Activate();
+            controllerIcon.SetIndex(0);
+            tapJumpBox.Activate();
+        }
+
+        public void ActivateXInput()
+        {
+            Activate();
+            controllerIcon.SetIndex(1);
+            tapJumpBox.Activate();
+            vibrationBox.Activate();
+            dPadBox.Activate();
+        }
+
+        public void ActivateDirectInput()
+        {
+            Activate();
+            controllerIcon.SetIndex(2);
+            tapJumpBox.Activate();
+            dPadBox.Activate();
         }
 
         public void ActivateComputer()
@@ -109,6 +147,10 @@ namespace Assets.Scripts.Menu
             panelImage.color = Color.white;
             titleText.text = "None";
             instructionText.text = "Press A";
+            tapJumpBox.Deactivate();
+            vibrationBox.Deactivate();
+            dPadBox.Deactivate();
+            controllerIcon.Deactivate();
             playerController.Deactivate();
             inputController.Deactivate();
             // TODO: Deactivate inputController
