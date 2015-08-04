@@ -67,6 +67,7 @@ namespace Assets.Scripts.Player
         internal SpriteRenderer sprite;
         internal Color color; // TODO: Get rid of this
         private Vector2 spritePosition;
+        internal bool Computer = false;
 
         private float animationResumeSpeed;
         internal bool Paused = false;
@@ -84,7 +85,7 @@ namespace Assets.Scripts.Player
         internal bool Grabbed = false;
         internal bool CanFallThroughFloor = false;
 
-        public void Init(int zPosition, int slot)
+        public void Init(int zPosition, int slot, bool computer)
         {
             input = GetComponent<IInputController>();
             color = sprite.color;
@@ -96,6 +97,7 @@ namespace Assets.Scripts.Player
             SetLayerOrder(zPosition);
             playerNumber = slot + 1;
             IFrames = 120; // 5 seconds of invincibility
+            Computer = computer;
         }
 
         public void InitUI(PlayerUI uiCard)
@@ -279,6 +281,12 @@ namespace Assets.Scripts.Player
                 }
             }
             return grounded;
+        }
+
+        public bool RaycastGround()
+        {
+            // TODO: Implement this
+            return true;
         }
 
         public void IgnoreCollision(Collider2D other)

@@ -15,5 +15,31 @@ Player Controller
 Make force triggers able to launch opposite direction of contact
 Shaders
 
-
 Animations, animations, animations!
+
+AI
+	Ghost AI
+		Situational State info
+			Each player state ID
+			Each player position (truncate to integer deltas between player and other players, perhaps nearest player?)
+			Player facing right
+			Each player shield strength
+			All projectile positions/velocities(?)
+			Stage information
+				If not over ground, fall back to hardcoded AI, stop recording
+
+			6 bits: StateID (truncate first 2 bits)
+			1 bit: Nearest to left or right (use closest x or closest y based on ratio)
+			4 bits: Nearest X delta range (less precise as player is farther away) 
+			1 bit: Nearest above or below
+			2 bits: Nearest Y delta range (split up into 4 ranges)
+			4 bits: Nearest opponent StateID (simplified based on heuristic state)
+			1 bit: Projectile within certain range
+			3/4 bits: Nearest opponent shield strength, split into ranges
+			(4 bits?): Possibly bits for damage or knockback opponent receives in frame
+			1 bit: Player facing direction
+			1 bit: Touching edge
+
+	Hardcoded AI
+		Fall back to this if no state found in Ghost AI
+		Fall back to this when not over stage (when stage information needed)

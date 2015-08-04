@@ -31,10 +31,13 @@ namespace Assets.Scripts.Player
         {
             opponentPositions = playerController.opponents.Select(item => item.transform).ToList();
 
+            // Run AI system
             if (playerController.GetState() != null)
             {
                 playerController.GetState().ProcessAI(opponentPositions);
             }
+
+            // Ghost AI system
         }
     }
 }

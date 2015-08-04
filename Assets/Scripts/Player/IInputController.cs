@@ -13,5 +13,6 @@ namespace Assets.Scripts
         bool AxisNegative(string name);
         void VibrateController(float leftMotor, float rightMotor);
         void StopVibration();
+
     }
 }

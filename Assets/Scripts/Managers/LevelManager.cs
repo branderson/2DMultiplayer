@@ -17,14 +17,12 @@ namespace Assets.Scripts.Managers
         private GameManager gameManager;
         private CharacterMenuManager characterMenuManager; // Reference to menu manager
         // TODO: Can add field for order of spawn points
-        private List<GameObject> players = new List<GameObject>(); 
+        internal List<GameObject> players = new List<GameObject>(); 
 
         void Awake()
         {
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             characterMenuManager = GameObject.Find("MenuManager").GetComponent<CharacterMenuManager>();
-//            spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
-//            playerUI = GameObject.FindGameObjectsWithTag("PlayerUI");
 
             // Assign controllers to players and instantiate players at spawn locations
             for (int card = 0; card < 4; card++)
@@ -82,7 +80,7 @@ namespace Assets.Scripts.Managers
                             break;
                     }
 
-                    player.GetComponentInChildren<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card); // TODO: Eventually pass menuPlayerController in
+                    player.GetComponentInChildren<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card, characterMenuManager.inputControllers[card].Computer); // TODO: Eventually pass menuPlayerController in
                     players.Add(player);
                 }
             }
@@ -130,11 +128,6 @@ namespace Assets.Scripts.Managers
             {
                 player.GetComponentInChildren<PlayerController>().FindPlayers(players);
             }
-
-//            playerUI[2].SetActive(false);
-//            for (int i = 0; i < 4; i++)
-//            {
-//            }
             
             // Get rid of menu manager so it's not still waiting for inputs
             Destroy(characterMenuManager.gameObject);

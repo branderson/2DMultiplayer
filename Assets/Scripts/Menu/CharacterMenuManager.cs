@@ -152,7 +152,7 @@ namespace Assets.Scripts.Menu
 
                 // If all players ready, load level
                 // TODO: Load level select scene here instead
-                if (allReady && playerCards.Any(card => (card.IsActive() && !card.inputController.Computer)))
+                if (allReady && playerCards.Any(card => (card.IsActive() && !card.inputController.Computer)) && Controllers.Where(item => item).Count() > 1)
                 {
                     Object.DontDestroyOnLoad(this);
                     playerCards = null;

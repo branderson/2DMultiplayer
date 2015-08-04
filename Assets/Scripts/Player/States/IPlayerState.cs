@@ -17,5 +17,6 @@ namespace Assets.Scripts.Player.States
         void Block();
         void Grab();
         void ProcessAI(List<Transform> opponentPositions);
+        byte GetStateID();
     }
 }

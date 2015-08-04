@@ -255,6 +255,18 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &11400826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateID: 40
 --- !u!114 &11401464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 47
 --- !u!114 &11402888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c39269c63aae3249b79fedcb3d2ef6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 27
 --- !u!114 &11402904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,6 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a9014b05ddc344e87335658f156c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 55
   idle: 0
 --- !u!114 &11403246
 MonoBehaviour:
@@ -340,6 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedc7f86a4b53d54c83b40ff972a4000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 31
 --- !u!114 &11403746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 50
 --- !u!114 &11406072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedc7f86a4b53d54c83b40ff972a4000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 33
 --- !u!114 &11407076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,6 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 59
 --- !u!114 &11407118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -466,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 0
 --- !u!114 &11410594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -488,6 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c49e2ceaf600641bdd99d853d38241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 7
 --- !u!114 &11410862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -499,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 51
 --- !u!114 &11410968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -521,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46f595d604f3de4c8edeb7a52088dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 9
 --- !u!114 &11412264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,6 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dac58540e39994db5725c4ce3e55a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 49
   waitFrames: 4
   directionalControl: 1
   airJump: 0
@@ -546,6 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba7b3e0a5697674a8e74d9fb0bcab75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 41
   waitFrames: 9
   directionalControl: 1
 --- !u!114 &11413292
@@ -559,6 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 24
 --- !u!114 &11413540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -659,6 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f6a4fa7da816c48ae86ea354e18594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 5
 --- !u!114 &11419830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -686,6 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a9014b05ddc344e87335658f156c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 1
   idle: 0
 --- !u!114 &11420998
 MonoBehaviour:
@@ -709,6 +737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba7b3e0a5697674a8e74d9fb0bcab75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 25
   waitFrames: 9
   directionalControl: 1
 --- !u!114 &11423216
@@ -722,6 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499b243070a34de488781b6c1dd2e28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 23
 --- !u!114 &11424064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -744,6 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499b243070a34de488781b6c1dd2e28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 8
 --- !u!114 &11424826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -755,6 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 11
 --- !u!114 &11425080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -766,6 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 37
 --- !u!114 &11425846
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -777,6 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 0
 --- !u!114 &11426102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,6 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 43
 --- !u!114 &11428110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -799,6 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499b243070a34de488781b6c1dd2e28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 20
 --- !u!114 &11429566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -828,6 +864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b4b21385532d246a276106ed85ceca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 19
   holdSpeedRatio: .5
 --- !u!114 &11431800
 MonoBehaviour:
@@ -840,6 +877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63874030458699842b5636a39e106b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 34
 --- !u!114 &11433608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -851,6 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 39
 --- !u!114 &11433686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -862,6 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 64
 --- !u!114 &11434856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -917,6 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 15
 --- !u!114 &11437598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -928,6 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 4
 --- !u!114 &11437866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -962,6 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efddfa4d8f7de044385e1f2a4e5d0981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 45
   waitFrames: 2
   directionalControl: 1
 --- !u!114 &11441184
@@ -1002,6 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8eb290e1694b143a90006fd1dfd434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 22
 --- !u!114 &11443864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1035,6 +1079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efddfa4d8f7de044385e1f2a4e5d0981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 0
   waitFrames: 4
   directionalControl: 1
 --- !u!114 &11446676
@@ -1048,6 +1093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 48
 --- !u!114 &11446738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1070,6 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 54
 --- !u!114 &11448366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1081,6 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 17
 --- !u!114 &11448990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1092,6 +1140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dda4288b9d8b04c852c7950e6f5322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 58
 --- !u!114 &11449296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1149,6 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 63
 --- !u!114 &11454016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1171,6 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 18
 --- !u!114 &11454356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1200,6 +1251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 42
 --- !u!114 &11455196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1233,6 +1285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 0
 --- !u!114 &11456950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1244,6 +1297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499b243070a34de488781b6c1dd2e28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 44
 --- !u!114 &11457230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1284,6 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 60
 --- !u!114 &11459656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1295,6 +1350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b4b21385532d246a276106ed85ceca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 13
   holdSpeedRatio: .5
 --- !u!114 &11460154
 MonoBehaviour:
@@ -1307,6 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a9014b05ddc344e87335658f156c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 0
   idle: 1
 --- !u!114 &11460308
 MonoBehaviour:
@@ -1330,6 +1387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63874030458699842b5636a39e106b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 32
 --- !u!114 &11461148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1352,6 +1410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 14
 --- !u!114 &11461394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1407,6 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 65
 --- !u!114 &11464718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1418,6 +1478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 53
 --- !u!114 &11465002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1456,6 +1517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 10
 --- !u!114 &11465988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1499,6 +1561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 61
 --- !u!114 &11467998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1617,6 +1680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 0
 --- !u!114 &11475396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1662,6 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 56
 --- !u!114 &11476676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1695,6 +1760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dac58540e39994db5725c4ce3e55a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 52
   waitFrames: 1
   directionalControl: 1
   airJump: 1
@@ -1709,6 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63874030458699842b5636a39e106b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 30
 --- !u!114 &11478764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1720,6 +1787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499b243070a34de488781b6c1dd2e28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 16
 --- !u!114 &11479060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1731,6 +1799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba7b3e0a5697674a8e74d9fb0bcab75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 29
   waitFrames: 10
   directionalControl: 1
 --- !u!114 &11479094
@@ -1744,6 +1813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8eb290e1694b143a90006fd1dfd434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 21
 --- !u!114 &11479112
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1755,6 +1825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499b243070a34de488781b6c1dd2e28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 3
 --- !u!114 &11479156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1766,6 +1837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 62
 --- !u!114 &11479628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1788,6 +1860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 57
 --- !u!114 &11479998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1799,6 +1872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 46
 --- !u!114 &11481752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1810,6 +1884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c39269c63aae3249b79fedcb3d2ef6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 26
 --- !u!114 &11482374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1832,6 +1907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a9014b05ddc344e87335658f156c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 2
   idle: 0
 --- !u!114 &11482974
 MonoBehaviour:
@@ -1862,6 +1938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a9014b05ddc344e87335658f156c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 6
   idle: 0
 --- !u!114 &11483312
 MonoBehaviour:
@@ -1912,6 +1989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 38
 --- !u!114 &11488910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1968,6 +2046,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 0
+--- !u!114 &11492198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef30b0a63e381a449850d055f597b531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateID: 28
 --- !u!114 &11492482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2004,6 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499b243070a34de488781b6c1dd2e28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 35
 --- !u!114 &11494188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2067,6 +2159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedc7f86a4b53d54c83b40ff972a4000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 36
 --- !u!114 &11499794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2078,6 +2171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9e15fd382b1414b85878ef79116433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateID: 12
 --- !u!206 &20622948
 BlendTree:
   m_ObjectHideFlags: 1
@@ -8568,7 +8662,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5ad47af1dcf575b48b1c94c55c1fca3e, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: xVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110204228
@@ -8786,10 +8880,10 @@ AnimatorState:
   m_Transitions:
   - {fileID: 110181756}
   m_StateMachineBehaviours:
+  - {fileID: 11407076}
   - {fileID: 11401910}
   - {fileID: 11475806}
   - {fileID: 11414066}
-  - {fileID: 11407076}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -8913,7 +9007,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5ad47af1dcf575b48b1c94c55c1fca3e, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: xVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110230740
@@ -9157,11 +9251,11 @@ AnimatorState:
   m_Transitions:
   - {fileID: 110125372}
   m_StateMachineBehaviours:
+  - {fileID: 11426102}
   - {fileID: 11406072}
   - {fileID: 11429566}
   - {fileID: 11455198}
   - {fileID: 11413540}
-  - {fileID: 11426102}
   - {fileID: 11407118}
   - {fileID: 11455196}
   m_Position: {x: 50, y: 50, z: 0}
@@ -9379,9 +9473,9 @@ AnimatorState:
   - {fileID: 110133500}
   - {fileID: 110144022}
   m_StateMachineBehaviours:
+  - {fileID: 11458536}
   - {fileID: 11482974}
   - {fileID: 11454356}
-  - {fileID: 11458536}
   - {fileID: 11462610}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -9626,7 +9720,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110135206}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 11400826}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -9636,7 +9731,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5ad47af1dcf575b48b1c94c55c1fca3e, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: xVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110261890
@@ -9953,6 +10048,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 110121830}
   m_StateMachineBehaviours:
+  - {fileID: 11492198}
   - {fileID: 11476784}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -10017,7 +10113,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5ad47af1dcf575b48b1c94c55c1fca3e, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: xVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110282510
@@ -10171,7 +10267,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5ad47af1dcf575b48b1c94c55c1fca3e, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: xVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110294280
@@ -10308,7 +10404,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5ad47af1dcf575b48b1c94c55c1fca3e, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: xVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110299034
@@ -10323,8 +10419,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 110112650}
   m_StateMachineBehaviours:
-  - {fileID: 11464014}
   - {fileID: 11456950}
+  - {fileID: 11464014}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -10334,7 +10430,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 0ce04b86842a3564794690e9265aba1c, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: xVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110299436
@@ -10349,9 +10445,9 @@ AnimatorState:
   m_Transitions:
   - {fileID: 110150278}
   m_StateMachineBehaviours:
+  - {fileID: 11454468}
   - {fileID: 11401620}
   - {fileID: 11437152}
-  - {fileID: 11454468}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -10361,7 +10457,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5ad47af1dcf575b48b1c94c55c1fca3e, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: xVelocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110299998
@@ -10474,10 +10570,10 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:
-      first: {fileID: 110783454}
+      first: {fileID: 110782698}
       second: []
     data:
-      first: {fileID: 110782698}
+      first: {fileID: 110783454}
       second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
@@ -10702,13 +10798,13 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:
-      first: {fileID: 110783454}
-      second: []
-    data:
       first: {fileID: 110719254}
       second: []
     data:
       first: {fileID: 110731150}
+      second: []
+    data:
+      first: {fileID: 110783454}
       second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 648, y: 108, z: 0}
@@ -10801,13 +10897,22 @@ AnimatorStateMachine:
       first: {fileID: 0}
       second: []
     data:
-      first: {fileID: 110783454}
+      first: {fileID: 110715200}
       second: []
     data:
-      first: {fileID: 110785856}
+      first: {fileID: 110719254}
+      second: []
+    data:
+      first: {fileID: 110731150}
+      second: []
+    data:
+      first: {fileID: 110738332}
       second: []
     data:
       first: {fileID: 110750514}
+      second: []
+    data:
+      first: {fileID: 110761722}
       second: []
     data:
       first: {fileID: 110763682}
@@ -10816,19 +10921,10 @@ AnimatorStateMachine:
       first: {fileID: 110782698}
       second: []
     data:
-      first: {fileID: 110761722}
+      first: {fileID: 110783454}
       second: []
     data:
-      first: {fileID: 110738332}
-      second: []
-    data:
-      first: {fileID: 110715200}
-      second: []
-    data:
-      first: {fileID: 110719254}
-      second: []
-    data:
-      first: {fileID: 110731150}
+      first: {fileID: 110785856}
       second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 1068, y: -276, z: 0}
@@ -10888,10 +10984,10 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:
-      first: {fileID: 110783454}
+      first: {fileID: 110715200}
       second: []
     data:
-      first: {fileID: 110715200}
+      first: {fileID: 110783454}
       second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 492, y: -180, z: 0}

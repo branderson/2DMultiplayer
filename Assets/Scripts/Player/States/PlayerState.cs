@@ -7,6 +7,7 @@ namespace Assets.Scripts.Player.States
 {
     public abstract class PlayerState : StateMachineBehaviour, IPlayerState
     {
+        [SerializeField] private byte StateID = 0;
         protected PlayerController playerController;
         protected IInputController PlayerInputController;
         protected Animator playerAnimator;
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Player.States
             PlayerInputController = animator.GetComponentInChildren<IInputController>();
             playerController.SetState(this);
             playerAnimator = animator;
+            MonoBehaviour.print(animator.GetCurrentAnimatorStateInfo(0).tagHash);
         }
 
         public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -135,6 +137,11 @@ namespace Assets.Scripts.Player.States
             {
                 AIState.ProcessAI(opponentPositions);
             }
+        }
+
+        public byte GetStateID()
+        {
+            return StateID;
         }
     }
 }
