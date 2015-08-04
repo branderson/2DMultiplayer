@@ -11,8 +11,10 @@ namespace Assets.Scripts.Player.States.AIBehaviours
         protected PlayerController playerController;
         protected AIInputController PlayerInputController;
         protected Animator playerAnimator;
+        protected AIBehaviourController behaviourController;
         protected PlayerState playerState;
         protected AIBehaviourState aiState;
+        internal bool InState = false;
 
         public abstract void Process(List<Transform> opponentPositions);
 
@@ -22,13 +24,16 @@ namespace Assets.Scripts.Player.States.AIBehaviours
             playerController = animator.GetComponentInChildren<PlayerController>();
             PlayerInputController = animator.GetComponentInChildren<AIInputController>();
             playerState = playerController.GetState();
+            behaviourController = animator.GetComponentInChildren<AIBehaviourController>();
             playerAnimator = animator;
             aiState = playerState.AIState;
+            InState = true;
         }
 
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
             active = false;
+            InState = false;
         }
 
         public bool IsActive()

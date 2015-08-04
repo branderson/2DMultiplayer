@@ -13,6 +13,7 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
         protected PlayerController playerController;
         protected AIInputController PlayerInputController;
         protected Animator playerAnimator;
+        protected AIBehaviourController behaviourController;
         protected PlayerState playerState;
         protected AIBehaviour[] behaviours;
 
@@ -22,12 +23,13 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
             playerController = animator.GetComponentInChildren<PlayerController>();
             PlayerInputController = animator.GetComponentInChildren<AIInputController>();
             playerAnimator = animator;
-            playerState = animator.GetBehaviour<PlayerState>();
+            behaviourController = animator.GetComponentInChildren<AIBehaviourController>();
+            playerState = playerController.GetState();
+            playerState.AIState = this;
             if (behaviours == null)
             {
                 behaviours = playerAnimator.GetBehaviours<AIBehaviour>();
             }
-            playerState.AIState = this;
         }
 
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -37,24 +39,18 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
 
         public virtual void ProcessAI(List<Transform> opponentPositions)
         {
-            MonoBehaviour.print(behaviours.Count());
             foreach (AIBehaviour behaviour in behaviours)
             {
                 if (behaviour.IsActive())
                 {
-                    MonoBehaviour.print("Processing something");
                     behaviour.Process(opponentPositions);
-                }
-                else
-                {
-                    MonoBehaviour.print("Behaviour inactive");
                 }
             }
         }
 
         public void ActivateBehaviour(Type behaviourType)
         {
-            AIBehaviour pendingBehaviour = behaviours.FirstOrDefault(item => item.GetType() == behaviourType);
+            AIBehaviour pendingBehaviour = behaviours.FirstOrDefault(item => item.GetType() == behaviourType && item.InState);
             if (pendingBehaviour != null)
             {
                 pendingBehaviour.Enable();
@@ -63,7 +59,7 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
 
         public void DeactivateBehaviour(Type behaviourType)
         {
-            AIBehaviour pendingBehaviour = behaviours.FirstOrDefault(item => item.GetType() == behaviourType);
+            AIBehaviour pendingBehaviour = behaviours.FirstOrDefault(item => item.GetType() == behaviourType && item.InState);
             if (pendingBehaviour != null)
             {
                 pendingBehaviour.Disable();

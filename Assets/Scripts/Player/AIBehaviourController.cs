@@ -10,6 +10,7 @@ namespace Assets.Scripts.Player
     {
         private PlayerController playerController;
         private AIInputController inputController;
+        internal int difficulty = 1;
 
         private List<Transform> opponentPositions = new List<Transform>(); 
 

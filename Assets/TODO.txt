@@ -10,6 +10,7 @@ Player Controller
 	Bigger hitboxes
 	Pressed left and did right smash
 	Air dodge
+	Not respawning to correct point
 
 Make force triggers able to launch opposite direction of contact
 Shaders
