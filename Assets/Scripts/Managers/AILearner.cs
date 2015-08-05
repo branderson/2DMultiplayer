@@ -1,79 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Assets.Scripts.Helpers;
 using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts.Managers
 {
-    public class CaseBase : IComparable<CaseBase>
-    {
-        public int SituationIndex = 0;
-        public int TotalRatio = 0;
-        public List<KeyValuePair<List<byte>, int>> ButtonPressResponseList = new List<KeyValuePair<List<byte>, int>>();
-        public List<KeyValuePair<List<byte>, int>> ButtonHoldResponseList = new List<KeyValuePair<List<byte>, int>>();
-        public List<KeyValuePair<sbyte[], int>> AnalogResponseList = new List<KeyValuePair<sbyte[], int>>();
-
-        public void PushButtonPressResponse(List<byte> response)
-        {
-            if (ButtonPressResponseList.Any(item => item.Key == response))
-            {
-                KeyValuePair<List<byte>, int> activeResponse = ButtonPressResponseList.First(item => item.Key == response);
-                activeResponse = new KeyValuePair<List<byte>, int>(activeResponse.Key, activeResponse.Value + 1);
-            }
-            else
-            {
-                ButtonPressResponseList.Add(new KeyValuePair<List<byte>, int>(response, 0));
-            }
-        }
-
-        public void PushButtonHoldResponse(List<byte> response)
-        {
-            if (ButtonHoldResponseList.Any(item => item.Key == response))
-            {
-                KeyValuePair<List<byte>, int> activeResponse = ButtonHoldResponseList.First(item => item.Key == response);
-                activeResponse = new KeyValuePair<List<byte>, int>(activeResponse.Key, activeResponse.Value + 1);
-            }
-            else
-            {
-                ButtonHoldResponseList.Add(new KeyValuePair<List<byte>, int>(response, 0));
-            }
-        }
-
-        public void PushAnalogResponse(sbyte[] response)
-        {
-            if (response[0] == 0 || response[1] == 0)
-            {
-                return;
-            }
-            if (AnalogResponseList.Any(item => item.Key == response))
-            {
-                KeyValuePair<sbyte[], int> activeResponse = AnalogResponseList.First(item => item.Key == response);
-                activeResponse = new KeyValuePair<sbyte[], int>(activeResponse.Key, activeResponse.Value + 1);
-            }
-            else
-            {
-                AnalogResponseList.Add(new KeyValuePair<sbyte[], int>(response, 0));
-            }
-        }
-
-        public int CompareTo(CaseBase other)
-        {
-            if (other.SituationIndex > SituationIndex)
-            {
-                return -1;
-            }
-            if (other.SituationIndex == SituationIndex)
-            {
-                return 0;
-            }
-            return 1;
-        }
-    }
-
     public class AILearner : MonoBehaviour
     {
+        private GameManager gameManager;
         private List<PlayerController> players;
         // Might want to decrease the resolution of some of these ranges to increase chance of finding a matching situation
         private static readonly RangeTree<int, IntRange> xDeltas = new RangeTree<int, IntRange>(new RangeItemComparer());
@@ -82,12 +19,24 @@ namespace Assets.Scripts.Managers
         private static readonly RangeTree<int, IntRange> stateCategories = new RangeTree<int, IntRange>(new RangeItemComparer()); 
 
         // Map of CaseBases
-        private BinaryTree<CaseBase> cases = new BinaryTree<CaseBase>(); 
+        private List<KeyValuePair<string, BinaryTree<CaseBase>>> caseTrees = new List<KeyValuePair<string, BinaryTree<CaseBase>>>();
+        private Queue<CaseBase> activeCases = new Queue<CaseBase>(); 
         private CaseBase comparisonBase = new CaseBase();
 
         public void Awake()
         {
+            gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             players = GetComponent<LevelManager>().players.Select(item => item.GetComponentInChildren<PlayerController>()).ToList();
+
+            // Load in existing AI trees
+            foreach (PlayerController player in players)
+            {
+                if (caseTrees.Any(item => item.Key == player.characterName)) continue;
+                KeyValuePair<string, BinaryTree<CaseBase>> playerTree = LoadCases(player.characterName);
+                print(playerTree.Value.Count);
+                caseTrees.Add(playerTree);
+            }
+
             // Set up xDeltas
             xDeltas.Add(new IntRange(0, 2, 0));
             xDeltas.Add(new IntRange(3, 5, 1));
@@ -139,9 +88,19 @@ namespace Assets.Scripts.Managers
             stateCategories.Add(new IntRange(63, 65, 13)); // No control
         }
 
+        public void OnDisable()
+        {
+            SaveCases();
+        }
+
         public void Update()
         {
             List<PlayerController> observedPlayers;
+            if (gameManager.GameConfig.TournamentMode)
+            {
+                return;
+            }
+
             if (players.Any(item => item.GetState() == null))
             {
                 return;
@@ -161,7 +120,7 @@ namespace Assets.Scripts.Managers
 
                 CaseBase currentCase;
                 comparisonBase.SituationIndex = situationIndex;
-                BinaryTreeNode<CaseBase> existingCaseBase = cases.Search(comparisonBase);
+                BinaryTreeNode<CaseBase> existingCaseBase = caseTrees.First(item => item.Key == player.characterName).Value.Search(comparisonBase);
                 if (existingCaseBase != null)
                 {
                     currentCase = existingCaseBase.Data;
@@ -170,7 +129,8 @@ namespace Assets.Scripts.Managers
                 {
                     currentCase = new CaseBase();
                     currentCase.SituationIndex = situationIndex;
-                    cases.Insert(currentCase);
+                    caseTrees.First(item => item.Key == player.characterName).Value.Insert(currentCase);
+                    print("Adding new case");
                 }
 
                 // Gather controller input for frame
@@ -178,17 +138,40 @@ namespace Assets.Scripts.Managers
                 List<byte> buttonHoldState = player.input.ControllerButtonHoldState();
                 sbyte[] analogState = player.input.ControllerAnalogState();
 
-                if (buttonPressState.Any())
+                activeCases.Enqueue(currentCase);
+
+                bool dequeue = false;
+                foreach (CaseBase activeCase in activeCases)
                 {
-                    currentCase.PushButtonPressResponse(buttonPressState);
+                    if (activeCase.Frame < CaseBase.RecordFrames)
+                    {
+//                        print("Handling case " + activeCase.Frame);
+                        if (buttonPressState.Any())
+                        {
+                            activeCase.PushButtonPressResponse(buttonPressState);
+                        }
+                        if (buttonHoldState.Any())
+                        {
+                            activeCase.PushButtonHoldResponse(buttonHoldState);
+                        }
+                        if (analogState.Any())
+                        {
+                            activeCase.PushAnalogResponse(analogState);
+                        }
+//                        BLF.PrintBinary(activeCase.ActiveResponseState);
+                        activeCase.PushActiveResponseState();
+
+                        activeCase.TotalRatio += 1;
+                        activeCase.Frame += 1;
+                    }
+                    else
+                    {
+                        dequeue = true;
+                    }
                 }
-                if (buttonHoldState.Any())
+                if (dequeue)
                 {
-                    currentCase.PushButtonHoldResponse(buttonHoldState);
-                }
-                if (analogState.Any())
-                {
-                    currentCase.PushAnalogResponse(analogState);
+                    activeCases.Dequeue().Frame = 0;
                 }
             }
         }
@@ -312,15 +295,28 @@ namespace Assets.Scripts.Managers
             return situationIndex;
         }
 
-        public CaseBase LookupSituationIndex(int index)
+        public CaseBase LookupSituationIndex(int index, string characterName)
         {
             comparisonBase.SituationIndex = index;
-            BinaryTreeNode<CaseBase> result = cases.Search(comparisonBase);
+            BinaryTreeNode<CaseBase> result = caseTrees.First(item => item.Key == characterName).Value.Search(comparisonBase);
             if (result != null)
             {
                 return result.Data;
             }
             return null;
+        }
+
+        private KeyValuePair<string, BinaryTree<CaseBase>> LoadCases(string characterName)
+        {
+            return gameManager.LoadGhostAIData(characterName);
+        }
+
+        private void SaveCases()
+        {
+            foreach (KeyValuePair<string, BinaryTree<CaseBase>> caseTree in caseTrees)
+            {
+                gameManager.SaveGhostAIData(caseTree.Value, caseTree.Key);
+            }
         }
     }
 }

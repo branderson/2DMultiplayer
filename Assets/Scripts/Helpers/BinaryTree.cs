@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
 
 namespace Assets.Scripts.Helpers
 {
-    [Serializable]
-    public class BinaryTree<T> where T : IComparable<T>
+    [SerializableAttribute]
+    public class BinaryTree<T> : ISerializable where T : IComparable<T>
     {
         private BinaryTreeNode<T> root;
         public int Count;
+
+        public BinaryTree()
+        {
+        } 
 
         public void Insert(T value)
         {
@@ -388,10 +394,37 @@ namespace Assets.Scripts.Helpers
                 yield return node;
             }
         }
+
+        public BinaryTree(SerializationInfo information, StreamingContext context)
+        {
+            List<T> dataList = (List<T>) information.GetValue("d", typeof (List<T>));
+            foreach (T data in dataList)
+            {
+                Insert(data);
+            }
+        } 
+        
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            IList<BinaryTreeNode<T>> listOfNodes = new List<BinaryTreeNode<T>>();
+            FillListInOrder(root, listOfNodes);
+
+            List<T> tempList = listOfNodes.Select(item => item.Data).ToList();
+            List<T> dataList = new List<T>();
+            foreach (T data in tempList)
+            {
+                if (!dataList.Contains(data))
+                {
+                    dataList.Add(data);
+                }
+            }
+
+            info.AddValue("d", dataList);
+        }
     }
 
     [Serializable]
-    public class BinaryTreeNode<T> where T : IComparable<T>
+    public class BinaryTreeNode<T> where T : IComparable<T> 
     {
         public BinaryTreeNode(T value)
         {

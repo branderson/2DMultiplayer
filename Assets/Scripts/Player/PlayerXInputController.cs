@@ -632,7 +632,7 @@ namespace Assets.Scripts.Player
 
         public List<byte> ControllerButtonPressState()
         {
-            List<byte> buttonState = activePressedControls;
+            List<byte> buttonState = new List<byte>(activePressedControls);
             activePressedControls.Clear();
             return buttonState;
         }

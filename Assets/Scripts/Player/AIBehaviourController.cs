@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Helpers;
 using Assets.Scripts.Managers;
 using UnityEngine;
 
@@ -14,9 +15,10 @@ namespace Assets.Scripts.Player
         private AILearner aiLearner;
         internal int difficulty = 1;
 
-        private List<Transform> opponentPositions = new List<Transform>(); 
+        private CaseBase currentCase;
+        private int ghostFrame = 0;
 
-        private bool hanging = false;
+        private List<Transform> opponentPositions = new List<Transform>(); 
 
         public void Init(AIInputController input, PlayerController controller)
         {
@@ -40,162 +42,148 @@ namespace Assets.Scripts.Player
 
             // Ghost AI system
             bool usedGhost = false;
-            int situationID = aiLearner.GenerateSituationIndex(playerController);
-            CaseBase currentCase = aiLearner.LookupSituationIndex(situationID);
+            if (ghostFrame == 0)
+            {
+                int situationID = aiLearner.GenerateSituationIndex(playerController);
+                currentCase = aiLearner.LookupSituationIndex(situationID, playerController.characterName);
+            }
             if (currentCase != null)
             {
                 usedGhost = true;
-                print("Using ghost AI");
-                List<byte> chosenButtonPressResponses = null;
-                List<byte> chosenButtonHoldResponses = null;
-                sbyte[] chosenAnalogResponses = null;
-                float xAnalog = 0;
-                float yAnalog = 0;
+//                print("Using ghost AI");
+                int chosenResponse = 0;
 
-                if (currentCase.ButtonPressResponseList.Any())
+                if (currentCase.ResponseState[ghostFrame].Any())
                 {
-                    chosenButtonPressResponses =
-                        currentCase.ButtonPressResponseList.OrderByDescending(item => item.Value).First().Key;
+                    chosenResponse = currentCase.ResponseState[ghostFrame].OrderByDescending(item => item.Value).First().Key;
                 }
-                if (currentCase.ButtonHoldResponseList.Any())
+                if (chosenResponse != 0)
                 {
-                    chosenButtonHoldResponses =
-                        currentCase.ButtonHoldResponseList.OrderByDescending(item => item.Value).First().Key;
+                    DecodeResponse(chosenResponse);
                 }
-                if (currentCase.AnalogResponseList.Any())
+//                print(ghostFrame);
+//                BLF.PrintBinary(chosenResponse);
+                ghostFrame++;
+                if (ghostFrame >= CaseBase.RecordFrames)
                 {
-                    chosenAnalogResponses = currentCase.AnalogResponseList.OrderByDescending(item => item.Value).First().Key;
-                }
-//                foreach (KeyValuePair<List<byte>, int> response in currentCase.ButtonPressResponseList)
-//                {
-//                    // Use difficulty and ratios here to determine response
-//                    chosenButtonPressResponses = response.Key;
-//                }
-//                foreach (KeyValuePair<List<byte>, int> response in currentCase.ButtonHoldResponseList)
-//                {
-//                    // Use difficulty and ratios here to determine response
-//                    chosenButtonHoldResponses = response.Key;
-//                }
-//                foreach (KeyValuePair<sbyte[], int> response in currentCase.AnalogResponseList)
-//                {
-//                    chosenAnalogResponses = response.Key;
-//                }
-                if (chosenButtonPressResponses != null)
-                {
-                    bool setBlock = false;
-                    foreach (byte button in chosenButtonPressResponses)
-                    {
-                        switch (button)
-                        {
-                            case 0:
-                                inputController.Primary();
-                                break;
-                            case 1:
-                                inputController.Secondary();
-                                break;
-                            case 2:
-                                inputController.Jump();
-                                break;
-                            case 3:
-                                break;
-                            case 4:
-                                setBlock = true;
-                                inputController.SetBlock(true);
-                                break;
-                            case 5:
-                                break;
-                            case 6:
-                                break;
-                            case 7:
-                                break;
-                        }
-                    }
-                    if (!setBlock)
-                    {
-                        inputController.SetBlock(false);
-                    }
-                }
-                if (chosenButtonHoldResponses != null)
-                {
-//                    bool setBlock = false;
-//                    foreach (byte button in chosenButtonHoldResponses)
-//                    {
-//                        switch (button)
-//                        {
-//                            case 0:
-//                                inputController.Primary();
-//                                break;
-//                            case 1:
-//                                inputController.Secondary();
-//                                break;
-//                            case 2:
-//                                inputController.Jump();
-//                                break;
-//                            case 3:
-//                                break;
-//                            case 4:
-//                                setBlock = true;
-//                                inputController.SetBlock(true);
-//                                break;
-//                            case 5:
-//                                break;
-//                            case 6:
-//                                break;
-//                            case 7:
-//                                break;
-//                        }
-//                    }
-//                    if (!setBlock)
-//                    {
-//                        inputController.SetBlock(false);
-//                    }
-                }
-                if (chosenAnalogResponses != null)
-                {
-                    switch (chosenAnalogResponses[0])
-                    {
-                        case 2:
-                            inputController.MoveX(1);
-                            break;
-                        case -2:
-                            inputController.MoveX(-1);
-                            break;
-                        case 1:
-                            inputController.MoveX(.4f);
-                            break;
-                        case -1:
-                            inputController.MoveX(-.4f);
-                            break;
-                        default:
-                            inputController.MoveX(0);
-                            break;
-                    }
-                    switch (chosenAnalogResponses[1])
-                    {
-                        case 2:
-                            inputController.MoveY(1);
-                            break;
-                        case -2:
-                            inputController.MoveY(-1);
-                            break;
-                        case 1:
-                            inputController.MoveY(.4f);
-                            break;
-                        case -1:
-                            inputController.MoveY(-.4f);
-                            break;
-                        default:
-                            inputController.MoveY(0);
-                            break;
-                    }
+                    ghostFrame = 0;
                 }
             }
 
             // Run AI system
             if (playerController.GetState() != null && !usedGhost)
             {
-                print("Processing AI manually");
+//                print("Processing AI manually");
 //                playerController.GetState().ProcessAI(opponentPositions);
+            }
+        }
+
+        private void DecodeResponse(int chosenResponse)
+        {
+            bool setBlock = false;
+            BLF.PrintBinary(chosenResponse);
+            if (BLF.IsBitSet(chosenResponse, 0))
+            {
+                inputController.Primary();
+            }
+            if (BLF.IsBitSet(chosenResponse, 1))
+            {
+                inputController.Secondary();
+            }
+            if (BLF.IsBitSet(chosenResponse, 2))
+            {
+                inputController.Jump();
+            }
+            if (BLF.IsBitSet(chosenResponse, 3))
+            {
+            }
+            if (BLF.IsBitSet(chosenResponse, 4))
+            {
+                setBlock = true;
+                inputController.SetBlock(true);
+            }
+            if (BLF.IsBitSet(chosenResponse, 5))
+            {
+                MonoBehaviour.print("Pressed Grab");
+                inputController.Grab();
+            }
+            if (BLF.IsBitSet(chosenResponse, 6))
+            {
+            }
+            if (BLF.IsBitSet(chosenResponse, 7))
+            {
+            }
+            if (BLF.IsBitSet(chosenResponse, 8))
+            {
+                inputController.SetButtonActive("Primary");
+            }
+            if (BLF.IsBitSet(chosenResponse, 9))
+            {
+                inputController.SetButtonActive("Secondary");
+            }
+            if (BLF.IsBitSet(chosenResponse, 10))
+            {
+                inputController.SetButtonActive("Jump");
+            }
+            if (BLF.IsBitSet(chosenResponse, 11))
+            {
+            }
+            if (BLF.IsBitSet(chosenResponse, 12))
+            {
+                inputController.SetButtonActive("Block");
+            }
+            if (BLF.IsBitSet(chosenResponse, 13))
+            {
+                MonoBehaviour.print("Holding Grab");
+                inputController.SetButtonActive("Grab");
+            }
+            if (BLF.IsBitSet(chosenResponse, 14))
+            {
+                inputController.SetButtonActive("TiltLock");
+            }
+            if (BLF.IsBitSet(chosenResponse, 15))
+            {
+                inputController.Run(true);
+            }
+            else
+            {
+                inputController.Run(false);
+            }
+            if (BLF.IsBitSet(chosenResponse, 16))
+            {
+                inputController.MoveX(1);
+            }
+            if (BLF.IsBitSet(chosenResponse, 17))
+            {
+                inputController.MoveX(.4f);
+            }
+            if (BLF.IsBitSet(chosenResponse, 18))
+            {
+                inputController.MoveX(-1);
+            }
+            if (BLF.IsBitSet(chosenResponse, 19))
+            {
+                inputController.MoveX(-.4f);
+            }
+            if (BLF.IsBitSet(chosenResponse, 20))
+            {
+                inputController.MoveY(1);
+            }
+            if (BLF.IsBitSet(chosenResponse, 21))
+            {
+                inputController.MoveY(.4f);
+            }
+            if (BLF.IsBitSet(chosenResponse, 22))
+            {
+                inputController.MoveY(-1);
+            }
+            if (BLF.IsBitSet(chosenResponse, 23))
+            {
+                inputController.MoveY(-.4f);
+            }
+            if (!setBlock)
+            {
+                inputController.SetBlock(false);
             }
         }
     }

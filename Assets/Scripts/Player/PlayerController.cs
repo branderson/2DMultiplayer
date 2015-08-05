@@ -58,6 +58,7 @@ namespace Assets.Scripts.Player
         internal float airJumpSpeed { get; set; }
 
         internal int playerNumber;
+        internal string characterName;
         private PlayerState currentPlayerState;
         private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
         internal Animator animator; // Reference to the player's animator component.
@@ -85,7 +86,7 @@ namespace Assets.Scripts.Player
         internal bool Grabbed = false;
         internal bool CanFallThroughFloor = false;
 
-        public void Init(int zPosition, int slot, bool computer)
+        public void Init(int zPosition, int slot, string playerName, bool computer)
         {
             input = GetComponent<IInputController>();
             color = sprite.color;
@@ -97,6 +98,7 @@ namespace Assets.Scripts.Player
             SetLayerOrder(zPosition);
             playerNumber = slot + 1;
             IFrames = 120; // 5 seconds of invincibility
+            characterName = playerName;
             Computer = computer;
         }
 

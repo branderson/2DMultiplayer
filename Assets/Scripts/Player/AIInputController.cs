@@ -20,6 +20,7 @@ namespace Assets.Scripts.Player
         private const float thresholdX = 0.1f;
         private const float thresholdY = 1f;
 
+        private List<string> activeButtons = new List<string>(); 
         private float x = 0f;
         private float y = 0f;
         private bool upPressed = false;
@@ -28,9 +29,11 @@ namespace Assets.Scripts.Player
         private bool rightPressed = false;
         private bool jump = false;
         private bool run = false;
+        private bool tiltLock = false;
         private bool primary = false;
         private bool secondary = false;
         private bool block = false;
+        private bool grab = false;
 
         private int frame = 0;
 
@@ -105,6 +108,12 @@ namespace Assets.Scripts.Player
                 if (block)
                 {
                     playerController.GetState().Block();
+                    block = false;
+                }
+                if (grab)
+                {
+                    playerController.GetState().Grab();
+                    grab = false;
                 }
                 x = 0f;
                 y = 0f;
@@ -157,6 +166,7 @@ namespace Assets.Scripts.Player
             secondary = true;
         }
 
+        // TODO: Reinplement AI block
         public void SetBlock(bool value)
         {
             block = value;
@@ -172,16 +182,39 @@ namespace Assets.Scripts.Player
             run = newRun;
         }
 
+        public void Grab()
+        {
+            grab = true;
+        }
+
+        public void ClearActiveButtons(string name)
+        {
+            activeButtons.Clear();
+        }
+
+        public void SetButtonActive(string name)
+        {
+            if (!(activeButtons.Contains(name)))
+            {
+                activeButtons.Add(name);
+            }
+        }
+
+        public void SetButtonInactive(string name)
+        {
+            if (activeButtons.Contains(name))
+            {
+                activeButtons.Remove(name);
+            }
+        }
+
         public bool ButtonActive(string name)
         {
             if (name == "Block")
             {
                 return block;
             }
-            else
-            {
-                return false;
-            }
+            return activeButtons.Contains(name);
         }
 
         public bool AxisActive(string name)

@@ -14,6 +14,11 @@ namespace Assets.Scripts.Menu
         internal int PlayerNumber;
         internal int CharacterIndex = 0;
 
+        private readonly string[] characters =
+        {
+            ("Player1"), 
+        };
+
         internal bool active;
 
         private MenuInputController input;
@@ -52,6 +57,11 @@ namespace Assets.Scripts.Menu
         public void SetCharacter(int index)
         {
             CharacterIndex = index;
+        }
+
+        public string GetCharacterName()
+        {
+            return characters[CharacterIndex];
         }
 
         public void SetSelected(MenuSelectable selection)

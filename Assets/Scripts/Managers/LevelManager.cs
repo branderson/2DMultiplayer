@@ -80,7 +80,7 @@ namespace Assets.Scripts.Managers
                             break;
                     }
 
-                    player.GetComponentInChildren<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card, characterMenuManager.inputControllers[card].Computer); // TODO: Eventually pass menuPlayerController in
+                    player.GetComponentInChildren<PlayerController>().Init((int)spawnPoints[card].transform.position.z, card, characterMenuManager.playerControllers[card].GetCharacterName(), characterMenuManager.inputControllers[card].Computer); // TODO: Eventually pass menuPlayerController in
                     players.Add(player);
                 }
             }

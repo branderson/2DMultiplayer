@@ -40,6 +40,12 @@ AI
 			1 bit: Player facing direction
 			1 bit: Touching edge
 
+		Response info
+			0-7: ButtonPresses (A, B, X, Y, L1, R1, L2, R2)
+			8-15: ButtonPresses (A, B, X, Y, L1, R1, L2, R2)
+			16-19: Horizontal analog (2, 1, -1, -2)
+			20-23: Vertical analog (2, 1, -2, -2)
+
 	Hardcoded AI
 		Fall back to this if no state found in Ghost AI
 		Fall back to this when not over stage (when stage information needed)
