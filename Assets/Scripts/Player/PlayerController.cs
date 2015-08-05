@@ -61,7 +61,7 @@ namespace Assets.Scripts.Player
         private PlayerState currentPlayerState;
         private Rigidbody2D rigidBody; // Reference to the player's Rigidbody2D component
         internal Animator animator; // Reference to the player's animator component.
-        private IInputController input;
+        internal IInputController input;
         internal readonly List<PlayerController> opponents = new List<PlayerController>();
         internal PlayerUI playerUI;
         internal SpriteRenderer sprite;
@@ -350,6 +350,11 @@ namespace Assets.Scripts.Player
         public PlayerState GetState()
         {
             return currentPlayerState;
+        }
+
+        public int GetShield()
+        {
+            return shield;
         }
 
         public Vector2 GetVelocity()

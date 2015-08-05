@@ -1,0 +1,66 @@
+﻿Idle (On ground, not attacking or blocking)
+Walk
+Run
+OnEdge
+RunningTurn
+TurnAround
+Land
+Grabbed
+Grab
+Hold
+TurnForSideThrow
+HoldWalk
+HoldTurn
+CrouchStart
+CrouchLoop
+CrouchEnd
+BlockStart (Blocking)
+Block
+DodgeForward (Dodging)
+DodgeBack
+GrabAttack (On ground, attacking)
+RunningPunch
+NeutralAttack
+NeutralAttack2
+NeutralAttack3
+UpAttack
+WalkingAttack
+CrouchAttack
+ChargeUpSmash (Charging smashes)
+ChargeDownSmash
+ChargeSideSmash
+TurnForSmash
+UpSmash (Smashes)
+DownSmash
+SideSmash
+DownThrow (Throwing)
+UpThrow
+SideThrow
+FallThroughFloor (In air, not attacking)
+JumpStart
+Jump
+BackwardJump
+DoubleJump
+FallStart
+Fall
+ForwardAirJump
+BackwardAirJump
+LeapUp
+Helpless (Helpless)
+HelplessFall
+DownAir (In air, attacking)
+BackwardAir
+UpRecovery
+RecoveryStart
+LeapAttack
+NeutralAir
+UpAir
+ForwardAir
+NeutralSpecial (Neutral special)
+DownSpecial (Down special)
+SideSpecial (Side special)
+TurnForSideSpecial
+EdgeGrab (Invulnerable)
+CrashLand (No control)
+Launch
+Stunned

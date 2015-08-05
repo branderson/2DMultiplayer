@@ -26,7 +26,9 @@ namespace Assets.Scripts.Player
         private const float thresholdY = 0.5f;
         private const float triggerThreshold = .2f;
 
-        private List<string> buttonsPressed; 
+        private List<string> buttonsPressed;
+        private List<byte> activeHeldControls; 
+        private List<byte> activePressedControls;
         private float x = 0f;
         private float y = 0f;
         private bool upPressed = false;
@@ -61,6 +63,8 @@ namespace Assets.Scripts.Player
         {
             playerController = GetComponent<PlayerController>();
             buttonsPressed = new List<string>();
+            activePressedControls = new List<byte>();
+            activeHeldControls = new List<byte>();
             controls = new Dictionary<string, string>();
         }
 
@@ -358,6 +362,7 @@ namespace Assets.Scripts.Player
                 if (gamePadState.Buttons.A == ButtonState.Pressed)
                 {
                     buttonsPressed.Add(button);
+                    activePressedControls.Add(0);
                     return true;
                 }
             }
@@ -366,6 +371,7 @@ namespace Assets.Scripts.Player
                 if (gamePadState.Buttons.B == ButtonState.Pressed)
                 {
                     buttonsPressed.Add(button);
+                    activePressedControls.Add(1);
                     return true;
                 }
             }
@@ -374,6 +380,7 @@ namespace Assets.Scripts.Player
                 if (gamePadState.Buttons.X == ButtonState.Pressed)
                 {
                     buttonsPressed.Add(button);
+                    activePressedControls.Add(2);
                     return true;
                 }
             }
@@ -382,6 +389,7 @@ namespace Assets.Scripts.Player
                 if (gamePadState.Buttons.Y == ButtonState.Pressed)
                 {
                     buttonsPressed.Add(button);
+                    activePressedControls.Add(3);
                     return true;
                 }
             }
@@ -390,6 +398,7 @@ namespace Assets.Scripts.Player
                 if (gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
                 {
                     buttonsPressed.Add(button);
+                    activePressedControls.Add(5);
                     return true;
                 }
             }
@@ -398,6 +407,7 @@ namespace Assets.Scripts.Player
                 if (gamePadState.Buttons.LeftShoulder == ButtonState.Pressed)
                 {
                     buttonsPressed.Add(button);
+                    activePressedControls.Add(4);
                     return true;
                 }
             }
@@ -406,6 +416,7 @@ namespace Assets.Scripts.Player
                 if (gamePadState.Triggers.Right > triggerThreshold)
                 {
                     buttonsPressed.Add(button);
+                    activePressedControls.Add(7);
                     return true;
                 }
             }
@@ -414,6 +425,7 @@ namespace Assets.Scripts.Player
                 if (gamePadState.Triggers.Left > triggerThreshold)
                 {
                     buttonsPressed.Add(button);
+                    activePressedControls.Add(6);
                     return true;
                 }
             }
@@ -470,6 +482,7 @@ namespace Assets.Scripts.Player
             {
                 if (gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
                 {
+                    activePressedControls.Add(5);
                     return true;
                 }
             }
@@ -615,6 +628,99 @@ namespace Assets.Scripts.Player
         public bool GetTapJump()
         {
             return TapJump;
+        }
+
+        public List<byte> ControllerButtonPressState()
+        {
+            List<byte> buttonState = activePressedControls;
+            activePressedControls.Clear();
+            return buttonState;
+        }
+
+        public sbyte[] ControllerAnalogState()
+        {
+            sbyte[] analogState = {0, 0};
+            GamePadState gamePadState = GamePad.GetState(XIndex, GamePadDeadZone.Circular);
+            float xCheck = gamePadState.ThumbSticks.Left.X;
+            float yCheck = gamePadState.ThumbSticks.Left.Y;
+
+            if (AxisPositive("Horizontal"))
+            {
+                analogState[0] = 2;
+            }
+            else if (AxisNegative("Horizontal"))
+            {
+                analogState[0] = -2;
+            }
+            else if (xCheck > 0 && xCheck < thresholdX)
+            {
+                analogState[0] = 1;
+            }
+            else if (xCheck < 0 && xCheck > -thresholdX)
+            {
+                analogState[0] = -1;
+            }
+            else
+            {
+                analogState[0] = 0;
+            }
+
+            if (AxisPositive("Vertical"))
+            {
+                analogState[1] = 2;
+            }
+            else if (AxisNegative("Vertical"))
+            {
+                analogState[1] = -2;
+            }
+            else if (yCheck > 0 && yCheck < thresholdY)
+            {
+                analogState[1] = 1;
+            }
+            else if (yCheck < 0 && yCheck > -thresholdY)
+            {
+                analogState[1] = -1;
+            }
+            else
+            {
+                analogState[1] = 0;
+            }
+            return analogState;
+        }
+
+
+        public List<byte> ControllerButtonHoldState()
+        {
+            activeHeldControls.Clear();
+            if (ButtonActive("Primary"))
+            {
+                activeHeldControls.Add(0);
+            }
+            if (ButtonActive("Secondary"))
+            {
+                activeHeldControls.Add(1);
+            }
+            if (ButtonActive("Jump"))
+            {
+                activeHeldControls.Add(2);
+            }
+            if (ButtonActive("Block"))
+            {
+                activeHeldControls.Add(4);
+            }
+            if (ButtonActive("Grab"))
+            {
+                activeHeldControls.Add(5);
+            }
+            if (ButtonActive("Run"))
+            {
+                activeHeldControls.Add(7);
+            }
+            if (ButtonActive("TiltLock"))
+            {
+                activeHeldControls.Add(6);
+            }
+            return activeHeldControls;
         }
     }
 }

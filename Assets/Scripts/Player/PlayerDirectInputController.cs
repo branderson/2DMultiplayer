@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Menu;
 using Assets.Scripts.Player;
@@ -302,6 +303,22 @@ namespace Assets.Scripts.Player
         public bool GetTapJump()
         {
             return TapJump;
+        }
+
+        public List<byte> ControllerButtonPressState()
+        {
+            throw new NotImplementedException();
+        }
+
+        public sbyte[] ControllerAnalogState()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public List<byte> ControllerButtonHoldState()
+        {
+            throw new NotImplementedException();
         }
     }
 }

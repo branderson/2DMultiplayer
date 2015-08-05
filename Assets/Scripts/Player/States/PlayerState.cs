@@ -21,7 +21,6 @@ namespace Assets.Scripts.Player.States
             PlayerInputController = animator.GetComponentInChildren<IInputController>();
             playerController.SetState(this);
             playerAnimator = animator;
-            MonoBehaviour.print(animator.GetCurrentAnimatorStateInfo(0).tagHash);
         }
 
         public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

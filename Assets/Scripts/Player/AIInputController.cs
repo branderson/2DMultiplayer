@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Assets.Scripts.Player.States;
 using UnityEngine.UI;
 
@@ -116,6 +117,16 @@ namespace Assets.Scripts.Player
             y = moveY;
         }
 
+        public void MoveX(float moveX)
+        {
+            x = moveX;
+        }
+
+        public void MoveY(float moveY)
+        {
+            y = moveY;
+        }
+
         public void Up()
         {
             upPressed = true;
@@ -200,6 +211,22 @@ namespace Assets.Scripts.Player
         public bool GetTapJump()
         {
             return false;
+        }
+
+        public List<byte> ControllerButtonPressState()
+        {
+            throw new NotImplementedException();
+        }
+
+        public sbyte[] ControllerAnalogState()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public List<byte> ControllerButtonHoldState()
+        {
+            throw new NotImplementedException();
         }
     }
 }

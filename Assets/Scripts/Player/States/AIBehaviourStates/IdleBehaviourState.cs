@@ -17,7 +17,7 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
         override public void ProcessAI(List<Transform> opponentPositions)
         {
             Vector3 closestOpponentPosition = opponentPositions.OrderByDescending(item => Mathf.Abs(playerController.transform.position.x - item.position.x)).Last().position;
-            if (Mathf.Abs(closestOpponentPosition.x - playerController.transform.position.x) > 5f)
+            if (Mathf.Abs(closestOpponentPosition.x - playerController.transform.position.x) > 2f)
             {
                 ActivateBehaviour(typeof (MoveTowardNearestPlayer));
             }
