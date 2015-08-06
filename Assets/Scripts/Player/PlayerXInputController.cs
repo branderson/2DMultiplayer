@@ -692,34 +692,35 @@ namespace Assets.Scripts.Player
         public List<byte> ControllerButtonHoldState()
         {
             activeHeldControls.Clear();
-            if (ButtonActive("Primary"))
+            if (ButtonActive("Primary") || activePressedControls.Contains(0))
             {
                 activeHeldControls.Add(0);
             }
-            if (ButtonActive("Secondary"))
+            if (ButtonActive("Secondary") || activePressedControls.Contains(1))
             {
                 activeHeldControls.Add(1);
             }
-            if (ButtonActive("Jump"))
+            if (ButtonActive("Jump") || activePressedControls.Contains(2))
             {
                 activeHeldControls.Add(2);
             }
-            if (ButtonActive("Block"))
+            if (ButtonActive("Block") || activePressedControls.Contains(4))
             {
                 activeHeldControls.Add(4);
             }
-            if (ButtonActive("Grab"))
+            if (ButtonActive("Grab") || activePressedControls.Contains(5))
             {
                 activeHeldControls.Add(5);
             }
-            if (ButtonActive("Run"))
+            if (ButtonActive("Run") || activePressedControls.Contains(7))
             {
                 activeHeldControls.Add(7);
             }
-            if (ButtonActive("TiltLock"))
+            if (ButtonActive("TiltLock") || activePressedControls.Contains(6))
             {
                 activeHeldControls.Add(6);
             }
+            activePressedControls.Clear();
             return activeHeldControls;
         }
     }

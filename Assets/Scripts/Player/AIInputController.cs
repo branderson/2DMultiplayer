@@ -182,29 +182,73 @@ namespace Assets.Scripts.Player
             run = newRun;
         }
 
+        // TODO: AI doesn't actually use tilt lock (or does it)
+        public void TiltLock(bool newTiltLock)
+        {
+            tiltLock = newTiltLock;
+        }
+
         public void Grab()
         {
             grab = true;
         }
 
-        public void ClearActiveButtons(string name)
+        public void ClearActiveButtons()
         {
             activeButtons.Clear();
         }
 
         public void SetButtonActive(string name)
         {
+            print("Setting " + name + " active");
             if (!(activeButtons.Contains(name)))
             {
                 activeButtons.Add(name);
+                switch (name)
+                {
+                    case "Primary":
+                        Primary();
+                        break;
+                    case "Secondary":
+                        Secondary();
+                        break;
+                    case "Jump":
+                        Jump();
+                        break;
+                    case "Block":
+                        SetBlock(true);
+                        break;
+                    case "Grab":
+                        Grab();
+                        break;
+                    case "Run":
+                        Run(true);
+                        break;
+                    case "TiltLock":
+                        TiltLock(true);
+                        break;
+                }              
             }
         }
 
         public void SetButtonInactive(string name)
         {
+//            print("Setting " + name + " inactive");
             if (activeButtons.Contains(name))
             {
                 activeButtons.Remove(name);
+                if (name == "Block")
+                {
+                    SetBlock(false);
+                }
+                else if (name == "Run")
+                {
+                    Run(false);
+                }
+                else if (name == "TiltLock")
+                {
+                    TiltLock(false);
+                }
             }
         }
 

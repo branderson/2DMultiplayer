@@ -10,47 +10,30 @@ namespace Assets.Scripts.Helpers
     [SerializableAttribute]
     public class CaseBase : IComparable<CaseBase>, ISerializable
     {
-        [NonSerialized] public const int RecordFrames = 5;
-        [NonSerialized] public bool Recording = true;
-        [NonSerialized] public int Frame = 0;
+        [NonSerialized] public const int RecordFrames = 60;
+        [NonSerialized] public byte Frame = 0;
         public int SituationIndex = 0;
         public int TotalRatio = 0;
-        [NonSerialized] public int ActiveResponseState = 0;
-        public List<KeyValuePair<int, int>>[] ResponseState = new List<KeyValuePair<int, int>>[RecordFrames];
+        [NonSerialized] public short ActiveResponseState = 0;
+        [NonSerialized] private ControllerStateSet activeSet;
+        public List<ControllerSequence> ResponseStateList; 
 
         public CaseBase()
         {
-            for (int i = 0; i < RecordFrames; i++)
-            {
-                ResponseState[i] = new List<KeyValuePair<int, int>>();
-            }
+            ResponseStateList = new List<ControllerSequence>();
+            activeSet = new ControllerStateSet();
         }
 
         public bool Empty()
         {
-            for (int i = 0; i < RecordFrames; i++)
-            {
-                if (ResponseState[i].Count == 0)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return ResponseStateList.Count == 0;
         }
 
-        public void PushButtonPressResponse(List<byte> response)
+        public void PushButtonStateResponse(List<byte> response)
         {
             foreach (byte button in response)
             {
                 ActiveResponseState = BLF.SetBit(ActiveResponseState, button);
-            }
-        }
-
-        public void PushButtonHoldResponse(List<byte> response)
-        {
-            foreach (byte button in response)
-            {
-                ActiveResponseState = BLF.SetBit(ActiveResponseState, button + 8);
             }
         }
 
@@ -64,54 +47,97 @@ namespace Assets.Scripts.Helpers
             switch (response[0])
             {
                 case 2:
-                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 16);
+                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 8);
                     break;
                 case -2:
-                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 17);
+                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 9);
                     break;
                 case 1:
-                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 18);
+                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 10);
                     break;
                 case -1:
-                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 19);
+                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 11);
                     break;
             }
             switch (response[1])
             {
                 case 2:
-                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 20);
+                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 12);
                     break;
                 case -2:
-                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 21);
+                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 13);
                     break;
                 case 1:
-                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 22);
+                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 14);
                     break;
                 case -1:
-                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 23);
+                    ActiveResponseState = BLF.SetBit(ActiveResponseState, 15);
                     break;
             }
         }
 
         public void PushActiveResponseState()
         {
-            if (!Recording)
+//            if (ResponseState[Frame].Any(item => item.Key == ActiveResponseState))
+//            {
+//                KeyValuePair<short, int> activeResponse = ResponseState[Frame].First(item => item.Key == ActiveResponseState);
+//                activeResponse = new KeyValuePair<short, int>(activeResponse.Key, activeResponse.Value + 1);
+//                ResponseState[Frame].Remove(ResponseState[Frame].First(item => item.Key == ActiveResponseState));
+//                ResponseState[Frame].Add(activeResponse);
+//            }
+//            else
+//            {
+//                ResponseState[Frame].Add(new KeyValuePair<short, int>(ActiveResponseState, 1));
+//            }
+            // Only push when control state has changed and the control state is not 0 on the first frame
+            if (activeSet.GetStateList().Count == 0 && !(ActiveResponseState == 0 && Frame == 0))
             {
-                ActiveResponseState = 0;
-                return;
+                activeSet.PushState(ActiveResponseState, Frame);
             }
-            if (ResponseState[Frame].Any(item => item.Key == ActiveResponseState))
+            else if (activeSet.GetStateList().Count == 0)
             {
-                KeyValuePair<int, int> activeResponse = ResponseState[Frame].First(item => item.Key == ActiveResponseState);
-                activeResponse = new KeyValuePair<int, int>(activeResponse.Key, activeResponse.Value + 1);
-                ResponseState[Frame].Remove(ResponseState[Frame].First(item => item.Key == ActiveResponseState));
-                ResponseState[Frame].Add(activeResponse);
+                
+            }
+            else if (ActiveResponseState != activeSet.GetStateList().Last() && !(ActiveResponseState == 0 && Frame == 0))
+            {
+                activeSet.PushState(ActiveResponseState, Frame);
+            }
+
+            ActiveResponseState = 0;
+        }
+
+        public void PushActiveSet(bool reward, bool punish)
+        {
+            if (activeSet.Empty())
+            {
+//                MonoBehaviour.print("The set is empty");
+            }
+            else if (ResponseStateList.Any(item => item.Sequence.SequenceEqual(activeSet.GetStateList())))
+            {
+                activeSet.Rewarded = reward;
+                activeSet.Punished = punish;
+                if (reward)
+                {
+                    MonoBehaviour.print("Rewarding effective move");
+                    MonoBehaviour.print(ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).Effectiveness);
+                }
+                if (punish)
+                {
+                    MonoBehaviour.print("Punishing dangerous move");
+                    MonoBehaviour.print(ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).Effectiveness);
+                }
+                ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).PushSet(activeSet);
+                ResponseStateList.OrderByDescending(item => item.Effectiveness);
             }
             else
             {
-                ResponseState[Frame].Add(new KeyValuePair<int, int>(ActiveResponseState, 1));
+                ControllerSequence newSequence = new ControllerSequence();
+                newSequence.PushSet(activeSet);
+                ResponseStateList.Add(newSequence);
+                ResponseStateList.OrderByDescending(item => item.Effectiveness);
             }
-            ActiveResponseState = 0;
+            activeSet = new ControllerStateSet();
+            Frame = 0;
         }
 
         public int CompareTo(CaseBase other)
@@ -136,12 +162,13 @@ namespace Assets.Scripts.Helpers
 //            }
             SituationIndex = information.GetInt32("i");
             TotalRatio = information.GetInt32("t");
-            ResponseState = (List<KeyValuePair<int, int>>[])information.GetValue("r", typeof(List<KeyValuePair<int, int>>[]));
-//            MonoBehaviour.print("Loaded ResponseState: ");
-//            foreach (KeyValuePair<int, int> response in ResponseState[0])
-//            {
-//                BLF.PrintBinary(response.Key);
-//            }
+            ResponseStateList = (List<ControllerSequence>)information.GetValue("r", typeof(List<ControllerSequence>));
+            activeSet = new ControllerStateSet();
+            //            MonoBehaviour.print("Loaded ResponseState: ");
+            //            foreach (KeyValuePair<int, int> response in ResponseState[0])
+            //            {
+            //                BLF.PrintBinary(response.Key);
+            //            }
         }
 
 
@@ -150,23 +177,198 @@ namespace Assets.Scripts.Helpers
         {
             info.AddValue("i", SituationIndex);
             info.AddValue("t", TotalRatio);
-            List<KeyValuePair<int, int>>[] storedResponses = new List<KeyValuePair<int, int>>[RecordFrames];
-            for (int i = 0; i < RecordFrames; i++)
-            {
-                if (ResponseState[i].Count < 5)
-                {
-                    storedResponses[i] = ResponseState[i];
-                }
-                else
-                {
-                    storedResponses[i] = ResponseState[i].OrderByDescending(item => item.Value).ToList().GetRange(0, 5);
-                }
+            List<ControllerSequence> storedSequences = ResponseStateList.Select(sequence => new ControllerSequence(sequence.GetVersions().OrderByDescending(item => item.Value).ToList())).ToList();
+            //            List<KeyValuePair<short, int>>[] storedResponses = new List<KeyValuePair<short, int>>[RecordFrames];
+//            for (int i = 0; i < RecordFrames; i++)
+//            {
+//                if (ResponseState[i].Count < 5)
+//                {
+//                    storedResponses[i] = ResponseState[i];
+//                }
+//                else
+//                {
+//                    storedResponses[i] = ResponseState[i].OrderByDescending(item => item.Value).ToList().GetRange(0, 5);
+//                }
 //                foreach (KeyValuePair<int, int> response in storedResponses[i])
 //                {
 //                    BLF.PrintBinary(response.Key);
 //                }
+//            }
+            info.AddValue("r", storedSequences);
+        }
+
+        [Serializable]
+        public class ControllerStateSet
+        {
+            public List<KeyValuePair<short, byte>> ControllerStates;
+            [NonSerialized] public bool Rewarded = false;
+            [NonSerialized] public bool Punished = false;
+
+            public ControllerStateSet()
+            {
+                ControllerStates = new List<KeyValuePair<short, byte>>();
             }
-            info.AddValue("r", storedResponses);
+
+            public void PushState(short state, byte frame)
+            {
+                if (ControllerStates.Count == 0)
+                {
+                    
+                }
+                else if (ControllerStates.Last().Key == state)
+                {
+                    throw new UnchangedStateException("The state of the controller has not changed");
+                }
+                ControllerStates.Add(new KeyValuePair<short, byte>(state, frame));
+            }
+
+            public List<short> GetStateList()
+            {
+                return ControllerStates.Select(item => item.Key).ToList();
+            }
+
+            public bool NewStateAtFrame(byte frame)
+            {
+                return (ControllerStates.Any(item => item.Value == frame));
+            }
+
+            public short GetStateAtFrame(byte frame)
+            {
+                return ControllerStates.First(item => item.Value == frame).Key;
+            }
+
+            public bool Empty()
+            {
+//                foreach (short state in GetStateList())
+//                {
+//                    BLF.PrintBinary(state);
+//                }
+                return GetStateList().All(item => item == 0);
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (obj == null)
+                {
+                    return false;
+                }
+
+                if (GetType() != obj.GetType())
+                {
+                    return false;
+                }
+
+                return Equals((ControllerStateSet) obj);
+            }
+
+            // Test this
+            public bool Equals(ControllerStateSet other)
+            {
+                if (other == null)
+                {
+                    return false;
+                }
+
+                KeyValuePair<short, byte>[] otherDescending = other.ControllerStates.OrderByDescending(item => item.Value).ToArray();
+                KeyValuePair<short, byte>[] stateArray = ControllerStates.OrderByDescending(item => item.Value).ToArray();
+                if (otherDescending.Length != stateArray.Length)
+                {
+                    return false;
+                }
+                bool equal = true;
+                for (int i = 0; i < stateArray.Length; i++)
+                {
+                    if (!(stateArray[i].Key == otherDescending[i].Key && stateArray[i].Value == otherDescending[i].Value))
+                    {
+                        equal = false;
+                    }
+                }
+
+//                MonoBehaviour.print("Equal " + equal);
+                return equal;
+            }
+
+            class UnchangedStateException : Exception
+            {
+                public UnchangedStateException()
+                {
+                }
+
+                public UnchangedStateException(string message) : base(message)
+                {
+                }
+
+                public UnchangedStateException(string message, Exception inner) : base(message, inner)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class ControllerSequence
+        {
+            private List<KeyValuePair<ControllerStateSet, int>> SequenceVersions;
+            public List<short> Sequence = null;
+            public int Effectiveness = 0;
+
+            public ControllerSequence()
+            {
+                SequenceVersions = new List<KeyValuePair<ControllerStateSet, int>>();
+            }
+
+            public ControllerSequence(List<KeyValuePair<ControllerStateSet, int>> versions)
+            {
+                SequenceVersions = versions;
+                Sequence = versions.First().Key.GetStateList();
+            }
+
+            public List<KeyValuePair<ControllerStateSet, int>> GetVersions()
+            {
+                return SequenceVersions;
+            }
+
+            public void PushSet(ControllerStateSet set)
+            {
+                if (Sequence == null)
+                {
+                    Sequence = set.GetStateList();
+                }
+                // Adding a sequence that has been seen before exactly
+                if (SequenceVersions.Any(item => item.Key.Equals(set)))
+                {
+//                    MonoBehaviour.print("Adding identical sequence");
+//                    foreach (KeyValuePair<short, byte> state in set.ControllerStates)
+//                    {
+//                        BLF.PrintBinary(state.Key);
+//                    }
+                    KeyValuePair<ControllerStateSet, int> activeSequence = SequenceVersions.First(item => item.Key.Equals(set));
+                    activeSequence = new KeyValuePair<ControllerStateSet, int>(activeSequence.Key, activeSequence.Value + 1);
+//                    MonoBehaviour.print("Seen " + activeSequence.Value + " times");
+                    SequenceVersions.Remove(SequenceVersions.First(item => item.Key.Equals(activeSequence.Key)));
+                    SequenceVersions.Add(activeSequence);
+                    SequenceVersions = SequenceVersions.OrderByDescending(item => item.Value).ToList();
+                }
+                // Adding a new version of the sequence
+                else
+                {
+//                    MonoBehaviour.print("Adding new sequence");
+//                    foreach (KeyValuePair<short, byte> state in set.ControllerStates)
+//                    {
+//                        BLF.PrintBinary(state.Key);
+//                        MonoBehaviour.print(state.Value);
+//                    }
+                    SequenceVersions.Add(new KeyValuePair<ControllerStateSet, int>(set, 1));
+                }
+                if (set.Rewarded)
+                {
+                    Effectiveness += 1;
+                }
+                if (set.Punished)
+                {
+                    Effectiveness -= 1;
+                }
+            }
         }
     }
+
 }

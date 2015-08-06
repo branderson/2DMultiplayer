@@ -50,29 +50,43 @@ namespace Assets.Scripts.Player
             if (currentCase != null)
             {
                 usedGhost = true;
-//                print("Using ghost AI");
+////                print("Using ghost AI");
                 int chosenResponse = 0;
-
-                if (currentCase.ResponseState[ghostFrame].Any())
+//
+                if (currentCase.ResponseStateList.Any())
                 {
-                    chosenResponse = currentCase.ResponseState[ghostFrame].OrderByDescending(item => item.Value).First().Key;
+                    CaseBase.ControllerStateSet currentSet = currentCase.ResponseStateList.First().GetVersions().First().Key;
+                    if (currentSet.NewStateAtFrame((byte) ghostFrame))
+                    {
+                        chosenResponse = currentSet.GetStateAtFrame((byte) ghostFrame);
+                    }
                 }
                 if (chosenResponse != 0)
                 {
+                    print("Response chosen");
                     DecodeResponse(chosenResponse);
                 }
-//                print(ghostFrame);
-//                BLF.PrintBinary(chosenResponse);
                 ghostFrame++;
                 if (ghostFrame >= CaseBase.RecordFrames)
                 {
                     ghostFrame = 0;
                 }
+                //                if (currentCase.ResponseState[ghostFrame].Any())
+                //                {
+                //                    chosenResponse = currentCase.ResponseState[ghostFrame].OrderByDescending(item => item.Value).First().Key;
+                //                }
+                //                if (chosenResponse != 0)
+                //                {
+                //                    DecodeResponse(chosenResponse);
+                //                }
+                ////                print(ghostFrame);
+                ////                BLF.PrintBinary(chosenResponse);
             }
 
             // Run AI system
             if (playerController.GetState() != null && !usedGhost)
             {
+                inputController.ClearActiveButtons();
 //                print("Processing AI manually");
 //                playerController.GetState().ProcessAI(opponentPositions);
             }
@@ -84,64 +98,56 @@ namespace Assets.Scripts.Player
 //            BLF.PrintBinary(chosenResponse);
             if (BLF.IsBitSet(chosenResponse, 0))
             {
-                inputController.Primary();
+                inputController.SetButtonActive("Primary");
+            }
+            else
+            {
+                inputController.SetButtonInactive("Primary");
             }
             if (BLF.IsBitSet(chosenResponse, 1))
             {
-                inputController.Secondary();
+                inputController.SetButtonActive("Secondary");
+            }
+            else
+            {
+                inputController.SetButtonInactive("Secondary");
             }
             if (BLF.IsBitSet(chosenResponse, 2))
             {
-                inputController.Jump();
+                inputController.SetButtonActive("Jump");
+            }
+            else
+            {
+                inputController.SetButtonInactive("Jump");
             }
             if (BLF.IsBitSet(chosenResponse, 3))
             {
             }
             if (BLF.IsBitSet(chosenResponse, 4))
             {
-                setBlock = true;
-                inputController.SetBlock(true);
+                inputController.SetButtonActive("Block");
+            }
+            else
+            {
+                inputController.SetButtonInactive("Block");
             }
             if (BLF.IsBitSet(chosenResponse, 5))
             {
-                MonoBehaviour.print("Pressed Grab");
-                inputController.Grab();
+                inputController.SetButtonActive("Grab");
+            }
+            else
+            {
+                inputController.SetButtonInactive("Grab");
             }
             if (BLF.IsBitSet(chosenResponse, 6))
             {
-            }
-            if (BLF.IsBitSet(chosenResponse, 7))
-            {
-            }
-            if (BLF.IsBitSet(chosenResponse, 8))
-            {
-                inputController.SetButtonActive("Primary");
-            }
-            if (BLF.IsBitSet(chosenResponse, 9))
-            {
-                inputController.SetButtonActive("Secondary");
-            }
-            if (BLF.IsBitSet(chosenResponse, 10))
-            {
-                inputController.SetButtonActive("Jump");
-            }
-            if (BLF.IsBitSet(chosenResponse, 11))
-            {
-            }
-            if (BLF.IsBitSet(chosenResponse, 12))
-            {
-                inputController.SetButtonActive("Block");
-            }
-            if (BLF.IsBitSet(chosenResponse, 13))
-            {
-                MonoBehaviour.print("Holding Grab");
-                inputController.SetButtonActive("Grab");
-            }
-            if (BLF.IsBitSet(chosenResponse, 14))
-            {
                 inputController.SetButtonActive("TiltLock");
             }
-            if (BLF.IsBitSet(chosenResponse, 15))
+            else
+            {
+                inputController.SetButtonInactive("TiltLock");
+            }
+            if (BLF.IsBitSet(chosenResponse, 7))
             {
                 inputController.Run(true);
             }
@@ -149,37 +155,45 @@ namespace Assets.Scripts.Player
             {
                 inputController.Run(false);
             }
-            if (BLF.IsBitSet(chosenResponse, 16))
+            if (BLF.IsBitSet(chosenResponse, 8))
             {
                 inputController.MoveX(1);
             }
-            if (BLF.IsBitSet(chosenResponse, 17))
+            else if (BLF.IsBitSet(chosenResponse, 9))
             {
                 inputController.MoveX(.4f);
             }
-            if (BLF.IsBitSet(chosenResponse, 18))
+            else if (BLF.IsBitSet(chosenResponse, 10))
             {
                 inputController.MoveX(-1);
             }
-            if (BLF.IsBitSet(chosenResponse, 19))
+            else if (BLF.IsBitSet(chosenResponse, 11))
             {
                 inputController.MoveX(-.4f);
             }
-            if (BLF.IsBitSet(chosenResponse, 20))
+            else
+            {
+                inputController.MoveX(0);
+            }
+            if (BLF.IsBitSet(chosenResponse, 12))
             {
                 inputController.MoveY(1);
             }
-            if (BLF.IsBitSet(chosenResponse, 21))
+            else if (BLF.IsBitSet(chosenResponse, 13))
             {
                 inputController.MoveY(.4f);
             }
-            if (BLF.IsBitSet(chosenResponse, 22))
+            else if (BLF.IsBitSet(chosenResponse, 14))
             {
                 inputController.MoveY(-1);
             }
-            if (BLF.IsBitSet(chosenResponse, 23))
+            else if (BLF.IsBitSet(chosenResponse, 15))
             {
                 inputController.MoveY(-.4f);
+            }
+            else
+            {
+                inputController.MoveY(0);
             }
             if (!setBlock)
             {

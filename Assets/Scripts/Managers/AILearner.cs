@@ -20,18 +20,22 @@ namespace Assets.Scripts.Managers
 
         // Map of CaseBases
         private List<KeyValuePair<string, BinaryTree<CaseBase>>> caseTrees = new List<KeyValuePair<string, BinaryTree<CaseBase>>>();
-        private Queue<CaseBase> activeCases = new Queue<CaseBase>(); 
+        private List<KeyValuePair<PlayerController, Queue<CaseBase>>> recordingCases = new List<KeyValuePair<PlayerController, Queue<CaseBase>>>();
+        private List<KeyValuePair<PlayerController, int>> playerStates;
+        private List<KeyValuePair<PlayerController, KeyValuePair<bool, bool>>> sequenceEffectiveness;
         private CaseBase comparisonBase = new CaseBase();
 
         public void Awake()
         {
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             players = GetComponent<LevelManager>().players.Select(item => item.GetComponentInChildren<PlayerController>()).ToList();
+            playerStates = new List<KeyValuePair<PlayerController, int>>();
+            sequenceEffectiveness = new List<KeyValuePair<PlayerController, KeyValuePair<bool, bool>>>();
 
             // Load in existing AI trees
             foreach (PlayerController player in players)
             {
-                if (caseTrees.Any(item => item.Key == player.characterName)) continue;
+                if (caseTrees.Any(item => item.Key == player.characterName) || player.Computer) continue;
                 KeyValuePair<string, BinaryTree<CaseBase>> playerTree = LoadCases(player.characterName);
 //                print("Cases loaded in: " + playerTree.Value.Count);
 //                foreach (CaseBase caseBase in playerTree.Value.InOrder().Select(item => item.Data))
@@ -39,6 +43,10 @@ namespace Assets.Scripts.Managers
 //                    BLF.PrintBinary(caseBase.SituationIndex);
 //                }
                 caseTrees.Add(playerTree);
+
+                recordingCases.Add(new KeyValuePair<PlayerController, Queue<CaseBase>>(player, new Queue<CaseBase>()));
+                playerStates.Add(new KeyValuePair<PlayerController, int>(player, GenerateSituationIndex(player)));
+                sequenceEffectiveness.Add(new KeyValuePair<PlayerController, KeyValuePair<bool, bool>>(player, new KeyValuePair<bool, bool>(false, false)));
             }
 
             // Set up xDeltas
@@ -99,7 +107,6 @@ namespace Assets.Scripts.Managers
 
         public void Update()
         {
-            List<PlayerController> observedPlayers;
             if (gameManager.GameConfig.TournamentMode)
             {
                 return;
@@ -110,88 +117,102 @@ namespace Assets.Scripts.Managers
                 return;
             }
 
-            if (!players.Any(item => item.GetState().GetStateID() < 64 && item.RaycastGround() && !item.Computer))
+            if (!players.Any(item => item.GetState().GetStateID() < 64 && !item.Computer))
             {
                 return;
             }
 
-            observedPlayers = players.Where(item => item.GetState().GetStateID() < 64 && item.RaycastGround() && !item.Computer).ToList();
+            List<PlayerController> observedPlayers = players.Where(item => !item.Computer).ToList();
             foreach (PlayerController player in observedPlayers) // Ignore stun and launch states
             {
-                int situationIndex = GenerateSituationIndex(player);
-
-//                BLF.PrintBinary(situationIndex);
-
-                CaseBase currentCase;
-                comparisonBase.SituationIndex = situationIndex;
-                BinaryTreeNode<CaseBase> existingCaseBase = caseTrees.First(item => item.Key == player.characterName).Value.Search(comparisonBase);
-                if (existingCaseBase != null)
+                // What situation is the player in
+                int situationIndex = 0;
+                bool inControl = true;
+                if (player.GetState().GetStateID() > 64)
                 {
-                    currentCase = existingCaseBase.Data;
+                    inControl = false;
                 }
                 else
                 {
-                    currentCase = new CaseBase();
-                    currentCase.SituationIndex = situationIndex;
-                    caseTrees.First(item => item.Key == player.characterName).Value.Insert(currentCase);
-//                    print("Adding new case");
+                    situationIndex = GenerateSituationIndex(player);
                 }
 
-//                print("Adding case : " + currentCase.SituationIndex);
-                // Gather controller input for frame
-                List<byte> buttonPressState = player.input.ControllerButtonPressState();
-                List<byte> buttonHoldState = player.input.ControllerButtonHoldState();
+                // Only check for new cases when situation has changed since last frame
+                if (situationIndex != playerStates.First(item => item.Key == player).Value && inControl)
+                {
+                    // Has this case been encountered before
+                    CaseBase currentCase;
+                    comparisonBase.SituationIndex = situationIndex;
+                    BinaryTreeNode<CaseBase> existingCaseBase = caseTrees.First(item => item.Key == player.characterName).Value.Search(comparisonBase);
+                    // If so, use the case
+                    if (existingCaseBase != null)
+                    {
+                        currentCase = existingCaseBase.Data;
+                        currentCase.TotalRatio += 1;
+                    }
+                    // Otherwise, make a new one
+                    else
+                    {
+                        currentCase = new CaseBase()
+                        {
+                            SituationIndex = situationIndex,
+                        };
+                        caseTrees.First(item => item.Key == player.characterName).Value.Insert(currentCase);
+                    }
+
+                    // Add current case to queue if not already there
+                    if (!recordingCases.First(item => item.Key == player).Value.Contains(currentCase))
+                    {
+                        recordingCases.First(item => item.Key == player).Value.Enqueue(currentCase);
+                    }
+                }
+
+                // Update situation index of player
+                KeyValuePair<PlayerController, int> playerState = playerStates.First(item => item.Key == player);
+                playerState = new KeyValuePair<PlayerController, int>(player, GenerateSituationIndex(player));
+                playerStates.Remove(playerStates.First(item => item.Key == player));
+                playerStates.Add(playerState);
+
+                // Gather controller input for current frame
+                List<byte> buttonState = player.input.ControllerButtonHoldState();
                 sbyte[] analogState = player.input.ControllerAnalogState();
 
-                if (!activeCases.Contains(currentCase))
-                {
-                    activeCases.Enqueue(currentCase);
-                }
+                byte dequeue = 0;
 
-                bool dequeue = false;
-                foreach (CaseBase activeCase in activeCases)
+                foreach (CaseBase activeCase in recordingCases.First(item => item.Key == player).Value)
                 {
                     if (activeCase.Frame < CaseBase.RecordFrames)
                     {
-                        if (activeCase.Recording)
+                        activeCase.PushButtonStateResponse(buttonState);
+                        activeCase.PushAnalogResponse(analogState);
+                        activeCase.PushActiveResponseState();
+                        bool punish = inControl;
+                        bool reward = ShouldReward(situationIndex);
+                        if (reward && !punish)
                         {
-                            //                        print("Handling case " + activeCase.Frame);
-                            if (buttonPressState.Any())
-                            {
-                                activeCase.PushButtonPressResponse(buttonPressState);
-                            }
-                            if (buttonHoldState.Any())
-                            {
-                                activeCase.PushButtonHoldResponse(buttonHoldState);
-                            }
-                            if (analogState.Any())
-                            {
-                                activeCase.PushAnalogResponse(analogState);
-                            }
-                            //                        BLF.PrintBinary(activeCase.ActiveResponseState);
-                            if (activeCase.ActiveResponseState != 0)
-                            {
-                                activeCase.PushActiveResponseState();
-                            }
-                            else
-                            {
-                                activeCase.Recording = false;
-                                activeCase.ActiveResponseState = 0;
-                            }
-
-                            activeCase.TotalRatio += 1;
+                            KeyValuePair<PlayerController, KeyValuePair<bool, bool>> newEffectiveness = new KeyValuePair<PlayerController, KeyValuePair<bool, bool>>(player, new KeyValuePair<bool, bool>(true, sequenceEffectiveness.First(item => item.Key == player).Value.Value));
+                            sequenceEffectiveness.Remove(sequenceEffectiveness.First(item => item.Key == player));
+                            sequenceEffectiveness.Add(newEffectiveness);
+                        }
+                        else if (punish && !reward)
+                        {
+                            KeyValuePair<PlayerController, KeyValuePair<bool, bool>> newEffectiveness = new KeyValuePair<PlayerController, KeyValuePair<bool, bool>>(player, new KeyValuePair<bool, bool>(sequenceEffectiveness.First(item => item.Key == player).Value.Key, true));
+                            sequenceEffectiveness.Remove(sequenceEffectiveness.First(item => item.Key == player));
+                            sequenceEffectiveness.Add(newEffectiveness);
                         }
                         activeCase.Frame += 1;
                     }
                     else
                     {
-                        dequeue = true;
+                        dequeue += 1;
                     }
                 }
-                if (dequeue)
+                while (dequeue > 0)
                 {
-                    CaseBase removedCase = activeCases.Dequeue();
-                    removedCase.Frame = 0;
+                    recordingCases.First(item => item.Key == player).Value.Dequeue().PushActiveSet(sequenceEffectiveness.First(item => item.Key == player).Value.Key, sequenceEffectiveness.First(item => item.Key == player).Value.Value);
+                    sequenceEffectiveness.Remove(sequenceEffectiveness.First(item => item.Key == player));
+                    sequenceEffectiveness.Add(new KeyValuePair<PlayerController, KeyValuePair<bool, bool>>(player, new KeyValuePair<bool, bool>(false, false)));
+                    dequeue--;
                 }
             }
         }
@@ -324,6 +345,12 @@ namespace Assets.Scripts.Managers
                 return result.Data;
             }
             return null;
+        }
+
+        private bool ShouldReward(int situationIndex)
+        {
+            // Are bits 17-14 set to binary 13 (1101)
+            return (BLF.IsBitSet(situationIndex, 17) && BLF.IsBitSet(situationIndex, 16) && !BLF.IsBitSet(situationIndex, 15) && BLF.IsBitSet(situationIndex, 14));
         }
 
         private KeyValuePair<string, BinaryTree<CaseBase>> LoadCases(string characterName)

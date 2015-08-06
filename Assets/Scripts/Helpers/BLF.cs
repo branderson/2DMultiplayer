@@ -20,6 +20,16 @@ namespace Assets.Scripts.Helpers
             return (value & (1 << index)) != 0;
         }
 
+        public static bool IsBitSet(short value, int index)
+        {
+            if (index < 0 || index >= sizeof(short) * 8)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            return (value & (1 << index)) != 0;
+        }
+
         public static bool IsBitSet(byte value, int index)
         {
             if (index < 0 || index >= 16)
@@ -38,6 +48,16 @@ namespace Assets.Scripts.Helpers
             }
 
             return value | (1 << index);
+        }
+
+        public static short SetBit(short value, int index)
+        {
+            if (index < 0 || index >= sizeof(short) * 8)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            return (short)(value | (1 << index));
         }
 
         public static int UnsetBit(int value, int index)

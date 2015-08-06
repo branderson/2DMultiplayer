@@ -56,6 +56,7 @@ namespace Assets.Scripts.Managers
             Directory.CreateDirectory(Application.persistentDataPath + "/SaveData/AIData/");
             FileStream file = File.Create(Application.persistentDataPath + "/SaveData/AIData/" + characterName + ".ai");
             List<CaseBase> caseList = cases.InOrder().Select(item => item.Data).Where(item => !item.Empty()).ToList();
+            print("There are " + caseList.Count + " cases in the tree");
             bf.Serialize(file, caseList);
 //            bf.Serialize(file, cases);
             file.Close();
