@@ -55,7 +55,9 @@ namespace Assets.Scripts.Managers
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/SaveData/AIData/");
             FileStream file = File.Create(Application.persistentDataPath + "/SaveData/AIData/" + characterName + ".ai");
-            bf.Serialize(file, cases);
+            List<CaseBase> caseList = cases.InOrder().Select(item => item.Data).Where(item => !item.Empty()).ToList();
+            bf.Serialize(file, caseList);
+//            bf.Serialize(file, cases);
             file.Close();
         }
 
@@ -74,11 +76,15 @@ namespace Assets.Scripts.Managers
             {
                 return new KeyValuePair<string, BinaryTree<CaseBase>>(characterName, new BinaryTree<CaseBase>());
             }
-            if (bf == null)
+            List<CaseBase> caseList = (List<CaseBase>) bf.Deserialize(file);
+
+            BinaryTree<CaseBase> loadedTree = new BinaryTree<CaseBase>();
+            foreach (CaseBase caseBase in caseList)
             {
-                print("Here's our problem");
+                loadedTree.Insert(caseBase);
             }
-            BinaryTree<CaseBase> loadedTree = (BinaryTree<CaseBase>)bf.Deserialize(file);
+//            BinaryTree<CaseBase> loadedTree = (BinaryTree<CaseBase>)bf.Deserialize(file).;
+            print("Cases loaded by GameManager: " + loadedTree.Count);
             return new KeyValuePair<string, BinaryTree<CaseBase>>(characterName, loadedTree);
         } 
 

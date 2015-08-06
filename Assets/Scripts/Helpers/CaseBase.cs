@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using UnityEngine;
 
 namespace Assets.Scripts.Helpers
 {
     [SerializableAttribute]
     public class CaseBase : IComparable<CaseBase>, ISerializable
     {
-        [NonSerialized]public const int RecordFrames = 10;
-        [NonSerialized]public int Frame = 0;
+        [NonSerialized] public const int RecordFrames = 5;
+        [NonSerialized] public bool Recording = true;
+        [NonSerialized] public int Frame = 0;
         public int SituationIndex = 0;
         public int TotalRatio = 0;
-        [NonSerialized]public int ActiveResponseState = 0;
+        [NonSerialized] public int ActiveResponseState = 0;
         public List<KeyValuePair<int, int>>[] ResponseState = new List<KeyValuePair<int, int>>[RecordFrames];
 
         public CaseBase()
@@ -23,16 +26,16 @@ namespace Assets.Scripts.Helpers
             }
         }
 
-        // Deserialization constructor
-        protected CaseBase(SerializationInfo information, StreamingContext context)
+        public bool Empty()
         {
             for (int i = 0; i < RecordFrames; i++)
             {
-                ResponseState[i] = new List<KeyValuePair<int, int>>();
+                if (ResponseState[i].Count == 0)
+                {
+                    return true;
+                }
             }
-            SituationIndex = information.GetInt32("i");
-            TotalRatio = information.GetInt32("t");
-            ResponseState = (List<KeyValuePair<int, int>>[])information.GetValue("r", typeof(List<KeyValuePair<int, int>>[]));
+            return false;
         }
 
         public void PushButtonPressResponse(List<byte> response)
@@ -92,6 +95,11 @@ namespace Assets.Scripts.Helpers
 
         public void PushActiveResponseState()
         {
+            if (!Recording)
+            {
+                ActiveResponseState = 0;
+                return;
+            }
             if (ResponseState[Frame].Any(item => item.Key == ActiveResponseState))
             {
                 KeyValuePair<int, int> activeResponse = ResponseState[Frame].First(item => item.Key == ActiveResponseState);
@@ -101,9 +109,8 @@ namespace Assets.Scripts.Helpers
             }
             else
             {
-                ResponseState[Frame].Add(new KeyValuePair<int, int>(ActiveResponseState, 0));
+                ResponseState[Frame].Add(new KeyValuePair<int, int>(ActiveResponseState, 1));
             }
-
             ActiveResponseState = 0;
         }
 
@@ -120,6 +127,25 @@ namespace Assets.Scripts.Helpers
             return 1;
         }
 
+        // Deserialization constructor
+        protected CaseBase(SerializationInfo information, StreamingContext context)
+        {
+//            for (int i = 0; i < RecordFrames; i++)
+//            {
+//                ResponseState[i] = new List<KeyValuePair<int, int>>();
+//            }
+            SituationIndex = information.GetInt32("i");
+            TotalRatio = information.GetInt32("t");
+            ResponseState = (List<KeyValuePair<int, int>>[])information.GetValue("r", typeof(List<KeyValuePair<int, int>>[]));
+//            MonoBehaviour.print("Loaded ResponseState: ");
+//            foreach (KeyValuePair<int, int> response in ResponseState[0])
+//            {
+//                BLF.PrintBinary(response.Key);
+//            }
+        }
+
+
+        // TODO: Don't add (or at least serialize) empty responses or situations
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("i", SituationIndex);
@@ -127,14 +153,18 @@ namespace Assets.Scripts.Helpers
             List<KeyValuePair<int, int>>[] storedResponses = new List<KeyValuePair<int, int>>[RecordFrames];
             for (int i = 0; i < RecordFrames; i++)
             {
-                List<KeyValuePair<int, int>> orderedResponses = ResponseState[i].OrderByDescending(item => item.Value).ToList();
-                for (int j = 0; j < 5; j++)
+                if (ResponseState[i].Count < 5)
                 {
-                    if (orderedResponses.Count() > j + 1)
-                    {
-                        storedResponses[i].Add(orderedResponses[j]);
-                    }
+                    storedResponses[i] = ResponseState[i];
                 }
+                else
+                {
+                    storedResponses[i] = ResponseState[i].OrderByDescending(item => item.Value).ToList().GetRange(0, 5);
+                }
+//                foreach (KeyValuePair<int, int> response in storedResponses[i])
+//                {
+//                    BLF.PrintBinary(response.Key);
+//                }
             }
             info.AddValue("r", storedResponses);
         }

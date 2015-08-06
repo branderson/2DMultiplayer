@@ -33,7 +33,11 @@ namespace Assets.Scripts.Managers
             {
                 if (caseTrees.Any(item => item.Key == player.characterName)) continue;
                 KeyValuePair<string, BinaryTree<CaseBase>> playerTree = LoadCases(player.characterName);
-                print(playerTree.Value.Count);
+//                print("Cases loaded in: " + playerTree.Value.Count);
+//                foreach (CaseBase caseBase in playerTree.Value.InOrder().Select(item => item.Data))
+//                {
+//                    BLF.PrintBinary(caseBase.SituationIndex);
+//                }
                 caseTrees.Add(playerTree);
             }
 
@@ -130,38 +134,53 @@ namespace Assets.Scripts.Managers
                     currentCase = new CaseBase();
                     currentCase.SituationIndex = situationIndex;
                     caseTrees.First(item => item.Key == player.characterName).Value.Insert(currentCase);
-                    print("Adding new case");
+//                    print("Adding new case");
                 }
 
+//                print("Adding case : " + currentCase.SituationIndex);
                 // Gather controller input for frame
                 List<byte> buttonPressState = player.input.ControllerButtonPressState();
                 List<byte> buttonHoldState = player.input.ControllerButtonHoldState();
                 sbyte[] analogState = player.input.ControllerAnalogState();
 
-                activeCases.Enqueue(currentCase);
+                if (!activeCases.Contains(currentCase))
+                {
+                    activeCases.Enqueue(currentCase);
+                }
 
                 bool dequeue = false;
                 foreach (CaseBase activeCase in activeCases)
                 {
                     if (activeCase.Frame < CaseBase.RecordFrames)
                     {
-//                        print("Handling case " + activeCase.Frame);
-                        if (buttonPressState.Any())
+                        if (activeCase.Recording)
                         {
-                            activeCase.PushButtonPressResponse(buttonPressState);
-                        }
-                        if (buttonHoldState.Any())
-                        {
-                            activeCase.PushButtonHoldResponse(buttonHoldState);
-                        }
-                        if (analogState.Any())
-                        {
-                            activeCase.PushAnalogResponse(analogState);
-                        }
-//                        BLF.PrintBinary(activeCase.ActiveResponseState);
-                        activeCase.PushActiveResponseState();
+                            //                        print("Handling case " + activeCase.Frame);
+                            if (buttonPressState.Any())
+                            {
+                                activeCase.PushButtonPressResponse(buttonPressState);
+                            }
+                            if (buttonHoldState.Any())
+                            {
+                                activeCase.PushButtonHoldResponse(buttonHoldState);
+                            }
+                            if (analogState.Any())
+                            {
+                                activeCase.PushAnalogResponse(analogState);
+                            }
+                            //                        BLF.PrintBinary(activeCase.ActiveResponseState);
+                            if (activeCase.ActiveResponseState != 0)
+                            {
+                                activeCase.PushActiveResponseState();
+                            }
+                            else
+                            {
+                                activeCase.Recording = false;
+                                activeCase.ActiveResponseState = 0;
+                            }
 
-                        activeCase.TotalRatio += 1;
+                            activeCase.TotalRatio += 1;
+                        }
                         activeCase.Frame += 1;
                     }
                     else
@@ -171,7 +190,8 @@ namespace Assets.Scripts.Managers
                 }
                 if (dequeue)
                 {
-                    activeCases.Dequeue().Frame = 0;
+                    CaseBase removedCase = activeCases.Dequeue();
+                    removedCase.Frame = 0;
                 }
             }
         }
@@ -313,6 +333,20 @@ namespace Assets.Scripts.Managers
 
         private void SaveCases()
         {
+//            foreach (KeyValuePair<string, BinaryTree<CaseBase>> caseTree in caseTrees)
+//            {
+//                List<int> deletions = caseTree.Value.InOrder().Select(item => item.Data).Where(caseBase => caseBase.Empty()).Select(current => current.SituationIndex).ToList();
+//                foreach (int deletion in deletions)
+//                {
+//                    print("Trying to delte " + deletion);
+//                    comparisonBase.SituationIndex = deletion;
+//                    if (caseTree.Value.Search(comparisonBase) != null)
+//                    {
+//                        caseTree.Value.Delete(comparisonBase, false);
+//                    }
+//                    print("Deleting");
+//                }
+//            }
             foreach (KeyValuePair<string, BinaryTree<CaseBase>> caseTree in caseTrees)
             {
                 gameManager.SaveGhostAIData(caseTree.Value, caseTree.Key);

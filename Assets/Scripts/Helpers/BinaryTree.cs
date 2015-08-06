@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using UnityEngine;
 
 namespace Assets.Scripts.Helpers
 {
-    [SerializableAttribute]
-    public class BinaryTree<T> : ISerializable where T : IComparable<T>
+    [Serializable]
+    public class BinaryTree<T> where T : IComparable<T>
     {
         private BinaryTreeNode<T> root;
         public int Count;
@@ -395,32 +397,45 @@ namespace Assets.Scripts.Helpers
             }
         }
 
-        public BinaryTree(SerializationInfo information, StreamingContext context)
-        {
-            List<T> dataList = (List<T>) information.GetValue("d", typeof (List<T>));
-            foreach (T data in dataList)
-            {
-                Insert(data);
-            }
-        } 
+//        public BinaryTree(SerializationInfo information, StreamingContext context)
+//        {
+//            IList<BinaryTreeNode<T>> listOfNodes =
+//                (IList<BinaryTreeNode<T>>) information.GetValue("d", typeof (IList<BinaryTreeNode<T>>));
+//            foreach (BinaryTreeNode<T> node in listOfNodes)
+//            {
+//                Insert(node);
+//            }
+////            MonoBehaviour.print("Grabbing dataList");
+////            List<T> dataList = (List<T>) information.GetValue("d", typeof (List<T>));
+////            MonoBehaviour.print(dataList.Count);
+////            foreach (T data in dataList)
+////            {
+////                if (Search(data) == null)
+////                {
+//////                    MonoBehaviour.print("Inserting");
+////                    Insert(data);
+////                }
+////            }
+//        } 
         
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            IList<BinaryTreeNode<T>> listOfNodes = new List<BinaryTreeNode<T>>();
-            FillListInOrder(root, listOfNodes);
-
-            List<T> tempList = listOfNodes.Select(item => item.Data).ToList();
-            List<T> dataList = new List<T>();
-            foreach (T data in tempList)
-            {
-                if (!dataList.Contains(data))
-                {
-                    dataList.Add(data);
-                }
-            }
-
-            info.AddValue("d", dataList);
-        }
+//        public void GetObjectData(SerializationInfo info, StreamingContext context)
+//        {
+//            IList<BinaryTreeNode<T>> listOfNodes = new List<BinaryTreeNode<T>>();
+//            listOfNodes = InOrder().ToList();
+////            FillListInOrder(root, listOfNodes);
+//
+////            List<T> dataList = listOfNodes.Select(item => item.Data).ToList();
+////            List<T> dataList = new List<T>();
+////            foreach (T data in tempList)
+////            {
+////                if (!dataList.Contains(data))
+////                {
+////                    dataList.Add(data);
+////                }
+////            }
+//
+//            info.AddValue("d", listOfNodes, typeof(IList<BinaryTreeNode<T>>));
+//        }
     }
 
     [Serializable]

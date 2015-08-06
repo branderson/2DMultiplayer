@@ -81,7 +81,7 @@ namespace Assets.Scripts.Player
         private void DecodeResponse(int chosenResponse)
         {
             bool setBlock = false;
-            BLF.PrintBinary(chosenResponse);
+//            BLF.PrintBinary(chosenResponse);
             if (BLF.IsBitSet(chosenResponse, 0))
             {
                 inputController.Primary();
