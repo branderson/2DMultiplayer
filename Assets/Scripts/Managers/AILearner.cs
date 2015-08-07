@@ -22,7 +22,7 @@ namespace Assets.Scripts.Managers
         private List<KeyValuePair<string, BinaryTree<CaseBase>>> caseTrees = new List<KeyValuePair<string, BinaryTree<CaseBase>>>();
         private List<KeyValuePair<PlayerController, Queue<CaseBase>>> recordingCases = new List<KeyValuePair<PlayerController, Queue<CaseBase>>>();
         private List<KeyValuePair<PlayerController, int>> playerStates;
-        private List<KeyValuePair<PlayerController, KeyValuePair<bool, bool>>> sequenceEffectiveness;
+        private List<KeyValuePair<PlayerController, KeyValuePair<int, int>>> sequenceEffectiveness;
         private CaseBase comparisonBase = new CaseBase();
 
         public void Awake()
@@ -30,11 +30,18 @@ namespace Assets.Scripts.Managers
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             players = GetComponent<LevelManager>().players.Select(item => item.GetComponentInChildren<PlayerController>()).ToList();
             playerStates = new List<KeyValuePair<PlayerController, int>>();
-            sequenceEffectiveness = new List<KeyValuePair<PlayerController, KeyValuePair<bool, bool>>>();
+            sequenceEffectiveness = new List<KeyValuePair<PlayerController, KeyValuePair<int, int>>>();
 
             // Load in existing AI trees
             foreach (PlayerController player in players)
             {
+                if (!player.Computer)
+                {
+                    recordingCases.Add(new KeyValuePair<PlayerController, Queue<CaseBase>>(player, new Queue<CaseBase>()));
+                    playerStates.Add(new KeyValuePair<PlayerController, int>(player, GenerateSituationIndex(player)));
+                    sequenceEffectiveness.Add(new KeyValuePair<PlayerController, KeyValuePair<int, int>>(player, new KeyValuePair<int, int>(0, 0)));
+                }
+
                 if (caseTrees.Any(item => item.Key == player.characterName) || player.Computer) continue;
                 KeyValuePair<string, BinaryTree<CaseBase>> playerTree = LoadCases(player.characterName);
 //                print("Cases loaded in: " + playerTree.Value.Count);
@@ -43,10 +50,6 @@ namespace Assets.Scripts.Managers
 //                    BLF.PrintBinary(caseBase.SituationIndex);
 //                }
                 caseTrees.Add(playerTree);
-
-                recordingCases.Add(new KeyValuePair<PlayerController, Queue<CaseBase>>(player, new Queue<CaseBase>()));
-                playerStates.Add(new KeyValuePair<PlayerController, int>(player, GenerateSituationIndex(player)));
-                sequenceEffectiveness.Add(new KeyValuePair<PlayerController, KeyValuePair<bool, bool>>(player, new KeyValuePair<bool, bool>(false, false)));
             }
 
             // Set up xDeltas
@@ -117,10 +120,10 @@ namespace Assets.Scripts.Managers
                 return;
             }
 
-            if (!players.Any(item => item.GetState().GetStateID() < 64 && !item.Computer))
-            {
-                return;
-            }
+//            if (!players.Any(item => item.GetState().GetStateID() < 64 && !item.Computer))
+//            {
+//                return;
+//            }
 
             List<PlayerController> observedPlayers = players.Where(item => !item.Computer).ToList();
             foreach (PlayerController player in observedPlayers) // Ignore stun and launch states
@@ -128,7 +131,7 @@ namespace Assets.Scripts.Managers
                 // What situation is the player in
                 int situationIndex = 0;
                 bool inControl = true;
-                if (player.GetState().GetStateID() > 64)
+                if (player.GetState().GetStateID() >= 64)
                 {
                     inControl = false;
                 }
@@ -138,12 +141,14 @@ namespace Assets.Scripts.Managers
                 }
 
                 // Only check for new cases when situation has changed since last frame
-                if (situationIndex != playerStates.First(item => item.Key == player).Value && inControl)
+//                if (situationIndex != playerStates.First(item => item.Key == player).Value && inControl)
+                if (inControl)
                 {
                     // Has this case been encountered before
                     CaseBase currentCase;
                     comparisonBase.SituationIndex = situationIndex;
-                    BinaryTreeNode<CaseBase> existingCaseBase = caseTrees.First(item => item.Key == player.characterName).Value.Search(comparisonBase);
+                    BinaryTreeNode<CaseBase> existingCaseBase =
+                        caseTrees.First(item => item.Key == player.characterName).Value.Search(comparisonBase);
                     // If so, use the case
                     if (existingCaseBase != null)
                     {
@@ -156,6 +161,7 @@ namespace Assets.Scripts.Managers
                         currentCase = new CaseBase()
                         {
                             SituationIndex = situationIndex,
+                            TotalRatio = 1,
                         };
                         caseTrees.First(item => item.Key == player.characterName).Value.Insert(currentCase);
                     }
@@ -176,6 +182,10 @@ namespace Assets.Scripts.Managers
                 // Gather controller input for current frame
                 List<byte> buttonState = player.input.ControllerButtonHoldState();
                 sbyte[] analogState = player.input.ControllerAnalogState();
+//                if (buttonState.Contains(0) && (analogState[0] == 2 || analogState[0] == -2))
+//                {
+//                    print("Should be recording a side smash");
+//                }
 
                 byte dequeue = 0;
 
@@ -186,20 +196,24 @@ namespace Assets.Scripts.Managers
                         activeCase.PushButtonStateResponse(buttonState);
                         activeCase.PushAnalogResponse(analogState);
                         activeCase.PushActiveResponseState();
-                        bool punish = inControl;
-                        bool reward = ShouldReward(situationIndex);
-                        if (reward && !punish)
+                        int punish = 0;
+                        if (!inControl)
                         {
-                            KeyValuePair<PlayerController, KeyValuePair<bool, bool>> newEffectiveness = new KeyValuePair<PlayerController, KeyValuePair<bool, bool>>(player, new KeyValuePair<bool, bool>(true, sequenceEffectiveness.First(item => item.Key == player).Value.Value));
-                            sequenceEffectiveness.Remove(sequenceEffectiveness.First(item => item.Key == player));
-                            sequenceEffectiveness.Add(newEffectiveness);
+                            punish += 1;
                         }
-                        else if (punish && !reward)
+                        if (player.Respawned)
                         {
-                            KeyValuePair<PlayerController, KeyValuePair<bool, bool>> newEffectiveness = new KeyValuePair<PlayerController, KeyValuePair<bool, bool>>(player, new KeyValuePair<bool, bool>(sequenceEffectiveness.First(item => item.Key == player).Value.Key, true));
-                            sequenceEffectiveness.Remove(sequenceEffectiveness.First(item => item.Key == player));
-                            sequenceEffectiveness.Add(newEffectiveness);
+                            punish += 100;
                         }
+//                        print("Players");
+//                        foreach (PlayerController playerCon in players)
+//                        {
+//                            BLF.PrintBinary(playerCon.GetState().GetStateID());
+//                        }
+                        int reward = ShouldReward(player, situationIndex);
+                        KeyValuePair<PlayerController, KeyValuePair<int, int>> newEffectiveness = new KeyValuePair<PlayerController, KeyValuePair<int, int>>(player, new KeyValuePair<int, int>(sequenceEffectiveness.First(item => item.Key == player).Value.Key + reward, sequenceEffectiveness.First(item => item.Key == player).Value.Value + punish));
+                        sequenceEffectiveness.Remove(sequenceEffectiveness.First(item => item.Key == player));
+                        sequenceEffectiveness.Add(newEffectiveness);
                         activeCase.Frame += 1;
                     }
                     else
@@ -211,9 +225,13 @@ namespace Assets.Scripts.Managers
                 {
                     recordingCases.First(item => item.Key == player).Value.Dequeue().PushActiveSet(sequenceEffectiveness.First(item => item.Key == player).Value.Key, sequenceEffectiveness.First(item => item.Key == player).Value.Value);
                     sequenceEffectiveness.Remove(sequenceEffectiveness.First(item => item.Key == player));
-                    sequenceEffectiveness.Add(new KeyValuePair<PlayerController, KeyValuePair<bool, bool>>(player, new KeyValuePair<bool, bool>(false, false)));
+                    sequenceEffectiveness.Add(new KeyValuePair<PlayerController, KeyValuePair<int, int>>(player, new KeyValuePair<int, int>(0, 0)));
                     dequeue--;
                 }
+            }
+            foreach (PlayerController player in players)
+            {
+                player.Respawned = false;
             }
         }
 
@@ -228,6 +246,7 @@ namespace Assets.Scripts.Managers
             }
 
             // [Bits 31-26] Append player state last 6 bits to situationIndex (6 bits)
+//            print("Player state ID " + player.GetState());
             for (int i = 0; i < 6; i++)
             {
                 if (BLF.IsBitSet(player.GetState().GetStateID(), 6-i))
@@ -252,6 +271,7 @@ namespace Assets.Scripts.Managers
                 
             // [Bit 25] Is closest player to the left or to the right (1 bit)
             bool nearestToRight = (player.transform.position.x - nearestPlayer.transform.position.x >= 0);
+//            print("Closest player to right: " + nearestToRight);
             if (nearestToRight)
             {
                 situationIndex = BLF.SetBit(situationIndex, 25);
@@ -260,6 +280,7 @@ namespace Assets.Scripts.Managers
             // [Bits 24-21] What distance range is the enemy from the player (4 bits)
             float distanceToNearest = (Mathf.Abs(player.transform.position.x - nearestPlayer.transform.position.x));
             int rangeValue = xDeltas.Query((int)distanceToNearest).First().Value;
+//            print("Horizontal distance range: " + rangeValue);
             for (int i = 0; i < 4; i++)
             {
                 if (BLF.IsBitSet(rangeValue, i))
@@ -271,6 +292,7 @@ namespace Assets.Scripts.Managers
 
             // [Bit 20] Is closest player above or below the player (1 bit)
             bool nearestAbove = (player.transform.position.y - nearestPlayer.transform.position.y >= 0);
+//            print("Nearest above: " + nearestAbove);
             if (nearestAbove)
             {
                 situationIndex = BLF.SetBit(situationIndex, 20);
@@ -279,6 +301,7 @@ namespace Assets.Scripts.Managers
             // [Bits 19-18] What distance range is the enemy above or below the player (2 bits)
             distanceToNearest = (Mathf.Abs(player.transform.position.y - nearestPlayer.transform.position.y));
             rangeValue = yDeltas.Query((int)distanceToNearest).First().Value;
+//            print("Vertical diestance range: " + rangeValue);
             for (int i = 0; i < 2; i++)
             {
                 if (BLF.IsBitSet(rangeValue, i))
@@ -288,18 +311,35 @@ namespace Assets.Scripts.Managers
                 }
             }
 
+
+//            if (nearestPlayer.GetState().GetStateID() >= 64)
+//            {
+//                print("Player state ID " + player.GetState());
+//                print("Nearest state ID " + nearestPlayer.GetState().GetStateID());
+//                print("General state: " + stateCategories.Query(nearestPlayer.GetState().GetStateID()).First().Value);
+//                BLF.PrintBinary(situationIndex);
+//                BLF.PrintBinary(stateCategories.Query(nearestPlayer.GetState().GetStateID()).First().Value);
+//            }
             // [Bits 17-14] What general state is the nearest player in (4 bits)
             for (int i = 0; i < 4; i++)
             {
 //                    BLF.PrintBinary(nearestPlayer.GetState().GetStateID());
 //                    BLF.PrintBinary(stateCategories.Query(nearestPlayer.GetState().GetStateID()).First().Value);
 //                    print("");
-                if (BLF.IsBitSet(stateCategories.Query(nearestPlayer.GetState().GetStateID()).First().Value, 4-i))
+                if (BLF.IsBitSet(stateCategories.Query(nearestPlayer.GetState().GetStateID()).First().Value, 3-i))
                 {
 //                        print("\tSetting bit " + (31 - i));
+//                    if (nearestPlayer.GetState().GetStateID() >= 64)
+//                    {
+//                        print("Setting bit " + (17-i) + " to " + BLF.IsBitSet(stateCategories.Query(nearestPlayer.GetState().GetStateID()).First().Value, 3-i));
+//                    }
                     situationIndex = BLF.SetBit(situationIndex, 17 - i);
                 }
             }
+//            if (nearestPlayer.GetState().GetStateID() >= 64)
+//            {
+//                BLF.PrintBinary(situationIndex);                      
+//            }
 
             // [Bit 13] Is there a projectile within range to dodge (1 bit)
 
@@ -347,10 +387,22 @@ namespace Assets.Scripts.Managers
             return null;
         }
 
-        private bool ShouldReward(int situationIndex)
+        private int ShouldReward(PlayerController player, int situationIndex)
         {
             // Are bits 17-14 set to binary 13 (1101)
-            return (BLF.IsBitSet(situationIndex, 17) && BLF.IsBitSet(situationIndex, 16) && !BLF.IsBitSet(situationIndex, 15) && BLF.IsBitSet(situationIndex, 14));
+            int reward = 0;
+
+            if (BLF.IsBitSet(situationIndex, 17) && BLF.IsBitSet(situationIndex, 16) &&
+                !BLF.IsBitSet(situationIndex, 15) && BLF.IsBitSet(situationIndex, 14))
+            {
+                reward += 1;
+            }
+            PlayerController nearestPlayer = player.opponents.OrderByDescending(item => Mathf.Abs(player.transform.position.x - item.transform.position.x)).Last();
+            if (nearestPlayer.Respawned)
+            {
+                reward += 10;
+            }
+            return reward;
         }
 
         private KeyValuePair<string, BinaryTree<CaseBase>> LoadCases(string characterName)

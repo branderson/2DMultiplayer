@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Assets.Scripts.Player.States.AIBehaviourStates;
 using UnityEngine;
 
@@ -8,6 +10,8 @@ namespace Assets.Scripts.Player.States.AIBehaviours
     {
         [SerializeField] protected bool startingActive = true;
         protected bool active;
+        internal bool TimedDisable = false;
+        private int activeFrames;
         protected PlayerController playerController;
         protected AIInputController PlayerInputController;
         protected Animator playerAnimator;
@@ -30,6 +34,21 @@ namespace Assets.Scripts.Player.States.AIBehaviours
             InState = true;
         }
 
+        public void CountDown()
+        {
+            if (TimedDisable)
+            {
+                if (activeFrames > 0)
+                {
+                    activeFrames--;
+                }
+                else
+                {
+                    Disable();
+                }
+            }
+        }
+
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
             active = false;
@@ -50,9 +69,18 @@ namespace Assets.Scripts.Player.States.AIBehaviours
             active = true;
         }
 
-        public void Disable()
+        public void Enable(int frames)
+        {
+            Enable();
+            TimedDisable = true;
+            activeFrames = frames*2;
+        }
+
+        public virtual void Disable()
         {
             active = false;
+            TimedDisable = false;
+            activeFrames = 0;
         }
     }
 }

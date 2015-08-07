@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using Assets.Scripts.Stage;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.States
@@ -7,6 +8,7 @@ namespace Assets.Scripts.Player.States
     {
         [SerializeField] private float holdSpeedRatio = .5f;
         private GameObject playerGrabReach;
+        private PlayerGrabTrigger trigger;
         private Vector2 move;
         private float moveSpeed = 1f;
         private bool grabReleased = false;
@@ -23,6 +25,7 @@ namespace Assets.Scripts.Player.States
                 playerGrabReach = playerController.transform.parent.Find("PlayerGrabReach").gameObject;
             }
             playerGrabReach.SetActive(true);
+            trigger = playerGrabReach.GetComponent<PlayerGrabTrigger>();
         }
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -39,10 +42,12 @@ namespace Assets.Scripts.Player.States
             if (move.x > 0 && !playerController.facingRight)
             {
                 animator.SetTrigger("TurnAround");
+                trigger.Turn();
             }
             else if (move.x < 0 && playerController.facingRight)
             {
                 animator.SetTrigger("TurnAround");
+                trigger.Turn();
             }
             // Movement
             else if (move.x > 0)

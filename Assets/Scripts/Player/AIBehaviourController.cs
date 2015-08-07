@@ -42,12 +42,16 @@ namespace Assets.Scripts.Player
 
             // Ghost AI system
             bool usedGhost = false;
-            if (ghostFrame == 0)
+            if (ghostFrame == 0 && playerController.RaycastGround())
             {
                 int situationID = aiLearner.GenerateSituationIndex(playerController);
                 currentCase = aiLearner.LookupSituationIndex(situationID, playerController.characterName);
+//                if (currentCase != null)
+//                {
+//                    print("Entering new case");
+//                }
             }
-            if (currentCase != null)
+            if (currentCase != null && playerController.RaycastGround())
             {
                 usedGhost = true;
 ////                print("Using ghost AI");
@@ -60,15 +64,24 @@ namespace Assets.Scripts.Player
                     {
                         chosenResponse = currentSet.GetStateAtFrame((byte) ghostFrame);
                     }
+                    else if (currentSet.PassedLastState((byte) ghostFrame) && ghostFrame > 10)
+                    {
+//                        print("Ending sequence early");
+                        ghostFrame = 0;
+                        inputController.ClearActiveButtons();
+                        return;
+                    }
                 }
                 if (chosenResponse != 0)
                 {
-                    print("Response chosen");
+//                    print("Response chosen");
                     DecodeResponse(chosenResponse);
                 }
                 ghostFrame++;
                 if (ghostFrame >= CaseBase.RecordFrames)
                 {
+//                    print("Exiting case");
+                    inputController.ClearActiveButtons();
                     ghostFrame = 0;
                 }
                 //                if (currentCase.ResponseState[ghostFrame].Any())
@@ -86,9 +99,8 @@ namespace Assets.Scripts.Player
             // Run AI system
             if (playerController.GetState() != null && !usedGhost)
             {
-                inputController.ClearActiveButtons();
 //                print("Processing AI manually");
-//                playerController.GetState().ProcessAI(opponentPositions);
+                playerController.GetState().ProcessAI(opponentPositions);
             }
         }
 
@@ -161,14 +173,17 @@ namespace Assets.Scripts.Player
             }
             else if (BLF.IsBitSet(chosenResponse, 9))
             {
+//                print("Tilt right");
                 inputController.MoveX(.4f);
             }
             else if (BLF.IsBitSet(chosenResponse, 10))
             {
+//                print("Full left");
                 inputController.MoveX(-1);
             }
             else if (BLF.IsBitSet(chosenResponse, 11))
             {
+//                print("Tilt left");
                 inputController.MoveX(-.4f);
             }
             else

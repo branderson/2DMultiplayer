@@ -44,6 +44,10 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                 if (behaviour.IsActive())
                 {
                     behaviour.Process(opponentPositions);
+                    if (behaviour.TimedDisable)
+                    {
+                        behaviour.CountDown();
+                    }
                 }
             }
         }
@@ -53,7 +57,24 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
             AIBehaviour pendingBehaviour = behaviours.FirstOrDefault(item => item.GetType() == behaviourType && item.InState);
             if (pendingBehaviour != null)
             {
-                pendingBehaviour.Enable();
+                if (!pendingBehaviour.IsActive())
+                {
+//                    MonoBehaviour.print("Activating behaviour");
+                    pendingBehaviour.Enable();
+                }
+            }
+        }
+
+        public void ActivateBehaviour(Type behaviourType, int frames)
+        {
+            AIBehaviour pendingBehaviour = behaviours.FirstOrDefault(item => item.GetType() == behaviourType && item.InState);
+            if (pendingBehaviour != null)
+            {
+                if (!pendingBehaviour.IsActive())
+                {
+//                    MonoBehaviour.print("Activating behaviour");
+                    pendingBehaviour.Enable(frames);
+                }
             }
         }
 
@@ -62,7 +83,11 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
             AIBehaviour pendingBehaviour = behaviours.FirstOrDefault(item => item.GetType() == behaviourType && item.InState);
             if (pendingBehaviour != null)
             {
-                pendingBehaviour.Disable();
+                if (pendingBehaviour.IsActive())
+                {
+//                    MonoBehaviour.print("Deactivating behaviour");
+                    pendingBehaviour.Disable();
+                }
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Assets.Scripts.Player.States.AIBehaviours
     {
         public override void Process(List<Transform> opponentPositions)
         {
-            if (!Mathf.Approximately(playerController.velocityX, 0))
+            if (Mathf.Abs(playerController.velocityX) > 2)
             {
                 if (playerController.velocityX < 0)
                 {

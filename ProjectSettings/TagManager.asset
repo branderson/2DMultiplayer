@@ -15,6 +15,7 @@ TagManager:
   - PlayerUI
   - PlayerEdgeGrab
   - PlayerBody
+  - Ground
   layers:
   - Default
   - TransparentFX

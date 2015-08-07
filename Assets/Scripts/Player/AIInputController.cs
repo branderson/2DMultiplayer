@@ -14,13 +14,14 @@ namespace Assets.Scripts.Player
         [SerializeField] public bool Vibration = true;
         private PlayerController playerController;
         private AIBehaviourController brain;
-        private bool xActive = false;
-        private bool yActive = false;
+        private int xActiveFrames = 0;
+        private int yActiveFrames = 0;
 
-        private const float thresholdX = 0.1f;
-        private const float thresholdY = 1f;
+        private const float thresholdX = 0.5f;
+        private const float thresholdY = 0.5f;
 
         private List<string> activeButtons = new List<string>(); 
+        private List<string> pressedButtons = new List<string>();
         private float x = 0f;
         private float y = 0f;
         private bool upPressed = false;
@@ -49,22 +50,108 @@ namespace Assets.Scripts.Player
             TapJump = false;
         }
 
+        public void Update()
+        {
+            if (ButtonActive("TiltLock"))
+            {
+                if (x > .9f)
+                {
+                    x = .9f;
+                }
+                else if (x < -.9f)
+                {
+                    x = -.9f;
+                }
+            }
+
+            // Check if axes have just been pressed
+            if (Mathf.Abs(x) > .1)
+            {
+                if (xActiveFrames < 3)
+                {
+                    if (x < -thresholdX)
+                    {
+                        if (!ButtonActive("TiltLock"))
+                        {
+                            leftPressed = true;
+                        }
+                    }
+                    else if (x > thresholdX)
+                    {
+                        if (!ButtonActive("TiltLock"))
+                        {
+                            rightPressed = true;
+                        }
+                    }
+                }
+                xActiveFrames++;
+            }
+            else
+            {
+                xActiveFrames = 0;
+            }
+
+            if (Mathf.Abs(y) > .1)
+            {
+                if (yActiveFrames < 3)
+                {
+                    if (y < -thresholdY)
+                    {
+                        if (!ButtonActive("TiltLock"))
+                        {
+                            downPressed = true;
+                        }
+                    }
+                    else if (y > thresholdY)
+                    {
+                        if (!ButtonActive("TiltLock"))
+                        {
+                            upPressed = true;
+                        }
+                    }
+                }
+                yActiveFrames++;
+            }
+            else
+            {
+                yActiveFrames = 0;
+            }
+
+            x = 0;
+            y = 0;
+
+            foreach (string button in pressedButtons)
+            {
+                switch (button)
+                {
+                    case "Primary":
+                        Primary();
+                        break;
+                    case "Secondary":
+                        Secondary();
+                        break;
+                    case "Jump":
+                        Jump();
+                        break;
+                    case "Block":
+                        SetBlock(true);
+                        break;
+                    case "Grab":
+                        Grab();
+                        break;
+                    case "Run":
+                        Run(true);
+                        break;
+                    case "TiltLock":
+                        TiltLock(true);
+                        break;
+                }              
+            }
+            pressedButtons.Clear();
+        }
+
         public void FixedUpdate()
         {
-//            frame++;
-//            if (frame < 60)
-//            {
-//                x = -1f;
-//            }
-//            else if (frame < 118)
-//            {
-//                x = 1f;
-//            }
-//            else
-//            {
-//                frame = 0;
-//            }
-
             // Execute playerController moves
             if (playerController.GetState() != null)
             {
@@ -115,8 +202,6 @@ namespace Assets.Scripts.Player
                     playerController.GetState().Grab();
                     grab = false;
                 }
-                x = 0f;
-                y = 0f;
             }
         }
 
@@ -200,34 +285,11 @@ namespace Assets.Scripts.Player
 
         public void SetButtonActive(string name)
         {
-            print("Setting " + name + " active");
+//            print("Setting " + name + " active");
             if (!(activeButtons.Contains(name)))
             {
                 activeButtons.Add(name);
-                switch (name)
-                {
-                    case "Primary":
-                        Primary();
-                        break;
-                    case "Secondary":
-                        Secondary();
-                        break;
-                    case "Jump":
-                        Jump();
-                        break;
-                    case "Block":
-                        SetBlock(true);
-                        break;
-                    case "Grab":
-                        Grab();
-                        break;
-                    case "Run":
-                        Run(true);
-                        break;
-                    case "TiltLock":
-                        TiltLock(true);
-                        break;
-                }              
+                pressedButtons.Add(name);
             }
         }
 

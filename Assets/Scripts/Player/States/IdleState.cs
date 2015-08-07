@@ -41,6 +41,10 @@ namespace Assets.Scripts.Player.States
         {
             base.OnStateUpdate(animator, stateInfo, layerIndex);
 
+            if (move.x != animator.GetFloat("xInput"))
+            {
+                MonoBehaviour.print("Moving x without input: " + move.x + " " + animator.GetFloat("xInput"));
+            }
             if (PlayerInputController.ButtonActive("Block"))
             {
                 playerAnimator.SetTrigger("Block");
@@ -120,6 +124,8 @@ namespace Assets.Scripts.Player.States
             }
 
             // Should the player be falling?
+            move.x = 0;
+            move.y = 0;
             playerController.CheckForGround(); // -> FallState
         }
 

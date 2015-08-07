@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player.States
         [SerializeField] private int frameApplied = 0;
         [SerializeField] private bool continuous = false;
         [SerializeField] private bool SetAbsolute = false;
+        [SerializeField] private bool SetCapped = false;
         [SerializeField] private bool DamageScaled = false;
         [SerializeField] private bool applyX = true;
         [SerializeField] private bool applyY = true;
@@ -60,6 +61,21 @@ namespace Assets.Scripts.Player.States
                     else if (applyY)
                     {
                         playerController.IncrementVelocityY(velocity.y*damageMultiplier - playerController.GetVelocityY());
+                    }
+                }
+                else if (SetCapped)
+                {
+                    if (applyX && applyY)
+                    {
+                        playerController.CappedSetVelocity(velocity.x*directionModifier*damageMultiplier, velocity.y*damageMultiplier);
+                    }
+                    else if (applyX)
+                    {
+                        playerController.CappedSetVelocityX(velocity.x*directionModifier*damageMultiplier);
+                    }
+                    else if (applyY)
+                    {
+                        playerController.CappedSetVelocityY(velocity.y*damageMultiplier);
                     }
                 }
                 else

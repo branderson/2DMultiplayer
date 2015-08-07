@@ -72,6 +72,7 @@ namespace Assets.Scripts.Player
 
         private float animationResumeSpeed;
         internal bool Paused = false;
+        internal bool Respawned = false;
         internal int SmashCharge = 0;
         private int shield = 100;
         private float damageRatio = .01f;
@@ -123,6 +124,7 @@ namespace Assets.Scripts.Player
                 SetVelocity(Vector2.zero);
                 transform.position = position;
                 IFrames = 120; // 2 seconds of invincibility
+                Respawned = true;
             }
         }
 
@@ -288,7 +290,8 @@ namespace Assets.Scripts.Player
         public bool RaycastGround()
         {
             // TODO: Implement this
-            return true;
+            RaycastHit2D rayCast = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, groundLayer);
+            return rayCast.collider != null;
         }
 
         public void IgnoreCollision(Collider2D other)
@@ -397,6 +400,46 @@ namespace Assets.Scripts.Player
             }
         }
 
+        public void CappedSetVelocity(Vector2 velocity)
+        {
+            if (Mathf.Abs(GetVelocityX()) < Mathf.Abs(velocity.x))
+            {
+                SetVelocityX(velocity.x);
+            }
+            if (Mathf.Abs(GetVelocityY()) < Mathf.Abs(velocity.y))
+            {
+                SetVelocityY(velocity.y);
+            }
+        }
+
+        public void CappedSetVelocity(float x, float y)
+        {
+            if (Mathf.Abs(GetVelocityX()) < Mathf.Abs(x))
+            {
+                SetVelocityX(x);
+            }
+            if (Mathf.Abs(GetVelocityY()) < Mathf.Abs(y))
+            {
+                SetVelocityY(y);
+            }
+        }
+
+        public void CappedSetVelocityX(float x)
+        {
+            if (Mathf.Abs(GetVelocityX()) < Mathf.Abs(x))
+            {
+                SetVelocityX(x);
+            }
+        }
+
+        public void CappedSetVelocityY(float y)
+        {
+            if (Mathf.Abs(GetVelocityY()) < Mathf.Abs(y))
+            {
+                SetVelocityY(y);
+            }
+        }
+
         public void IncrementVelocity(Vector2 velocity)
         {
             rigidBody.velocity += velocity;
@@ -417,22 +460,22 @@ namespace Assets.Scripts.Player
             rigidBody.velocity += new Vector2(0, y);
         }
 
-        private void SetVelocity(Vector2 velocity)
+        public void SetVelocity(Vector2 velocity)
         {
             rigidBody.velocity = velocity;
         }
 
-        private void SetVelocity(float x, float y)
+        public void SetVelocity(float x, float y)
         {
             rigidBody.velocity = new Vector2(x, y);
         }
 
-        private void SetVelocityX(float x)
+        public void SetVelocityX(float x)
         {
             rigidBody.velocity = new Vector2(x, rigidBody.velocity.y);
         }
 
-        private void SetVelocityY(float y)
+        public void SetVelocityY(float y)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, y);
         }

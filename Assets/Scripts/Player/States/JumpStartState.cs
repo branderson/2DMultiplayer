@@ -65,14 +65,16 @@ namespace Assets.Scripts.Player.States
                     {
                         if (shortHop)
                         {
-                            float adjustSpeed = -playerController.GetVelocityX();
-                            AdjustSpeed(adjustSpeed);
+//                            float adjustSpeed = -playerController.GetVelocityX();
+//                            AdjustSpeed(adjustSpeed);
+                            playerController.SetVelocityX(0);
                             playerController.Jump(playerController.jumpSpeed*playerController.shortHopFactor);
                         }
                         else
                         {
-                            float adjustSpeed = -playerController.GetVelocityX();
-                            AdjustSpeed(adjustSpeed);
+//                            float adjustSpeed = -playerController.GetVelocityX();
+//                            AdjustSpeed(adjustSpeed);
+                            playerController.SetVelocityX(0);
                             playerController.Jump(playerController.jumpSpeed);
                         }
                     }
@@ -80,21 +82,24 @@ namespace Assets.Scripts.Player.States
                     {
                         if (shortHop)
                         {
-                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
-                            {
-                                float adjustSpeed = playerController.sideJumpSpeedX*playerController.shortHopFactor*
-                                                    directionModifier - playerController.GetVelocityX();
-                                AdjustSpeed(adjustSpeed);
-                            }
+//                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+//                            {
+//                                float adjustSpeed = playerController.sideJumpSpeedX*playerController.shortHopFactor*
+//                                                    directionModifier - playerController.GetVelocityX();
+//                                AdjustSpeed(adjustSpeed);
+//                            }
+                            playerController.SetVelocityX(playerController.sideJumpSpeedX*
+                                                          playerController.shortHopFactor*directionModifier);
                             playerController.Jump(playerController.sideJumpSpeedY*playerController.shortHopFactor);
                         }
                         else
                         {
-                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
-                            {
-                                float adjustSpeed = playerController.sideJumpSpeedX*directionModifier - playerController.GetVelocityX();
-                                AdjustSpeed(adjustSpeed);
-                            }
+//                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+//                            {
+//                                float adjustSpeed = playerController.sideJumpSpeedX*directionModifier - playerController.GetVelocityX();
+//                                AdjustSpeed(adjustSpeed);
+//                            }
+                            playerController.SetVelocityX(playerController.sideJumpSpeedX*directionModifier);
                             playerController.Jump(playerController.sideJumpSpeedY);
                         }
                     }
@@ -102,21 +107,24 @@ namespace Assets.Scripts.Player.States
                     {
                         if (shortHop)
                         {
-                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
-                            {
-                                float adjustSpeed = -playerController.sideJumpSpeedX*playerController.shortHopFactor*
-                                                    directionModifier - playerController.GetVelocityX();
-                                AdjustSpeed(adjustSpeed);
-                            }
+//                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+//                            {
+//                                float adjustSpeed = -playerController.sideJumpSpeedX*playerController.shortHopFactor*
+//                                                    directionModifier - playerController.GetVelocityX();
+//                                AdjustSpeed(adjustSpeed);
+//                            }
+                            playerController.SetVelocityX(-playerController.sideJumpSpeedX*
+                                                          playerController.shortHopFactor*directionModifier);
                             playerController.Jump(playerController.sideJumpSpeedY*playerController.shortHopFactor);
                         }
                         else
                         {
-                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
-                            {
-                                float adjustSpeed = -playerController.sideJumpSpeedX*directionModifier - playerController.GetVelocityX();
-                                AdjustSpeed(adjustSpeed);
-                            }
+//                            if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+//                            {
+//                                float adjustSpeed = -playerController.sideJumpSpeedX*directionModifier - playerController.GetVelocityX();
+//                                AdjustSpeed(adjustSpeed);
+//                            }
+                            playerController.SetVelocityX(-playerController.sideJumpSpeedX*directionModifier);
                             playerController.Jump(playerController.sideJumpSpeedY);
                         }
                     }
@@ -126,26 +134,29 @@ namespace Assets.Scripts.Player.States
                 {
                     if (!directionalControl || jumpDirection == 0)
                     {
-                        float adjustSpeed = -playerController.GetVelocityX();
-                        AdjustSpeed(adjustSpeed);
+//                        float adjustSpeed = -playerController.GetVelocityX();
+//                        AdjustSpeed(adjustSpeed);
+                        playerController.SetVelocityX(0);
                         playerController.Jump(playerController.GetAirJumpSpeed());
                     }
                     else if (jumpDirection == 1)
                     {
-                        if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
-                        {
-                            float adjustSpeed = playerController.GetAirSideJumpSpeedX()*directionModifier - playerController.GetVelocityX();
-                            AdjustSpeed(adjustSpeed);
-                        }
+//                        if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+//                        {
+//                            float adjustSpeed = playerController.GetAirSideJumpSpeedX()*directionModifier - playerController.GetVelocityX();
+//                            AdjustSpeed(adjustSpeed);
+//                        }
+                        playerController.SetVelocityX(playerController.GetAirSideJumpSpeedX()*directionModifier);
                         playerController.Jump(playerController.GetAirSideJumpSpeedY());
                     }
                     else if (jumpDirection == -1)
                     {
-                        if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
-                        {
-                            float adjustSpeed = -playerController.GetAirSideJumpSpeedX()*directionModifier - playerController.GetVelocityX();
-                            AdjustSpeed(adjustSpeed);
-                        }
+//                        if (playerController.GetSpeedX() < playerController.maxAirSpeedX)
+//                        {
+//                            float adjustSpeed = -playerController.GetAirSideJumpSpeedX()*directionModifier - playerController.GetVelocityX();
+//                            AdjustSpeed(adjustSpeed);
+//                        }
+                        playerController.SetVelocityX(-playerController.GetAirSideJumpSpeedX()*directionModifier);
                         playerController.Jump(playerController.GetAirSideJumpSpeedY());
                         // Do I want to be able to flip on air jump?
                         //                    playerController.Flip();
@@ -165,7 +176,13 @@ namespace Assets.Scripts.Player.States
 //            MonoBehaviour.print("Adjusting speed: Target speed is " + playerController.airSideJumpSpeedX);
 //            MonoBehaviour.print("Current speed: " + playerController.GetVelocityX() + ", adjusting by: " + adjustSpeed);
 //            MonoBehaviour.print("Final speed should be " + playerController.GetVelocityX() + " + " + adjustSpeed  + " = " + (playerController.GetVelocityX() + adjustSpeed));
-            if (Mathf.Abs(adjustSpeed) < maximumNegationVelocity)
+            if (playerController.GetVelocityX() > playerController.maxAirSpeedX && adjustSpeed > 0)
+            {
+            }
+            else if (playerController.GetVelocityX() < -playerController.maxAirSpeedX && adjustSpeed < 0)
+            {
+            }
+            else if (Mathf.Abs(adjustSpeed) < maximumNegationVelocity)
             {
                 playerController.IncrementVelocityX(adjustSpeed);
             }

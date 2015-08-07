@@ -14,7 +14,8 @@ namespace Assets.Scripts.Player.States
             PlayerController playerController = animator.GetComponentInChildren<PlayerController>();
             if (SetAbsolute)
             {
-                playerController.IncrementVelocity(velocity*damageMultiplier - playerController.GetVelocity());
+                playerController.CappedSetVelocity(velocity*damageMultiplier);
+//                playerController.IncrementVelocity(velocity*damageMultiplier - playerController.GetVelocity());
             }
             else
             {

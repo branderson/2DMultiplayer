@@ -28,6 +28,14 @@ namespace Assets.Scripts.Player.States
             occupyingRigidbody = null;
         }
 
+        public void Turn()
+        {
+            if (occupyingPlayer != null)
+            {
+                occupyingPlayer.Flip();
+            }
+        }
+
         // When player changes between states, edge triggers get wiped
         private void OnTriggerEnter2D(Collider2D other)
         {
