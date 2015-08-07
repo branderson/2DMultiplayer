@@ -325,17 +325,41 @@ namespace Assets.Scripts.Player
 
         public bool AxisActive(string name)
         {
-            throw new NotImplementedException();
+            if (name == "Vertical")
+            {
+                return Mathf.Abs(y) > thresholdY;
+            }
+            if (name == "Horizontal")
+            {
+                return Mathf.Abs(x) > thresholdX;
+            }
+            return false;
         }
 
         public bool AxisPositive(string name)
         {
-            throw new NotImplementedException();
+            if (name == "Vertical")
+            {
+                return y > thresholdY;
+            }
+            if (name == "Horizontal")
+            {
+                return x > thresholdX;
+            }
+            return false;
         }
 
         public bool AxisNegative(string name)
         {
-            throw new NotImplementedException();
+            if (name == "Vertical")
+            {
+                return y < -thresholdY;
+            }
+            if (name == "Horizontal")
+            {
+                return x < -thresholdX;
+            }
+            return false;
         }
 
         public void VibrateController(float leftMotor, float rightMotor)

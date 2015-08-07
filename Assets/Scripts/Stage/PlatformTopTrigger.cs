@@ -21,9 +21,10 @@ namespace Assets.Scripts.Stage
                 Rigidbody2D rigidbody = other.transform.parent.GetComponentInChildren<Rigidbody2D>();
                 if (rigidbody.velocity.y <= 0)
                 {
-                    if (controller.passThroughFloor) // && transform.parent.tag != "Impermeable")
+                    if (controller.passThroughFloor || (controller.input.AxisNegative("Vertical") && controller.GetVelocityY() < -.1f)) // && transform.parent.tag != "Impermeable")
                     {
                         controller.IgnoreCollision(platformCollider);
+                        controller.fallingThroughFloor = true;
                     }
 //                    else if (transform.parent.tag == "Impermeable")
 //                    {
@@ -34,6 +35,7 @@ namespace Assets.Scripts.Stage
                     else
                     {
                         controller.IgnoreCollision(platformCollider, false);
+                        controller.fallingThroughFloor = false;
                     }
                 }
                 else
@@ -49,7 +51,7 @@ namespace Assets.Scripts.Stage
                 PlayerController controller = other.transform.parent.GetComponentInChildren<PlayerController>();
 //                Rigidbody2D rigidbody = other.GetComponent<Rigidbody2D>();
 
-                if (controller.passThroughFloor) // && transform.parent.tag != "Impermeable")
+                if (controller.fallingThroughFloor || controller.passThroughFloor || (controller.input.AxisNegative("Vertical") && controller.GetVelocityY() < -.1f)) // && transform.parent.tag != "Impermeable")
                 {
                     controller.IgnoreCollision(platformCollider);
                     controller.animator.SetTrigger("FallThroughFloor");

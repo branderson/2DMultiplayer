@@ -46,6 +46,7 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("TurnAround");
             animator.ResetTrigger("LetGo");
             animator.ResetTrigger("Stagger");
+            animator.ResetTrigger("Respawn");
         }
 
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

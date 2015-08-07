@@ -181,7 +181,11 @@ namespace Assets.Scripts.Player.States
                     else if (downSmashed)
                     {
                         base.Down();
-//                        playerController.passThroughFloor = true;
+                        //                        playerController.passThroughFloor = true;
+                    }
+                    else
+                    {
+                        playerController.passThroughFloor = false;
                     }
                     base.Move(0, 0);
                     move.x = 0;
@@ -218,6 +222,10 @@ namespace Assets.Scripts.Player.States
                             playerController.passThroughFloor = true;
                         }
                     }
+                    else
+                    {
+                        playerController.passThroughFloor = false;
+                    }
                     base.Move(x, y);
                     move.x = x;
                     move.y = y;
@@ -245,6 +253,10 @@ namespace Assets.Scripts.Player.States
                         base.Down();
                         playerController.passThroughFloor = true;
                     }
+                    else
+                    {
+                        playerController.passThroughFloor = false;
+                    }
                     move.x = x;
                     move.y = y;
                     rightSmashed = false;
@@ -269,6 +281,10 @@ namespace Assets.Scripts.Player.States
                     base.Right();
                     playerController.passThroughFloor = true;
                     downSmashed = false;
+                }
+                else
+                {
+                    playerController.passThroughFloor = false;
                 }
                 base.Move(x, y);
                 move.x = x;

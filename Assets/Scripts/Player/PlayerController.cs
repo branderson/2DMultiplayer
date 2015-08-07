@@ -48,7 +48,8 @@ namespace Assets.Scripts.Player
         private float gravity; // Rate per second of decreasing vertical speed
         internal float maxAirSpeedX;
         private bool onGround;
-        internal bool passThroughFloor; // TODO: Try to get rid of this
+        internal bool passThroughFloor;
+        internal bool fallingThroughFloor = false;
         internal float recoverySpeed;
         internal float velocityX;
         internal float velocityY;

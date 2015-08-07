@@ -51,28 +51,26 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                     {
                         if (closestPlatform.position.x > playerController.transform.position.x)
                         {
-                            MonoBehaviour.print("Need to go right");
                             // Below it and to its left
                             if (playerController.facingRight)
                             {
-                                ActivateBehaviour(typeof (JumpForward), 3);
+                                ActivateBehaviour(typeof (JumpForward));
                             }
                             else
                             {
-                                ActivateBehaviour(typeof (JumpBackward), 3);
+                                ActivateBehaviour(typeof (JumpBackward));
                             }
                         }
                         else
                         {
-                            MonoBehaviour.print("Need to go left");
                             // Below it and to its right
                             if (playerController.facingRight)
                             {
-                                ActivateBehaviour(typeof (JumpBackward), 3);
+                                ActivateBehaviour(typeof (JumpBackward));
                             }
                             else
                             {
-                                ActivateBehaviour(typeof (JumpForward), 3);
+                                ActivateBehaviour(typeof (JumpForward));
                             }
                         }
                     }
@@ -80,28 +78,26 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                     {
                         if (closestPlatform.position.x > playerController.transform.position.x)
                         {
-                            MonoBehaviour.print("Need to go right");
                             // Above it and to its left
                             if (playerController.facingRight)
                             {
-                                ActivateBehaviour(typeof (JumpForward), 3);
+                                ActivateBehaviour(typeof (JumpForward));
                             }
                             else
                             {
-                                ActivateBehaviour(typeof (JumpBackward), 3);
+                                ActivateBehaviour(typeof (JumpBackward));
                             }
                         }
                         else
                         {
-                            MonoBehaviour.print("Need to go left");
                             // Above it and to its right
                             if (playerController.facingRight)
                             {
-                                ActivateBehaviour(typeof (JumpBackward), 3);
+                                ActivateBehaviour(typeof (JumpBackward));
                             }
                             else
                             {
-                                ActivateBehaviour(typeof (JumpForward), 3);
+                                ActivateBehaviour(typeof (JumpForward));
                             }
                         }
                     }
@@ -113,28 +109,26 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                     {
                         if (closestPlatform.position.x > playerController.transform.position.x)
                         {
-                            MonoBehaviour.print("Need to go right");
                             // Below it and to its left
                             if (playerController.facingRight)
                             {
-                                ActivateBehaviour(typeof (ForwardUpRecovery), 3);
+                                ActivateBehaviour(typeof (ForwardUpRecovery));
                             }
                             else
                             {
-                                ActivateBehaviour(typeof (BackwardUpRecovery), 3);
+                                ActivateBehaviour(typeof (BackwardUpRecovery));
                             }
                         }
                         else
                         {
-                            MonoBehaviour.print("Need to go left");
                             // Below it and to its right
                             if (playerController.facingRight)
                             {
-                                ActivateBehaviour(typeof (BackwardUpRecovery), 3);
+                                ActivateBehaviour(typeof (BackwardUpRecovery));
                             }
                             else
                             {
-                                ActivateBehaviour(typeof (ForwardUpRecovery), 3);
+                                ActivateBehaviour(typeof (ForwardUpRecovery));
                             }
                         }
                     }
@@ -142,28 +136,26 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                     {
                         if (closestPlatform.position.x > playerController.transform.position.x)
                         {
-                            MonoBehaviour.print("Need to go right");
                             // Above it and to its left
                             if (playerController.facingRight)
                             {
-                                ActivateBehaviour(typeof (ForwardSideRecovery), 3);
+                                ActivateBehaviour(typeof (ForwardSideRecovery));
                             }
                             else
                             {
-                                ActivateBehaviour(typeof (BackwardSideRecovery), 3);
+                                ActivateBehaviour(typeof (BackwardSideRecovery));
                             }
                         }
                         else
                         {
-                            MonoBehaviour.print("Need to go left");
                             // Above it and to its right
                             if (playerController.facingRight)
                             {
-                                ActivateBehaviour(typeof (BackwardSideRecovery), 3);
+                                ActivateBehaviour(typeof (BackwardSideRecovery));
                             }
                             else
                             {
-                                ActivateBehaviour(typeof (ForwardSideRecovery), 3);
+                                ActivateBehaviour(typeof (ForwardSideRecovery));
                             }
                         }
                     }

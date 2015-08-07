@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player.States.AIBehaviours
         public override void Process(List<Transform> opponentPositions)
         {
             MonoBehaviour.print("JumpForward");
+            PlayerInputController.Jump();
             if (playerController.facingRight)
             {
                 PlayerInputController.MoveX(1);
@@ -20,12 +21,6 @@ namespace Assets.Scripts.Player.States.AIBehaviours
             {
                 Disable();
             }
-        }
-
-        public override void Disable()
-        {
-            base.Disable();
-            PlayerInputController.Jump();
         }
     }
 }

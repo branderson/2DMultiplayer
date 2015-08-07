@@ -9,25 +9,12 @@ namespace Assets.Scripts.Player.States.AIBehaviours
         {
             MonoBehaviour.print("BackwardUpRecovery");
             PlayerInputController.MoveY(1);
-            if (playerController.facingRight)
-            {
-                PlayerInputController.MoveX(-1);
-            }
-            else
-            {
-                PlayerInputController.MoveX(1);
-            }
+            PlayerInputController.Secondary();
+            playerAnimator.SetTrigger("TurnAround");
             if (!TimedDisable)
             {
-                MonoBehaviour.print("Not timedDisable");
                 Disable();
             }
-        }
-
-        public override void Disable()
-        {
-            base.Disable();
-            PlayerInputController.Secondary();
         }
     }
 }

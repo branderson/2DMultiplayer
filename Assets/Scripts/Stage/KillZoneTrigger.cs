@@ -20,6 +20,7 @@ namespace Assets.Scripts.Stage
             {
                 PlayerController playerController = other.GetComponentInParent<PlayerController>();
                 playerController.SetVibrate(25, 1f, .5f);
+                playerController.animator.SetTrigger("Respawn");
                 levelManager.Respawn(playerController);
             }
         }

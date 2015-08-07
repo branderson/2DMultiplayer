@@ -40,7 +40,7 @@ namespace Assets.Scripts.Player.States
             if (move.y < 0 && playerController.fastFall) // FastFall trick because fall through floor shouldn't cause it forcing another button press
             {
                 // TODO: This is causing problems right off of falling through floor
-                playerController.passThroughFloor = true;
+//                playerController.passThroughFloor = true;
             }
             else
             {

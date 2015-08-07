@@ -110,22 +110,22 @@ namespace Assets.Scripts.Helpers
         {
             if (activeSet.Empty())
             {
-//                MonoBehaviour.print("The set is empty");
+                //                MonoBehaviour.print("The set is empty");
             }
             else if (ResponseStateList.Any(item => item.Sequence.SequenceEqual(activeSet.GetStateList())))
             {
                 activeSet.Rewarded = reward;
                 activeSet.Punished = punish;
-////                if (reward > 0)
-////                {
-////                    MonoBehaviour.print("Rewarding effective move " + reward);
-//////                    MonoBehaviour.print(ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).Effectiveness);
-////                }
-////                if (punish > 0)
-////                {
-////                    MonoBehaviour.print("Punishing dangerous move " + punish);
-//////                    MonoBehaviour.print(ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).Effectiveness);
-//                }
+                ////                if (reward > 0)
+                ////                {
+                ////                    MonoBehaviour.print("Rewarding effective move " + reward);
+                //////                    MonoBehaviour.print(ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).Effectiveness);
+                ////                }
+                ////                if (punish > 0)
+                ////                {
+                ////                    MonoBehaviour.print("Punishing dangerous move " + punish);
+                //////                    MonoBehaviour.print(ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).Effectiveness);
+                //                }
                 ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).PushSet(activeSet);
                 ResponseStateList.OrderByDescending(item => item.Effectiveness);
             }
@@ -134,20 +134,21 @@ namespace Assets.Scripts.Helpers
                 ControllerSequence newSequence = new ControllerSequence();
                 activeSet.Rewarded = reward;
                 activeSet.Punished = punish;
-//                if (reward > 0)
-//                {
-//                    MonoBehaviour.print("Rewarding effective move " + reward);
-////                    MonoBehaviour.print(1);
-//                }
-//                if (punish > 0)
-//                {
-//                    MonoBehaviour.print("Punishing dangerous move " + punish);
-////                    MonoBehaviour.print(-1);
-//                }
+                //                if (reward > 0)
+                //                {
+                //                    MonoBehaviour.print("Rewarding effective move " + reward);
+                ////                    MonoBehaviour.print(1);
+                //                }
+                //                if (punish > 0)
+                //                {
+                //                    MonoBehaviour.print("Punishing dangerous move " + punish);
+                ////                    MonoBehaviour.print(-1);
+                //                }
                 newSequence.PushSet(activeSet);
                 ResponseStateList.Add(newSequence);
                 ResponseStateList.OrderByDescending(item => item.Effectiveness);
             }
+
             activeSet = new ControllerStateSet();
             Frame = 0;
         }
@@ -194,8 +195,9 @@ namespace Assets.Scripts.Helpers
                 ResponseStateList.Select(
                     sequence =>
                         new ControllerSequence(
-                            sequence.GetVersions().OrderByDescending(item => item.Value).ToList()))
+                            sequence.GetVersions().OrderByDescending(item => item.Value).ToList(), sequence.Effectiveness))
                     .ToList()
+                    .Where(item => item.Effectiveness > 0)
                     .OrderByDescending(item => item.Effectiveness)
                     .ToList();
             if (storedSequences.Count > 5)
@@ -204,9 +206,10 @@ namespace Assets.Scripts.Helpers
             }
             foreach (ControllerSequence sequence in storedSequences)
             {
-                if (sequence.GetVersions().Count > 5)
+                if (sequence.GetVersions().Count > 1)
                 {
-                    sequence.GetVersions().RemoveRange(5, sequence.GetVersions().Count - 5);
+                    MonoBehaviour.print("Should remove version");
+                    sequence.GetVersions().RemoveRange(2, sequence.GetVersions().Count - 2);
                 }
             }
             //            List<KeyValuePair<short, int>>[] storedResponses = new List<KeyValuePair<short, int>>[RecordFrames];
@@ -274,6 +277,10 @@ namespace Assets.Scripts.Helpers
 //                {
 //                    BLF.PrintBinary(state);
 //                }
+                if (GetStateList().Count == 0)
+                {
+                    return true;
+                }
                 return GetStateList().All(item => item == 0);
             }
 
@@ -340,22 +347,24 @@ namespace Assets.Scripts.Helpers
             }
         }
 
-        [Serializable]
-        public class ControllerSequence
+        [SerializableAttribute]
+        public class ControllerSequence : ISerializable
         {
             private List<KeyValuePair<ControllerStateSet, int>> SequenceVersions; // Value is how many times that version came up
-            public List<short> Sequence = null;
-            public int Effectiveness = 0;
+            [NonSerialized] public List<short> Sequence = null;
+            public int Effectiveness;
 
             public ControllerSequence()
             {
                 SequenceVersions = new List<KeyValuePair<ControllerStateSet, int>>();
+                Effectiveness = 0;
             }
 
-            public ControllerSequence(List<KeyValuePair<ControllerStateSet, int>> versions)
+            public ControllerSequence(List<KeyValuePair<ControllerStateSet, int>> versions, int effectiveness)
             {
                 SequenceVersions = versions;
                 Sequence = versions.First().Key.GetStateList();
+                Effectiveness = effectiveness;
             }
 
             public List<KeyValuePair<ControllerStateSet, int>> GetVersions()
@@ -402,6 +411,19 @@ namespace Assets.Scripts.Helpers
                 }
                 Effectiveness += set.Rewarded;
                 Effectiveness -= set.Punished;
+            }
+
+            protected ControllerSequence(SerializationInfo information, StreamingContext context)
+            {
+                SequenceVersions = (List<KeyValuePair<ControllerStateSet, int>>) information.GetValue("v", typeof (List<KeyValuePair<ControllerStateSet, int>>));
+                Sequence = SequenceVersions[0].Key.GetStateList();
+                Effectiveness = information.GetInt32("e");
+            }
+
+            public void GetObjectData(SerializationInfo info, StreamingContext context)
+            {
+                info.AddValue("v", SequenceVersions, typeof(List<KeyValuePair<ControllerStateSet, int>>));
+                info.AddValue("e", Effectiveness, typeof(int));
             }
         }
     }

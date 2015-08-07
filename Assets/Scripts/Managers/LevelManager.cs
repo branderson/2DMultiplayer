@@ -17,12 +17,14 @@ namespace Assets.Scripts.Managers
         private GameManager gameManager;
         private CharacterMenuManager characterMenuManager; // Reference to menu manager
         // TODO: Can add field for order of spawn points
-        internal List<GameObject> players = new List<GameObject>(); 
+        internal List<GameObject> players = new List<GameObject>();
+        private List<KeyValuePair<PlayerController, Vector3>> assignedSpawns; 
 
         void Awake()
         {
             gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             characterMenuManager = GameObject.Find("MenuManager").GetComponent<CharacterMenuManager>();
+            assignedSpawns = new List<KeyValuePair<PlayerController, Vector3>>();
 
             // Assign controllers to players and instantiate players at spawn locations
             for (int card = 0; card < 4; card++)
@@ -89,6 +91,7 @@ namespace Assets.Scripts.Managers
                 if (players.Count() == 1)
                 {
                     players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[4].GetComponent<PlayerUI>());
+                    assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[0].transform.position));
                 }
                 else if (players.Count() == 2)
                 {
@@ -96,9 +99,11 @@ namespace Assets.Scripts.Managers
                     {
                         case 0:
                             players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[1].GetComponent<PlayerUI>());
+                            assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[0].transform.position));
                             break;
                         case 1:
                             players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[2].GetComponent<PlayerUI>());
+                            assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[1].transform.position));
                             break;
                     }
                 }
@@ -108,20 +113,24 @@ namespace Assets.Scripts.Managers
                     {
                         case 0:
                             players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[i].GetComponent<PlayerUI>());
+                            assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[0].transform.position));
                             break;
                         case 1:
                             players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[4].GetComponent<PlayerUI>());
                             players[i].transform.position = spawnPoints[4].transform.position;
+                            assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[4].transform.position));
                             break;
                         case 2:
                             players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[3].GetComponent<PlayerUI>());
                             players[i].transform.position = spawnPoints[1].transform.position;
+                            assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[1].transform.position));
                             break;
                     }
                 }
                 else
                 {
                     players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[i].GetComponent<PlayerUI>());
+                    assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[i].transform.position));
                 }
             }
             foreach (GameObject player in players)
@@ -148,7 +157,7 @@ namespace Assets.Scripts.Managers
 
         public void Respawn(PlayerController player)
         {
-            player.Respawn(spawnPoints[player.playerNumber - 1].transform.position);
+            player.Respawn(assignedSpawns[player.playerNumber - 1].Value);
         }
 
         public List<GameObject> GetPlayers()

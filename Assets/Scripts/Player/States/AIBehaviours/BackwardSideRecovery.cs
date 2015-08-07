@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player.States.AIBehaviours
         public override void Process(List<Transform> opponentPositions)
         {
             MonoBehaviour.print("BackwardSideRecovery");
+            PlayerInputController.Secondary();
             if (playerController.facingRight)
             {
                 PlayerInputController.MoveX(-1);
@@ -18,15 +19,8 @@ namespace Assets.Scripts.Player.States.AIBehaviours
             }
             if (!TimedDisable)
             {
-                MonoBehaviour.print("Not timedDisable");
                 Disable();
             }
-        }
-
-        public override void Disable()
-        {
-            base.Disable();
-            PlayerInputController.Secondary();
         }
     }
 }
