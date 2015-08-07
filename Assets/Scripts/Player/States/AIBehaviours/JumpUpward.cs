@@ -7,7 +7,6 @@ namespace Assets.Scripts.Player.States.AIBehaviours
     {
         public override void Process(List<Transform> opponentPositions)
         {
-            MonoBehaviour.print("JumpUp");
             PlayerInputController.Jump();
             if (!TimedDisable)
             {

@@ -3,12 +3,18 @@ using UnityEngine;
 
 namespace Assets.Scripts.Player.States.AIBehaviours
 {
-    public class ForwardUpRecovery : AIBehaviour
+    public class MoveBackward : AIBehaviour
     {
         public override void Process(List<Transform> opponentPositions)
         {
-            PlayerInputController.MoveY(1);
-            PlayerInputController.Secondary();
+            if (playerController.facingRight)
+            {
+                PlayerInputController.MoveX(-1);
+            }
+            else
+            {
+                PlayerInputController.MoveX(1);
+            }
             if (!TimedDisable)
             {
                 Disable();

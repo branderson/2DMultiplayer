@@ -59,7 +59,7 @@ namespace Assets.Scripts.Player.States
             {
                 animator.SetTrigger("TurnAround");
             }
-            else
+            else if (Mathf.Abs(animator.GetFloat("xInput")) > 0)
             {
                 // Movement
                 if (playerController.Run)

@@ -13,6 +13,7 @@ namespace Assets.Scripts.Player
         private PlayerController playerController;
         private AIInputController inputController;
         private AILearner aiLearner;
+        private GameManager gameManager;
         internal int difficulty = 1;
 
         private CaseBase currentCase;
@@ -30,6 +31,7 @@ namespace Assets.Scripts.Player
         public void Awake()
         {
             aiLearner = FindObjectOfType<AILearner>();
+            gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         }
 
         public void Start()
@@ -42,58 +44,61 @@ namespace Assets.Scripts.Player
 
             // Ghost AI system
             bool usedGhost = false;
-            if (ghostFrame == 0 && playerController.RaycastGround())
+            if (gameManager.GameConfig.UseGhostAI)
             {
-                int situationID = aiLearner.GenerateSituationIndex(playerController);
-                currentCase = aiLearner.LookupSituationIndex(situationID, playerController.characterName);
-//                if (currentCase != null)
-//                {
-//                    print("Entering new case");
-//                }
-            }
-            if (currentCase != null && playerController.RaycastGround())
-            {
-                usedGhost = true;
-////                print("Using ghost AI");
-                int chosenResponse = 0;
-//
-                if (currentCase.ResponseStateList.Any())
+                if (ghostFrame == 0 && playerController.RaycastGround())
                 {
-                    CaseBase.ControllerStateSet currentSet = currentCase.ResponseStateList.First().GetVersions().First().Key;
-                    if (currentSet.NewStateAtFrame((byte) ghostFrame))
+                    int situationID = aiLearner.GenerateSituationIndex(playerController);
+                    currentCase = aiLearner.LookupSituationIndex(situationID, playerController.characterName);
+                    //                if (currentCase != null)
+                    //                {
+                    //                    print("Entering new case");
+                    //                }
+                }
+                if (currentCase != null && playerController.RaycastGround())
+                {
+                    usedGhost = true;
+                    ////                print("Using ghost AI");
+                    int chosenResponse = 0;
+                    //
+                    if (currentCase.ResponseStateList.Any())
                     {
-                        chosenResponse = currentSet.GetStateAtFrame((byte) ghostFrame);
+                        CaseBase.ControllerStateSet currentSet = currentCase.ResponseStateList.First().GetVersions().First().Key;
+                        if (currentSet.NewStateAtFrame((byte) ghostFrame))
+                        {
+                            chosenResponse = currentSet.GetStateAtFrame((byte) ghostFrame);
+                        }
+                        else if (currentSet.PassedLastState((byte) ghostFrame) && ghostFrame > 10)
+                        {
+                            //                        print("Ending sequence early");
+                            ghostFrame = 0;
+                            inputController.ClearActiveButtons();
+                            return;
+                        }
                     }
-                    else if (currentSet.PassedLastState((byte) ghostFrame) && ghostFrame > 10)
+                    if (chosenResponse != 0)
                     {
-//                        print("Ending sequence early");
-                        ghostFrame = 0;
+                        //                    print("Response chosen");
+                        DecodeResponse(chosenResponse);
+                    }
+                    ghostFrame++;
+                    if (ghostFrame >= CaseBase.RecordFrames)
+                    {
+                        //                    print("Exiting case");
                         inputController.ClearActiveButtons();
-                        return;
+                        ghostFrame = 0;
                     }
+                    //                if (currentCase.ResponseState[ghostFrame].Any())
+                    //                {
+                    //                    chosenResponse = currentCase.ResponseState[ghostFrame].OrderByDescending(item => item.Value).First().Key;
+                    //                }
+                    //                if (chosenResponse != 0)
+                    //                {
+                    //                    DecodeResponse(chosenResponse);
+                    //                }
+                    ////                print(ghostFrame);
+                    ////                BLF.PrintBinary(chosenResponse);
                 }
-                if (chosenResponse != 0)
-                {
-//                    print("Response chosen");
-                    DecodeResponse(chosenResponse);
-                }
-                ghostFrame++;
-                if (ghostFrame >= CaseBase.RecordFrames)
-                {
-//                    print("Exiting case");
-                    inputController.ClearActiveButtons();
-                    ghostFrame = 0;
-                }
-                //                if (currentCase.ResponseState[ghostFrame].Any())
-                //                {
-                //                    chosenResponse = currentCase.ResponseState[ghostFrame].OrderByDescending(item => item.Value).First().Key;
-                //                }
-                //                if (chosenResponse != 0)
-                //                {
-                //                    DecodeResponse(chosenResponse);
-                //                }
-                ////                print(ghostFrame);
-                ////                BLF.PrintBinary(chosenResponse);
             }
 
             // Run AI system

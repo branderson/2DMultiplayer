@@ -7,7 +7,6 @@ namespace Assets.Scripts.Player.States.AIBehaviours
     {
         public override void Process(List<Transform> opponentPositions)
         {
-            MonoBehaviour.print("BackwardSideRecovery");
             PlayerInputController.Secondary();
             if (playerController.facingRight)
             {

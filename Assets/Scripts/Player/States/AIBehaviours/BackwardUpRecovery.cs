@@ -7,10 +7,10 @@ namespace Assets.Scripts.Player.States.AIBehaviours
     {
         public override void Process(List<Transform> opponentPositions)
         {
-            MonoBehaviour.print("BackwardUpRecovery");
             PlayerInputController.MoveY(1);
             PlayerInputController.Secondary();
-            playerAnimator.SetTrigger("TurnAround");
+//            playerAnimator.SetTrigger("TurnAround");
+            playerController.Flip();
             if (!TimedDisable)
             {
                 Disable();

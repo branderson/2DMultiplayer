@@ -32,6 +32,10 @@ namespace Assets.Scripts.Managers
             playerStates = new List<KeyValuePair<PlayerController, int>>();
             sequenceEffectiveness = new List<KeyValuePair<PlayerController, KeyValuePair<int, int>>>();
 
+            if (!(gameManager.GameConfig.UseGhostAI || gameManager.GameConfig.TeachAI))
+            {
+                return;
+            }
             // Load in existing AI trees
             foreach (PlayerController player in players)
             {
@@ -105,12 +109,15 @@ namespace Assets.Scripts.Managers
 
         public void OnDisable()
         {
-            SaveCases();
+            if (gameManager.GameConfig.TeachAI)
+            {
+                SaveCases();
+            }
         }
 
         public void Update()
         {
-            if (gameManager.GameConfig.TournamentMode)
+            if (!gameManager.GameConfig.TeachAI)
             {
                 return;
             }

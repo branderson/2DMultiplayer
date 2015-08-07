@@ -9,14 +9,18 @@ namespace Assets.Scripts.Player.States.AIBehaviours
         public override void Process(List<Transform> opponentPositions)
         {
             Vector3 closestOpponentPosition = opponentPositions.OrderByDescending(item => Mathf.Abs(playerController.transform.position.x - item.position.x)).Last().position;
-//            if (playerController.transform.position.x > closestOpponentPosition.x)
-//            {
-//                PlayerInputController.Move(-1f, 0f);              
-//            }
-//            else if (playerController.transform.position.x < closestOpponentPosition.x)
-//            {
-//                PlayerInputController.Move(1f, 0f);
-//            }
+            if (playerController.transform.position.x > closestOpponentPosition.x + 2)
+            {
+                PlayerInputController.Move(-1f, 0f);              
+            }
+            else if (playerController.transform.position.x < closestOpponentPosition.x - 2)
+            {
+                PlayerInputController.Move(1f, 0f);
+            }
+            if (!TimedDisable)
+            {
+                Disable();
+            }
         }
     }
 }

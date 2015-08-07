@@ -4,13 +4,12 @@ Menu Controllers
 
 Player Controller	
 	Noticed pressing left and secondary and doing a right secondary once. Could not duplicate.:w
-	Observed sprite becoming moved to the up and to the left from the rigidbody
 	Held state
 	Sprite moved in edge grab permanently (should be fixed)
 	Bigger hitboxes
 	Pressed left and did right smash
 	Air dodge
-	Not respawning to correct point
+	Players sliding at constant rate with no input, imaginary force pushing to side in idle
 
 Make force triggers able to launch opposite direction of contact
 Shaders

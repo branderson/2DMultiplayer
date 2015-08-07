@@ -21,10 +21,6 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
             {
                 ActivateBehaviour(typeof (MoveTowardNearestPlayer));
             }
-            else
-            {
-                DeactivateBehaviour(typeof(MoveTowardNearestPlayer));
-            }
             base.ProcessAI(opponentPositions);
         }
     }

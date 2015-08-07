@@ -31,14 +31,30 @@ namespace Assets.Scripts.Player
             {
                 if ((right && playerController.facingRight) || (!right && !playerController.facingRight))
                 {
-                    if (player.GetSpeedX() < pushSpeed && !player.Invincible && !player.onEdgeRight)
+                    if (Mathf.Abs(player.transform.position.x - playerController.transform.position.x) < .2f)
+                    {
+                        if (player.playerNumber > playerController.playerNumber)
+                        {
+                            player.IncrementVelocityX(-1);
+//                            playerController.IncrementVelocityX(1);
+                        }
+                    }
+                    else if (player.GetSpeedX() < pushSpeed && !player.Invincible && !player.onEdgeRight)
                     {
                         player.IncrementVelocityX(pushSpeed);
                     }
                 }
                 else
                 {
-                    if (player.GetSpeedX() < pushSpeed && !player.Invincible && !player.onEdgeLeft) 
+                    if (Mathf.Abs(player.transform.position.x - playerController.transform.position.x) < .2f)
+                    {
+                        if (player.playerNumber > playerController.playerNumber)
+                        {
+                            player.IncrementVelocityX(1);
+//                            playerController.IncrementVelocityX(-1);
+                        }
+                    }
+                    else if (player.GetSpeedX() < pushSpeed && !player.Invincible && !player.onEdgeLeft) 
                     {
                         player.IncrementVelocityX(-pushSpeed);
                     }

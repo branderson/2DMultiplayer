@@ -78,8 +78,11 @@ namespace Assets.Scripts.Player.States
 
         public void DeleteLastInstantiated()
         {
-            Destroy(instantiatedObjects.Last());
-            instantiatedObjects.RemoveAt(instantiatedObjects.IndexOf(instantiatedObjects.Last()));
+            if (instantiatedObjects.Count > 0)
+            {
+                Destroy(instantiatedObjects.Last());
+                instantiatedObjects.RemoveAt(instantiatedObjects.IndexOf(instantiatedObjects.Last()));
+            }
         }
     }
 }
