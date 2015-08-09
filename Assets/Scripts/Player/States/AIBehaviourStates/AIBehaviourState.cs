@@ -34,6 +34,10 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
 
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (playerState == null)
+            {
+                return;
+            }
             playerState.AIState = null;
         }
 

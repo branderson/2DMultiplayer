@@ -37,11 +37,32 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                 // TODO: Maybe make the player look for edges? Can't right now because permeable platforms have none but can use special tagged points
                 foreach (GameObject platform in platforms)
                 {
-                    float distance = (platform.transform.position - playerController.transform.position).sqrMagnitude;
-                    if (distance < shortestDistance)
+                    // If platform is in direction of travel
+                    if ((playerController.GetVelocityX() >= 0 &&
+                         platform.transform.position.x - playerController.transform.position.x > 0) ||
+                        (playerController.GetVelocityX() < 0 &&
+                         platform.transform.position.x - playerController.transform.position.x < 0))
                     {
-                        shortestDistance = distance;
-                        closestPlatform = platform.transform;
+                        float distance = (platform.transform.position - playerController.transform.position).sqrMagnitude;
+                        if (distance < shortestDistance)
+                        {
+                            shortestDistance = distance;
+                            closestPlatform = platform.transform;
+                        }
+                    }
+                }
+                // If too far away, try to recover back
+                if (closestPlatform.position.x - playerController.transform.position.x > 50)
+                {
+                    foreach (GameObject platform in platforms)
+                    {
+                        float distance =
+                            (platform.transform.position - playerController.transform.position).sqrMagnitude;
+                        if (distance < shortestDistance)
+                        {
+                            shortestDistance = distance;
+                            closestPlatform = platform.transform;
+                        }
                     }
                 }
 
@@ -55,10 +76,12 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                             if (playerController.facingRight)
                             {
                                 ActivateBehaviour(typeof (JumpForward));
+                                ActivateBehaviour(typeof (MoveForward));
                             }
                             else
                             {
                                 ActivateBehaviour(typeof (JumpBackward));
+                                ActivateBehaviour(typeof (MoveBackward));
                             }
                         }
                         else
@@ -66,11 +89,15 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                             // Below it and to its right
                             if (playerController.facingRight)
                             {
+//                                MonoBehaviour.print("JumpForward");
                                 ActivateBehaviour(typeof (JumpBackward));
+                                ActivateBehaviour(typeof (MoveBackward));
                             }
                             else
                             {
+//                                MonoBehaviour.print("JumpBackward");
                                 ActivateBehaviour(typeof (JumpForward));
+                                ActivateBehaviour(typeof (MoveForward));
                             }
                         }
                     }
@@ -82,10 +109,12 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                             if (playerController.facingRight)
                             {
                                 ActivateBehaviour(typeof (JumpForward));
+                                ActivateBehaviour(typeof (MoveForward));
                             }
                             else
                             {
                                 ActivateBehaviour(typeof (JumpBackward));
+                                ActivateBehaviour(typeof (MoveBackward));
                             }
                         }
                         else
@@ -94,10 +123,12 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                             if (playerController.facingRight)
                             {
                                 ActivateBehaviour(typeof (JumpBackward));
+                                ActivateBehaviour(typeof (MoveBackward));
                             }
                             else
                             {
                                 ActivateBehaviour(typeof (JumpForward));
+                                ActivateBehaviour(typeof (MoveForward));
                             }
                         }
                     }
@@ -113,10 +144,12 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                             if (playerController.facingRight)
                             {
                                 ActivateBehaviour(typeof (ForwardUpRecovery));
+                                ActivateBehaviour(typeof (MoveForward));
                             }
                             else
                             {
                                 ActivateBehaviour(typeof (BackwardUpRecovery));
+                                ActivateBehaviour(typeof (MoveBackward));
                             }
                         }
                         else
@@ -125,10 +158,12 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                             if (playerController.facingRight)
                             {
                                 ActivateBehaviour(typeof (BackwardUpRecovery));
+                                ActivateBehaviour(typeof (MoveBackward));
                             }
                             else
                             {
                                 ActivateBehaviour(typeof (ForwardUpRecovery));
+                                ActivateBehaviour(typeof (MoveForward));
                             }
                         }
                     }
@@ -140,10 +175,12 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                             if (playerController.facingRight)
                             {
                                 ActivateBehaviour(typeof (ForwardSideRecovery));
+                                ActivateBehaviour(typeof (MoveForward));
                             }
                             else
                             {
                                 ActivateBehaviour(typeof (BackwardSideRecovery));
+                                ActivateBehaviour(typeof (MoveBackward));
                             }
                         }
                         else
@@ -152,10 +189,12 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                             if (playerController.facingRight)
                             {
                                 ActivateBehaviour(typeof (BackwardSideRecovery));
+                                ActivateBehaviour(typeof (MoveBackward));
                             }
                             else
                             {
                                 ActivateBehaviour(typeof (ForwardSideRecovery));
+                                ActivateBehaviour(typeof (MoveForward));
                             }
                         }
                     }

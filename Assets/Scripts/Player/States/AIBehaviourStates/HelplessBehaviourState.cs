@@ -20,6 +20,7 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
         {
             if (!playerController.RaycastGround())
             {
+                MonoBehaviour.print("Starting velocity: " + playerController.GetVelocityX());
 //                RaycastHit2D raycast = Physics2D.Raycast(playerController.transform.position, )
                 GameObject[] platforms = GameObject.FindGameObjectsWithTag("Ground");
                 Transform closestPlatform = platforms[0].transform;
@@ -27,29 +28,54 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                 // TODO: Maybe make the player look for edges? Can't right now because permeable platforms have none but can use special tagged points
                 foreach (GameObject platform in platforms)
                 {
-                    float distance = (platform.transform.position - playerController.transform.position).sqrMagnitude;
-                    if (distance < shortestDistance)
+                    // If platform is in direction of travel
+                    if ((playerController.GetVelocityX() >= 0 &&
+                         platform.transform.position.x - playerController.transform.position.x > 0) ||
+                        (playerController.GetVelocityX() < 0 &&
+                         platform.transform.position.x - playerController.transform.position.x < 0))
                     {
-                        shortestDistance = distance;
-                        closestPlatform = platform.transform;
+                        float distance = (platform.transform.position - playerController.transform.position).sqrMagnitude;
+                        if (distance < shortestDistance)
+                        {
+                            shortestDistance = distance;
+                            closestPlatform = platform.transform;
+                            // For some reason velocity is always positive here
+                            MonoBehaviour.print("Velocity: " + playerController.GetVelocityX());
+                            MonoBehaviour.print(closestPlatform.position.x - playerController.transform.position.x);
+                        }
+                    }
+                }
+                // If too far away, try to recover back
+                if (closestPlatform.position.x - playerController.transform.position.x > 50)
+                {
+                    foreach (GameObject platform in platforms)
+                    {
+                        float distance =
+                            (platform.transform.position - playerController.transform.position).sqrMagnitude;
+                        if (distance < shortestDistance)
+                        {
+                            shortestDistance = distance;
+                            closestPlatform = platform.transform;
+                        }
                     }
                 }
 
                 if (closestPlatform.position.x > playerController.transform.position.x)
                 {
-                    // Above it and to its left
+                    // To its left
                     if (playerController.facingRight)
                     {
                         ActivateBehaviour(typeof (MoveForward));
                     }
                     else
                     {
+                        MonoBehaviour.print("MoveBackward");
                         ActivateBehaviour(typeof (MoveBackward));
                     }
                 }
                 else
                 {
-                    // Above it and to its right
+                    // To its right
                     if (playerController.facingRight)
                     {
                         ActivateBehaviour(typeof (MoveBackward));

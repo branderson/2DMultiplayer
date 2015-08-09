@@ -19,7 +19,6 @@ namespace Assets.Scripts.Stage
             if (other.tag == "Player")
             {
                 PlayerController playerController = other.GetComponentInParent<PlayerController>();
-                playerController.SetVibrate(25, 1f, .5f);
                 playerController.animator.SetTrigger("Respawn");
                 levelManager.Respawn(playerController);
             }

@@ -84,6 +84,7 @@ namespace Assets.Scripts.Menu
                 // TODO: Reading XInput controllers as GlobalBack and backing out
                 if (Input.GetButtonDown("GlobalBack"))
                 {
+                    SaveCards();
                     Application.LoadLevel("TitleMenu");
                 }
             }
@@ -157,6 +158,7 @@ namespace Assets.Scripts.Menu
                     Object.DontDestroyOnLoad(this);
                     playerCards = null;
                     inCharacterMenu = false;
+                    SaveCards();
                     //                Application.LoadLevel("Level1");
                     Application.LoadLevel("LevelMenu");
                 }
@@ -253,6 +255,24 @@ namespace Assets.Scripts.Menu
         {
             Controllers[number - 1] = false;
             gameManager.PlayerConfig[number - 1].Active = false;
+        }
+
+        private void SaveCards()
+        {
+            for (int card = 0; card < 4; card++)
+            {
+                gameManager.PlayerConfig[card].Vibration = inputControllers[card].Vibration;
+                gameManager.PlayerConfig[card].TapJump = inputControllers[card].TapJump;
+                gameManager.PlayerConfig[card].DPad = inputControllers[card].DPad;
+                gameManager.PlayerConfig[card].Computer = inputControllers[card].Computer;
+                gameManager.PlayerConfig[card].Active = playerControllers[card].active;
+                gameManager.PlayerConfig[card].Slot = card + 1;
+                gameManager.PlayerConfig[card].ControllerIndex = inputControllers[card].ControllerNumber;
+                gameManager.PlayerConfig[card].XIndex = inputControllers[card].XIndex;
+                gameManager.PlayerConfig[card].UseXInput = inputControllers[card].UseXInput;
+                gameManager.PlayerConfig[card].Keyboard = inputControllers[card].Keyboard;
+                gameManager.PlayerConfig[card].Character = playerControllers[card].CharacterIndex;
+            }
         }
     }
 }

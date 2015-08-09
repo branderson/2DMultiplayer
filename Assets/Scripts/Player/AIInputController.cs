@@ -37,6 +37,7 @@ namespace Assets.Scripts.Player
         private bool grab = false;
 
         private int frame = 0;
+        private int runDelay = 10;
 
         private void Awake()
         {
@@ -264,7 +265,15 @@ namespace Assets.Scripts.Player
 
         public void Run(bool newRun)
         {
-            run = newRun;
+            if (runDelay <= 0)
+            {
+                run = newRun;
+                runDelay = 10;
+            }
+            else
+            {
+                runDelay -= 1;
+            }
         }
 
         // TODO: AI doesn't actually use tilt lock (or does it)

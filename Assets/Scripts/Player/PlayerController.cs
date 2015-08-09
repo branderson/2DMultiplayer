@@ -110,20 +110,30 @@ namespace Assets.Scripts.Player
             playerUI.Init(this);
         }
 
-        public void Respawn(Vector2 position)
+        public void Respawn(Vector3 position)
         {
-//            facingRight = true;
             if (true) //(playerUI.Lives > 0)
             {
+                if (!facingRight)
+                {
+                    Flip();
+                }
+                StopAllCoroutines();
+                StopShaking();
+                animator.SetBool("Stunned", false);
+                animator.SetBool("Launch", false);
+                SetVibrate(25, 1f, .5f);
                 playerUI.Lives -= 1;
                 shield = 100;
                 playerUI.Shield = 100;
                 AirJumps = MaxAirJumps;
+                canFall = true;
                 canRecover = true;
                 fastFall = false;
                 animator.SetTrigger("Helpless");
                 SetVelocity(Vector2.zero);
                 transform.position = position;
+                rigidBody.MovePosition(position);
                 IFrames = 120; // 2 seconds of invincibility
                 Respawned = true;
             }
@@ -149,6 +159,7 @@ namespace Assets.Scripts.Player
             animator = GetComponentInParent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
             sprite = transform.parent.GetComponentInChildren<SpriteRenderer>();
+            spritePosition = sprite.transform.localPosition;
             CalculatePhysics();
         }
 
@@ -162,7 +173,7 @@ namespace Assets.Scripts.Player
 
         private void FixedUpdate()
         {
-            if (canFall && !onGround)
+            if (canFall) // && !onGround)
             {
                 if (fastFall)
                     FallFast();
@@ -181,7 +192,8 @@ namespace Assets.Scripts.Player
             animator.SetBool("CanRecover", canRecover);
             animator.SetBool("Holding", Holding);
             animator.SetBool("Grabbed", Grabbed);
-            transform.parent.position = transform.position;
+            transform.parent.position = rigidBody.position;
+//            rigidBody.position = transform.parent.position;
             transform.localPosition = Vector3.zero;
 
             // Manage invincibility state
@@ -274,11 +286,12 @@ namespace Assets.Scripts.Player
             }
             for (int i = 0; i < colliders.Count; i++)
             {
-                if (colliders[i].gameObject != gameObject && (!passThroughFloor || colliders[i].transform.parent.CompareTag("Impermeable")))
+                if (colliders[i].gameObject != gameObject && (!passThroughFloor && !fallingThroughFloor))
                 {
                     grounded = true;
                     fastFall = false;
                     animator.SetBool("Ground", true);
+                    onGround = true;
                 }
                 else if (colliders[i].gameObject != gameObject)
                 {
@@ -663,7 +676,7 @@ namespace Assets.Scripts.Player
 
         public void ShakeSpriteX(int frames)
         {
-            spritePosition = transform.localPosition;
+            spritePosition = sprite.transform.localPosition;
             StopCoroutine("ShakeSprite");
             StartCoroutine("ShakeSprite", frames);
         }
@@ -671,7 +684,7 @@ namespace Assets.Scripts.Player
         public void StopShaking()
         {
             StopCoroutine("ShakeSprite");
-            transform.localPosition = spritePosition;
+            sprite.transform.localPosition = spritePosition;
         }
 
         private IEnumerator ShakeSprite(int frames)
@@ -681,15 +694,15 @@ namespace Assets.Scripts.Player
                 frames--;
                 if (frames%10 == 0)
                 {
-                    transform.localPosition = spritePosition + new Vector2(.05f, 0);
+                    sprite.transform.localPosition = spritePosition + new Vector2(.05f, 0);
                 }
                 else if (frames%5 == 0)
                 {
-                    transform.localPosition = spritePosition - new Vector2(.05f, 0);
+                    sprite.transform.localPosition = spritePosition - new Vector2(.05f, 0);
                 }
                 yield return null;
             }
-            transform.localPosition = spritePosition;
+            sprite.transform.localPosition = spritePosition;
         }
 
 //        private IEnumerator Shake(float intensity)

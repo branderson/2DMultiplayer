@@ -33,22 +33,6 @@ namespace Assets.Scripts.Menu
 //            print(Array.IndexOf(menuManager.inputControllers, input));
             controller = menuManager.playerControllers[Array.IndexOf(menuManager.inputControllers, input)]; //menuManager.playerControllers[0];
             controller.SetSelected(GameObject.Find("Level1").GetComponent<MenuSelectable>());
-
-            for (int card = 0; card < 4; card++)
-            {
-                gameManager.PlayerConfig[card].Vibration = menuManager.inputControllers[card].Vibration;
-                gameManager.PlayerConfig[card].TapJump = menuManager.inputControllers[card].TapJump;
-                gameManager.PlayerConfig[card].DPad = menuManager.inputControllers[card].DPad;
-                gameManager.PlayerConfig[card].Computer = menuManager.inputControllers[card].Computer;
-                gameManager.PlayerConfig[card].Active = menuManager.playerControllers[card].active;
-                gameManager.PlayerConfig[card].Slot = card + 1;
-                gameManager.PlayerConfig[card].ControllerIndex =
-                    menuManager.inputControllers[card].ControllerNumber;
-                gameManager.PlayerConfig[card].XIndex = menuManager.inputControllers[card].XIndex;
-                gameManager.PlayerConfig[card].UseXInput = menuManager.inputControllers[card].UseXInput;
-                gameManager.PlayerConfig[card].Keyboard = menuManager.inputControllers[card].Keyboard;
-                gameManager.PlayerConfig[card].Character = menuManager.playerControllers[card].CharacterIndex;
-            }
         }
 
         // Use this for initialization

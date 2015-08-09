@@ -24,6 +24,8 @@ namespace Assets.Scripts.Player.States
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
+            move.x = animator.GetFloat("xInput");
+            move.y = animator.GetFloat("yInput");
             moveAttackCountdown = waitFrames;
             firstFrame = true;
             rightSmashed = false;
@@ -61,62 +63,67 @@ namespace Assets.Scripts.Player.States
             }
             else if (Mathf.Abs(animator.GetFloat("xInput")) > 0)
             {
-                // Movement
-                if (playerController.Run)
+                if (!idle)
                 {
-                    // Run
-                    if (move.x > 0)
+                    // Movement
+                    if (playerController.Run)
                     {
-                        if (playerController.GetVelocityX() < playerController.runSpeedX)
+                        // Run
+                        if (move.x > 0)
                         {
-                            playerController.IncrementVelocityX(moveSpeed*1.5f/playerController.WeightRatio);
-                        }
-                    }
-                    else if (move.x < 0)
-                    {
-                        if (playerController.GetVelocityX() > -playerController.runSpeedX)
-                        {
-                            playerController.IncrementVelocityX(-moveSpeed*1.5f/playerController.WeightRatio);                       
-                        }
-                    }
-                }
-                else 
-                {
-                    if (move.x > 0)
-                    {
-                        // Fast walk
-                        if (move.x > threshold)
-                        {
-                            if (playerController.GetVelocityX() < playerController.maxSpeedX)
+                            if (playerController.GetVelocityX() < playerController.runSpeedX)
                             {
-                                playerController.IncrementVelocityX(moveSpeed*1/playerController.WeightRatio);
+                                playerController.IncrementVelocityX(moveSpeed*1.5f/playerController.WeightRatio);
                             }
                         }
-                        // Slow walk
-                        else
+                        else if (move.x < 0)
                         {
-                            if (playerController.GetVelocityX() < .5f*playerController.maxSpeedX && !playerController.onEdgeRight)
+                            if (playerController.GetVelocityX() > -playerController.runSpeedX)
                             {
-                                playerController.IncrementVelocityX(moveSpeed/playerController.WeightRatio);
+                                playerController.IncrementVelocityX(-moveSpeed*1.5f/playerController.WeightRatio);
                             }
                         }
                     }
-                    else if (move.x < 0)
+                    else
                     {
-                        // Fast walk
-                        if (move.x < -threshold)
+                        if (move.x > 0)
                         {
-                            if (playerController.GetVelocityX() > -playerController.maxSpeedX)
+                            // Fast walk
+                            if (move.x > threshold)
                             {
-                                playerController.IncrementVelocityX(-moveSpeed/playerController.WeightRatio);
+                                if (playerController.GetVelocityX() < playerController.maxSpeedX)
+                                {
+                                    playerController.IncrementVelocityX(moveSpeed*1/playerController.WeightRatio);
+                                }
+                            }
+                            // Slow walk
+                            else
+                            {
+                                if (playerController.GetVelocityX() < .5f*playerController.maxSpeedX &&
+                                    !playerController.onEdgeRight)
+                                {
+                                    playerController.IncrementVelocityX(moveSpeed/playerController.WeightRatio);
+                                }
                             }
                         }
-                        // Slow walk
-                        else
+                        else if (move.x < 0)
                         {
-                            if (playerController.GetVelocityX() > -.5f*playerController.maxSpeedX && !playerController.onEdgeLeft)
+                            // Fast walk
+                            if (move.x < -threshold)
                             {
-                                playerController.IncrementVelocityX(-moveSpeed/playerController.WeightRatio);
+                                if (playerController.GetVelocityX() > -playerController.maxSpeedX)
+                                {
+                                    playerController.IncrementVelocityX(-moveSpeed/playerController.WeightRatio);
+                                }
+                            }
+                            // Slow walk
+                            else
+                            {
+                                if (playerController.GetVelocityX() > -.5f*playerController.maxSpeedX &&
+                                    !playerController.onEdgeLeft)
+                                {
+                                    playerController.IncrementVelocityX(-moveSpeed/playerController.WeightRatio);
+                                }
                             }
                         }
                     }
@@ -257,6 +264,7 @@ namespace Assets.Scripts.Player.States
                     {
                         playerController.passThroughFloor = false;
                     }
+                    base.Move(x, y);
                     move.x = x;
                     move.y = y;
                     rightSmashed = false;

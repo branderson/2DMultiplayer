@@ -1304,6 +1304,7 @@ MonoBehaviour:
     m_Bits: 256
   sideJumpDistance: 5
   sideJumpHeight: 6
+  fallSpeed: 0
   terminalVelocity: -20
   terminalVelocityFast: -40
   fastFallFactor: 3
