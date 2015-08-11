@@ -1,0 +1,28 @@
+﻿Load
+Start recording 
+	if state < 64
+	if controller state not 0
+Add to caseTrees
+Add to list of recording cases
+While recording:
+	Build active response state
+	Push active response state
+		If first frame of sequence, control state must be non-empty (only starts sequence on control press)
+		Subsequent presses in sequence must be different than previous
+		Pushes state of controller and frame to active set
+		Reset active response state
+	Punishment/reward calculations update
+Push active set 
+	Don't push if:
+		Set has less than two controller states to it
+		Effectiveness is less than 1
+	Push active set to existing sequence if or new sequence
+		Adds version of sequence to sequence if not seen before or increases frequency of previous version
+		Sorts versions based on frequency encountered
+		Increment sequence effectiveness by reward, decrement by punishment
+	Reset active set
+Save
+	Select only:
+		Cases must have a response sequence with effectiveness > 0 (effectiveness is duplicate)
+	Save MaxSequences most effective sequences with effectiveness > 0
+		Save only most common version of each sequence

@@ -73,7 +73,7 @@ namespace Assets.Scripts.Player
             foreach (PlayerController player in removedPlayers)
             {
                 touchingPlayers.Remove(player);
-                print("Hard removing a player");
+//                print("Hard removing a player");
             }
             removedPlayers.Clear();
         }

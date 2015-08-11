@@ -147,9 +147,9 @@ namespace Assets.Scripts.Managers
                     situationIndex = GenerateSituationIndex(player);
                 }
 
-                // Only check for new cases when situation has changed since last frame
+                // Only check for new cases when situation has changed since last frame and also controller state is not 0
 //                if (situationIndex != playerStates.First(item => item.Key == player).Value && inControl)
-                if (inControl)
+                if (inControl && (player.input.ControllerAnalogState().Any(item => item != 0) || player.input.ControllerButtonHoldState().Count != 0))
                 {
                     // Has this case been encountered before
                     CaseBase currentCase;
@@ -401,6 +401,10 @@ namespace Assets.Scripts.Managers
 
             if (BLF.IsBitSet(situationIndex, 17) && BLF.IsBitSet(situationIndex, 16) &&
                 !BLF.IsBitSet(situationIndex, 15) && BLF.IsBitSet(situationIndex, 14))
+            {
+                reward += 1;
+            }
+            if (player.Invincible)
             {
                 reward += 1;
             }

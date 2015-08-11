@@ -45,7 +45,7 @@ namespace Assets.Scripts.Player.States
 
             if (move.x != animator.GetFloat("xInput"))
             {
-                MonoBehaviour.print("Moving x without input: " + move.x + " " + animator.GetFloat("xInput"));
+//                MonoBehaviour.print("Moving x without input: " + move.x + " " + animator.GetFloat("xInput"));
             }
             if (PlayerInputController.ButtonActive("Block"))
             {

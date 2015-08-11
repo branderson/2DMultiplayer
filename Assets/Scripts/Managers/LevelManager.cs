@@ -95,17 +95,19 @@ namespace Assets.Scripts.Managers
                 }
                 else if (players.Count() == 2)
                 {
-                    switch (i)
-                    {
-                        case 0:
-                            players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[1].GetComponent<PlayerUI>());
-                            assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[0].transform.position));
-                            break;
-                        case 1:
-                            players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[2].GetComponent<PlayerUI>());
-                            assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[1].transform.position));
-                            break;
-                    }
+                    players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[i + 1].GetComponent<PlayerUI>());
+                    assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[i].transform.position));
+//                    switch (i)
+//                    {
+//                        case 0:
+//                            players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[1].GetComponent<PlayerUI>());
+//                            assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[0].transform.position));
+//                            break;
+//                        case 1:
+//                            players[i].GetComponentInChildren<PlayerController>().InitUI(playerUI[2].GetComponent<PlayerUI>());
+//                            assignedSpawns.Add(new KeyValuePair<PlayerController, Vector3>(players[i].GetComponentInChildren<PlayerController>(), spawnPoints[1].transform.position));
+//                            break;
+//                    }
                 }
                 else if (players.Count() == 3)
                 {

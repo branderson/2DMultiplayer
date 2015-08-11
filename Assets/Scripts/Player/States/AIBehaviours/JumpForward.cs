@@ -8,14 +8,15 @@ namespace Assets.Scripts.Player.States.AIBehaviours
         public override void Process(List<Transform> opponentPositions)
         {
             PlayerInputController.Jump();
-            if (playerController.facingRight)
-            {
-                PlayerInputController.MoveX(1);
-            }
-            else
-            {
-                PlayerInputController.MoveX(-1);
-            }
+            behaviourController.EnableOnNextFrame(typeof(HoldForward));
+//            if (playerController.facingRight)
+//            {
+////                PlayerInputController.MoveX(1);
+//            }
+//            else
+//            {
+////                PlayerInputController.MoveX(-1);
+//            }
             if (!TimedDisable)
             {
                 Disable();

@@ -133,7 +133,7 @@ namespace Assets.Scripts.Player
                 animator.SetTrigger("Helpless");
                 SetVelocity(Vector2.zero);
                 transform.position = position;
-                rigidBody.MovePosition(position);
+//                rigidBody.MovePosition(position);
                 IFrames = 120; // 2 seconds of invincibility
                 Respawned = true;
             }

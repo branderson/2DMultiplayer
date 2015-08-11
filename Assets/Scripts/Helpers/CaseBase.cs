@@ -10,7 +10,8 @@ namespace Assets.Scripts.Helpers
     [SerializableAttribute]
     public class CaseBase : IComparable<CaseBase>, ISerializable
     {
-        [NonSerialized] public const int RecordFrames = 120;
+        [NonSerialized] public const int RecordFrames = 60;
+        [NonSerialized] public const int MaxSequences = 5;
         [NonSerialized] public byte Frame = 0;
         public int SituationIndex = 0;
         public int TotalRatio = 0;
@@ -108,7 +109,7 @@ namespace Assets.Scripts.Helpers
 
         public void PushActiveSet(int reward, int punish)
         {
-            if (activeSet.Empty())
+            if (activeSet.Empty() || activeSet.ControllerStates.Count < 2 || (reward - punish <= 0))
             {
                 //                MonoBehaviour.print("The set is empty");
             }
@@ -127,7 +128,7 @@ namespace Assets.Scripts.Helpers
                 //////                    MonoBehaviour.print(ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).Effectiveness);
                 //                }
                 ResponseStateList.First(item => item.Sequence.SequenceEqual(activeSet.GetStateList())).PushSet(activeSet);
-                ResponseStateList.OrderByDescending(item => item.Effectiveness);
+                ResponseStateList = ResponseStateList.OrderByDescending(item => item.Effectiveness).ToList();
             }
             else
             {
@@ -146,7 +147,7 @@ namespace Assets.Scripts.Helpers
                 //                }
                 newSequence.PushSet(activeSet);
                 ResponseStateList.Add(newSequence);
-                ResponseStateList.OrderByDescending(item => item.Effectiveness);
+                ResponseStateList = ResponseStateList.OrderByDescending(item => item.Effectiveness).ToList();
             }
 
             activeSet = new ControllerStateSet();
@@ -176,6 +177,7 @@ namespace Assets.Scripts.Helpers
             SituationIndex = information.GetInt32("i");
             TotalRatio = information.GetInt32("t");
             ResponseStateList = (List<ControllerSequence>)information.GetValue("r", typeof(List<ControllerSequence>));
+            ResponseStateList = ResponseStateList.OrderByDescending(item => item.Effectiveness).ToList();
             activeSet = new ControllerStateSet();
             //            MonoBehaviour.print("Loaded ResponseState: ");
             //            foreach (KeyValuePair<int, int> response in ResponseState[0])
@@ -200,15 +202,14 @@ namespace Assets.Scripts.Helpers
                     .Where(item => item.Effectiveness > 0)
                     .OrderByDescending(item => item.Effectiveness)
                     .ToList();
-            if (storedSequences.Count > 5)
+            if (storedSequences.Count > MaxSequences)
             {
-                storedSequences.RemoveRange(5, storedSequences.Count - 5);
+                storedSequences.RemoveRange(MaxSequences, storedSequences.Count - MaxSequences);
             }
             foreach (ControllerSequence sequence in storedSequences)
             {
                 if (sequence.GetVersions().Count > 1)
                 {
-                    MonoBehaviour.print("Should remove version");
                     sequence.GetVersions().RemoveRange(2, sequence.GetVersions().Count - 2);
                 }
             }
@@ -409,6 +410,7 @@ namespace Assets.Scripts.Helpers
 //                    }
                     SequenceVersions.Add(new KeyValuePair<ControllerStateSet, int>(set, 1));
                 }
+                // TODO: Perhaps add a ratio multiplier for danger tolerance
                 Effectiveness += set.Rewarded;
                 Effectiveness -= set.Punished;
             }

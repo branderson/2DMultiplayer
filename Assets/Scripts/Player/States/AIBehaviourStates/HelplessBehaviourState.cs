@@ -20,7 +20,6 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
         {
             if (!playerController.RaycastGround())
             {
-                MonoBehaviour.print("Starting velocity: " + playerController.GetVelocityX());
 //                RaycastHit2D raycast = Physics2D.Raycast(playerController.transform.position, )
                 GameObject[] platforms = GameObject.FindGameObjectsWithTag("Ground");
                 Transform closestPlatform = platforms[0].transform;
@@ -40,8 +39,6 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                             shortestDistance = distance;
                             closestPlatform = platform.transform;
                             // For some reason velocity is always positive here
-                            MonoBehaviour.print("Velocity: " + playerController.GetVelocityX());
-                            MonoBehaviour.print(closestPlatform.position.x - playerController.transform.position.x);
                         }
                     }
                 }
@@ -69,7 +66,6 @@ namespace Assets.Scripts.Player.States.AIBehaviourStates
                     }
                     else
                     {
-                        MonoBehaviour.print("MoveBackward");
                         ActivateBehaviour(typeof (MoveBackward));
                     }
                 }

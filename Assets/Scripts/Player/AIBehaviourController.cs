@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Helpers;
 using Assets.Scripts.Managers;
@@ -10,15 +11,17 @@ namespace Assets.Scripts.Player
     [RequireComponent(typeof (AIInputController))]
     public class AIBehaviourController : MonoBehaviour
     {
+        private static System.Random random = new System.Random();
+        internal int difficulty = 1;
         private PlayerController playerController;
         private AIInputController inputController;
         private AILearner aiLearner;
         private GameManager gameManager;
-        internal int difficulty = 1;
 
         private CaseBase currentCase;
-        private int ghostFrame = 0;
+        private byte ghostFrame = 0;
 
+        private List<Type> nextStateBehaviours = new List<Type>(); 
         private List<Transform> opponentPositions = new List<Transform>(); 
 
         public void Init(AIInputController input, PlayerController controller)
@@ -50,63 +53,83 @@ namespace Assets.Scripts.Player
                 {
                     int situationID = aiLearner.GenerateSituationIndex(playerController);
                     currentCase = aiLearner.LookupSituationIndex(situationID, playerController.characterName);
-                    //                if (currentCase != null)
-                    //                {
-                    //                    print("Entering new case");
-                    //                }
+                    // Don't execute ineffective sequences
+                    if (currentCase != null)
+                    {
+                        if (currentCase.ResponseStateList.All(item => item.Effectiveness <= 0))
+                        {
+                            currentCase = null;
+                        }
+//                        else
+//                        {
+//                            print("Encountered case " + currentCase.ResponseStateList.First().Effectiveness);
+//                        }
+                    }
                 }
+                // Is the current situation found in the database
                 if (currentCase != null && playerController.RaycastGround())
                 {
                     usedGhost = true;
-                    ////                print("Using ghost AI");
                     int chosenResponse = 0;
-                    //
+                    // Figure out what response sequence to pick
                     if (currentCase.ResponseStateList.Any())
                     {
-                        CaseBase.ControllerStateSet currentSet = currentCase.ResponseStateList.First().GetVersions().First().Key;
-                        if (currentSet.NewStateAtFrame((byte) ghostFrame))
-                        {
-                            chosenResponse = currentSet.GetStateAtFrame((byte) ghostFrame);
-                        }
-                        else if (currentSet.PassedLastState((byte) ghostFrame) && ghostFrame > 10)
-                        {
-                            //                        print("Ending sequence early");
-                            ghostFrame = 0;
-                            inputController.ClearActiveButtons();
-                            return;
-                        }
+                        chosenResponse = ChooseResponse();
                     }
+                    // Execute response
                     if (chosenResponse != 0)
                     {
-                        //                    print("Response chosen");
                         DecodeResponse(chosenResponse);
                     }
-                    ghostFrame++;
                     if (ghostFrame >= CaseBase.RecordFrames)
                     {
-                        //                    print("Exiting case");
                         inputController.ClearActiveButtons();
                         ghostFrame = 0;
                     }
-                    //                if (currentCase.ResponseState[ghostFrame].Any())
-                    //                {
-                    //                    chosenResponse = currentCase.ResponseState[ghostFrame].OrderByDescending(item => item.Value).First().Key;
-                    //                }
-                    //                if (chosenResponse != 0)
-                    //                {
-                    //                    DecodeResponse(chosenResponse);
-                    //                }
-                    ////                print(ghostFrame);
-                    ////                BLF.PrintBinary(chosenResponse);
                 }
             }
 
-            // Run AI system
+            // Procedural AI system
             if (playerController.GetState() != null && !usedGhost)
             {
 //                print("Processing AI manually");
-                playerController.GetState().ProcessAI(opponentPositions);
+                if (playerController.GetState().AIState != null)
+                {
+                    foreach (Type behaviour in nextStateBehaviours)
+                    {
+                        playerController.GetState().AIState.ActivateBehaviour(behaviour);
+                    }
+                    nextStateBehaviours.Clear();
+                    playerController.GetState().ProcessAI(opponentPositions);
+                }
             }
+        }
+
+        private short ChooseResponse()
+        {
+            // Difficulty-based logic to pick how effective the selection should be
+            int difficultyModifier = currentCase.ResponseStateList.Count - difficulty + 1; // Higher difficulty has less possible choices
+            if (difficultyModifier < 0)
+            {
+                difficultyModifier = 0;
+            }
+            int sequenceIndex = random.Next(difficultyModifier);
+
+            // Perform most common version of selected input sequence
+            CaseBase.ControllerStateSet currentSet = currentCase.ResponseStateList[sequenceIndex].GetVersions().First().Key;
+//                        print("Effectiveness: " + currentCase.ResponseStateList[sequenceIndex].Effectiveness + ", Index " + sequenceIndex);
+            if (currentSet.NewStateAtFrame(ghostFrame))
+            {
+                return currentSet.GetStateAtFrame(ghostFrame++);
+            }
+            ghostFrame += 1;
+            if (currentSet.PassedLastState(ghostFrame))
+            {
+                //                        print("Ending sequence early");
+                ghostFrame = 0;
+                inputController.ClearActiveButtons();
+            }
+            return 0;
         }
 
         private void DecodeResponse(int chosenResponse)
@@ -178,17 +201,14 @@ namespace Assets.Scripts.Player
             }
             else if (BLF.IsBitSet(chosenResponse, 9))
             {
-//                print("Tilt right");
                 inputController.MoveX(.4f);
             }
             else if (BLF.IsBitSet(chosenResponse, 10))
             {
-//                print("Full left");
                 inputController.MoveX(-1);
             }
             else if (BLF.IsBitSet(chosenResponse, 11))
             {
-//                print("Tilt left");
                 inputController.MoveX(-.4f);
             }
             else
@@ -219,6 +239,11 @@ namespace Assets.Scripts.Player
             {
                 inputController.SetBlock(false);
             }
+        }
+
+        public void EnableOnNextFrame(Type behaviour)
+        {
+            nextStateBehaviours.Add(behaviour);
         }
     }
 }
