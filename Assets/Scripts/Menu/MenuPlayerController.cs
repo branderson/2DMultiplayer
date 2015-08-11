@@ -154,13 +154,17 @@ namespace Assets.Scripts.Menu
                 Selected.Secondary(this);
                 if (playerCard != null)
                 {
-                    if (playerCard.IsReady() && !input.Computer)
+                    if (input.Computer)
+                    {
+                        playerCard.Deactivate();
+                    }
+                    else if (playerCard.IsReady())
                     {
                         playerCard.UnReady();
                     }
                         // TODO: Not a good place to put this. Prevents backing up through menus
                         // TODO: Try to fire this up to characterMenuManager.Deactivate()
-                    else if (playerCard.IsActive() && !input.Computer)
+                    else if (playerCard.IsActive())
                     {
                         playerCard.Deactivate();
                     }

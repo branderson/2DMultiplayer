@@ -22,6 +22,8 @@ namespace Assets.Scripts.Menu
         internal PlayerCard[] playerCards = new PlayerCard[4];
         [SerializeField] private GameObject tournamentText;
 
+        private List<int> controllersHolding = new List<int>(); 
+        private bool deactivatedThisFrame = false;
         private bool inCharacterMenu = true;
 
         private void Awake()
@@ -78,16 +80,6 @@ namespace Assets.Scripts.Menu
 
         private void Update()
         {
-            // If no controllers active, next back goes to title
-            if (!Controllers.Any(controller => controller))
-            {
-                // TODO: Reading XInput controllers as GlobalBack and backing out
-                if (Input.GetButtonDown("GlobalBack"))
-                {
-                    SaveCards();
-                    Application.LoadLevel("TitleMenu");
-                }
-            }
         }
 
         // Update is called once per frame
@@ -95,50 +87,88 @@ namespace Assets.Scripts.Menu
         {
             if (inCharacterMenu)
             {
-                // Allow no more than 4 controllers
-                if (Controllers.Any(controller => !controller))
+                // Allow setting keyboard as a controller
+                if (!playerCards.Any(card => (card.inputController.Keyboard && card.IsActive())))
+                    // Linq expression checks if any object in Controllers has a ControllerNumber == 0
                 {
-                    // Allow setting keyboard as a controller
-                    if (Input.GetButtonDown("PrimaryK") &&
-                        !playerCards.Any(card => (card.inputController.Keyboard && card.IsActive())))
-                        // Linq expression checks if any object in Controllers has a ControllerNumber == 0
+                    if (Input.GetButtonDown("PrimaryK"))
                     {
                         ActivateKeyboard();
                     }
-
-                    bool xInputPressed = false;
-                    for (int i = 0; i < 4; i++)
+                    if (Input.GetButtonDown("SecondaryK"))
                     {
-                        PlayerIndex controller = (PlayerIndex) i;
-                        if (GamePad.GetState(controller).IsConnected)
+                        ClearCards();
+                        Application.LoadLevel("TitleMenu");
+                    }
+                }
+
+                bool xInputPressed = false;
+                for (int i = 0; i < 4; i++)
+                {
+                    PlayerIndex controller = (PlayerIndex) i;
+                    if (GamePad.GetState(controller).IsConnected)
+                    {
+                        if (
+                            !playerCards.Any(
+                                card =>
+                                    (card.inputController.UseXInput && card.inputController.XIndex == controller &&
+                                     card.IsActive())))
                         {
                             if (GamePad.GetState(controller).Buttons.A == ButtonState.Pressed)
                             {
-                                xInputPressed = true;
-                            }
-                            if (GamePad.GetState(controller).Buttons.A == ButtonState.Pressed && 
-                                !playerCards.Any(card => (card.inputController.UseXInput && card.inputController.XIndex == controller && card.IsActive())))
-                            {
                                 ActivateXInput(controller);
                             }
-                        }
-                    }
-
-                    // Only allow adding DirectInput controllers if no xInput controller is pressing A to avoid control mismatches
-                    // TODO: Switch from checking for holding A to pressing A possibly (very low importance)
-                    if (!xInputPressed)
-                    {
-                        for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
-                        {
-                            if (Input.GetButtonDown("PrimaryJ" + i) &&
-                                !playerCards.Any(card => (card.inputController.ControllerNumber == i-1 && card.IsActive())))
+                            if (!deactivatedThisFrame && !controllersHolding.Contains(i) &&
+                                GamePad.GetState(controller).Buttons.B == ButtonState.Pressed)
                             {
-//                                print("Trying to activate");
-                                ActivateDirectInput(i-1);
+                                ClearCards();
+                                Application.LoadLevel("TitleMenu");
+                            }
+                        }
+//                        // If 
+//                        if (playerCards.Any(card => (card.inputController.UseXInput && card.inputController.XIndex == controller && card.IsActive())))
+//                        {
+//                        }
+                        // Stop listening for DirectInput if xInput pressed
+                        if (GamePad.GetState(controller).Buttons.A == ButtonState.Pressed ||
+                            GamePad.GetState(controller).Buttons.B == ButtonState.Pressed)
+                        {
+                            xInputPressed = true;
+                            if (!controllersHolding.Contains(i))
+                            {
+                                controllersHolding.Add(i);
+                            }
+                        }
+                        else
+                        {
+                            if (controllersHolding.Contains(i))
+                            {
+                                controllersHolding.Remove(i);
                             }
                         }
                     }
                 }
+
+                // Only allow adding DirectInput controllers if no xInput controller is pressing A to avoid control mismatches
+                // TODO: Switch from checking for holding A to pressing A possibly (very low importance)
+                for (int i = 1; i <= Input.GetJoystickNames().Count(); i++)
+                {
+                    if (!playerCards.Any(card => (card.inputController.ControllerNumber == i - 1 && card.IsActive())) &&
+                        !xInputPressed)
+                    {
+                        if (Input.GetButtonDown("PrimaryJ" + i))
+                        {
+                            ActivateDirectInput(i - 1);
+                        }
+                        if (Input.GetButtonDown(("SecondaryJ" + i)))
+                        {
+                            ClearCards();
+                            Application.LoadLevel("TitleMenu");
+                        }
+                    }
+                }
+
+                deactivatedThisFrame = false;
 
                 bool allReady = true;
 
@@ -153,7 +183,8 @@ namespace Assets.Scripts.Menu
 
                 // If all players ready, load level
                 // TODO: Load level select scene here instead
-                if (allReady && playerCards.Any(card => (card.IsActive() && !card.inputController.Computer)) && Controllers.Where(item => item).Count() > 1)
+                if (allReady && playerCards.Any(card => (card.IsActive() && !card.inputController.Computer)) &&
+                    Controllers.Where(item => item).Count() > 1)
                 {
                     Object.DontDestroyOnLoad(this);
                     playerCards = null;
@@ -167,12 +198,20 @@ namespace Assets.Scripts.Menu
 
         public void ActivateComputer(int slot)
         {
+            if (!Controllers.Any(controller => !controller))
+            {
+                return;
+            }
             Controllers[slot-1] = true;
             playerCards[slot-1].ActivateComputer();
         }
 
         private void ActivateXInput(PlayerIndex xIndex)
         {
+            if (!Controllers.Any(controller => !controller))
+            {
+                return;
+            }
             int slot = 3;
 
             for (int i = 3; i >= 0; i--)
@@ -182,14 +221,14 @@ namespace Assets.Scripts.Menu
                     slot = i;
                 }
             }
-
-            foreach (PlayerCard card in playerCards)
-            {
-                if (card.inputController.XIndex == xIndex && card.inputController.UseXInput)
-                {
-                    slot = card.number - 1;
-                }
-            }
+//
+//            foreach (PlayerCard card in playerCards)
+//            {
+//                if (card.inputController.XIndex == xIndex && card.inputController.UseXInput)
+//                {
+//                    slot = card.number - 1;
+//                }
+//            }
 
             Controllers[slot] = true;
             playerCards[slot].ActivateXInput();
@@ -201,6 +240,10 @@ namespace Assets.Scripts.Menu
 
         private void ActivateKeyboard()
         {
+            if (!Controllers.Any(controller => !controller))
+            {
+                return;
+            }
             int slot = 3;
 
             for (int i = 3; i >= 0; i--)
@@ -253,8 +296,10 @@ namespace Assets.Scripts.Menu
 
         public void Deactivate(int number)
         {
+            deactivatedThisFrame = true;
             Controllers[number - 1] = false;
             gameManager.PlayerConfig[number - 1].Active = false;
+//            gameManager.PlayerConfig[number - 1] = new PlayerConfig();
         }
 
         private void SaveCards()
@@ -273,6 +318,11 @@ namespace Assets.Scripts.Menu
                 gameManager.PlayerConfig[card].Keyboard = inputControllers[card].Keyboard;
                 gameManager.PlayerConfig[card].Character = playerControllers[card].CharacterIndex;
             }
+        }
+
+        private void ClearCards()
+        {
+            gameManager.RebuildPlayerConfig();
         }
     }
 }

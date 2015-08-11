@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using Assets.Scripts.AI;
 using Assets.Scripts.Helpers;
 using Assets.Scripts.Player;
 using XInputDotNetPure;
@@ -31,7 +32,12 @@ namespace Assets.Scripts.Managers
             Object.DontDestroyOnLoad(this);
 
             // Load in game save data here
+            
+            RebuildPlayerConfig();
+        }
 
+        public void RebuildPlayerConfig()
+        {
             // Create temporary controller slot settings
             for (int i = 0; i < 4; i++)
             {

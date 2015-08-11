@@ -24,7 +24,7 @@ namespace Assets.Scripts.Menu
 
         private MenuPlayerController playerController;
 
-        private List<string> buttonsPressed; 
+        internal List<string> buttonsPressed; 
         private bool xActive = false;
         private bool yActive = false;
         private float x = 0f;
@@ -59,6 +59,7 @@ namespace Assets.Scripts.Menu
 
         public void Deactivate()
         {
+//            controllerAssigned = false;
         }
         
         // Update is called once per frame

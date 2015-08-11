@@ -143,6 +143,7 @@ namespace Assets.Scripts.Menu
         {
             // TODO: Conflicts with CharacterMenuManager's controller list
             manager.Deactivate(number);
+            ready = false;
             active = false;
             panelImage.color = Color.white;
             titleText.text = "None";
@@ -207,7 +208,7 @@ namespace Assets.Scripts.Menu
             // TODO: Maybe a cycle of Player, Computer, None
             // TODO: Allow selection via mouse hover
             // TODO: Sometimes cycles Computer, None on player 1
-            if (true) //player.ControllerNumber != number)
+            if (player.PlayerNumber != number)
             {
                 if (!inputController.Computer)
                 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Assets.Scripts.Player.States.AIBehaviourStates;
+using Assets.Scripts.AI.AIBehaviourStates;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.States
