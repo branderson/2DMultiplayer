@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace Assets.Scripts.Player.States
+namespace Assets.Scripts.Player.StateBehaviours
 {
-    public class DisableGravity : StateMachineBehaviour
+    public class SetInvincible : StateMachineBehaviour
     {
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             PlayerController playerController = animator.GetComponentInChildren<PlayerController>();
-            playerController.canFall = false;
+            playerController.StateInvincible = true;
         }       
         
         override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             PlayerController playerController = animator.GetComponentInChildren<PlayerController>();
-            playerController.canFall = true;
+            playerController.StateInvincible = false;
         }       
     }
 }

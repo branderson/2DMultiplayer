@@ -14,9 +14,9 @@ namespace Assets.Scripts.Player
         [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
         [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
         [SerializeField] internal int resistance = 0;
-        [SerializeField] internal int launchFrames = 30;
+        [SerializeField] internal int launchFrames = 15;
         [Range(.25f, 2)][SerializeField] internal float WeightRatio = 1f;
-        [SerializeField] private float noShieldPenalty = .5f;
+        [SerializeField] private float noShieldPenalty = 1f;
         [SerializeField] private float noShieldBonus = .5f;
         [SerializeField] private int MaxAirJumps = 1;
         [SerializeField] private float airJumpDecayFactor = .5f;
@@ -36,6 +36,8 @@ namespace Assets.Scripts.Player
         [SerializeField] private float fastFallFactor = 3f; // Velocity multiplier for fast fall
         [SerializeField] public float shortHopFactor = .7f; // Fraction of neutral jump height/distance for short hop
         [SerializeField] public float airControlSpeed = .5f; // Fraction of horizontal control while in air
+        private const float MaxVelCancelX = 20f;
+        private const float MaxVelCancelY = 80f;
         private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if onGround
 
         internal float airSideJumpSpeedX;
@@ -180,6 +182,7 @@ namespace Assets.Scripts.Player
                 else
                     FallRegular();
             }
+            ApplyAirResistance();
             animator.SetFloat("xVelocity", velocityX);
             animator.SetFloat("yVelocity", velocityY);
             animator.SetFloat("xSpeed", Mathf.Abs(velocityX));
@@ -269,6 +272,14 @@ namespace Assets.Scripts.Player
 //            {
 //                SetVelocityY(terminalVelocityFast);
 //            }
+        }
+
+        private void ApplyAirResistance()
+        {
+            if (!onGround && GetSpeedX() > airSideJumpSpeedX)
+            {
+                IncrementSpeedX(-4f*Time.fixedDeltaTime);
+            }
         }
 
         public bool CheckForGround()
@@ -414,44 +425,42 @@ namespace Assets.Scripts.Player
             }
         }
 
+        // Increments velocity up to MaxVelCancel to reach velocity
         public void CappedSetVelocity(Vector2 velocity)
         {
-            if (Mathf.Abs(GetVelocityX()) < Mathf.Abs(velocity.x))
-            {
-                SetVelocityX(velocity.x);
-            }
-            if (Mathf.Abs(GetVelocityY()) < Mathf.Abs(velocity.y))
-            {
-                SetVelocityY(velocity.y);
-            }
+
         }
 
         public void CappedSetVelocity(float x, float y)
         {
-            if (Mathf.Abs(GetVelocityX()) < Mathf.Abs(x))
-            {
-                SetVelocityX(x);
-            }
-            if (Mathf.Abs(GetVelocityY()) < Mathf.Abs(y))
-            {
-                SetVelocityY(y);
-            }
         }
 
         public void CappedSetVelocityX(float x)
         {
-            if (Mathf.Abs(GetVelocityX()) < Mathf.Abs(x))
+            float xAdjust = x - GetVelocityX();
+            if (xAdjust > MaxVelCancelX)
             {
-                SetVelocityX(x);
+                xAdjust = MaxVelCancelX;
             }
+            else if (xAdjust < -MaxVelCancelX)
+            {
+                xAdjust = -MaxVelCancelX;
+            }
+            IncrementVelocityX(xAdjust);
         }
 
         public void CappedSetVelocityY(float y)
         {
-            if (Mathf.Abs(GetVelocityY()) < Mathf.Abs(y))
+            float yAdjust = y - GetVelocityY();
+            if (yAdjust > MaxVelCancelY)
             {
-                SetVelocityY(y);
+                yAdjust = MaxVelCancelY;
             }
+            else if (yAdjust < -MaxVelCancelY)
+            {
+                yAdjust = -MaxVelCancelY;
+            }
+            IncrementVelocityY(yAdjust);
         }
 
         public void IncrementVelocity(Vector2 velocity)

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace Assets.Scripts.Player.States
+namespace Assets.Scripts.Player.StateBehaviours
 {
     public class StopOnEdge : StateMachineBehaviour
     {
@@ -20,13 +19,11 @@ namespace Assets.Scripts.Player.States
             {
                 if (playerController.GetVelocityX() > 0f && playerController.onEdgeRight)
                 {
-                    playerController.IncrementVelocity(-playerController.GetVelocityX(),
-                        -playerController.GetVelocityY());
+                    playerController.CappedSetVelocityX(0);
                 }
                 else if (playerController.GetVelocityX() < 0f && playerController.onEdgeLeft)
                 {
-                    playerController.IncrementVelocity(-playerController.GetVelocityX(),
-                        -playerController.GetVelocityY());
+                    playerController.CappedSetVelocityX(0);
                 }
             }
         }       

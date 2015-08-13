@@ -152,5 +152,11 @@ namespace Assets.Scripts.Menu
                 Application.Quit();
             }
         }
+
+        public void OnApplicationQuit()
+        {
+            Application.CancelQuit();
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
     }
 }

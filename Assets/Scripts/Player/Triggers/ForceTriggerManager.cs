@@ -115,15 +115,15 @@ namespace Assets.Scripts.Player.Triggers
                 Vector2 hitForce = force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity();
                 if (playerController.facingRight)
                 {
-                    player.IncrementVelocity(hitForce);
+                    player.SetVelocity(hitForce);
                 }
                 else
                 {
-                    player.IncrementVelocity(-hitForce.x, hitForce.y);
+                    player.SetVelocity(-hitForce.x, hitForce.y);
     //                player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
                 }
 
-                int stunFrames = (int) Mathf.Ceil(hitForce.x + hitForce.y/2)/2;
+                int stunFrames = (int) Mathf.Ceil(hitForce.x + hitForce.y/4);
                 player.Stun(stunFrames);
                 player.Stagger(stagger);
             }

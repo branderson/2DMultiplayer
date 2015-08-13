@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace Assets.Scripts.Player.States
+namespace Assets.Scripts.Player.StateBehaviours
 {
     public class ApplyFacingRelativeVelocity : StateMachineBehaviour
     {
@@ -15,7 +14,6 @@ namespace Assets.Scripts.Player.States
         private int countDown = 0;
         private bool applied = false;
         private float directionModifier = 1f;
-        private float damageMultiplier = 1f;
         private PlayerController playerController;
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -35,12 +33,6 @@ namespace Assets.Scripts.Player.States
             {
                 applied = true;
                 directionModifier = 1f;
-                damageMultiplier = 1f;
-
-//                if (DamageScaled)
-//                {
-//                    damageMultiplier = playerController.shield;
-//                }
 
                 if (!playerController.facingRight)
                 {
@@ -51,45 +43,45 @@ namespace Assets.Scripts.Player.States
                 {
                     if (applyX && applyY)
                     {
-                        playerController.IncrementVelocity(velocity.x*directionModifier*damageMultiplier - playerController.GetVelocityX(), velocity.y*damageMultiplier - playerController.GetVelocityY());
+                        playerController.SetVelocity(velocity.x*directionModifier, velocity.y);
                     }
                     else if (applyX)
                     {
-                        playerController.IncrementVelocityX(velocity.x*directionModifier*damageMultiplier - playerController.GetVelocityX());
+                        playerController.SetVelocityX(velocity.x*directionModifier);
                     }
                     else if (applyY)
                     {
-                        playerController.IncrementVelocityY(velocity.y*damageMultiplier - playerController.GetVelocityY());
+                        playerController.SetVelocityY(velocity.y);
                     }
                 }
                 else if (SetCapped)
                 {
                     if (applyX && applyY)
                     {
-                        playerController.CappedSetVelocity(velocity.x*directionModifier*damageMultiplier, velocity.y*damageMultiplier);
+                        playerController.CappedSetVelocity(velocity.x*directionModifier, velocity.y);
                     }
                     else if (applyX)
                     {
-                        playerController.CappedSetVelocityX(velocity.x*directionModifier*damageMultiplier);
+                        playerController.CappedSetVelocityX(velocity.x*directionModifier);
                     }
                     else if (applyY)
                     {
-                        playerController.CappedSetVelocityY(velocity.y*damageMultiplier);
+                        playerController.CappedSetVelocityY(velocity.y);
                     }
                 }
                 else
                 {
                     if (applyX && applyY)
                     {
-                        playerController.IncrementVelocity(velocity.x*directionModifier*damageMultiplier, velocity.y*damageMultiplier);
+                        playerController.IncrementVelocity(velocity.x*directionModifier, velocity.y);
                     }
                     else if (applyX)
                     {
-                        playerController.IncrementVelocityX(velocity.x*directionModifier*damageMultiplier);
+                        playerController.IncrementVelocityX(velocity.x*directionModifier);
                     }
                     else if (applyY)
                     {
-                        playerController.IncrementVelocityY(velocity.y*damageMultiplier);
+                        playerController.IncrementVelocityY(velocity.y);
                     }
                 }
             }

@@ -14,7 +14,7 @@ namespace Assets.Scripts.Player.States
         private int waitFrames = 2;
         private Vector2 move;
         private float threshold = .9f;
-        private float moveSpeed = 2.5f;
+        private float moveSpeed = 240f;
         private int moveAttackCountdown = 0;
         private bool firstFrame = true;
         private bool rightSmashed = false;
@@ -73,14 +73,14 @@ namespace Assets.Scripts.Player.States
                         {
                             if (playerController.GetVelocityX() < playerController.runSpeedX)
                             {
-                                playerController.IncrementVelocityX(moveSpeed*1.5f/playerController.WeightRatio);
+                                playerController.IncrementVelocityX(moveSpeed*Time.fixedDeltaTime*1.5f/playerController.WeightRatio);
                             }
                         }
                         else if (move.x < 0)
                         {
                             if (playerController.GetVelocityX() > -playerController.runSpeedX)
                             {
-                                playerController.IncrementVelocityX(-moveSpeed*1.5f/playerController.WeightRatio);
+                                playerController.IncrementVelocityX(-moveSpeed*Time.fixedDeltaTime*1.5f/playerController.WeightRatio);
                             }
                         }
                     }
@@ -93,7 +93,7 @@ namespace Assets.Scripts.Player.States
                             {
                                 if (playerController.GetVelocityX() < playerController.maxSpeedX)
                                 {
-                                    playerController.IncrementVelocityX(moveSpeed*1/playerController.WeightRatio);
+                                    playerController.IncrementVelocityX(moveSpeed*Time.fixedDeltaTime*1/playerController.WeightRatio);
                                 }
                             }
                             // Slow walk
@@ -102,7 +102,7 @@ namespace Assets.Scripts.Player.States
                                 if (playerController.GetVelocityX() < .5f*playerController.maxSpeedX &&
                                     !playerController.onEdgeRight)
                                 {
-                                    playerController.IncrementVelocityX(moveSpeed/playerController.WeightRatio);
+                                    playerController.IncrementVelocityX(moveSpeed*Time.fixedDeltaTime/playerController.WeightRatio);
                                 }
                             }
                         }
@@ -113,7 +113,7 @@ namespace Assets.Scripts.Player.States
                             {
                                 if (playerController.GetVelocityX() > -playerController.maxSpeedX)
                                 {
-                                    playerController.IncrementVelocityX(-moveSpeed/playerController.WeightRatio);
+                                    playerController.IncrementVelocityX(-moveSpeed*Time.fixedDeltaTime/playerController.WeightRatio);
                                 }
                             }
                             // Slow walk
@@ -122,7 +122,7 @@ namespace Assets.Scripts.Player.States
                                 if (playerController.GetVelocityX() > -.5f*playerController.maxSpeedX &&
                                     !playerController.onEdgeLeft)
                                 {
-                                    playerController.IncrementVelocityX(-moveSpeed/playerController.WeightRatio);
+                                    playerController.IncrementVelocityX(-moveSpeed*Time.fixedDeltaTime/playerController.WeightRatio);
                                 }
                             }
                         }

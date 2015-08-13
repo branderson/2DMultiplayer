@@ -10,6 +10,7 @@ Player Controller
 	Pressed left and did right smash
 	Air dodge
 	Players sliding at constant rate with no input, imaginary force pushing to side in idle
+	Be able to set velocity to 0 after attacking opponent,:w
 
 Make force triggers able to launch opposite direction of contact
 Shaders

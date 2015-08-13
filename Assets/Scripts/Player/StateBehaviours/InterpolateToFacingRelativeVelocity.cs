@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace Assets.Scripts.Player.States
+namespace Assets.Scripts.Player.StateBehaviours
 {
     public class InterpolateToFacingRelativeVelocity : StateMachineBehaviour
     {
@@ -49,7 +48,7 @@ namespace Assets.Scripts.Player.States
                         playerController.IncrementVelocityX(-rate);
                         if (playerController.GetVelocityX() < velocity.x)
                         {
-                            playerController.IncrementVelocityX(velocity.x - playerController.GetVelocityX());
+                            playerController.SetVelocityX(velocity.x);
                             applied = true;
                         }
                     }
@@ -58,7 +57,7 @@ namespace Assets.Scripts.Player.States
                         playerController.IncrementVelocityX(rate);
                         if (playerController.GetVelocityX() > velocity.x)
                         {
-                            playerController.IncrementVelocityX(velocity.x - playerController.GetVelocityX());
+                            playerController.SetVelocityX(velocity.x);
                             applied = true;
                         }
                     }
@@ -70,7 +69,7 @@ namespace Assets.Scripts.Player.States
                         playerController.IncrementVelocityY(-rate);
                         if (playerController.GetVelocityX() < velocity.x)
                         {
-                            playerController.IncrementVelocityX(velocity.x - playerController.GetVelocityX());
+                            playerController.SetVelocityX(velocity.x);
                             applied = true;
                         }
                     }
@@ -79,7 +78,7 @@ namespace Assets.Scripts.Player.States
                         playerController.IncrementVelocityY(rate);
                         if (playerController.GetVelocityX() > velocity.x)
                         {
-                            playerController.IncrementVelocityX(velocity.x - playerController.GetVelocityX());
+                            playerController.SetVelocityX(velocity.x);
                             applied = true;
                         }
                     }

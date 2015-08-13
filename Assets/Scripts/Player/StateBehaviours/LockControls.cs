@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace Assets.Scripts.Player.States
+namespace Assets.Scripts.Player.StateBehaviours
 {
     public class LockControls : StateMachineBehaviour
     {

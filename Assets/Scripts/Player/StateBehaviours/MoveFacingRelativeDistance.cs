@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace Assets.Scripts.Player.States
+namespace Assets.Scripts.Player.StateBehaviours
 {
     public class MoveFacingRelativeDistance : StateMachineBehaviour
     {
@@ -47,11 +46,11 @@ namespace Assets.Scripts.Player.States
                 // TODO: Might have errors in math with distance
                 if (handleX)
                 {
-                    playerController.IncrementVelocityX(velocity.x*directionModifier - playerController.GetVelocityX());
+                    playerController.CappedSetVelocityX(velocity.x*directionModifier);
                 }
                 if (handleY)
                 {
-                    playerController.IncrementVelocityY(velocity.y - playerController.GetVelocityY());
+                    playerController.CappedSetVelocityY(velocity.y);
                 }
             }
         }       

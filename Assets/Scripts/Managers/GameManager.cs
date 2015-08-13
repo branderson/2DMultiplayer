@@ -62,7 +62,7 @@ namespace Assets.Scripts.Managers
             Directory.CreateDirectory(Application.persistentDataPath + "/SaveData/AIData/");
             FileStream file = File.Create(Application.persistentDataPath + "/SaveData/AIData/" + characterName + ".ai");
             List<CaseBase> caseList = cases.InOrder().Select(item => item.Data).Where(item => !item.Empty() && item.ResponseStateList.Any(response => response.Effectiveness > 0)).ToList();
-            print("There are " + caseList.Count + " cases in the tree");
+//            print("There are " + caseList.Count + " cases in the tree");
             bf.Serialize(file, caseList);
 //            bf.Serialize(file, cases);
             file.Close();
@@ -91,7 +91,7 @@ namespace Assets.Scripts.Managers
                 loadedTree.Insert(caseBase);
             }
 //            BinaryTree<CaseBase> loadedTree = (BinaryTree<CaseBase>)bf.Deserialize(file).;
-            print("Cases loaded by GameManager: " + loadedTree.Count);
+//            print("Cases loaded by GameManager: " + loadedTree.Count);
             return new KeyValuePair<string, BinaryTree<CaseBase>>(characterName, loadedTree);
         } 
 
