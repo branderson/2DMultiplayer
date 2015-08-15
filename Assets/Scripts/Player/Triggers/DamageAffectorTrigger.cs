@@ -10,6 +10,11 @@ namespace Assets.Scripts.Player.Triggers
         [SerializeField] private bool overrideOthers;
         [SerializeField] public float damagePerFrame;
         [SerializeField] public int baseDamage;
+        [SerializeField] public int Knockback;
+        [SerializeField] public int Scaling;
+        [SerializeField] public bool SetKnockback;
+        [Range(-1, 1)][SerializeField] public float DirectionVectorX;
+        [Range(-1, 1)][SerializeField] public float DirectionVectorY;
         [SerializeField] public Vector2 ForceApplied;
         [SerializeField] public bool Stun = true;
         [SerializeField] public int Stagger = 1;
@@ -59,7 +64,10 @@ namespace Assets.Scripts.Player.Triggers
                     {
                         playerController.SetVibrate(6, .8f, .5f);
                     }
-                    controller.Stun(1);
+                    if (controller.resistance < Stagger)
+                    {
+                        controller.Stun(1);
+                    }
                 }
             }
         }
@@ -83,7 +91,20 @@ namespace Assets.Scripts.Player.Triggers
             {
                 if (controller.resistance < Stagger)
                 {
-                    manager.AddForce(controller, HitFrameVector(hitFrames[controller], ForceApplied)*ForceMultiplier, baseDamage+DamageSupplement, Stun, Stagger, overrideOthers, vibrateOpponent);
+                    int appliedKnockback =
+                        (int) ((hitFrames[controller]*Knockback/forceReductionFactor + Knockback)*ForceMultiplier);
+                    AttackData attackData = new AttackData()
+                    {
+                        Knockback = appliedKnockback,
+                        Scaling = Scaling,
+                        SetKnockback = SetKnockback, 
+                        Direction = new Vector2(DirectionVectorX, DirectionVectorY),
+                        Damage = baseDamage+DamageSupplement,
+                        Stagger = Stagger, 
+                        Stun = Stun,
+                        Vibrate = vibrateOpponent,
+                    };
+                    manager.AddForce(controller, attackData, overrideOthers);
                 }
                 if (vibrateSelf && !controller.Invincible)
                 {
@@ -91,28 +112,6 @@ namespace Assets.Scripts.Player.Triggers
                 }
             }
             hitFrames.Clear();
-        }
-
-        private Vector2 HitFrameVector(int hitFrames, Vector2 force)
-        {
-            Vector2 vector = new Vector2();
-            if (force.x > 0)
-            {
-                vector.x = hitFrames*force.x/forceReductionFactor + force.x;
-            }
-            else
-            {
-                vector.x = hitFrames*force.x/forceReductionFactor + force.x;
-            }
-            if (force.y > 0)
-            {
-                vector.y = hitFrames*force.y/forceReductionFactor + force.y;
-            }
-            else
-            {
-                vector.y = hitFrames*force.y/forceReductionFactor + force.y;
-            }
-            return vector;
         }
     }
 }

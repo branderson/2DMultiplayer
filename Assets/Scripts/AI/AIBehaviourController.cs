@@ -50,7 +50,7 @@ namespace Assets.Scripts.AI
             bool usedGhost = false;
             if (gameManager.GameConfig.UseGhostAI)
             {
-                if (ghostFrame == 0 && playerController.RaycastGround())
+                if (playerController.RaycastGround()) // && ghostFrame == 0);
                 {
                     int situationID = aiLearner.GenerateSituationIndex(playerController);
                     currentCase = aiLearner.LookupSituationIndex(situationID, playerController.characterName);
@@ -60,6 +60,10 @@ namespace Assets.Scripts.AI
                         if (currentCase.ResponseStateList.All(item => item.Effectiveness <= 0))
                         {
                             currentCase = null;
+                        }
+                        else
+                        {
+                            ghostFrame = 0;
                         }
 //                        else
 //                        {

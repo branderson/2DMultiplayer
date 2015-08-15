@@ -5,7 +5,7 @@ namespace Assets.Scripts.Player.StateBehaviours
     public class InterpolateToFacingRelativeVelocity : StateMachineBehaviour
     {
         [SerializeField] private int frameApplied = 0;
-        [SerializeField] private int rate = 0;
+        [SerializeField] private float rate = 0;
         [SerializeField] private bool interpolateX = false;
         [SerializeField] private bool interpolateY = false;
         [SerializeField] private Vector2 velocity = new Vector2();

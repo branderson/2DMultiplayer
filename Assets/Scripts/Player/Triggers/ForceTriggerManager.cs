@@ -4,14 +4,28 @@ using UnityEngine;
 
 namespace Assets.Scripts.Player.Triggers
 {
-    public class PlayerForces
+    public struct AttackData
+    {
+        public int Knockback;
+        public float Scaling;
+        public bool SetKnockback;
+        public Vector2 Direction;
+        public int Damage;
+        public int Stagger;
+        public bool Vibrate;
+        public bool Stun;
+    }
+
+    public class PlayerAttackData
     {
         public PlayerController PlayerController;
-        public List<Vector2> Forces = new List<Vector2>();
-        public List<int> Damages = new List<int>();
-        public List<bool> Vibrate = new List<bool>();
-        public List<bool> Stun = new List<bool>();
-        public List<int> Stagger = new List<int>(); 
+        public List<AttackData> Attacks = new List<AttackData>(); 
+//        public List<KeyValuePair<KeyValuePair<int, float>, Vector2>> Knockbacks;  
+//        public List<Vector2> Forces = new List<Vector2>();
+//        public List<int> Damages = new List<int>();
+//        public List<bool> Vibrate = new List<bool>();
+//        public List<bool> Stun = new List<bool>();
+//        public List<int> Stagger = new List<int>(); 
         public bool Overridden = false;
         public bool Applied = false;
     }
@@ -19,12 +33,12 @@ namespace Assets.Scripts.Player.Triggers
     public class ForceTriggerManager : MonoBehaviour
     {
         private PlayerController playerController;
-        private List<PlayerForces> pendingForces;
+        private List<PlayerAttackData> pendingForces;
 
         private void Awake()
         {
             playerController = transform.parent.GetComponentInChildren<PlayerController>();
-            pendingForces = new List<PlayerForces>();
+            pendingForces = new List<PlayerAttackData>();
         }
 
         private void OnEnable()
@@ -36,101 +50,78 @@ namespace Assets.Scripts.Player.Triggers
         private void Update()
         {
 //            int forceLength = pendingForces.Count();
-            foreach (PlayerForces pendingForce in pendingForces)
+            foreach (PlayerAttackData pendingForce in pendingForces)
             {
                 if (!pendingForce.Applied && !pendingForce.PlayerController.Invincible)
                 {
                     if (pendingForce.Overridden)
                     {
-                        ApplyForce(pendingForce.PlayerController, pendingForce.Forces.Last(), pendingForce.Damages.Last(), pendingForce.Vibrate.Last(), pendingForce.Stun.Last(), pendingForce.Stagger.Last());
+                        ApplyForce(pendingForce.PlayerController, pendingForce.Attacks.Last());
                     }
                     else
                     {
-                        float highestX = pendingForce.Forces.OrderByDescending(item => Mathf.Abs(item.x)).First().x;
-                        float highestY = pendingForce.Forces.OrderByDescending(item => Mathf.Abs(item.y)).First().y;
-                        int highestDamage = pendingForce.Damages.Max();
-                        bool stun = pendingForce.Stun.Any(item => item);
-                        int stagger = pendingForce.Stagger.Max();
-                        bool vibrate = pendingForce.Vibrate.Any(item => item);
-                        ApplyForce(pendingForce.PlayerController, new Vector2(highestX, highestY), highestDamage, vibrate, stun, stagger);
+                        ApplyForce(pendingForce.PlayerController, pendingForce.Attacks.OrderByDescending(item => item.Knockback).First());
                     }
                 }
             }
             pendingForces.ForEach(SetApplied);
         }
 
-        private void SetApplied(PlayerForces force)
+        private void SetApplied(PlayerAttackData attackData)
         {
-            force.Applied = true;
+            attackData.Applied = true;
         }
 
-        public void AddForce(PlayerController player, Vector2 force, int damage, bool stun, int stagger, bool overrideOthers, bool vibrate)
+        public void AddForce(PlayerController player, AttackData attackData, bool overrideOthers)
         {
             if (player != playerController && !player.Invincible)
             {
-//                print("Adding force: x = " + force.x + ", y = " + force.y);
+//                print("Adding attackData: x = " + attackData.x + ", y = " + attackData.y);
                 if (pendingForces.Any(playerForce => playerForce.PlayerController == player))
                 {
 //                    print("Existing player");
-                    PlayerForces forces = pendingForces.Where(playerForces => playerForces.PlayerController == player).FirstOrDefault();
+                    PlayerAttackData playerAttackData= pendingForces.Where(playerForces => playerForces.PlayerController == player).FirstOrDefault();
 
-                    if (!forces.Overridden)
+                    if (!playerAttackData.Overridden)
                     {
-                        forces.Forces.Add(force);
-                        forces.Damages.Add(damage);
-                        forces.Vibrate.Add(vibrate);
-                        forces.Stun.Add(stun);
-                        forces.Stagger.Add(stagger);
-                        forces.Overridden = overrideOthers;
+                        playerAttackData.Attacks.Add(attackData);
+                        playerAttackData.Overridden = overrideOthers;
                     }
                 }
                 else
                 {
 //                    print("New player");
-                    PlayerForces forces = new PlayerForces()
+                    PlayerAttackData playerAttackData = new PlayerAttackData()
                     {
                         PlayerController = player, 
                     };
-                    forces.Forces.Add(force);
-                    forces.Damages.Add(damage);
-                    forces.Vibrate.Add(vibrate);
-                    forces.Stun.Add(stun);
-                    forces.Stagger.Add(stagger);
+                    playerAttackData.Attacks.Add(attackData);
                     if (overrideOthers)
                     {
-                        forces.Overridden = true;
+                        playerAttackData.Overridden = true;
                     }
-                    pendingForces.Add(forces);
+                    pendingForces.Add(playerAttackData);
                 }
             }
         }
 
-        private void ApplyForce(PlayerController player, Vector2 force, int damage, bool vibrate, bool stun, int stagger)
+        private void ApplyForce(PlayerController player, AttackData attackData)
         {
             // Do I want attacks cancelling out opponents' momentum?
-//            print("Applying force: x = " + force.x + ", y = " + force.y);
+//            print("Applying attackData: x = " + attackData.x + ", y = " + attackData.y);
             // Stagger can be used to cancel stun and launch for weak attacks against strong enemies. Might be better used for other purposes
-            if (stagger > player.resistance)
+            if (!attackData.SetKnockback)
             {
-                Vector2 hitForce = force*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocity();
-                if (playerController.facingRight)
-                {
-                    player.SetVelocity(hitForce);
-                }
-                else
-                {
-                    player.SetVelocity(-hitForce.x, hitForce.y);
-    //                player.IncrementVelocity(-force.x*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityX(), force.y*playerController.GetAttackRatio()*player.GetDamageRatio()/player.WeightRatio - player.GetVelocityY());
-                }
-
-                int stunFrames = (int) Mathf.Ceil(hitForce.x + hitForce.y/4);
-                player.Stun(stunFrames);
-                player.Stagger(stagger);
+                attackData.Knockback = (int) (attackData.Knockback*playerController.GetAttackRatio());
+            }
+            if (!playerController.facingRight)
+            {
+                attackData.Direction.x *= -1;
             }
 
-            player.TakeDamage(damage);
+            player.TakeKnockback(attackData);
 
-            if (vibrate)
+            if (attackData.Vibrate)
             {
                 player.SetVibrate(15, 0f, 1f);
             }

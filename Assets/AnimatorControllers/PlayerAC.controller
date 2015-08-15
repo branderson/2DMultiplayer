@@ -5656,7 +5656,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cc05cfbf9ee4394089830932fbe5127, type: 3}
   m_Name: 
@@ -23068,15 +23068,6 @@ AnimatorStateMachine:
       first: {fileID: 110783454}
       second: []
     data:
-      first: {fileID: 110782698}
-      second: []
-    data:
-      first: {fileID: 110731150}
-      second: []
-    data:
-      first: {fileID: 110719254}
-      second: []
-    data:
       first: {fileID: 110785856}
       second: []
     data:
@@ -23086,10 +23077,19 @@ AnimatorStateMachine:
       first: {fileID: 110763682}
       second: []
     data:
+      first: {fileID: 110782698}
+      second: []
+    data:
       first: {fileID: 110761722}
       second: []
     data:
       first: {fileID: 110738332}
+      second: []
+    data:
+      first: {fileID: 110731150}
+      second: []
+    data:
+      first: {fileID: 110719254}
       second: []
     data:
       first: {fileID: 110715200}
