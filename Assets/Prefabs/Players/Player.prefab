@@ -210,6 +210,7 @@ GameObject:
   - 4: {fileID: 480034}
   - 61: {fileID: 6172744}
   - 114: {fileID: 11459056}
+  - 114: {fileID: 11498114}
   m_Layer: 0
   m_Name: HitboxDownSmashFront
   m_TagString: Untagged
@@ -343,6 +344,7 @@ GameObject:
   - 4: {fileID: 457306}
   - 61: {fileID: 6120934}
   - 114: {fileID: 11450450}
+  - 114: {fileID: 11410118}
   m_Layer: 0
   m_Name: HitboxDownSmashBack
   m_TagString: Untagged
@@ -751,7 +753,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.788269, y: -.222396791, z: 0}
+  m_LocalPosition: {x: -13.8682919, y: .186606392, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458906}
@@ -1234,6 +1236,7 @@ MonoBehaviour:
   SetKnockback: 1
   Direction: 45
   Stun: 1
+  Hitlag: 0
   Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1256,6 +1259,29 @@ MonoBehaviour:
   SetKnockback: 0
   Direction: 0
   Stun: 1
+  Hitlag: 0
+  Stagger: 5
+  vibrateSelf: 1
+  vibrateOpponent: 1
+--- !u!114 &11410118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideOthers: 0
+  damageApplied: 8
+  Knockback: 20
+  Scaling: 1.5
+  SetKnockback: 0
+  Direction: 120
+  Stun: 1
+  Hitlag: 45
   Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1311,7 +1337,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173530}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a036909979f424408d4adca2a978b27, type: 3}
   m_Name: 
@@ -1324,6 +1350,7 @@ MonoBehaviour:
   SetKnockback: 0
   Direction: 110
   Stun: 1
+  Hitlag: 30
   Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1333,7 +1360,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a036909979f424408d4adca2a978b27, type: 3}
   m_Name: 
@@ -1346,6 +1373,7 @@ MonoBehaviour:
   SetKnockback: 0
   Direction: 70
   Stun: 1
+  Hitlag: 30
   Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1408,6 +1436,7 @@ MonoBehaviour:
   SetKnockback: 0
   Direction: 45
   Stun: 1
+  Hitlag: 0
   Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1429,6 +1458,7 @@ MonoBehaviour:
   SetKnockback: 0
   Direction: 30
   Stun: 1
+  Hitlag: 5
   Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1450,6 +1480,7 @@ MonoBehaviour:
   SetKnockback: 1
   Direction: 45
   Stun: 1
+  Hitlag: 0
   Stagger: 1
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1471,6 +1502,7 @@ MonoBehaviour:
   SetKnockback: 0
   Direction: 30
   Stun: 1
+  Hitlag: 30
   Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1503,6 +1535,7 @@ MonoBehaviour:
   SetKnockback: 0
   Direction: 0
   Stun: 1
+  Hitlag: 0
   Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1536,6 +1569,7 @@ MonoBehaviour:
   SetKnockback: 0
   Direction: 0
   Stun: 1
+  Hitlag: 0
   Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
@@ -1557,7 +1591,30 @@ MonoBehaviour:
   SetKnockback: 0
   Direction: 30
   Stun: 1
+  Hitlag: 15
   Stagger: 1
+  vibrateSelf: 1
+  vibrateOpponent: 1
+--- !u!114 &11498114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bce82288206e9b4bab0dbc57ca45363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideOthers: 0
+  damageApplied: 8
+  Knockback: 20
+  Scaling: 2
+  SetKnockback: 0
+  Direction: 60
+  Stun: 1
+  Hitlag: 45
+  Stagger: 5
   vibrateSelf: 1
   vibrateOpponent: 1
 --- !u!212 &21213058

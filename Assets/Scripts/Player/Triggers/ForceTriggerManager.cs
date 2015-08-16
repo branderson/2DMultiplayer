@@ -15,6 +15,7 @@ namespace Assets.Scripts.Player.Triggers
         public int Stagger;
         public bool Vibrate;
         public bool Stun;
+        public int Hitlag;
     }
 
     public class PlayerAttackData
@@ -113,8 +114,8 @@ namespace Assets.Scripts.Player.Triggers
             {
                 attackData.Direction.x *= -1;
             }
-
-            player.TakeKnockback(attackData);
+            playerController.Hitlag(attackData);
+            player.TakeHit(attackData);
 
             if (attackData.Vibrate)
             {

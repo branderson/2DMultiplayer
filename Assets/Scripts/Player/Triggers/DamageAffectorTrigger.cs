@@ -15,6 +15,7 @@ namespace Assets.Scripts.Player.Triggers
         [SerializeField] public bool SetKnockback;
         [Range(0, 360)] [SerializeField] public int Direction;
         [SerializeField] public bool Stun = true;
+        [SerializeField] public int Hitlag;
         [SerializeField] public int Stagger = 1;
         [SerializeField] private bool vibrateSelf;
         [SerializeField] private bool vibrateOpponent;
@@ -102,6 +103,7 @@ namespace Assets.Scripts.Player.Triggers
                         Damage = baseDamage+DamageSupplement,
                         Stagger = Stagger, 
                         Stun = Stun,
+                        Hitlag = Hitlag, 
                         Vibrate = vibrateOpponent,
                     };
                     manager.AddForce(controller, attackData, overrideOthers);

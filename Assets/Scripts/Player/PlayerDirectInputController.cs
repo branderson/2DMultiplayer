@@ -203,7 +203,10 @@ namespace Assets.Scripts.Player
                     playerController.GetState().Jump();
                     jump = false;
                 }
-                playerController.Run = run;
+                if (run)
+                {
+                    playerController.Run = true;
+                }
                 if (primary)
                 {
                     playerController.GetState().Primary(x, y);

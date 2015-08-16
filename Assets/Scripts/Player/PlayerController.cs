@@ -79,7 +79,8 @@ namespace Assets.Scripts.Player
         internal bool Respawned = false;
         private bool stunned = false;
         internal int SmashCharge = 0;
-        private int shield = 100;
+        private int health = 100;
+        private int blockStrength = 20; // Amount of damage (before block reduction) that can be sustained before block break
         private float damageRatio = .01f;
         internal bool onEdgeRight = false;
         internal bool onEdgeLeft = false;
@@ -96,7 +97,7 @@ namespace Assets.Scripts.Player
         {
             input = GetComponent<IInputController>();
             color = sprite.color;
-            shield = 100;
+            health = 100;
             canFall = true;
             facingRight = true;
             AirJumps = MaxAirJumps;
@@ -129,7 +130,7 @@ namespace Assets.Scripts.Player
                 stunned = false;
                 SetVibrate(25, 1f, .5f);
                 playerUI.Lives -= 1;
-                shield = 100;
+                health = 100;
                 playerUI.Shield = 100;
                 AirJumps = MaxAirJumps;
                 canFall = true;
@@ -173,6 +174,11 @@ namespace Assets.Scripts.Player
         {
             velocityX = rigidBody.velocity.x;
             velocityY = rigidBody.velocity.y;
+
+            if (Mathf.Approximately(velocityX, 0))
+            {
+                Run = false;
+            }
             //            print(currentPlayerState.GetName());
         }
 
@@ -194,7 +200,7 @@ namespace Assets.Scripts.Player
             animator.SetFloat("yVelocity", velocityY);
             animator.SetFloat("xSpeed", Mathf.Abs(velocityX));
             animator.SetFloat("ySpeed", Mathf.Abs(velocityY));
-            animator.SetInteger("ShieldPercent", shield);
+            animator.SetInteger("ShieldPercent", health);
             animator.SetFloat("WalkAnimationSpeed", Mathf.Abs(velocityX)/6);
             animator.SetBool("FacingRight", facingRight);
             animator.SetBool("Run", Run);
@@ -352,21 +358,26 @@ namespace Assets.Scripts.Player
         public IEnumerator PauseAnimation(int frames)
         {
             animationResumeSpeed = animator.speed;
-            Paused = true;
             animator.speed = 0;
             while (frames > 0)
             {
+                print("Pause " + frames);
                 frames--;
+                Paused = true;
                 yield return null;
             }
             animator.speed = animationResumeSpeed;
+            Paused = false;
         }
 
         public void ResumeAnimation()
         {
             StopCoroutine("PauseAnimation");
             Paused = false;
-            animator.speed = animationResumeSpeed;
+            if (animationResumeSpeed > 0)
+            {
+                animator.speed = animationResumeSpeed;
+            }
         }
 
         private IEnumerator Vibrate(int frames, float leftIntensity, float rightIntensity)
@@ -396,7 +407,7 @@ namespace Assets.Scripts.Player
 
         public int GetShield()
         {
-            return shield;
+            return health;
         }
 
         public Vector2 GetVelocity()
@@ -628,12 +639,12 @@ namespace Assets.Scripts.Player
                 {
                     float knockbackScaling = 0;
                     // Shield based scaling
-                    knockbackScaling = (100-shield)/10 + (100-shield)*attackData.Damage/20;
+                    knockbackScaling = (100-health)/10 + (100-health)*attackData.Damage/20;
                     // Weight based scaling
                     knockbackScaling *= 2/(WeightRatio + 1);
                     knockbackScaling *= .5f;
                     knockbackScaling *= attackData.Scaling;
-                    if (shield == 0)
+                    if (health == 0)
                     {
                         scaledKnockback *= 1.5f;
                     }
@@ -655,6 +666,7 @@ namespace Assets.Scripts.Player
             }
             GetState().TakeHit(attackData);
             TakeDamage(attackData.Damage);
+            canRecover = true;
             // Stagger(stagger);
         }
 
@@ -664,36 +676,23 @@ namespace Assets.Scripts.Player
             {
                 if (!Blocking)
                 {
-                    shield -= damage;
+                    health -= damage;
                 }
                 else
                 {
-                    shield -= damage/2; // How much to reduce damage by
+                    health -= damage/2; // How much to reduce damage by
                 }
-                if (shield < 0)
+                if (health < 0)
                 {
-                    shield = 0;
+                    health = 0;
                 }
-                playerUI.Shield = shield;
+                playerUI.Shield = health;
             }
         }
 
-//        public float GetDamageRatio()
-//        {
-//            if (shield > 0)
-//            {
-////                print(((100-shield)*damageRatio + 1));
-//                return ((100 - shield)*damageRatio + 1);
-//            }
-//            else
-//            {
-//                return (100*damageRatio + 1 + noShieldPenalty);
-//            }
-//        }
-//
         public float GetAttackRatio()
         {
-            if (shield > 0)
+            if (health > 0)
             {
                 return 1;
             }
@@ -702,6 +701,66 @@ namespace Assets.Scripts.Player
                 return 1 + noShieldBonus;
             }
         }
+
+        public void Hitlag(AttackData attackData)
+        {
+            ResumeAnimation();
+            StartCoroutine("HitlagRoutine", attackData.Hitlag);
+        }
+
+        private IEnumerator HitlagRoutine(int frames)
+        {
+            Vector2 position = transform.position;
+            animationResumeSpeed = animator.speed;
+            print("Resume speed " + animationResumeSpeed);
+            while (frames > 0)
+            {
+                print("Hitlag " + frames);
+                transform.position = position;
+                SetVelocity(0, 0);
+                animator.speed = 0;
+                Paused = true;
+                frames--;
+                yield return null;
+            }
+            animator.speed = animationResumeSpeed;
+            Paused = false;
+        }
+
+        private IEnumerator ReceiveHitRoutine(AttackData attackData)
+        {
+            int frames = attackData.Hitlag;
+            Vector2 position = transform.position;
+            animationResumeSpeed = animator.speed;
+            print("Resume speed " + animationResumeSpeed);
+            while (frames > 0)
+            {
+                print("Hit " + frames);
+                transform.position = position;
+                SetVelocity(0, 0);
+                animator.speed = 0;
+                Paused = true;
+                frames--;
+                yield return null;
+            }
+            animator.speed = animationResumeSpeed;
+            TakeKnockback(attackData);
+            Paused = false;
+        }
+
+        public void TakeHit(AttackData attackData)
+        {
+            if (!Invincible)
+            {
+                ResumeAnimation();
+                StartCoroutine("ReceiveHitRoutine", attackData);
+            }
+        }
+
+//        private IEnumerator HitlagRoutine(int frames)
+//        {
+//            PauseAnimation()
+//        }
 
         public void Stun(int frames, bool canLaunch)
         {

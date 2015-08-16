@@ -369,28 +369,21 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: .216666669
-    functionName: PauseAnimation
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 45
-    messageOptions: 0
-  - time: .216666669
     functionName: ShakeSpriteX
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 60
     messageOptions: 0
-  - time: .233333334
-    functionName: DeleteLastInstantiated
+  - time: .25
+    functionName: StopShakingSprite
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: .233333334
-    functionName: StopShakingSprite
+  - time: .25
+    functionName: DeleteLastInstantiated
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
