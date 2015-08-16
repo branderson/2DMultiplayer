@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.Player.Triggers;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.States
@@ -16,6 +17,7 @@ namespace Assets.Scripts.Player.States
         void Secondary(float x, float y);
         void Block();
         void Grab();
+        void TakeHit(AttackData attackData);
         void ProcessAI(List<Transform> opponentPositions);
         byte GetStateID();
     }

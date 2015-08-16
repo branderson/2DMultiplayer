@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Assets.Scripts.AI.AIBehaviourStates;
+using Assets.Scripts.Player.Triggers;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.States
@@ -47,6 +48,7 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("LetGo");
             animator.ResetTrigger("Stagger");
             animator.ResetTrigger("Respawn");
+            animator.ResetTrigger("Parry");
         }
 
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -129,6 +131,11 @@ namespace Assets.Scripts.Player.States
         public virtual void Grab()
         {
             playerAnimator.SetTrigger("Grab");
+        }
+
+        public virtual void TakeHit(AttackData attackData)
+        {
+            
         }
 
         public virtual void ProcessAI(List<Transform> opponentPositions)

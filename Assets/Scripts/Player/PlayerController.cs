@@ -626,26 +626,34 @@ namespace Assets.Scripts.Player
                 float scaledKnockback = attackData.Knockback;
                 if (!attackData.SetKnockback)
                 {
-                    
-                }
-
-                if (attackData.Direction.x + attackData.Direction.y != 0)
-                {
-                    // Calculate normalized direction vector
-                    Vector2 directionVector = new Vector2()
+                    float knockbackScaling = 0;
+                    // Shield based scaling
+                    knockbackScaling = (100-shield)/10 + (100-shield)*attackData.Damage/20;
+                    // Weight based scaling
+                    knockbackScaling *= 2/(WeightRatio + 1);
+                    knockbackScaling *= .5f;
+                    knockbackScaling *= attackData.Scaling;
+                    if (shield == 0)
                     {
-                        x = (attackData.Direction.x/(attackData.Direction.x + attackData.Direction.y)),
-                        y = (attackData.Direction.y/(attackData.Direction.x + attackData.Direction.y)),
-                    };
-
-                    // Apply scaled knockback along direction vector
-                    SetVelocity(scaledKnockback*directionVector.x, scaledKnockback*directionVector.y);
+                        scaledKnockback *= 1.5f;
+                    }
+//                    print("Base: " + scaledKnockback);
+//                    print("Scaling: " + knockbackScaling);
+                    scaledKnockback += knockbackScaling;
                 }
+
+                // Account for players with different gravity values. this formula will need tweaking
+                float gravityAdjust = gravity/-120;
+
+                SetVelocity(scaledKnockback*attackData.Direction.x, scaledKnockback*attackData.Direction.y*gravityAdjust);
+
+                // TODO: Look for meteor smash type moves and set player flag for them
 
                 // Math for determining number of frames to stun for given knockback
                 int stunFrames = (int) (scaledKnockback*.4f);
-                Stun(stunFrames);
+                Stun(stunFrames, true);
             }
+            GetState().TakeHit(attackData);
             TakeDamage(attackData.Damage);
             // Stagger(stagger);
         }
@@ -670,19 +678,19 @@ namespace Assets.Scripts.Player
             }
         }
 
-        public float GetDamageRatio()
-        {
-            if (shield > 0)
-            {
-//                print(((100-shield)*damageRatio + 1));
-                return ((100 - shield)*damageRatio + 1);
-            }
-            else
-            {
-                return (100*damageRatio + 1 + noShieldPenalty);
-            }
-        }
-
+//        public float GetDamageRatio()
+//        {
+//            if (shield > 0)
+//            {
+////                print(((100-shield)*damageRatio + 1));
+//                return ((100 - shield)*damageRatio + 1);
+//            }
+//            else
+//            {
+//                return (100*damageRatio + 1 + noShieldPenalty);
+//            }
+//        }
+//
         public float GetAttackRatio()
         {
             if (shield > 0)
@@ -695,12 +703,12 @@ namespace Assets.Scripts.Player
             }
         }
 
-        public void Stun(int frames)
+        public void Stun(int frames, bool canLaunch)
         {
             if (!Invincible)
             {
                 StopCoroutine("StunRoutine");
-                if (frames >= launchFrames)
+                if (frames >= launchFrames && canLaunch)
                 {
                     animator.SetBool("Launch", true);
                 }

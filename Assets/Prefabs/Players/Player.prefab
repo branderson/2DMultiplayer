@@ -751,7 +751,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.1036339, y: -.15126574, z: 0}
+  m_LocalPosition: {x: -13.788269, y: -.222396791, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458906}
@@ -1232,9 +1232,7 @@ MonoBehaviour:
   Knockback: 3
   Scaling: 1
   SetKnockback: 1
-  DirectionVectorX: 1
-  DirectionVectorY: 1
-  ForceApplied: {x: 2, y: 2}
+  Direction: 45
   Stun: 1
   Stagger: 1
   vibrateSelf: 1
@@ -1256,9 +1254,7 @@ MonoBehaviour:
   Knockback: 0
   Scaling: 1
   SetKnockback: 0
-  DirectionVectorX: 0
-  DirectionVectorY: 0
-  ForceApplied: {x: 25, y: 5}
+  Direction: 0
   Stun: 1
   Stagger: 5
   vibrateSelf: 1
@@ -1323,12 +1319,10 @@ MonoBehaviour:
   overrideOthers: 0
   damagePerFrame: .100000001
   baseDamage: 5
-  Knockback: -20
-  Scaling: 1
+  Knockback: 20
+  Scaling: 1.5
   SetKnockback: 0
-  DirectionVectorX: .5
-  DirectionVectorY: 1
-  ForceApplied: {x: -15, y: 15}
+  Direction: 110
   Stun: 1
   Stagger: 5
   vibrateSelf: 1
@@ -1348,11 +1342,9 @@ MonoBehaviour:
   damagePerFrame: .100000001
   baseDamage: 5
   Knockback: 20
-  Scaling: 1
+  Scaling: 1.5
   SetKnockback: 0
-  DirectionVectorX: .5
-  DirectionVectorY: 1
-  ForceApplied: {x: 15, y: 15}
+  Direction: 70
   Stun: 1
   Stagger: 5
   vibrateSelf: 1
@@ -1414,9 +1406,7 @@ MonoBehaviour:
   Knockback: 15
   Scaling: 1
   SetKnockback: 0
-  DirectionVectorX: 1
-  DirectionVectorY: 1
-  ForceApplied: {x: 10, y: 10}
+  Direction: 45
   Stun: 1
   Stagger: 1
   vibrateSelf: 1
@@ -1437,9 +1427,7 @@ MonoBehaviour:
   Knockback: 15
   Scaling: 1
   SetKnockback: 0
-  DirectionVectorX: 1
-  DirectionVectorY: .25
-  ForceApplied: {x: 15, y: 5}
+  Direction: 30
   Stun: 1
   Stagger: 1
   vibrateSelf: 1
@@ -1460,9 +1448,7 @@ MonoBehaviour:
   Knockback: 3
   Scaling: 1
   SetKnockback: 1
-  DirectionVectorX: 1
-  DirectionVectorY: 1
-  ForceApplied: {x: 2, y: 2}
+  Direction: 45
   Stun: 1
   Stagger: 1
   vibrateSelf: 1
@@ -1481,11 +1467,9 @@ MonoBehaviour:
   overrideOthers: 0
   damageApplied: 5
   Knockback: 20
-  Scaling: 1
+  Scaling: 1.5
   SetKnockback: 0
-  DirectionVectorX: 1
-  DirectionVectorY: .5
-  ForceApplied: {x: 15, y: 5}
+  Direction: 30
   Stun: 1
   Stagger: 5
   vibrateSelf: 1
@@ -1517,9 +1501,7 @@ MonoBehaviour:
   Knockback: 0
   Scaling: 1
   SetKnockback: 0
-  DirectionVectorX: 0
-  DirectionVectorY: 0
-  ForceApplied: {x: 0, y: 30}
+  Direction: 0
   Stun: 1
   Stagger: 5
   vibrateSelf: 1
@@ -1552,9 +1534,7 @@ MonoBehaviour:
   Knockback: 0
   Scaling: 1
   SetKnockback: 0
-  DirectionVectorX: 0
-  DirectionVectorY: 0
-  ForceApplied: {x: -4, y: 15}
+  Direction: 0
   Stun: 1
   Stagger: 5
   vibrateSelf: 1
@@ -1575,9 +1555,7 @@ MonoBehaviour:
   Knockback: 15
   Scaling: 1
   SetKnockback: 0
-  DirectionVectorX: 1
-  DirectionVectorY: .25
-  ForceApplied: {x: 15, y: 0}
+  Direction: 30
   Stun: 1
   Stagger: 1
   vibrateSelf: 1

@@ -6,6 +6,7 @@ namespace Assets.Scripts.Player.Triggers
 {
     public struct AttackData
     {
+        public PlayerController Player;
         public int Knockback;
         public float Scaling;
         public bool SetKnockback;
@@ -20,12 +21,6 @@ namespace Assets.Scripts.Player.Triggers
     {
         public PlayerController PlayerController;
         public List<AttackData> Attacks = new List<AttackData>(); 
-//        public List<KeyValuePair<KeyValuePair<int, float>, Vector2>> Knockbacks;  
-//        public List<Vector2> Forces = new List<Vector2>();
-//        public List<int> Damages = new List<int>();
-//        public List<bool> Vibrate = new List<bool>();
-//        public List<bool> Stun = new List<bool>();
-//        public List<int> Stagger = new List<int>(); 
         public bool Overridden = false;
         public bool Applied = false;
     }
@@ -52,7 +47,7 @@ namespace Assets.Scripts.Player.Triggers
 //            int forceLength = pendingForces.Count();
             foreach (PlayerAttackData pendingForce in pendingForces)
             {
-                if (!pendingForce.Applied && !pendingForce.PlayerController.Invincible)
+                if (!pendingForce.Applied)
                 {
                     if (pendingForce.Overridden)
                     {
@@ -74,7 +69,7 @@ namespace Assets.Scripts.Player.Triggers
 
         public void AddForce(PlayerController player, AttackData attackData, bool overrideOthers)
         {
-            if (player != playerController && !player.Invincible)
+            if (player != playerController)
             {
 //                print("Adding attackData: x = " + attackData.x + ", y = " + attackData.y);
                 if (pendingForces.Any(playerForce => playerForce.PlayerController == player))

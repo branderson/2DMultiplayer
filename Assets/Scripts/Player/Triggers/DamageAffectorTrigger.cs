@@ -11,11 +11,9 @@ namespace Assets.Scripts.Player.Triggers
         [SerializeField] public float damagePerFrame;
         [SerializeField] public int baseDamage;
         [SerializeField] public int Knockback;
-        [SerializeField] public int Scaling;
+        [SerializeField] public float Scaling;
         [SerializeField] public bool SetKnockback;
-        [Range(-1, 1)][SerializeField] public float DirectionVectorX;
-        [Range(-1, 1)][SerializeField] public float DirectionVectorY;
-        [SerializeField] public Vector2 ForceApplied;
+        [Range(0, 360)] [SerializeField] public int Direction;
         [SerializeField] public bool Stun = true;
         [SerializeField] public int Stagger = 1;
         [SerializeField] private bool vibrateSelf;
@@ -42,7 +40,7 @@ namespace Assets.Scripts.Player.Triggers
                 if (!hitFrames.ContainsKey(controller)&& controller != playerController)
                 {
                     hitFrames.Add(controller, 0);
-                    controller.Stun(1);
+                    controller.Stun(1, false);
                 }
             }
         }
@@ -66,7 +64,7 @@ namespace Assets.Scripts.Player.Triggers
                     }
                     if (controller.resistance < Stagger)
                     {
-                        controller.Stun(1);
+                        controller.Stun(1, false);
                     }
                 }
             }
@@ -95,10 +93,12 @@ namespace Assets.Scripts.Player.Triggers
                         (int) ((hitFrames[controller]*Knockback/forceReductionFactor + Knockback)*ForceMultiplier);
                     AttackData attackData = new AttackData()
                     {
+                        Player = playerController, 
                         Knockback = appliedKnockback,
                         Scaling = Scaling,
                         SetKnockback = SetKnockback, 
-                        Direction = new Vector2(DirectionVectorX, DirectionVectorY),
+//                        Direction = new Vector2(DirectionVectorX, DirectionVectorY),
+                        Direction = new Vector2(Mathf.Cos(Direction * Mathf.Deg2Rad), Mathf.Sin(Direction * Mathf.Deg2Rad)), 
                         Damage = baseDamage+DamageSupplement,
                         Stagger = Stagger, 
                         Stun = Stun,

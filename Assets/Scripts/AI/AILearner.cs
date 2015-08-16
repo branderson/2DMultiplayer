@@ -267,7 +267,7 @@ namespace Assets.Scripts.AI
 //                    PlayerController nearestPlayerY = player.opponents.OrderByDescending(item => Mathf.Abs(player.transform.position.y - item.transform.position.y)).Last();
 //                    PlayerController nearestPlayer = nearestPlayerX;
 //                    if (Mathf.Abs(player.transform.position.x - nearestPlayerX.transform.position.x) < 4*Mathf.Abs(player.transform.position.y - nearestPlayerY.transform.position.y))
-//                    {
+//                    {C:\Users\Brad\Workspace\2DMultiplayer\Assets\Scripts\Player\StateBehaviours\MoveFacingRelativeDistance.cs
 //                        nearestPlayer = nearestPlayerX;
 //                    }
 //                    else
