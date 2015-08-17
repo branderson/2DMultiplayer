@@ -12,6 +12,7 @@ namespace Assets.Scripts.Player.States
     {
         [SerializeField] private bool idle = false;
         private int waitFrames = 2;
+        private int stopFrames = 0;
         private Vector2 move;
         private float threshold = .9f;
         private float moveSpeed = 240f;
@@ -27,29 +28,49 @@ namespace Assets.Scripts.Player.States
             move.x = animator.GetFloat("xInput");
             move.y = animator.GetFloat("yInput");
             moveAttackCountdown = waitFrames;
+            stopFrames = 0;
             firstFrame = true;
             rightSmashed = false;
             leftSmashed = false;
             downSmashed = false;
-            // To avoid resetting jumps while jumping up through platforms
-            if (animator.GetComponentInChildren<Rigidbody2D>().velocity.y <= 0)
-            {
-                playerController.ResetAirJumps();
-                playerController.canRecover = true;
-            }
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateUpdate(animator, stateInfo, layerIndex);
 
+            // To avoid resetting jumps while jumping up through platforms
+            if (playerController.GetVelocityY() <= 0 && playerController.OnGround)
+            {
+                playerController.ResetAirJumps();
+                playerController.canRecover = true;
+            }
+
             if (move.x != animator.GetFloat("xInput"))
             {
 //                MonoBehaviour.print("Moving x without input: " + move.x + " " + animator.GetFloat("xInput"));
             }
-            if (PlayerInputController.ButtonActive("Block"))
+            if (PlayerInputController.ButtonActive("Block") && playerController.BlockStrength > 0)
             {
                 playerAnimator.SetTrigger("Block");
+            }
+
+            // Allow changing direction while running before stopping
+            if (Mathf.Approximately(move.x, 0))
+            {
+                if (stopFrames == 2)
+                {
+                    animator.SetTrigger("SlideOut");
+                    stopFrames = 0;
+                }
+                else
+                {
+                    stopFrames++;
+                }
+            }
+            else
+            {
+                stopFrames = 0;
             }
 
              // Flip code

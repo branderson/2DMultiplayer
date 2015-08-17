@@ -92,18 +92,18 @@ namespace Assets.Scripts.AI
             stateCategories.Add(new IntRange(0, 15, 0)); // On ground, not attacking or blocking
             stateCategories.Add(new IntRange(16, 17, 1)); // Blocking
             stateCategories.Add(new IntRange(18, 19, 2)); // Dodging
-            stateCategories.Add(new IntRange(20, 27, 3)); // On ground, attacking
-            stateCategories.Add(new IntRange(28, 31, 4)); // Charging smashes
-            stateCategories.Add(new IntRange(32, 34, 5)); // Smashes
-            stateCategories.Add(new IntRange(35, 37, 6)); // Throws
-            stateCategories.Add(new IntRange(38, 47, 7)); // In air, not attacking
-            stateCategories.Add(new IntRange(48, 49, 8)); // Helpless
-            stateCategories.Add(new IntRange(50, 57, 9)); // In air, attacking
-            stateCategories.Add(new IntRange(58, 58, 10)); // Neutral special
-            stateCategories.Add(new IntRange(59, 59, 11)); // Down special
-            stateCategories.Add(new IntRange(60, 61, 12)); // Side special
-            stateCategories.Add(new IntRange(62, 62, 13)); // Invulnerable
-            stateCategories.Add(new IntRange(63, 65, 13)); // No control
+            stateCategories.Add(new IntRange(20, 28, 3)); // On ground, attacking
+            stateCategories.Add(new IntRange(29, 32, 4)); // Charging smashes
+            stateCategories.Add(new IntRange(33, 35, 5)); // Smashes
+            stateCategories.Add(new IntRange(36, 38, 6)); // Throws
+            stateCategories.Add(new IntRange(39, 48, 7)); // In air, not attacking
+            stateCategories.Add(new IntRange(49, 50, 8)); // Helpless
+            stateCategories.Add(new IntRange(51, 58, 9)); // In air, attacking
+            stateCategories.Add(new IntRange(59, 59, 10)); // Neutral special
+            stateCategories.Add(new IntRange(60, 60, 11)); // Down special
+            stateCategories.Add(new IntRange(61, 62, 12)); // Side special
+            stateCategories.Add(new IntRange(63, 63, 13)); // Invulnerable
+            stateCategories.Add(new IntRange(64, 66, 13)); // No control
         }
 
         public void OnDisable()
@@ -251,9 +251,9 @@ namespace Assets.Scripts.AI
                 return 0;
             }
 
-            // [Bits 31-26] Append player state last 6 bits to situationIndex (6 bits)
+            // [Bits 31-25] Append player state last 6 bits to situationIndex (7 bits)
 //            print("Player state ID " + player.GetState());
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
                 if (BLF.IsBitSet(player.GetState().GetStateID(), 6-i))
                 {
@@ -275,45 +275,45 @@ namespace Assets.Scripts.AI
 //                        nearestPlayer = nearestPlayerY;
 //                    }
                 
-            // [Bit 25] Is closest player to the left or to the right (1 bit)
+            // [Bit 24] Is closest player to the left or to the right (1 bit)
             bool nearestToRight = (player.transform.position.x - nearestPlayer.transform.position.x >= 0);
 //            print("Closest player to right: " + nearestToRight);
             if (nearestToRight)
             {
-                situationIndex = BLF.SetBit(situationIndex, 25);
+                situationIndex = BLF.SetBit(situationIndex, 24);
             }
 
-            // [Bits 24-21] What distance range is the enemy from the player (4 bits)
+            // [Bits 23-20] What distance range is the enemy from the player (4 bits)
             float distanceToNearest = (Mathf.Abs(player.transform.position.x - nearestPlayer.transform.position.x));
             int rangeValue = xDeltas.Query((int)distanceToNearest).First().Value;
 //            print("Horizontal distance range: " + rangeValue);
             for (int i = 0; i < 4; i++)
             {
-                if (BLF.IsBitSet(rangeValue, i))
+                if (BLF.IsBitSet(rangeValue, 3-i))
                 {
 //                        print("\tSetting bit " + (24 - i));
-                    situationIndex = BLF.SetBit(situationIndex, 24 - i);
+                    situationIndex = BLF.SetBit(situationIndex, 23 - i);
                 }
             }
 
-            // [Bit 20] Is closest player above or below the player (1 bit)
+            // [Bit 19] Is closest player above or below the player (1 bit)
             bool nearestAbove = (player.transform.position.y - nearestPlayer.transform.position.y >= 0);
 //            print("Nearest above: " + nearestAbove);
             if (nearestAbove)
             {
-                situationIndex = BLF.SetBit(situationIndex, 20);
+                situationIndex = BLF.SetBit(situationIndex, 19);
             }
 
-            // [Bits 19-18] What distance range is the enemy above or below the player (2 bits)
+            // [Bits 18-17] What distance range is the enemy above or below the player (2 bits)
             distanceToNearest = (Mathf.Abs(player.transform.position.y - nearestPlayer.transform.position.y));
             rangeValue = yDeltas.Query((int)distanceToNearest).First().Value;
 //            print("Vertical diestance range: " + rangeValue);
             for (int i = 0; i < 2; i++)
             {
-                if (BLF.IsBitSet(rangeValue, i))
+                if (BLF.IsBitSet(rangeValue, 1-i))
                 {
 //                        print("\tSetting bit " + (24 - i));
-                    situationIndex = BLF.SetBit(situationIndex, 19 - i);
+                    situationIndex = BLF.SetBit(situationIndex, 18 - i);
                 }
             }
 
@@ -326,7 +326,7 @@ namespace Assets.Scripts.AI
 //                BLF.PrintBinary(situationIndex);
 //                BLF.PrintBinary(stateCategories.Query(nearestPlayer.GetState().GetStateID()).First().Value);
 //            }
-            // [Bits 17-14] What general state is the nearest player in (4 bits)
+            // [Bits 16-13] What general state is the nearest player in (4 bits)
             for (int i = 0; i < 4; i++)
             {
 //                    BLF.PrintBinary(nearestPlayer.GetState().GetStateID());
@@ -339,7 +339,7 @@ namespace Assets.Scripts.AI
 //                    {
 //                        print("Setting bit " + (17-i) + " to " + BLF.IsBitSet(stateCategories.Query(nearestPlayer.GetState().GetStateID()).First().Value, 3-i));
 //                    }
-                    situationIndex = BLF.SetBit(situationIndex, 17 - i);
+                    situationIndex = BLF.SetBit(situationIndex, 16 - i);
                 }
             }
 //            if (nearestPlayer.GetState().GetStateID() >= 64)
@@ -347,37 +347,37 @@ namespace Assets.Scripts.AI
 //                BLF.PrintBinary(situationIndex);                      
 //            }
 
-            // [Bit 13] Is there a projectile within range to dodge (1 bit)
+            // [Bit 12] Is there a projectile within range to dodge (1 bit)
 
-            // [Bit 12-10] What range is the nearest player's shield strength in (3 bits)
+            // [Bit 11-9] What range is the nearest player's shield strength in (3 bits)
             rangeValue = shieldRanges.Query(nearestPlayer.GetShield()).First().Value;
             for (int i = 0; i < 3; i++)
             {
-                if (BLF.IsBitSet(rangeValue, i))
+                if (BLF.IsBitSet(rangeValue, 2-i))
                 {
-                    situationIndex = BLF.SetBit(situationIndex, 12 - i);
+                    situationIndex = BLF.SetBit(situationIndex, 11 - i);
                 }
             }
 
-            // [Bit 9] Is the player facing right
+            // [Bit 8] Is the player facing right
             if (player.facingRight)
-            {
-                situationIndex = BLF.SetBit(situationIndex, 9);
-            }
-
-            // [Bit 8] Is the player touching the left edge of a platform
-            if (player.onEdgeLeft)
             {
                 situationIndex = BLF.SetBit(situationIndex, 8);
             }
 
-            // [Bit 7] Is the player touching the right edge of a platform
-            if (player.onEdgeRight)
+            // [Bit 7] Is the player touching the left edge of a platform
+            if (player.onEdgeLeft)
             {
                 situationIndex = BLF.SetBit(situationIndex, 7);
             }
 
-            // [Bits 6-0] Additional information as needed
+            // [Bit 6] Is the player touching the right edge of a platform
+            if (player.onEdgeRight)
+            {
+                situationIndex = BLF.SetBit(situationIndex, 6);
+            }
+
+            // [Bits 5-0] Additional information as needed
 
             return situationIndex;
         }
@@ -395,11 +395,11 @@ namespace Assets.Scripts.AI
 
         private int ShouldReward(PlayerController player, int situationIndex)
         {
-            // Are bits 17-14 set to binary 13 (1101)
+            // Are bits 16-13 set to binary 13 (1101)
             int reward = 0;
 
-            if (BLF.IsBitSet(situationIndex, 17) && BLF.IsBitSet(situationIndex, 16) &&
-                !BLF.IsBitSet(situationIndex, 15) && BLF.IsBitSet(situationIndex, 14))
+            if (BLF.IsBitSet(situationIndex, 16) && BLF.IsBitSet(situationIndex, 15) &&
+                !BLF.IsBitSet(situationIndex, 14) && BLF.IsBitSet(situationIndex, 13))
             {
                 reward += 1;
             }

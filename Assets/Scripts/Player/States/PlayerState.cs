@@ -22,6 +22,7 @@ namespace Assets.Scripts.Player.States
             PlayerInputController = animator.GetComponentInChildren<IInputController>();
             playerController.SetState(this);
             playerAnimator = animator;
+            base.OnStateUpdate(animator, stateinfo, layerindex);
         }
 
         public virtual new void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -49,6 +50,7 @@ namespace Assets.Scripts.Player.States
             animator.ResetTrigger("Stagger");
             animator.ResetTrigger("Respawn");
             animator.ResetTrigger("Parry");
+            animator.ResetTrigger("SlideOut");
         }
 
         public virtual new void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -58,6 +60,7 @@ namespace Assets.Scripts.Player.States
                 playerController.sprite.transform.localPosition = Vector3.zero;
                 playerController.StopShaking();          
             }
+            base.OnStateUpdate(animator, stateInfo, layerIndex);
         }
 
         public virtual void Jump()
@@ -125,7 +128,10 @@ namespace Assets.Scripts.Player.States
 
         public virtual void Block()
         {
-            playerAnimator.SetTrigger("Block");
+            if (playerController.BlockStrength > 0)
+            {
+                playerAnimator.SetTrigger("Block");
+            }
         }
 
         public virtual void Grab()

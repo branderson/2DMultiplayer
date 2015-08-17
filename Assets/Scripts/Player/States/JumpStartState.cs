@@ -21,6 +21,7 @@ namespace Assets.Scripts.Player.States
         public virtual new void OnStateEnter(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
         {
             base.OnStateEnter(animator, stateinfo, layerindex);
+            playerController.Run = false;
             waitCounter = waitFrames;
             jump = true;
             jumpDirection = 0;

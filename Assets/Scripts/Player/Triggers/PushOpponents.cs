@@ -41,11 +41,11 @@ namespace Assets.Scripts.Player
                 }
                 if ((right && playerController.facingRight) || (!right && !playerController.facingRight))
                 {
-                    if (Mathf.Abs(player.transform.position.x - playerController.transform.position.x) < .2f && !player.Invincible && !player.onEdgeRight)
+                    if (Mathf.Abs(player.transform.position.x - playerController.transform.position.x) < .2f && player.GetSpeedX() < pushSpeed + 1 && !player.Invincible && !player.onEdgeRight)
                     {
                         if (player.playerNumber > playerController.playerNumber)
                         {
-                            player.IncrementVelocityX(-1);
+                            player.IncrementVelocityX(-15);
 //                            playerController.IncrementVelocityX(1);
                         }
                     }
@@ -56,11 +56,11 @@ namespace Assets.Scripts.Player
                 }
                 else
                 {
-                    if (Mathf.Abs(player.transform.position.x - playerController.transform.position.x) < .2f && !player.Invincible && !player.onEdgeLeft)
+                    if (Mathf.Abs(player.transform.position.x - playerController.transform.position.x) < .2f && player.GetSpeedX() < pushSpeed + 1 && !player.Invincible && !player.onEdgeLeft)
                     {
                         if (player.playerNumber > playerController.playerNumber)
                         {
-                            player.IncrementVelocityX(1);
+                            player.IncrementVelocityX(15);
 //                            playerController.IncrementVelocityX(-1);
                         }
                     }

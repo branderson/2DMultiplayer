@@ -1,66 +1,67 @@
-﻿Idle (On ground, not attacking or blocking)
-Walk
-Run
-OnEdge
-RunningTurn
-TurnAround
-Land
-Grabbed
-Grab
-Hold
-TurnForSideThrow
-HoldWalk
-HoldTurn
-CrouchStart
-CrouchLoop
-CrouchEnd
-BlockStart (Blocking)
-Block
-DodgeForward (Dodging)
-DodgeBack
-GrabAttack (On ground, attacking)
-RunningPunch
-NeutralAttack
-NeutralAttack2
-NeutralAttack3
-UpAttack
-WalkingAttack
-CrouchAttack
-ChargeUpSmash (Charging smashes)
-ChargeDownSmash
-ChargeSideSmash
-TurnForSmash
-UpSmash (Smashes)
-DownSmash
-SideSmash
-DownThrow (Throwing)
-UpThrow
-SideThrow
-FallThroughFloor (In air, not attacking)
-JumpStart
-Jump
-BackwardJump
-DoubleJump
-FallStart
-Fall
-ForwardAirJump
-BackwardAirJump
-LeapUp
-Helpless (Helpless)
-HelplessFall
-DownAir (In air, attacking)
-BackwardAir
-UpRecovery
-RecoveryStart
-LeapAttack
-NeutralAir
-UpAir
-ForwardAir
-NeutralSpecial (Neutral special)
-DownSpecial (Down special)
-SideSpecial (Side special)
-TurnForSideSpecial
-EdgeGrab (Invulnerable)
-CrashLand (No control)
-Launch
-Stunned
+﻿0	Idle (On ground, not attacking or blocking)
+1	Walk
+2	Run
+3	OnEdge
+4	RunningTurn
+5	TurnAround
+6	Land
+7	Grabbed
+8	Grab
+9	Hold
+10	TurnForSideThrow
+11	HoldWalk
+12	HoldTurn
+13	CrouchStart
+14	CrouchLoop
+15	CrouchEnd
+16	BlockStart (Blocking)
+17	Block
+18	DodgeForward (Dodging)
+19	DodgeBack
+20	GrabAttack (On ground, attacking)
+21	Parry
+22	RunningPunch
+23	NeutralAttack
+24	NeutralAttack2
+25	NeutralAttack3
+26	UpAttack
+27	WalkingAttack
+28	CrouchAttack
+29	ChargeUpSmash (Charging smashes)
+30	ChargeDownSmash
+31	ChargeSideSmash
+32	TurnForSmash
+33	UpSmash (Smashes)
+34	DownSmash
+35	SideSmash
+36	DownThrow (Throwing)
+37	UpThrow
+38	SideThrow
+39	FallThroughFloor (In air, not attacking)
+40	JumpStart
+41	Jump
+42	BackwardJump
+43	DoubleJump
+44	FallStart
+45	Fall
+46	ForwardAirJump
+47	BackwardAirJump
+48	LeapUp
+49	Helpless (Helpless)
+50	HelplessFall
+51	DownAir (In air, attacking)
+52	BackwardAir
+53	UpRecovery
+54	RecoveryStart
+55	LeapAttack
+56	NeutralAir
+57	UpAir
+58	ForwardAir
+59	NeutralSpecial (Neutral special)
+60	DownSpecial (Down special)
+61	SideSpecial (Side special)
+62	TurnForSideSpecial
+63	EdgeGrab (Invulnerable)
+64	CrashLand (No control)
+65	Launch
+66	Stunned

@@ -20,7 +20,7 @@ namespace Assets.Scripts.AI
         private GameManager gameManager;
 
         private CaseBase currentCase;
-        private byte ghostFrame = 0;
+        private int ghostFrame = 0;
 
         private List<Type> nextStateBehaviours = new List<Type>(); 
         private List<Transform> opponentPositions = new List<Transform>(); 
@@ -50,7 +50,7 @@ namespace Assets.Scripts.AI
             bool usedGhost = false;
             if (gameManager.GameConfig.UseGhostAI)
             {
-                if (playerController.RaycastGround()) // && ghostFrame == 0);
+                if (playerController.RaycastGround() && ghostFrame == 0)
                 {
                     int situationID = aiLearner.GenerateSituationIndex(playerController);
                     currentCase = aiLearner.LookupSituationIndex(situationID, playerController.characterName);
@@ -63,12 +63,8 @@ namespace Assets.Scripts.AI
                         }
                         else
                         {
-                            ghostFrame = 0;
-                        }
-//                        else
-//                        {
 //                            print("Encountered case " + currentCase.ResponseStateList.First().Effectiveness);
-//                        }
+                        }
                     }
                 }
                 // Is the current situation found in the database
@@ -90,6 +86,7 @@ namespace Assets.Scripts.AI
                     {
                         inputController.ClearActiveButtons();
                         ghostFrame = 0;
+                        currentCase = null;
                     }
                 }
             }
@@ -123,16 +120,16 @@ namespace Assets.Scripts.AI
             // Perform most common version of selected input sequence
             CaseBase.ControllerStateSet currentSet = currentCase.ResponseStateList[sequenceIndex].GetVersions().First().Key;
 //                        print("Effectiveness: " + currentCase.ResponseStateList[sequenceIndex].Effectiveness + ", Index " + sequenceIndex);
-            if (currentSet.NewStateAtFrame(ghostFrame))
+            if (currentSet.NewStateAtFrame((byte) ghostFrame))
             {
-                return currentSet.GetStateAtFrame(ghostFrame++);
+                return currentSet.GetStateAtFrame((byte) ghostFrame++);
             }
             ghostFrame += 1;
-            if (currentSet.PassedLastState(ghostFrame))
+            if (currentSet.PassedLastState((byte) ghostFrame))
             {
-                //                        print("Ending sequence early");
                 ghostFrame = 0;
                 inputController.ClearActiveButtons();
+                currentCase = null;
             }
             return 0;
         }
@@ -240,10 +237,10 @@ namespace Assets.Scripts.AI
             {
                 inputController.MoveY(0);
             }
-            if (!setBlock)
-            {
-                inputController.SetBlock(false);
-            }
+//            if (!setBlock)
+//            {
+//                inputController.SetBlock(false);
+//            }
         }
 
         public void EnableOnNextFrame(Type behaviour)

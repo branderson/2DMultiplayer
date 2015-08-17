@@ -9,7 +9,7 @@ namespace Assets.Scripts.AI
     [Serializable]
     public class CaseBase : IComparable<CaseBase>, ISerializable
     {
-        [NonSerialized] public const int RecordFrames = 60;
+        [NonSerialized] public const int RecordFrames = 120;
         [NonSerialized] public const int MaxSequences = 5;
         [NonSerialized] public byte Frame = 0;
         public int SituationIndex = 0;
@@ -108,7 +108,7 @@ namespace Assets.Scripts.AI
 
         public void PushActiveSet(int reward, int punish)
         {
-            if (activeSet.Empty() || activeSet.ControllerStates.Count < 2 || (reward - punish <= 0))
+            if (activeSet.Empty() || activeSet.ControllerStates.Count < 3 || (reward - punish <= 0))
             {
                 //                MonoBehaviour.print("The set is empty");
             }

@@ -53,10 +53,10 @@ namespace Assets.Scripts.Player
             controls.Add("Primary", "A");
             controls.Add("Secondary", "B");
             controls.Add("Jump", "X");
-            controls.Add("Block", "LeftShoulder");
+            controls.Add("Block", "LeftTrigger");
             controls.Add("Grab", "RightShoulder");
             controls.Add("Run", "RightTrigger");
-            controls.Add("TiltLock", "LeftTrigger");
+            controls.Add("TiltLock", "LeftShoulder");
         }
 
         private void Awake()

@@ -4,9 +4,9 @@ namespace Assets.Scripts.Player.States
 {
     public class FlipPlayerState : PlayerState
     {
-        override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            base.OnStateEnter(animator, stateInfo, layerIndex);
+            base.OnStateExit(animator, stateInfo, layerIndex);
             animator.GetComponentInChildren<PlayerController>().Flip();
         }
 

@@ -14,6 +14,10 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] internal float maxSpeedX = 8f; // The fastest the player can travel in the x axis.
         [SerializeField] internal float runSpeedX = 14f; // The speed that the player runs
+        [SerializeField] internal float MaxBlockStrength = 20; // Amount of damage (before block reduction) that can be sustained before block break
+        [SerializeField] private const float BlockRechargeRate = .2f;
+        [SerializeField] internal float BlockBreakPenalty = 20;
+        [SerializeField] internal int BlockBreakStun = 60;
         [SerializeField] internal int resistance = 0;
         [SerializeField] internal int launchFrames = 15;
         [Range(.25f, 2)][SerializeField] internal float WeightRatio = 1f;
@@ -39,7 +43,7 @@ namespace Assets.Scripts.Player
         [SerializeField] public float airControlSpeed = .5f; // Fraction of horizontal control while in air
         private const float MaxVelCancelX = 20f;
         private const float MaxVelCancelY = 80f;
-        private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if onGround
+        private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if OnGround
 
         internal float airSideJumpSpeedX;
         internal float airSideJumpSpeedY;
@@ -50,7 +54,7 @@ namespace Assets.Scripts.Player
         internal bool fastFall;
         private float gravity; // Rate per second of decreasing vertical speed
         internal float maxAirSpeedX;
-        private bool onGround;
+        internal bool OnGround;
         internal bool passThroughFloor;
         internal bool fallingThroughFloor = false;
         internal float recoverySpeed;
@@ -80,7 +84,7 @@ namespace Assets.Scripts.Player
         private bool stunned = false;
         internal int SmashCharge = 0;
         private int health = 100;
-        private int blockStrength = 20; // Amount of damage (before block reduction) that can be sustained before block break
+        internal float BlockStrength;
         private float damageRatio = .01f;
         internal bool onEdgeRight = false;
         internal bool onEdgeLeft = false;
@@ -98,6 +102,7 @@ namespace Assets.Scripts.Player
             input = GetComponent<IInputController>();
             color = sprite.color;
             health = 100;
+            BlockStrength = MaxBlockStrength;
             canFall = true;
             facingRight = true;
             AirJumps = MaxAirJumps;
@@ -188,7 +193,7 @@ namespace Assets.Scripts.Player
             {
                 StunFall();
             }
-            else if (canFall) // && !onGround)
+            else if (canFall) // && !OnGround)
             {
                 if (fastFall)
                     FallFast();
@@ -211,6 +216,16 @@ namespace Assets.Scripts.Player
             transform.parent.position = rigidBody.position;
 //            rigidBody.position = transform.parent.position;
             transform.localPosition = Vector3.zero;
+
+            // Recharge block
+            if (!Blocking && BlockStrength < MaxBlockStrength)
+            {
+                BlockStrength += BlockRechargeRate;
+            }
+            if (BlockStrength > MaxBlockStrength)
+            {
+                BlockStrength = MaxBlockStrength;
+            }
 
             // Manage invincibility state
             if (IFrames > 0)
@@ -294,7 +309,7 @@ namespace Assets.Scripts.Player
 
         private void ApplyAirResistance()
         {
-            if (!onGround && GetSpeedX() > airSideJumpSpeedX)
+            if (!OnGround && GetSpeedX() > airSideJumpSpeedX)
             {
                 IncrementSpeedX(-4f*Time.fixedDeltaTime);
             }
@@ -303,7 +318,7 @@ namespace Assets.Scripts.Player
         public bool CheckForGround()
         {
             bool grounded = false;
-            onGround = false;
+            OnGround = false;
             animator.SetBool("Ground", false);
             List<Collider2D> colliders = new List<Collider2D>();
             foreach (Transform checkPosition in groundCheck)
@@ -320,7 +335,7 @@ namespace Assets.Scripts.Player
                     grounded = true;
                     fastFall = false;
                     animator.SetBool("Ground", true);
-                    onGround = true;
+                    OnGround = true;
                 }
                 else if (colliders[i].gameObject != gameObject)
                 {
@@ -361,7 +376,6 @@ namespace Assets.Scripts.Player
             animator.speed = 0;
             while (frames > 0)
             {
-                print("Pause " + frames);
                 frames--;
                 Paused = true;
                 yield return null;
@@ -631,7 +645,7 @@ namespace Assets.Scripts.Player
 
         public void TakeKnockback(AttackData attackData)
         {
-            if (!Invincible && attackData.Stagger > resistance)
+            if (!Invincible && attackData.Stagger > resistance && !Blocking)
             {
                 // Calculate scaled knockback
                 float scaledKnockback = attackData.Knockback;
@@ -712,10 +726,8 @@ namespace Assets.Scripts.Player
         {
             Vector2 position = transform.position;
             animationResumeSpeed = animator.speed;
-            print("Resume speed " + animationResumeSpeed);
             while (frames > 0)
             {
-                print("Hitlag " + frames);
                 transform.position = position;
                 SetVelocity(0, 0);
                 animator.speed = 0;
@@ -730,30 +742,36 @@ namespace Assets.Scripts.Player
         private IEnumerator ReceiveHitRoutine(AttackData attackData)
         {
             int frames = attackData.Hitlag;
+            Stun(frames, false);
             Vector2 position = transform.position;
-            animationResumeSpeed = animator.speed;
-            print("Resume speed " + animationResumeSpeed);
+//            animationResumeSpeed = animator.speed;
             while (frames > 0)
             {
-                print("Hit " + frames);
                 transform.position = position;
                 SetVelocity(0, 0);
-                animator.speed = 0;
-                Paused = true;
+//                if (frames != attackData.Hitlag)
+//                {
+//                    animator.speed = 0;
+//                }
+//                Paused = true;
                 frames--;
                 yield return null;
             }
-            animator.speed = animationResumeSpeed;
+//            animator.speed = animationResumeSpeed;
             TakeKnockback(attackData);
             Paused = false;
         }
 
         public void TakeHit(AttackData attackData)
         {
-            if (!Invincible)
+            if (!Invincible && !Blocking)
             {
                 ResumeAnimation();
                 StartCoroutine("ReceiveHitRoutine", attackData);
+            }
+            else if (Blocking)
+            {
+                TakeKnockback(attackData);
             }
         }
 

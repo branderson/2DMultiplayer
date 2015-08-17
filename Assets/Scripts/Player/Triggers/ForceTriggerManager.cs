@@ -116,6 +116,8 @@ namespace Assets.Scripts.Player.Triggers
             }
             playerController.Hitlag(attackData);
             player.TakeHit(attackData);
+            playerController.canRecover = true;
+            playerController.ResetAirJumps();
 
             if (attackData.Vibrate)
             {

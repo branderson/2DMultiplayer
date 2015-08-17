@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using Assets.Scripts.Player.Triggers;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.States
@@ -40,18 +41,18 @@ namespace Assets.Scripts.Player.States
                 if (rightSmashed)
                 {
                     base.Right();
-                    if (!playerController.facingRight)
-                    {
-                        playerAnimator.SetTrigger("TurnAround");
-                    }
+//                    if (!playerController.facingRight)
+//                    {
+//                        playerAnimator.SetTrigger("TurnAround");
+//                    }
                 }
                 else if (leftSmashed)
                 {
                     base.Left();
-                    if (playerController.facingRight)
-                    {
-                        playerAnimator.SetTrigger("TurnAround");
-                    }
+//                    if (playerController.facingRight)
+//                    {
+//                        playerAnimator.SetTrigger("TurnAround");
+//                    }
                 }
                 else if (downSmashed)
                 {
@@ -64,26 +65,26 @@ namespace Assets.Scripts.Player.States
                 if (rightSmashed)
                 {
                     base.Right();
-                    if (!playerController.facingRight)
-                    {
-                        playerAnimator.SetTrigger("TurnAround");
-                    }
+//                    if (!playerController.facingRight)
+//                    {
+//                        playerAnimator.SetTrigger("TurnAround");
+//                    }
                 }
                 else if (leftSmashed)
                 {
                     base.Left();
-                    if (playerController.facingRight)
-                    {
-                        playerAnimator.SetTrigger("TurnAround");
-                    }
+//                    if (playerController.facingRight)
+//                    {
+//                        playerAnimator.SetTrigger("TurnAround");
+//                    }
                 }
                 else if (downSmashed)
                 {
                     base.Down();
-                    if (!PlayerInputController.ButtonActive("Primary") && !PlayerInputController.ButtonActive("Secondary"))
-                    {
-                        playerController.passThroughFloor = true;
-                    }
+//                    if (!PlayerInputController.ButtonActive("Primary") && !PlayerInputController.ButtonActive("Secondary"))
+//                    {
+//                        playerController.passThroughFloor = true;
+//                    }
                 }
                 playerAnimator.SetTrigger("Dodge");
                 rightSmashed = false;
@@ -133,6 +134,16 @@ namespace Assets.Scripts.Player.States
         public override void Right()
         {
             rightSmashed = true;
+        }
+
+        override public void TakeHit(AttackData attackData)
+        {
+            playerController.BlockStrength -= attackData.Damage;
+            if (playerController.BlockStrength <= 0)
+            {
+                playerController.BlockStrength -= playerController.BlockBreakPenalty;
+                playerController.Stun(playerController.BlockBreakStun, false);
+            }
         }
     }
 }
