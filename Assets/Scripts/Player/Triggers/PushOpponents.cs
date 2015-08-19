@@ -39,6 +39,10 @@ namespace Assets.Scripts.Player
                     removedPlayers.Add(player);
                     continue;
                 }
+                if (player.GetState().GetName() != "Idle")
+                {
+                    continue;
+                }
                 if ((right && playerController.facingRight) || (!right && !playerController.facingRight))
                 {
                     if (Mathf.Abs(player.transform.position.x - playerController.transform.position.x) < .2f && player.GetSpeedX() < pushSpeed + 1 && !player.Invincible && !player.onEdgeRight)

@@ -64,7 +64,7 @@ namespace Assets.Scripts.Stage
 
         public void OnTriggerExit2D(Collider2D other)
         {
-            if (other.tag == "PlayerHead")
+            if (other.tag == "PlayerFeet")
             {
                 PlayerController controller = other.transform.parent.GetComponentInChildren<PlayerController>();
                 controller.fallingThroughFloor = false;

@@ -97,6 +97,7 @@ namespace Assets.Scripts.Player
         internal bool Holding = false;
         internal bool Grabbed = false;
         internal bool CanFallThroughFloor = false;
+        private Vector2 storedVelocity;
 
         public void Init(int zPosition, int slot, string playerName, bool computer)
         {
@@ -321,26 +322,21 @@ namespace Assets.Scripts.Player
             bool grounded = false;
             OnGround = false;
             animator.SetBool("Ground", false);
-            List<Collider2D> colliders = new List<Collider2D>();
-            foreach (Transform checkPosition in groundCheck)
+            if (RaycastGround())
             {
-                foreach (Collider2D overlapCollider in Physics2D.OverlapCircleAll(checkPosition.position, GroundedRadius, groundLayer))
+                List<Collider2D> colliders = groundCheck.SelectMany(checkPosition => Physics2D.OverlapCircleAll(checkPosition.position, GroundedRadius, groundLayer)).ToList();
+                foreach (Collider2D collision in colliders)
                 {
-                    colliders.Add(overlapCollider);
-                }
-            }
-            for (int i = 0; i < colliders.Count; i++)
-            {
-                if (colliders[i].gameObject != gameObject && (!passThroughFloor && !fallingThroughFloor))
-                {
-                    grounded = true;
-                    fastFall = false;
-                    animator.SetBool("Ground", true);
-                    OnGround = true;
-                }
-                else if (colliders[i].gameObject != gameObject)
-                {
-                    grounded = true;
+                    if (collision.gameObject != gameObject)
+                    {
+                        grounded = true;
+                    }
+                    if (grounded && (!passThroughFloor && !fallingThroughFloor))
+                    {
+                        fastFall = false;
+                        animator.SetBool("Ground", true);
+                        OnGround = true;
+                    }
                 }
             }
             return grounded;
@@ -348,8 +344,13 @@ namespace Assets.Scripts.Player
 
         public bool RaycastGround()
         {
-            // TODO: Implement this
-            RaycastHit2D rayCast = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, groundLayer);
+            return RaycastGround(-GroundedRadius) || RaycastGround(GroundedRadius);
+        }
+
+        public bool RaycastGround(float offset)
+        {
+            RaycastHit2D rayCast = Physics2D.Raycast(new Vector2(transform.position.x + offset, transform.position.y),
+                Vector2.down, Mathf.Infinity, groundLayer);
             return rayCast.collider != null;
         }
 
@@ -658,13 +659,13 @@ namespace Assets.Scripts.Player
                     // Weight based scaling
                     knockbackScaling *= 1/(WeightRatio + 1);
                     knockbackScaling *= attackData.Scaling;
+//                    print("Base: " + scaledKnockback);
+//                    print("Scaling: " + knockbackScaling);
+                    scaledKnockback += knockbackScaling;
                     if (health == 0)
                     {
                         scaledKnockback *= 1.5f;
                     }
-//                    print("Base: " + scaledKnockback);
-//                    print("Scaling: " + knockbackScaling);
-                    scaledKnockback += knockbackScaling;
                 }
 
                 // Directional influence
@@ -701,7 +702,18 @@ namespace Assets.Scripts.Player
                 // Account for players with different gravity values. this formula will need tweaking
                 float gravityAdjust = gravity/-120;
 
-                SetVelocity(scaledKnockback*direction.x, scaledKnockback*direction.y*gravityAdjust);
+                // Only set the velocity if new velocity greater than initial
+                if (
+                    Mathf.Sqrt(Mathf.Pow(scaledKnockback*direction.x, 2) +
+                               Mathf.Pow(scaledKnockback*direction.y*gravityAdjust, 2)) >
+                    Mathf.Sqrt(Mathf.Pow(storedVelocity.x, 2) + Mathf.Pow(storedVelocity.y, 2)))
+                {
+                    SetVelocity(scaledKnockback*direction.x, scaledKnockback*direction.y*gravityAdjust);
+                }
+                else
+                {
+                    SetVelocity(storedVelocity);
+                }
 
                 // TODO: Look for meteor smash type moves and set player flag for them
 
@@ -775,6 +787,7 @@ namespace Assets.Scripts.Player
             int frames = attackData.Hitlag;
             Stun(frames, false);
             Vector2 position = transform.position;
+            storedVelocity = GetVelocity();
 //            animationResumeSpeed = animator.speed;
             while (frames > 0)
             {

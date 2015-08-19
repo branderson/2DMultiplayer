@@ -70,7 +70,7 @@ namespace Assets.Scripts.Player.States
         {
             if (parryCountdown > 1)
             {
-                if (attackData.Stagger > parryableStagger)
+                if (attackData.Stagger > parryableStagger || playerController.GetShield() != 0)
                 {
                     playerController.IFrames = 0;
                     playerController.Invincible = false;
