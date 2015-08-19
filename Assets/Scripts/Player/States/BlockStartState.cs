@@ -89,7 +89,7 @@ namespace Assets.Scripts.Player.States
             }
             else
             {
-                playerController.BlockStrength -= attackData.Damage;
+                playerController.BlockStrength -= attackData.Damage + attackData.ShieldDamage;
                 if (playerController.BlockStrength <= 0)
                 {
                     playerController.BlockStrength -= playerController.BlockBreakPenalty;

@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player.Triggers
     {
         [SerializeField] private bool overrideOthers;
         [SerializeField] public int damageApplied;
+        [SerializeField] public int shieldDamage;
         [SerializeField] public int Knockback;
         [SerializeField] public float Scaling = 1;
         [SerializeField] public bool SetKnockback = false;
@@ -39,11 +40,13 @@ namespace Assets.Scripts.Player.Triggers
                     {
                         Player = playerController, 
                         Damage = damageApplied + DamageSupplement,
+                        ShieldDamage = shieldDamage, 
                         Knockback = (int) (Knockback*ForceMultiplier),
                         Scaling = Scaling,
                         SetKnockback = SetKnockback,
 //                        Direction = new Vector2(DirectionVectorX, DirectionVectorY),
-                        Direction = new Vector2(Mathf.Cos(Direction * Mathf.Deg2Rad), Mathf.Sin(Direction * Mathf.Deg2Rad)),
+//                        Direction = new Vector2(Mathf.Cos(Direction * Mathf.Deg2Rad), Mathf.Sin(Direction * Mathf.Deg2Rad)),
+                        Direction = Direction, 
                         Stagger = Stagger,
                         Stun = Stun,
                         Hitlag = Hitlag, 

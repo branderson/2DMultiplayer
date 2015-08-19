@@ -43,6 +43,7 @@ namespace Assets.Scripts.Player
         [SerializeField] public float airControlSpeed = .5f; // Fraction of horizontal control while in air
         private const float MaxVelCancelX = 20f;
         private const float MaxVelCancelY = 80f;
+        private const float MaxDI = 20f;
         private const float GroundedRadius = .1f; // Radius of the overlap circle to determine if OnGround
 
         internal float airSideJumpSpeedX;
@@ -655,8 +656,7 @@ namespace Assets.Scripts.Player
                     // Shield based scaling
                     knockbackScaling = (100-health)/10 + (100-health)*attackData.Damage/20;
                     // Weight based scaling
-                    knockbackScaling *= 2/(WeightRatio + 1);
-                    knockbackScaling *= .5f;
+                    knockbackScaling *= 1/(WeightRatio + 1);
                     knockbackScaling *= attackData.Scaling;
                     if (health == 0)
                     {
@@ -667,10 +667,41 @@ namespace Assets.Scripts.Player
                     scaledKnockback += knockbackScaling;
                 }
 
+                // Directional influence
+                // Angle in degrees of directional input
+                if (Mathf.Abs(input.GetAxis("Vertical")) > .1 || Mathf.Abs(input.GetAxis("Horizontal")) > .1)
+                {
+                    float directionalAngle = Mathf.Atan2(input.GetAxis("Vertical"), input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
+    //                print("y is " + input.GetAxis("Vertical") + " , x is " + input.GetAxis("Horizontal") + " , angle is " + directionalAngle + " , or " + directionalAngle*Mathf.Rad2Deg);
+                    // Adjust directionalAngle to be between 0 and 360
+                    while (directionalAngle > 360 || directionalAngle < 0)
+                    {
+                        if (directionalAngle > 360)
+                        {
+                            directionalAngle -= 360;
+                        }
+                        else if (directionalAngle < 0)
+                        {
+                            directionalAngle += 360;
+                        }
+                    }
+
+                    // Determine angle between input and knockback angle
+                    float angleDifference = directionalAngle - attackData.Direction;
+//                    print("Attack: " + attackData.Direction + ", input: " + directionalAngle + ", difference: " + angleDifference);
+
+//                    print("Adjustment: " + MaxDI*(Mathf.Sin(angleDifference*Mathf.Deg2Rad)));
+                    // Adjust knockback angle based on closeness to perpendicular
+                    attackData.Direction += MaxDI*(Mathf.Sin(angleDifference*Mathf.Deg2Rad));
+                }
+
+                Vector2 direction = new Vector2(Mathf.Cos(attackData.Direction*Mathf.Deg2Rad),
+                    Mathf.Sin(attackData.Direction*Mathf.Deg2Rad));
+
                 // Account for players with different gravity values. this formula will need tweaking
                 float gravityAdjust = gravity/-120;
 
-                SetVelocity(scaledKnockback*attackData.Direction.x, scaledKnockback*attackData.Direction.y*gravityAdjust);
+                SetVelocity(scaledKnockback*direction.x, scaledKnockback*direction.y*gravityAdjust);
 
                 // TODO: Look for meteor smash type moves and set player flag for them
 

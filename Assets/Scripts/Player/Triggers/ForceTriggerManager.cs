@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -10,8 +11,9 @@ namespace Assets.Scripts.Player.Triggers
         public int Knockback;
         public float Scaling;
         public bool SetKnockback;
-        public Vector2 Direction;
+        public float Direction; // in degrees
         public int Damage;
+        public int ShieldDamage;
         public int Stagger;
         public bool Vibrate;
         public bool Stun;
@@ -112,7 +114,9 @@ namespace Assets.Scripts.Player.Triggers
             }
             if (!playerController.facingRight)
             {
-                attackData.Direction.x *= -1;
+//                attackData.Direction.x *= -1;
+                // Swap horizontal direction of angle
+                attackData.Direction = Mathf.Atan2(Mathf.Sin(attackData.Direction*Mathf.Deg2Rad), -Mathf.Cos(attackData.Direction*Mathf.Deg2Rad))*Mathf.Rad2Deg;
             }
             playerController.Hitlag(attackData);
             player.TakeHit(attackData);

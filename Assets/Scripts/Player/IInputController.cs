@@ -9,12 +9,13 @@ namespace Assets.Scripts
 //        string GetType();
         bool GetTapJump();
         bool ButtonActive(string name);
+        float GetAxis(string name);
         bool AxisActive(string name);
         bool AxisPositive(string name);
         bool AxisNegative(string name);
         void VibrateController(float leftMotor, float rightMotor);
         void StopVibration();
-        List<byte> ControllerButtonPressState();
+//        List<byte> ControllerButtonPressState();
         List<byte> ControllerButtonHoldState();
         /* Button indices
          * 0: A

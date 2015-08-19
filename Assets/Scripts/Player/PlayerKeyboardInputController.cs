@@ -21,6 +21,8 @@ namespace Assets.Scripts.Player
         private const float thresholdX = .5f;
         private const float thresholdY = .5f;
 
+        private List<byte> activeHeldControls; 
+        private List<byte> activePressedControls;
         private float x = 0f;
         private float y = 0f;
         private bool upPressed = false;
@@ -44,6 +46,7 @@ namespace Assets.Scripts.Player
         private void Awake()
         {
             playerController = GetComponent<PlayerController>();
+            activeHeldControls = new List<byte>();
         }
 
         private void Start()
@@ -223,6 +226,11 @@ namespace Assets.Scripts.Player
             return Input.GetButton(name + "K");
         }
 
+        public float GetAxis(string name)
+        {
+            return Input.GetAxisRaw(name + "K");
+        }
+
         public bool AxisActive(string name)
         {
             if (Input.GetAxisRaw(name + "K") != 0)
@@ -262,21 +270,97 @@ namespace Assets.Scripts.Player
         {
             return TapJump;
         }
-
-        public List<byte> ControllerButtonPressState()
-        {
-            throw new NotImplementedException();
-        }
+//
+//        public List<byte> ControllerButtonPressState()
+//        {
+//            throw new NotImplementedException();
+//        }
 
         public sbyte[] ControllerAnalogState()
         {
-            throw new NotImplementedException();
+            sbyte[] analogState = {0, 0};
+            float xCheck = Input.GetAxisRaw(horizontalString);
+            float yCheck = Input.GetAxisRaw(verticalString);
+
+            if (AxisPositive("Horizontal"))
+            {
+                analogState[0] = 2;
+            }
+            else if (AxisNegative("Horizontal"))
+            {
+                analogState[0] = -2;
+            }
+            else if (xCheck > 0 && xCheck < thresholdX)
+            {
+                analogState[0] = 1;
+            }
+            else if (xCheck < 0 && xCheck > -thresholdX)
+            {
+                analogState[0] = -1;
+            }
+            else
+            {
+                analogState[0] = 0;
+            }
+
+            if (AxisPositive("Vertical"))
+            {
+                analogState[1] = 2;
+            }
+            else if (AxisNegative("Vertical"))
+            {
+                analogState[1] = -2;
+            }
+            else if (yCheck > 0 && yCheck < thresholdY)
+            {
+                analogState[1] = 1;
+            }
+            else if (yCheck < 0 && yCheck > -thresholdY)
+            {
+                analogState[1] = -1;
+            }
+            else
+            {
+                analogState[1] = 0;
+            }
+            return analogState;
         }
 
 
         public List<byte> ControllerButtonHoldState()
         {
-            throw new NotImplementedException();
+            // TODO: This needs to be cleaned up
+            activeHeldControls.Clear();
+            if (ButtonActive("Primary"))
+            {
+                activeHeldControls.Add(0);
+            }
+            if (ButtonActive("Secondary"))
+            {
+                activeHeldControls.Add(1);
+            }
+            if (ButtonActive("Jump"))
+            {
+                activeHeldControls.Add(2);
+            }
+            if (ButtonActive("Block"))
+            {
+                activeHeldControls.Add(4);
+            }
+            if (ButtonActive("Grab"))
+            {
+                activeHeldControls.Add(5);
+            }
+            if (ButtonActive("Run"))
+            {
+                activeHeldControls.Add(7);
+            }
+            if (ButtonActive("TiltLock"))
+            {
+                activeHeldControls.Add(6);
+            }
+            activePressedControls.Clear();
+            return activeHeldControls;
         }
     }
 }

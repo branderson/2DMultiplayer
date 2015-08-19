@@ -336,6 +336,19 @@ namespace Assets.Scripts.Player
             return activeButtons.Contains(name);
         }
 
+        public float GetAxis(string name)
+        {
+            if (name == "Vertical")
+            {
+                return y;
+            }
+            if (name == "Horizontal")
+            {
+                return x;
+            }
+            return 0;
+        }
+
         public bool AxisActive(string name)
         {
             if (name == "Vertical")
@@ -388,11 +401,11 @@ namespace Assets.Scripts.Player
         {
             return false;
         }
-
-        public List<byte> ControllerButtonPressState()
-        {
-            throw new NotImplementedException();
-        }
+//
+//        public List<byte> ControllerButtonPressState()
+//        {
+//            throw new NotImplementedException();
+//        }
 
         public sbyte[] ControllerAnalogState()
         {

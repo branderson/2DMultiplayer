@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Player.States
 {
-    public abstract class PlayerState : StateMachineBehaviour, IPlayerState
+    public abstract class PlayerState : StateMachineBehaviour //, IPlayerState
     {
         [SerializeField] private byte StateID = 0;
         protected PlayerController playerController;

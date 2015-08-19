@@ -138,7 +138,7 @@ namespace Assets.Scripts.Player.States
 
         override public void TakeHit(AttackData attackData)
         {
-            playerController.BlockStrength -= attackData.Damage;
+            playerController.BlockStrength -= attackData.Damage + attackData.ShieldDamage;
             if (playerController.BlockStrength <= 0)
             {
                 playerController.BlockStrength -= playerController.BlockBreakPenalty;

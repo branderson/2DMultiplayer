@@ -520,6 +520,42 @@ namespace Assets.Scripts.Player
             return false;
         }
 
+        public float GetAxis(string name)
+        {
+            GamePadState gamePadState = GamePad.GetState(XIndex, GamePadDeadZone.Circular);
+            if (name == "Vertical")
+            {
+                if (DPad)
+                {
+                    if (gamePadState.DPad.Up == ButtonState.Pressed)
+                    {
+                        return 1;
+                    }
+                    if (gamePadState.DPad.Down == ButtonState.Pressed)
+                    {
+                        return -1;
+                    }
+                }
+                return gamePadState.ThumbSticks.Left.Y;
+            }
+            if (name == "Horizontal")
+            {
+                if (DPad)
+                {
+                    if (gamePadState.DPad.Right == ButtonState.Pressed)
+                    {
+                        return 1;
+                    }
+                    if (gamePadState.DPad.Left == ButtonState.Pressed)
+                    {
+                        return -1;
+                    }
+                }
+                return gamePadState.ThumbSticks.Left.X;
+            }
+            return 0;
+        }
+
         public bool AxisActive(string name)
         {
             GamePadState gamePadState = GamePad.GetState(XIndex, GamePadDeadZone.Circular);
@@ -632,13 +668,13 @@ namespace Assets.Scripts.Player
         {
             return TapJump;
         }
-
-        public List<byte> ControllerButtonPressState()
-        {
-            List<byte> buttonState = new List<byte>(activePressedControls);
-            activePressedControls.Clear();
-            return buttonState;
-        }
+//
+//        public List<byte> ControllerButtonPressState()
+//        {
+//            List<byte> buttonState = new List<byte>(activePressedControls);
+//            activePressedControls.Clear();
+//            return buttonState;
+//        }
 
         public sbyte[] ControllerAnalogState()
         {
