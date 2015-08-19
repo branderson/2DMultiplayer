@@ -16,7 +16,7 @@ namespace Assets.Scripts.Player.States
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
-            dodgeCountdown = 2;
+            dodgeCountdown = 1;
             playerController.Run = false;
             if (playerController.BlockStrength <= 0)
             {
@@ -54,7 +54,11 @@ namespace Assets.Scripts.Player.States
         {
             if (dodgeCountdown <= 0)
             {
-//                base.Left();
+                if (!blockReleased)
+                {
+                    playerAnimator.SetTrigger("Dodge");
+                }
+                base.Left();
             }
         }
 
@@ -62,7 +66,11 @@ namespace Assets.Scripts.Player.States
         {
             if (dodgeCountdown <= 0)
             {
-//                base.Right();
+                if (!blockReleased)
+                {
+                    playerAnimator.SetTrigger("Dodge");
+                }
+                base.Right();
             }
         }
         

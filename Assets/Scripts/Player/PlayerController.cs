@@ -186,6 +186,10 @@ namespace Assets.Scripts.Player
             {
                 Run = false;
             }
+            if (input.ButtonActive("Block") && BlockStrength > 0)
+            {
+                animator.SetTrigger("Block");
+            }
             //            print(currentPlayerState.GetName());
         }
 

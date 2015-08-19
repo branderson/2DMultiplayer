@@ -50,10 +50,6 @@ namespace Assets.Scripts.Player.States
             {
 //                MonoBehaviour.print("Moving x without input: " + move.x + " " + animator.GetFloat("xInput"));
             }
-            if (PlayerInputController.ButtonActive("Block") && playerController.BlockStrength > 0)
-            {
-                playerAnimator.SetTrigger("Block");
-            }
 
             // Allow changing direction while running before stopping
             if (Mathf.Approximately(move.x, 0))
