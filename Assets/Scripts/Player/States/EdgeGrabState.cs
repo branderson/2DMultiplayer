@@ -13,6 +13,7 @@ namespace Assets.Scripts.Player.States
             base.OnStateEnter(animator, stateInfo, layerIndex);
             playerController.ResetAirJumps();
             playerController.canRecover = true;
+            playerController.fastFall = false;
             holdTimer = maxHoldFrames;
         }
 
