@@ -17,6 +17,12 @@ Shaders
 
 Animations, animations, animations!
 
+Tracking of responsibility for kills
+Air dodge with explicit wavedashing
+Attack sounds
+Main menu
+Settings menu
+
 AI
 	Ghost AI
 		Situational State info
