@@ -47,6 +47,7 @@ namespace Assets.Scripts.Player
         {
             playerController = GetComponent<PlayerController>();
             activeHeldControls = new List<byte>();
+            activePressedControls = new List<byte>();
         }
 
         private void Start()
